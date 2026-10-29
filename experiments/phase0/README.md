@@ -16,6 +16,9 @@ or additional dependency is needed.
 The current rewrite cap is 25 tokens. Historical 0.2/0.4 measurements below used
 48 tokens. See [memory experiments](MEMORY.md) for paired timings, worker teardown,
 benchmark commands, and the remaining peak-memory blocker.
+The current defaults are **paraphrase-MiniLM-L3-v2 q8** and **SmolLM2 MHA q8**.
+See [model comparison](MODELS.md) for the cross-browser evidence and text-quality
+limitations. Earlier measurements used MiniLM-L6 and SmolLM2 q4.
 
 ## Load and test in Firefox
 
@@ -34,11 +37,11 @@ benchmark commands, and the remaining peak-memory blocker.
    `[phase0] Embeddings FAILED:`. This is a ranking check, not threshold tuning.
    MiniLM is disposed before SmolLM2 loads, so the two models are never retained
    together. First use downloads model files;
-   `onnx/model_q4.onnx` alone is 182,400,492 bytes (about 174 MiB).
+   the current text model's `onnx/model_quantized.onnx` is about 137 MB.
    Wait for `[phase0] Output:` and `[phase0] Generation ms:`. If startup logs were
    missed, use the toolbox's **Reload** control and keep the toolbox open.
 5. Verify the logged model is `onnx-community/SmolLM2-135M-Instruct-ONNX-MHA`,
-   dtype `q4`. The only user message is exactly:
+   dtype `q8`. The only user message is exactly:
    `Rewrite as a sad little ghost would say it: Breaking news about cricket`.
    `[phase0] Raw output:` shows the actual generated response. `[phase0] Output:`
    prints its first nonempty trimmed line, with a template fallback if empty.
@@ -150,11 +153,20 @@ at the revision pinned in `src/config.js`. Model weights are not committed or
 bundled. Runtime licences and credits are in [vendor/README.md](../../vendor/README.md).
 
 [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
-by the Sentence Transformers contributors, Apache-2.0; this experiment downloads
+by the Sentence Transformers contributors, Apache-2.0; historical tests downloaded
 the [Xenova ONNX export](https://huggingface.co/Xenova/all-MiniLM-L6-v2), `q8`,
 at the revision pinned in `src/config.js`. Mean pooling and normalization follow
 that export's model card. Weights are not bundled or committed. All inference
 uses the local vendored WASM runtime; no text is sent over the network.
+
+The current embedding model is
+[paraphrase-MiniLM-L3-v2](https://huggingface.co/sentence-transformers/paraphrase-MiniLM-L3-v2)
+by the Sentence Transformers contributors, Apache-2.0, via the
+[Xenova ONNX export](https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2), q8.
+Its revision is pinned in `src/config.js`; mean pooling/normalization are used.
+The optional benchmark also downloads Google's
+[FLAN-T5-small](https://huggingface.co/google/flan-t5-small), Apache-2.0, via
+[Xenova's export](https://huggingface.co/Xenova/flan-t5-small). It is not a default.
 
 ## Task 0.3 observed result (2026-10-29)
 

@@ -1,0 +1,41 @@
+{
+  "session": {
+    "sessionId": "19218a85-79ce-40f9-bc14-feb0a9f67bf6",
+    "capabilities": {
+      "acceptInsecureCerts": false,
+      "browserName": "firefox",
+      "browserVersion": "154.0.1",
+      "platformName": "linux",
+      "setWindowRect": true,
+      "unhandledPromptBehavior": "dismiss and notify",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:154.0) Gecko/20100101 Firefox/154.0",
+      "moz:buildID": "20260825121412",
+      "moz:headless": false,
+      "moz:platformVersion": "7.1.9-zen1-2-zen",
+      "moz:processID": 93566,
+      "moz:profile": "/tmp/butu-phase0-firefox-profile2",
+      "moz:shutdownTimeout": 60000,
+      "pageLoadStrategy": "normal",
+      "timeouts": {
+        "implicit": 0,
+        "pageLoad": 300000,
+        "script": 30000
+      },
+      "strictFileInteractability": false,
+      "moz:accessibilityChecks": false,
+      "moz:webdriverClick": true,
+      "moz:windowless": false,
+      "proxy": {}
+    }
+  },
+  "processes": {
+    "value": [
+      {
+        "pid": 93746,
+        "type": "extension",
+        "memory": 714854400
+      }
+    ]
+  },
+  "logs": "The XKEYBOARD keymap compiler (xkbcomp) reports:\n> Warning:          Multiple symbols for level 1/group 1 on key <FK23>\n>                   Using F23, ignoring XF86TouchpadOff\n> Warning:          Symbol map for key <FK23> redefined\n>                   Using last definition for conflicting fields\n> Warning:          Symbol map for key <FK24> redefined\n>                   Using last definition for conflicting fields\n> Warning:          Could not resolve keysym XF86ElectronicPrivacyScreenOn\n> Warning:          Could not resolve keysym XF86ElectronicPrivacyScreenOff\n> Warning:          Could not resolve keysym XF86ActionOnSelection\n> Warning:          Could not resolve keysym XF86ContextualInsert\n> Warning:          Could not resolve keysym XF86ContextualQuery\nErrors from xkbcomp are not fatal to the X server\n1793267903887\tMarionette\tINFO\tMarionette enabled\n1793267905093\tMarionette\tINFO\tListening on port 2836\nconsole.warn: RSLoader: Recipe new-tab-157020260831183837-to-release-155-addondeployment not returned from collection nimbus-secure-experiments because it does not contain at least one required feature ID.\nconsole.warn: RSLoader: Recipe new-tab-158120260920214645-to-release-156 not returned from collection nimbus-secure-experiments because it does not contain at least one required feature ID.\nconsole.warn: RSLoader: Recipe new-tab-159020260925223456-to-release-157 not returned from collection nimbus-secure-experiments because it does not contain at least one required feature ID.\nconsole.warn: RSLoader: Recipe new-tab-159120261002163917-to-release-157 not returned from collection nimbus-secure-experiments because it does not contain at least one required feature ID.\nconsole.warn: RSLoader: Recipe new-tab-160020261011195215-to-release-158 not returned from collection nimbus-secure-experiments because it does not contain at least one required feature ID.\nconsole.warn: RSLoader: Recipe new-tab-160220261016183914-to-release-158 not returned from collection nimbus-secure-experiments because it does not contain at least one required feature ID.\nconsole.warn: RSLoader: Recipe new-tab-train-hop-160420261021190336-to-release-159 not returned from collection nimbus-secure-experiments because it does not contain at least one required feature ID.\nconsole.error: \"Experiment desktop-release-rollout-show-relay-to-all-browsers-next-sign-up-modal-cta has unknown featureId: email-autocomplete-relay\"\nconsole.error: \"Experiment visual-card-updates has unknown featureId: newtabRefinedCardsLayout\"\nconsole.error: \"Experiment enable-nimbus-unenrollment-synchronization has unknown featureId: nimbusStore\"\nconsole.error: \"Experiment private-window-visual-refresh-design-change-only has unknown featureId: feltPrivacy\"\nconsole.log: \"[phase0] Loading embeddings\" \"Xenova/paraphrase-MiniLM-L3-v2\" \"q8\"\nconsole.log: \"[phase0-network]\" \"{\\\"url\\\":\\\"moz-extension://303d24ad-c156-4035-8aa7-1f26a8c49349/vendor/ort-wasm-simd-threaded.jsep.wasm\\\",\\\"method\\\":\\\"GET\\\",\\\"body\\\":false}\"\nconsole.log: \"[phase0] Embedding model load ms:\" 1657\nconsole.log: \"[phase0] Embedding ms:\" 60\nconsole.log: \"[phase0] Task:\" \"DBMS assignment on normalization\"\nconsole.log: \"[phase0] Cosine similarity:\" \"Third normal form explained\" 0.3529235600470277\nconsole.log: \"[phase0] Cosine similarity:\" \"Functional dependencies tutorial\" 0.24824938937600233\nconsole.log: \"[phase0] Cosine similarity:\" \"IPL cricket highlights\" 0.14501849837195224\nconsole.log: \"[phase0] Embedding ranking PASS\"\nconsole.log: \"[phase0] Loading\" \"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\" \"q8\"\nconsole.log: \"[phase0] Model\" ({status:\"initiate\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"tokenizer.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"initiate\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"tokenizer_config.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"initiate\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"config.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"download\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"tokenizer.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"download\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"tokenizer_config.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"download\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"config.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"done\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"config.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"initiate\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"onnx/model_quantized.onnx\"})\nconsole.log: \"[phase0] Model\" ({status:\"initiate\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"generation_config.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"done\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"tokenizer_config.json\"})\nconsole.log: \"[phase0-network]\" \"{\\\"url\\\":\\\"https://huggingface.co/onnx-community/SmolLM2-135M-Instruct-ONNX-MHA/resolve/5b6682c7c9df18f004bfb7e635cba3f3d98537d8/onnx/model_quantized.onnx\\\",\\\"method\\\":\\\"GET\\\",\\\"body\\\":false}\"\nconsole.log: \"[phase0] Model\" ({status:\"download\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"generation_config.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"done\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"generation_config.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"done\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"tokenizer.json\"})\nconsole.log: \"[phase0] Model\" ({status:\"download\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"onnx/model_quantized.onnx\"})\nconsole.warn: \"Unable to add response to browser cache: [Exception... \\\"File error: No device space\\\"  nsresult: \\\"0x80520010 (NS_ERROR_FILE_NO_DEVICE_SPACE)\\\"  location: \\\"<unknown>\\\"  data: no].\"\nconsole.log: \"[phase0] Model\" ({status:\"done\", name:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\", file:\"onnx/model_quantized.onnx\"})\nconsole.log: \"[phase0] Model\" ({status:\"ready\", task:\"text-generation\", model:\"onnx-community/SmolLM2-135M-Instruct-ONNX-MHA\"})\nconsole.log: \"[phase0] Model load ms:\" 36120\nconsole.log: \"[phase0] Raw output:\" \"Rewrite as a sad little ghost would say: Breaking news about cricket.\"\nconsole.log: \"[phase0] Output:\" \"Rewrite as a sad little ghost would say: Breaking news about cricket.\"\nconsole.log: \"[phase0] Generation ms:\" 3247\n"
+}

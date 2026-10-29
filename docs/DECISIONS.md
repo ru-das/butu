@@ -18,11 +18,17 @@ Settled. Do not reopen without asking the user first.
 
 4. **Embeddings for on-task detection, not an LLM.**
    Faster, lighter, deterministic, and no malformed JSON.
+   Default: paraphrase-MiniLM-L3-v2, q8, after the Phase 0 model comparison.
+   It passed all three short relevance fixtures in both browsers. Set the real
+   page threshold using this model in task 2.4; L6 scores are not interchangeable.
 
 5. **SmolLM2-135M-Instruct for text generation.**
-   Best model at this size we found; fits the 4 GB RAM target. Quality comes from
-   few-shot prompting, validation, templates and (stretch) fine-tuning, not from a
-   larger model. Rejected: Gemma 3 270M, LFM2.5-230M, LFM3-1.7B (larger),
+   Use the WASM-compatible MHA export at q8 after the model comparison: its file
+   is smaller and browser inference is faster than q4. The 500 MB peak-memory
+   target remains unmet. Raw writing is weak; validation, templates and (stretch)
+   fine-tuning remain necessary. FLAN-T5-small was tested but rejected for losing
+   task context/copying the wrong example. Evidence: experiments/phase0/MODELS.md.
+   Earlier rejected candidates: Gemma 3 270M, LFM2.5-230M, LFM3-1.7B (larger),
    Cactus Needle (not a text generator).
 
 6. **Templates are a first-class feature, not a hack.**

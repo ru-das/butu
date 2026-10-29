@@ -1,0 +1,378 @@
+{
+  "screenshots": "/tmp/butu-phase04-ui",
+  "lines": [
+    "[phase0] Loading embeddings Xenova/paraphrase-MiniLM-L3-v2 q8",
+    "Unable to add response to browser cache: UnknownError: Failed to execute 'put' on 'Cache': Unexpected internal error..",
+    "Unable to add response to browser cache: UnknownError: Failed to execute 'put' on 'Cache': Unexpected internal error..",
+    "[phase0] Embedding model load ms: 11731",
+    "[phase0] Embedding ms: 43",
+    "[phase0] Task: DBMS assignment on normalization",
+    "[phase0] Cosine similarity: Third normal form explained 0.3529235600470277",
+    "[phase0] Cosine similarity: Functional dependencies tutorial 0.24824938937600233",
+    "[phase0] Cosine similarity: IPL cricket highlights 0.14501849837195224",
+    "[phase0] Embedding ranking PASS",
+    "[phase0] Loading onnx-community/SmolLM2-135M-Instruct-ONNX-MHA q8",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "Unable to determine content-length from response headers. Will expand buffer when needed.",
+    "[phase0] Model Object",
+    "Unable to determine content-length from response headers. Will expand buffer when needed.",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "Unable to add response to browser cache: UnknownError: Failed to execute 'put' on 'Cache': Unexpected internal error..",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model load ms: 35475",
+    "[phase0] Raw output: Rewrite as a sad little ghost would say: Breaking news about cricket.",
+    "[phase0] Output: Rewrite as a sad little ghost would say: Breaking news about cricket.",
+    "[phase0] Generation ms: 3226"
+  ],
+  "requests": [
+    {
+      "url": "https://huggingface.co/api/resolve-cache/models/Xenova/paraphrase-MiniLM-L3-v2/f2d931077e6527467d9ffc873f647d835e589e82/config.json?%2FXenova%2Fparaphrase-MiniLM-L3-v2%2Fresolve%2Ff2d931077e6527467d9ffc873f647d835e589e82%2Fconfig.json=&etag=%22fe45035abdece7de4993e59da54513f7d33a7a80%22",
+      "method": "GET"
+    },
+    {
+      "url": "https://huggingface.co/api/resolve-cache/models/Xenova/paraphrase-MiniLM-L3-v2/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json?%2FXenova%2Fparaphrase-MiniLM-L3-v2%2Fresolve%2Ff2d931077e6527467d9ffc873f647d835e589e82%2Ftokenizer.json=&etag=%22327401998c676bd2d7c625039113b0577ea49fe7%22",
+      "method": "GET"
+    },
+    {
+      "url": "https://huggingface.co/api/resolve-cache/models/Xenova/paraphrase-MiniLM-L3-v2/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json?%2FXenova%2Fparaphrase-MiniLM-L3-v2%2Fresolve%2Ff2d931077e6527467d9ffc873f647d835e589e82%2Ftokenizer_config.json=&etag=%2237fca74771bc76a8e01178ce3a6055a0995f8093%22",
+      "method": "GET"
+    },
+    {
+      "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/onnx/model_quantized.onnx",
+      "method": "GET"
+    },
+    {
+      "url": "https://us.aws.cdn.hf.co/xet-bridge-us/646cce40c51833760b557a2d/765414bd097cd8272bbc5218b62e906fb9610ad8b7081f8eefad31c5ffd5cbee?X-Xet-Cas-Uid=public&xip=VTm5i-kfqbU&user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model_quantized.onnx%3B+filename%3D%22model_quantized.onnx%22%3B&Expires=1793271336&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNjQ2Y2NlNDBjNTE4MzM3NjBiNTU3YTJkLzc2NTQxNGJkMDk3Y2Q4MjcyYmJjNTIxOGI2MmU5MDZmYjk2MTBhZDhiNzA4MWY4ZWVmYWQzMWM1ZmZkNWNiZWVcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZ4aXA9VlRtNWkta2ZxYlUmdXNlcl9pZD1wdWJsaWMmcmVzcG9uc2UtY29udGVudC1kaXNwb3NpdGlvbj1pbmxpbmUlM0IrZmlsZW5hbWUlMkElM0RVVEYtOCUyNyUyN21vZGVsX3F1YW50aXplZC5vbm54JTNCK2ZpbGVuYW1lJTNEJTIybW9kZWxfcXVhbnRpemVkLm9ubnglMjIlM0IiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkVwb2NoVGltZSI6MTc5MzI3MTMzNn19fV19&Signature=MEUCIQCUaD0wuh2pTaHCqT0mkLnNlE79BMqmRxizHcvi3Ifz1AIgCF0rVCAh91ETrsmEW1mxXrVNovhPb6f03QQoiTciBec_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F&Hash-Algorithm=SHA256",
+      "method": "GET"
+    },
+    {
+      "url": "chrome-extension://bfpckhgcgkaloeicfnchgmmfonenpmoo/vendor/ort-wasm-simd-threaded.jsep.mjs",
+      "method": "GET"
+    },
+    {
+      "url": "chrome-extension://bfpckhgcgkaloeicfnchgmmfonenpmoo/vendor/ort-wasm-simd-threaded.jsep.wasm",
+      "method": "GET"
+    },
+    {
+      "url": "https://huggingface.co/onnx-community/SmolLM2-135M-Instruct-ONNX-MHA/resolve/5b6682c7c9df18f004bfb7e635cba3f3d98537d8/onnx/model_quantized.onnx",
+      "method": "GET"
+    },
+    {
+      "url": "https://us.aws.cdn.hf.co/xet-bridge-us/67ced881dd3910e2e676e24a/bdc798aec86afdd552515296b99725e51e8e84bf6feb7859fd3743b510379837?user_id=public&xip=VTm5i-kfqbU&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model_quantized.onnx%3B+filename%3D%22model_quantized.onnx%22%3B&X-Xet-Cas-Uid=public&Expires=1793271347&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNjdjZWQ4ODFkZDM5MTBlMmU2NzZlMjRhL2JkYzc5OGFlYzg2YWZkZDU1MjUxNTI5NmI5OTcyNWU1MWU4ZTg0YmY2ZmViNzg1OWZkMzc0M2I1MTAzNzk4MzdcXD91c2VyX2lkPXB1YmxpYyZ4aXA9VlRtNWkta2ZxYlUmcmVzcG9uc2UtY29udGVudC1kaXNwb3NpdGlvbj1pbmxpbmUlM0IrZmlsZW5hbWUlMkElM0RVVEYtOCUyNyUyN21vZGVsX3F1YW50aXplZC5vbm54JTNCK2ZpbGVuYW1lJTNEJTIybW9kZWxfcXVhbnRpemVkLm9ubnglMjIlM0ImWC1YZXQtQ2FzLVVpZD1wdWJsaWMiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkVwb2NoVGltZSI6MTc5MzI3MTM0N319fV19&Signature=MEQCIBB8pYXjeoVjZ792Cxu39xVjN5edit6Dl8df0m24k%7EkIAiBaYziGjd898ubeVBVtRa%7ELmaymfTnLqq1cga8Ke9-%7EMQ__&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F&Hash-Algorithm=SHA256",
+      "method": "GET"
+    }
+  ],
+  "browser": "Chrome/153.0.8010.12",
+  "resources": {
+    "result": {
+      "type": "object",
+      "value": [
+        {
+          "name": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+          "duration": 850.4000000022352,
+          "transferSize": 0
+        },
+        {
+          "name": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+          "duration": 752.4000000022352,
+          "transferSize": 0
+        },
+        {
+          "name": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+          "duration": 775.4000000022352,
+          "transferSize": 0
+        },
+        {
+          "name": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/onnx/model_quantized.onnx",
+          "duration": 8643.60000000149,
+          "transferSize": 0
+        },
+        {
+          "name": "https://huggingface.co/onnx-community/SmolLM2-135M-Instruct-ONNX-MHA/resolve/5b6682c7c9df18f004bfb7e635cba3f3d98537d8/onnx/model_quantized.onnx",
+          "duration": 32247.599999997765,
+          "transferSize": 0
+        }
+      ]
+    }
+  },
+  "contexts": {
+    "targetInfos": [
+      {
+        "targetId": "D7BE2BB48A3E95E606FF3071107C79F8",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "D5B959E1F56EB462E913B4BA79457ACA"
+      },
+      {
+        "targetId": "72060CC1611D0374FD44A66570617030",
+        "type": "browser_ui",
+        "title": "Omnibox Popup",
+        "url": "chrome://omnibox-popup.top-chrome/",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "D5B959E1F56EB462E913B4BA79457ACA"
+      },
+      {
+        "targetId": "E4DE2EB48F25EBF94CE124C0AC0E5901",
+        "type": "browser_ui",
+        "title": "Omnibox Popup",
+        "url": "chrome://omnibox-popup.top-chrome/omnibox_popup_aim.html",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "D5B959E1F56EB462E913B4BA79457ACA"
+      },
+      {
+        "targetId": "1ACCB13974CA602CF32E5B392B3F59DA",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "D5B959E1F56EB462E913B4BA79457ACA"
+      },
+      {
+        "targetId": "DC8F24244A7B08F136ADE8A378BDC685",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "D5B959E1F56EB462E913B4BA79457ACA"
+      },
+      {
+        "targetId": "8BC42824AF83DE547ACEFD0F6E275180",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "D5B959E1F56EB462E913B4BA79457ACA"
+      },
+      {
+        "targetId": "B71433F959F212765A379FCED9FF0F86",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "D5B959E1F56EB462E913B4BA79457ACA"
+      },
+      {
+        "targetId": "3899CE28BFED3B5A1CFD0B6EE95C624D",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "D5B959E1F56EB462E913B4BA79457ACA"
+      },
+      {
+        "targetId": "00025D1216A0D98D5625615E0133B124",
+        "type": "background_page",
+        "title": "Butu phase 0 model host",
+        "url": "chrome-extension://bfpckhgcgkaloeicfnchgmmfonenpmoo/src/model-host/offscreen.html",
+        "attached": true,
+        "canAccessOpener": false,
+        "browserContextId": "D5B959E1F56EB462E913B4BA79457ACA"
+      },
+      {
+        "targetId": "1088D75BA0E39B6A59022F86DD4A7ABD",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "D5B959E1F56EB462E913B4BA79457ACA"
+      }
+    ]
+  },
+  "processes": {
+    "processInfo": [
+      {
+        "type": "browser",
+        "id": 92574,
+        "cpuTime": 9.9
+      },
+      {
+        "type": "renderer",
+        "id": 92898,
+        "cpuTime": 0.06
+      },
+      {
+        "type": "renderer",
+        "id": 92886,
+        "cpuTime": 15.9
+      },
+      {
+        "type": "renderer",
+        "id": 92730,
+        "cpuTime": 0.18
+      },
+      {
+        "type": "renderer",
+        "id": 92731,
+        "cpuTime": 0.16
+      },
+      {
+        "type": "renderer",
+        "id": 92802,
+        "cpuTime": 0.1
+      },
+      {
+        "type": "renderer",
+        "id": 92808,
+        "cpuTime": 0.09
+      },
+      {
+        "type": "renderer",
+        "id": 92826,
+        "cpuTime": 0.09
+      },
+      {
+        "type": "renderer",
+        "id": 92828,
+        "cpuTime": 0.09
+      },
+      {
+        "type": "renderer",
+        "id": 92863,
+        "cpuTime": 0.1
+      },
+      {
+        "type": "renderer",
+        "id": 92717,
+        "cpuTime": 1.23
+      },
+      {
+        "type": "GPU",
+        "id": 92645,
+        "cpuTime": 0.75
+      },
+      {
+        "type": "network.mojom.NetworkService",
+        "id": 92656,
+        "cpuTime": 8.28
+      },
+      {
+        "type": "storage.mojom.StorageService",
+        "id": 92676,
+        "cpuTime": 0.03
+      }
+    ]
+  },
+  "processMemory": [
+    {
+      "type": "browser",
+      "id": 92574,
+      "cpuTime": 9.9,
+      "rss": "VmRSS:\t  324392 kB",
+      "highWater": "VmHWM:\t  485056 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 92898,
+      "cpuTime": 0.06,
+      "rss": "VmRSS:\t   57980 kB",
+      "highWater": "VmHWM:\t   59668 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 92886,
+      "cpuTime": 15.9,
+      "rss": "VmRSS:\t  618120 kB",
+      "highWater": "VmHWM:\t  774360 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 92730,
+      "cpuTime": 0.18,
+      "rss": "VmRSS:\t   85748 kB",
+      "highWater": "VmHWM:\t   85748 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 92731,
+      "cpuTime": 0.16,
+      "rss": "VmRSS:\t   85240 kB",
+      "highWater": "VmHWM:\t   85240 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 92802,
+      "cpuTime": 0.1,
+      "rss": "VmRSS:\t   77720 kB",
+      "highWater": "VmHWM:\t   78552 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 92808,
+      "cpuTime": 0.09,
+      "rss": "VmRSS:\t   77784 kB",
+      "highWater": "VmHWM:\t   78656 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 92826,
+      "cpuTime": 0.09,
+      "rss": "VmRSS:\t   77840 kB",
+      "highWater": "VmHWM:\t   81204 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 92828,
+      "cpuTime": 0.09,
+      "rss": "VmRSS:\t   77728 kB",
+      "highWater": "VmHWM:\t   79004 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 92863,
+      "cpuTime": 0.1,
+      "rss": "VmRSS:\t   78008 kB",
+      "highWater": "VmHWM:\t   79220 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 92717,
+      "cpuTime": 1.23,
+      "rss": "VmRSS:\t  125440 kB",
+      "highWater": "VmHWM:\t  132316 kB"
+    },
+    {
+      "type": "GPU",
+      "id": 92645,
+      "cpuTime": 0.75,
+      "rss": "VmRSS:\t   68368 kB",
+      "highWater": "VmHWM:\t   75316 kB"
+    },
+    {
+      "type": "network.mojom.NetworkService",
+      "id": 92656,
+      "cpuTime": 8.28,
+      "rss": "VmRSS:\t  110036 kB",
+      "highWater": "VmHWM:\t  116988 kB"
+    },
+    {
+      "type": "storage.mojom.StorageService",
+      "id": 92676,
+      "cpuTime": 0.03,
+      "rss": "VmRSS:\t   35580 kB",
+      "highWater": "VmHWM:\t   37348 kB"
+    }
+  ]
+}

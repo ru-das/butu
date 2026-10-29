@@ -1,0 +1,1242 @@
+{
+  "options": {
+    "embedding": true,
+    "embeddingCandidate": true,
+    "embeddingSuite": true,
+    "worker": true,
+    "idleDelays": [
+      5000,
+      10000,
+      15000
+    ]
+  },
+  "phases": [
+    {
+      "phase": "ready",
+      "observedAt": 19668.73124437,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 167096,
+        "hwmKiB": 171636,
+        "privateKiB": 80060,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "embedding-loaded",
+      "model": "Xenova/paraphrase-MiniLM-L3-v2",
+      "loadMs": 8070,
+      "observedAt": 19677.75290042,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 319956,
+        "hwmKiB": 334336,
+        "privateKiB": 228376,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "embedding-generated",
+      "inferenceMs": 50,
+      "scores": [
+        0.3529235600470277,
+        0.24824938937600233,
+        0.14501849837195224
+      ],
+      "observedAt": 19678.76713413,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 303676,
+        "hwmKiB": 334336,
+        "privateKiB": 211776,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "embedding-quality",
+      "task": "DBMS assignment on normalization",
+      "inferenceMs": 83,
+      "scores": [
+        {
+          "title": "Third normal form explained",
+          "related": true,
+          "score": 0.3582699721302909
+        },
+        {
+          "title": "Functional dependencies tutorial",
+          "related": true,
+          "score": 0.2490040535606766
+        },
+        {
+          "title": "Database normalization and lossless decomposition",
+          "related": true,
+          "score": 0.6007932555255857
+        },
+        {
+          "title": "IPL cricket highlights",
+          "related": false,
+          "score": 0.13436798990541468
+        },
+        {
+          "title": "Buy sneakers online",
+          "related": false,
+          "score": -0.14126933738316366
+        },
+        {
+          "title": "Easy chocolate cake recipes",
+          "related": false,
+          "score": -0.16271767194163428
+        }
+      ],
+      "passed": true,
+      "observedAt": 19679.77627803,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 304360,
+        "hwmKiB": 334336,
+        "privateKiB": 212396,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "embedding-quality",
+      "task": "Write a cover letter for a software engineering internship",
+      "inferenceMs": 112,
+      "scores": [
+        {
+          "title": "How to write a software engineering cover letter",
+          "related": true,
+          "score": 0.8587082003174421
+        },
+        {
+          "title": "Internship cover letter examples",
+          "related": true,
+          "score": 0.7691826402718651
+        },
+        {
+          "title": "Describe coding projects in job applications",
+          "related": true,
+          "score": 0.48694825764485583
+        },
+        {
+          "title": "Champions League goal highlights",
+          "related": false,
+          "score": -0.027804366654681743
+        },
+        {
+          "title": "Simple chocolate cake recipe",
+          "related": false,
+          "score": -0.055599360219021295
+        },
+        {
+          "title": "Best beaches for a winter holiday",
+          "related": false,
+          "score": -0.05142533827372868
+        }
+      ],
+      "passed": true,
+      "observedAt": 19680.787505072,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 302500,
+        "hwmKiB": 334336,
+        "privateKiB": 210536,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "embedding-quality",
+      "task": "Learn JavaScript promises and async/await",
+      "inferenceMs": 91,
+      "scores": [
+        {
+          "title": "JavaScript async/await tutorial",
+          "related": true,
+          "score": 0.792222243149996
+        },
+        {
+          "title": "Promise.all versus Promise.allSettled",
+          "related": true,
+          "score": 0.4246681289005343
+        },
+        {
+          "title": "Handling asynchronous errors in JavaScript",
+          "related": true,
+          "score": 0.5431384879965537
+        },
+        {
+          "title": "IPL cricket highlights",
+          "related": false,
+          "score": -0.05937819904706015
+        },
+        {
+          "title": "Wedding dresses sale",
+          "related": false,
+          "score": 0.0736359787052328
+        },
+        {
+          "title": "Homemade sourdough bread",
+          "related": false,
+          "score": 0.018668772939322845
+        }
+      ],
+      "passed": true,
+      "observedAt": 19682.293678679,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 302732,
+        "hwmKiB": 334336,
+        "privateKiB": 210768,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "embedding-disposed",
+      "observedAt": 19683.303888677,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 302732,
+        "hwmKiB": 334336,
+        "privateKiB": 210768,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "done",
+      "observedAt": 19684.318475735,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 148808,
+        "hwmKiB": 334336,
+        "privateKiB": 56732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "worker-terminated",
+      "observedAt": 19684.323411998,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 148808,
+        "hwmKiB": 334336,
+        "privateKiB": 56732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 5000,
+      "observedAt": 19689.33630032,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 10000,
+      "observedAt": 19699.360389876,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 15000,
+      "observedAt": 19714.386098592,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "settled",
+      "observedAt": 19714.396246291,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    }
+  ],
+  "samples": [
+    {
+      "time": 19667.978767484,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 120192,
+        "hwmKiB": 120296,
+        "privateKiB": 37676,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19668.482374577,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 167096,
+        "hwmKiB": 171636,
+        "privateKiB": 80060,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19668.985371035,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 167096,
+        "hwmKiB": 171636,
+        "privateKiB": 80060,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19669.496483471,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 167876,
+        "hwmKiB": 171636,
+        "privateKiB": 79952,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19670.00095724,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 167876,
+        "hwmKiB": 171636,
+        "privateKiB": 79952,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19670.505940886,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 179064,
+        "hwmKiB": 179064,
+        "privateKiB": 90508,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19671.017897645,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 179064,
+        "hwmKiB": 179064,
+        "privateKiB": 90508,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19671.526607052,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 179124,
+        "hwmKiB": 179124,
+        "privateKiB": 89152,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19672.037287889,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 179480,
+        "hwmKiB": 179480,
+        "privateKiB": 89508,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19672.551057747,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 181740,
+        "hwmKiB": 182216,
+        "privateKiB": 91720,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19673.061563348,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 184812,
+        "hwmKiB": 188376,
+        "privateKiB": 94792,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19673.57162566,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 168312,
+        "hwmKiB": 188376,
+        "privateKiB": 77948,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19674.08062749,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 169256,
+        "hwmKiB": 188376,
+        "privateKiB": 78892,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19674.592042928,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 173432,
+        "hwmKiB": 188376,
+        "privateKiB": 83068,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19675.101966601,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 175480,
+        "hwmKiB": 188376,
+        "privateKiB": 85116,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19675.61729845,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 176096,
+        "hwmKiB": 188376,
+        "privateKiB": 85604,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19676.131355804,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 177316,
+        "hwmKiB": 193612,
+        "privateKiB": 86784,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19676.636206355,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 251100,
+        "hwmKiB": 251100,
+        "privateKiB": 159884,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19677.146981924,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 272732,
+        "hwmKiB": 334336,
+        "privateKiB": 181216,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19677.656568508,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 319956,
+        "hwmKiB": 334336,
+        "privateKiB": 228376,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19678.161816418,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 319956,
+        "hwmKiB": 334336,
+        "privateKiB": 228340,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19678.670163385,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 303676,
+        "hwmKiB": 334336,
+        "privateKiB": 211776,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19679.180460096,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 303676,
+        "hwmKiB": 334336,
+        "privateKiB": 211776,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19679.692244419,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 304360,
+        "hwmKiB": 334336,
+        "privateKiB": 212396,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19680.19674223,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 304360,
+        "hwmKiB": 334336,
+        "privateKiB": 212396,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19680.712594744,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 302372,
+        "hwmKiB": 334336,
+        "privateKiB": 210408,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19681.217651655,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 302500,
+        "hwmKiB": 334336,
+        "privateKiB": 210536,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19681.732170603,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 302500,
+        "hwmKiB": 334336,
+        "privateKiB": 210536,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19682.242123343,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 302732,
+        "hwmKiB": 334336,
+        "privateKiB": 210768,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19682.752139477,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 302732,
+        "hwmKiB": 334336,
+        "privateKiB": 210768,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19683.26246162,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 302732,
+        "hwmKiB": 334336,
+        "privateKiB": 210768,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19683.767845127,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 302732,
+        "hwmKiB": 334336,
+        "privateKiB": 210768,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19684.277964614,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 148808,
+        "hwmKiB": 334336,
+        "privateKiB": 56732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19684.785698709,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 148808,
+        "hwmKiB": 334336,
+        "privateKiB": 56732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19685.295744268,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 148808,
+        "hwmKiB": 334336,
+        "privateKiB": 56732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19685.805530002,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 148808,
+        "hwmKiB": 334336,
+        "privateKiB": 56732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19686.308677879,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19686.817784643,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19687.327233227,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19687.835841089,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19688.345469514,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19688.853117371,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19689.360590801,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19689.869524089,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19690.377212716,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19690.884652927,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19691.392180718,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19691.900900549,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19692.410296626,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19692.917899661,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 147804,
+        "hwmKiB": 334336,
+        "privateKiB": 55732,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19693.425079552,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54724,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19693.932236568,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54724,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19694.439340795,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54632,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19694.946544412,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54632,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19695.455256886,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54632,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19695.962861651,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54632,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19696.47173533,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54632,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19696.979784102,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54632,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19697.487138928,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54632,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19697.994427614,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54632,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19698.501710091,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146796,
+        "hwmKiB": 334336,
+        "privateKiB": 54632,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19699.010190467,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19699.518321837,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19700.026048256,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19700.534426218,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19701.041638928,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19701.548795082,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19702.058864148,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19702.566450958,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19703.074378961,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19703.581808518,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19704.090613358,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19704.598275166,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19705.106102288,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19705.614557198,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19706.123907423,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146292,
+        "hwmKiB": 334336,
+        "privateKiB": 54128,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19706.63174113,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19707.139136231,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19707.646402145,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19708.15584132,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19708.665204868,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19709.174908277,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19709.682456992,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19710.189813828,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19710.697135728,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19711.204553377,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19711.708526257,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19712.216630278,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19712.726047661,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19713.235561749,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19713.743090979,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 19714.251897308,
+      "memory": {
+        "pid": 87318,
+        "rssKiB": 146032,
+        "hwmKiB": 334336,
+        "privateKiB": 53868,
+        "swapKiB": 0
+      }
+    }
+  ],
+  "session": {
+    "sessionId": "b289713f-9f77-478f-9862-282328a2364f",
+    "capabilities": {
+      "acceptInsecureCerts": false,
+      "browserName": "firefox",
+      "browserVersion": "154.0.1",
+      "platformName": "linux",
+      "setWindowRect": true,
+      "unhandledPromptBehavior": "dismiss and notify",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:154.0) Gecko/20100101 Firefox/154.0",
+      "moz:buildID": "20260825121412",
+      "moz:headless": false,
+      "moz:platformVersion": "7.1.9-zen1-2-zen",
+      "moz:processID": 87176,
+      "moz:profile": "/tmp/butu-phase0-firefox-profile2",
+      "moz:shutdownTimeout": 60000,
+      "pageLoadStrategy": "normal",
+      "timeouts": {
+        "implicit": 0,
+        "pageLoad": 300000,
+        "script": 30000
+      },
+      "strictFileInteractability": false,
+      "moz:accessibilityChecks": false,
+      "moz:webdriverClick": true,
+      "moz:windowless": false,
+      "proxy": {}
+    }
+  },
+  "baselineProcessInfo": {
+    "value": [
+      {
+        "pid": 87318,
+        "memory": 45682688
+      }
+    ]
+  },
+  "finalProcessInfo": {
+    "value": [
+      {
+        "pid": 87318,
+        "memory": 59981824
+      }
+    ]
+  },
+  "pass": true
+}

@@ -13,15 +13,24 @@ fs.writeFileSync(offscreen,fs.readFileSync(offscreen,'utf8').replace('../../back
 const pause=ms=>new Promise(r=>setTimeout(r,ms));
 const out=process.env.BUTU_MEMORY_RESULTS??path.join(os.tmpdir(),'butu-memory-results');fs.mkdirSync(out,{recursive:true});
 const cases=[
- {name:'paired-output-length',text:true,tokens:48,tokenRuns:[48,25,48,25,48,25]},
- {name:'worker-text-25-long-idle',text:true,tokens:25,worker:true,idleDelays:[5000,10000,15000]},
- {name:'embedding-only',embedding:true},
- {name:'text-48',text:true,tokens:48},
- {name:'sequential-48',embedding:true,text:true,tokens:48},
- {name:'text-basic-48',text:true,tokens:48,sessionOptions:{graphOptimizationLevel:'basic'}},
- {name:'text-no-prepack-48',text:true,tokens:48,sessionOptions:{extra:{session:{disable_prepacking:'1'}}}},
- {name:'text-25',text:true,tokens:25},
- {name:'worker-text-25',text:true,tokens:25,worker:true},
+ {name:'selected-defaults',embedding:true,text:true,tokens:25},
+ {name:'flan-t5-text-25',text:true,textCandidate:true,tokens:25,worker:true,idleDelays:[5000,10000,15000]},
+ {name:'minilm-l3-embedding',embedding:true,embeddingCandidate:true,worker:true,idleDelays:[5000,10000,15000]},
+ {name:'flan-t5-quality',text:true,textCandidate:true,textSuite:true,tokens:25,worker:true,idleDelays:[5000,10000,15000]},
+ {name:'baseline-q4-quality',text:true,textBaseline:true,textSuite:true,tokens:25,worker:true,idleDelays:[5000,10000,15000]},
+ {name:'minilm-l3-quality',embedding:true,embeddingCandidate:true,embeddingSuite:true,worker:true,idleDelays:[5000,10000,15000]},
+ {name:'baseline-l6-quality',embedding:true,embeddingBaseline:true,embeddingSuite:true,worker:true,idleDelays:[5000,10000,15000]},
+ {name:'smollm-q8-text-25',text:true,textCandidate:'smollm-q8',tokens:25,worker:true,idleDelays:[5000,10000,15000]},
+ {name:'smollm-q8-quality',text:true,textCandidate:'smollm-q8',textSuite:true,tokens:25,worker:true,idleDelays:[5000,10000,15000]},
+ {name:'paired-output-length',textBaseline:true,text:true,tokens:48,tokenRuns:[48,25,48,25,48,25]},
+ {name:'worker-text-25-long-idle',textBaseline:true,text:true,tokens:25,worker:true,idleDelays:[5000,10000,15000]},
+ {name:'embedding-only',embeddingBaseline:true,embedding:true},
+ {name:'text-48',textBaseline:true,text:true,tokens:48},
+ {name:'sequential-48',embeddingBaseline:true,textBaseline:true,embedding:true,text:true,tokens:48},
+ {name:'text-basic-48',textBaseline:true,text:true,tokens:48,sessionOptions:{graphOptimizationLevel:'basic'}},
+ {name:'text-no-prepack-48',textBaseline:true,text:true,tokens:48,sessionOptions:{extra:{session:{disable_prepacking:'1'}}}},
+ {name:'text-25',textBaseline:true,text:true,tokens:25},
+ {name:'worker-text-25',textBaseline:true,text:true,tokens:25,worker:true},
 ];
 async function connect(url,onEvent=()=>{}){
  const ws=new WebSocket(url);await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j});let seq=0;const pending=new Map();

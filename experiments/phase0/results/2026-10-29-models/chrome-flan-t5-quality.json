@@ -1,0 +1,326 @@
+{
+  "options": {
+    "name": "flan-t5-quality",
+    "text": true,
+    "textCandidate": true,
+    "textSuite": true,
+    "tokens": 25,
+    "worker": true,
+    "idleDelays": [
+      5000,
+      10000,
+      15000
+    ]
+  },
+  "phases": [
+    {
+      "phase": "ready",
+      "memory": {
+        "rssKiB": 170068,
+        "privateKiB": 62168,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 170068,
+            "highWaterKiB": 171728,
+            "privateKiB": 62168,
+            "swapKiB": 0,
+            "cpuTime": 0.6
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-loaded",
+      "model": "Xenova/flan-t5-small",
+      "loadMs": 2809,
+      "memory": {
+        "rssKiB": 599648,
+        "privateKiB": 475476,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 599648,
+            "highWaterKiB": 599648,
+            "privateKiB": 475476,
+            "swapKiB": 0,
+            "cpuTime": 4.88
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "prompt": "Rewrite as a sad little ghost would say it: Breaking news about cricket",
+      "tokens": 25,
+      "generationMs": 394,
+      "raw": "cricket is a sappy game",
+      "line": "cricket is a sappy game",
+      "memory": {
+        "rssKiB": 527528,
+        "privateKiB": 415004,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 527528,
+            "highWaterKiB": 532372,
+            "privateKiB": 415004,
+            "swapKiB": 0,
+            "cpuTime": 5.46
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "prompt": "Write one short, sweet but lonely reminder from a teddy bear called Butu. Mention the DBMS assignment. The user is watching cricket instead of working.",
+      "tokens": 25,
+      "generationMs": 562,
+      "raw": "a teddy bear is a teddy bear",
+      "line": "a teddy bear is a teddy bear",
+      "memory": {
+        "rssKiB": 552324,
+        "privateKiB": 445016,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 552324,
+            "highWaterKiB": 563952,
+            "privateKiB": 445016,
+            "swapKiB": 0,
+            "cpuTime": 6.39
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "prompt": "Rewrite each distracting heading as a sweet, slightly unsettling line from Butu, a lonely teddy bear. Mention the task.\nTask: maths homework\nHeading: Funny dog videos\nLine: The puppies can wait. You promised we'd do our maths homework together.\nTask: history essay\nHeading: Shoes on sale\nLine: I'll keep your place beside the history essay. Please come back soon.\nTask: DBMS assignment\nHeading: Breaking news about cricket\nLine:",
+      "tokens": 25,
+      "generationMs": 744,
+      "raw": "a teddy bear is a teddy bear.",
+      "line": "a teddy bear is a teddy bear.",
+      "memory": {
+        "rssKiB": 550072,
+        "privateKiB": 437228,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 550072,
+            "highWaterKiB": 550072,
+            "privateKiB": 437228,
+            "swapKiB": 0,
+            "cpuTime": 7.26
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "prompt": "Rewrite each distracting heading as a sweet, slightly unsettling line from Butu, a lonely teddy bear. Mention the task.\nTask: maths homework\nHeading: Funny dog videos\nLine: The puppies can wait. You promised we'd do our maths homework together.\nTask: history essay\nHeading: Shoes on sale\nLine: I'll keep your place beside the history essay. Please come back soon.\nTask: internship cover letter\nHeading: Flash sale on sneakers\nLine:",
+      "tokens": 25,
+      "generationMs": 584,
+      "raw": "a teddy bear is a good idea",
+      "line": "a teddy bear is a good idea",
+      "memory": {
+        "rssKiB": 559528,
+        "privateKiB": 446568,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 559528,
+            "highWaterKiB": 559528,
+            "privateKiB": 446568,
+            "swapKiB": 0,
+            "cpuTime": 7.93
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "prompt": "Rewrite each distracting heading as a sweet, slightly unsettling line from Butu, a lonely teddy bear. Mention the task.\nTask: maths homework\nHeading: Funny dog videos\nLine: The puppies can wait. You promised we'd do our maths homework together.\nTask: history essay\nHeading: Shoes on sale\nLine: I'll keep your place beside the history essay. Please come back soon.\nTask: biology exam\nHeading: Funny cat videos\nLine:",
+      "tokens": 25,
+      "generationMs": 936,
+      "raw": "The puppies can wait. You promised we'd do our maths homework together. Task: biology exam Heading: Funny",
+      "line": "The puppies can wait. You promised we'd do our maths homework together. Task: biology exam Heading: Funny",
+      "memory": {
+        "rssKiB": 571556,
+        "privateKiB": 458596,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 571556,
+            "highWaterKiB": 571556,
+            "privateKiB": 458596,
+            "swapKiB": 0,
+            "cpuTime": 8.88
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "prompt": "Rewrite this reminder to sound sweet and lonely, keeping the words 'JavaScript homework': You left me alone with the JavaScript homework.",
+      "tokens": 25,
+      "generationMs": 710,
+      "raw": "if you haven't already, you're not alone with the JavaScript homework.",
+      "line": "if you haven't already, you're not alone with the JavaScript homework.",
+      "memory": {
+        "rssKiB": 584792,
+        "privateKiB": 451888,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 584792,
+            "highWaterKiB": 585676,
+            "privateKiB": 451888,
+            "swapKiB": 0,
+            "cpuTime": 9.58
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-disposed",
+      "memory": {
+        "rssKiB": 471880,
+        "privateKiB": 358700,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 471880,
+            "highWaterKiB": 585676,
+            "privateKiB": 358700,
+            "swapKiB": 1148,
+            "cpuTime": 9.75
+          }
+        ]
+      }
+    },
+    {
+      "phase": "done",
+      "memory": {
+        "rssKiB": 442544,
+        "privateKiB": 329592,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 442544,
+            "highWaterKiB": 585676,
+            "privateKiB": 329592,
+            "swapKiB": 732,
+            "cpuTime": 9.76
+          }
+        ]
+      }
+    },
+    {
+      "phase": "worker-terminated",
+      "memory": {
+        "rssKiB": 420352,
+        "privateKiB": 302300,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 420352,
+            "highWaterKiB": 585676,
+            "privateKiB": 302300,
+            "swapKiB": 360,
+            "cpuTime": 9.78
+          }
+        ]
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 5000,
+      "memory": {
+        "rssKiB": 203112,
+        "privateKiB": 89688,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 203112,
+            "highWaterKiB": 203112,
+            "privateKiB": 89688,
+            "swapKiB": 296,
+            "cpuTime": 9.8
+          }
+        ]
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 10000,
+      "memory": {
+        "rssKiB": 165928,
+        "privateKiB": 47736,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 165928,
+            "highWaterKiB": 203308,
+            "privateKiB": 47736,
+            "swapKiB": 296,
+            "cpuTime": 9.91
+          }
+        ]
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 15000,
+      "memory": {
+        "rssKiB": 160548,
+        "privateKiB": 42356,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 160548,
+            "highWaterKiB": 203308,
+            "privateKiB": 42356,
+            "swapKiB": 292,
+            "cpuTime": 9.97
+          }
+        ]
+      }
+    },
+    {
+      "phase": "settled",
+      "memory": {
+        "rssKiB": 160548,
+        "privateKiB": 42356,
+        "processes": [
+          {
+            "pid": 83655,
+            "rssKiB": 160548,
+            "highWaterKiB": 203308,
+            "privateKiB": 42356,
+            "swapKiB": 292,
+            "cpuTime": 9.97
+          }
+        ]
+      }
+    }
+  ],
+  "peakRssKiB": 599648,
+  "peakPrivateKiB": 475476,
+  "browser": "Chrome/153.0.8010.12",
+  "peakRendererHwmKiB": 599648,
+  "afterForcedGC": {
+    "rssKiB": 160556,
+    "privateKiB": 42364,
+    "processes": [
+      {
+        "pid": 83655,
+        "rssKiB": 160556,
+        "highWaterKiB": 203308,
+        "privateKiB": 42364,
+        "swapKiB": 292,
+        "cpuTime": 10.04
+      }
+    ]
+  },
+  "pass": true
+}

@@ -137,8 +137,8 @@ Loads entirely from the extension; no network. Styled as a child's scrapbook.
 ## AI stack
 | Role | Model / service | Runs | Approx. size |
 |---|---|---|---|
-| On-task detection | Xenova/all-MiniLM-L6-v2 (embeddings) | Local, in browser | ~23 MB |
-| Possession text | HuggingFaceTB/SmolLM2-135M-Instruct | Local, in browser | ~130 MB at 8-bit |
+| On-task detection | Xenova/paraphrase-MiniLM-L3-v2 (embeddings) | Local, in browser | ~17.5 MB, q8 |
+| Possession text | HuggingFaceTB/SmolLM2-135M-Instruct, MHA ONNX export | Local, in browser | ~137 MB, q8 |
 | Butu's voice design | ElevenLabs Voice Design | Build time | n/a |
 | Music box lullaby | ElevenLabs Music | Build time, bundled | a few MB |
 | Sound effects | ElevenLabs Sound Effects | Build time, bundled | a few MB |

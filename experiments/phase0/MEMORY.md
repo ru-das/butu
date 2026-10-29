@@ -1,5 +1,9 @@
 # Memory experiments — 2026-10-29
 
+These historical trials used MiniLM-L6 and SmolLM2 q4. The subsequent
+[model comparison](MODELS.md) selected L3/q8 defaults. The legacy matrix cases
+in the benchmark explicitly select the original baselines for reproducibility.
+
 The 25-token cap is faster in paired calls and preserves the complete first line
 of the fixed prompt. Worker teardown releases most retained memory in both
 browsers. **None of the tested changes meets the 500 MB peak-memory target.**

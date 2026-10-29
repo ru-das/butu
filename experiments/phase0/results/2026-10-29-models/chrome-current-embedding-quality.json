@@ -1,0 +1,371 @@
+{
+  "options": {
+    "name": "current-embedding-quality",
+    "embedding": true,
+    "embeddingSuite": true,
+    "worker": true,
+    "idleDelays": [
+      5000,
+      10000,
+      15000
+    ]
+  },
+  "phases": [
+    {
+      "phase": "ready",
+      "memory": {
+        "rssKiB": 170448,
+        "privateKiB": 61788,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 170448,
+            "highWaterKiB": 172192,
+            "privateKiB": 61788,
+            "swapKiB": 0,
+            "cpuTime": 0.56
+          }
+        ]
+      }
+    },
+    {
+      "phase": "embedding-loaded",
+      "model": "Xenova/all-MiniLM-L6-v2",
+      "loadMs": 1126,
+      "memory": {
+        "rssKiB": 359572,
+        "privateKiB": 246984,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 359572,
+            "highWaterKiB": 395368,
+            "privateKiB": 246984,
+            "swapKiB": 0,
+            "cpuTime": 1.82
+          }
+        ]
+      }
+    },
+    {
+      "phase": "embedding-generated",
+      "inferenceMs": 113,
+      "scores": [
+        0.2680489593482574,
+        0.1735348755381003,
+        0.059710662257280285
+      ],
+      "memory": {
+        "rssKiB": 352016,
+        "privateKiB": 239276,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 352016,
+            "highWaterKiB": 395368,
+            "privateKiB": 239276,
+            "swapKiB": 0,
+            "cpuTime": 1.96
+          }
+        ]
+      }
+    },
+    {
+      "phase": "embedding-quality",
+      "task": "DBMS assignment on normalization",
+      "inferenceMs": 80,
+      "scores": [
+        {
+          "title": "Third normal form explained",
+          "related": true,
+          "score": 0.2655038512502735
+        },
+        {
+          "title": "Functional dependencies tutorial",
+          "related": true,
+          "score": 0.16910202814670655
+        },
+        {
+          "title": "Database normalization and lossless decomposition",
+          "related": true,
+          "score": 0.7263529108707452
+        },
+        {
+          "title": "IPL cricket highlights",
+          "related": false,
+          "score": 0.05805081292094201
+        },
+        {
+          "title": "Buy sneakers online",
+          "related": false,
+          "score": -0.06779484729006395
+        },
+        {
+          "title": "Easy chocolate cake recipes",
+          "related": false,
+          "score": -0.01080221868014041
+        }
+      ],
+      "passed": true,
+      "memory": {
+        "rssKiB": 352688,
+        "privateKiB": 239756,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 352688,
+            "highWaterKiB": 352688,
+            "privateKiB": 239756,
+            "swapKiB": 0,
+            "cpuTime": 2.05
+          }
+        ]
+      }
+    },
+    {
+      "phase": "embedding-quality",
+      "task": "Write a cover letter for a software engineering internship",
+      "inferenceMs": 116,
+      "scores": [
+        {
+          "title": "How to write a software engineering cover letter",
+          "related": true,
+          "score": 0.8015154349855895
+        },
+        {
+          "title": "Internship cover letter examples",
+          "related": true,
+          "score": 0.7685316678586304
+        },
+        {
+          "title": "Describe coding projects in job applications",
+          "related": true,
+          "score": 0.3078744092994141
+        },
+        {
+          "title": "Champions League goal highlights",
+          "related": false,
+          "score": -0.06102899576459528
+        },
+        {
+          "title": "Simple chocolate cake recipe",
+          "related": false,
+          "score": -0.013233309866219591
+        },
+        {
+          "title": "Best beaches for a winter holiday",
+          "related": false,
+          "score": 0.050905457056164644
+        }
+      ],
+      "passed": true,
+      "memory": {
+        "rssKiB": 352980,
+        "privateKiB": 239984,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 352980,
+            "highWaterKiB": 352980,
+            "privateKiB": 239984,
+            "swapKiB": 0,
+            "cpuTime": 2.18
+          }
+        ]
+      }
+    },
+    {
+      "phase": "embedding-quality",
+      "task": "Learn JavaScript promises and async/await",
+      "inferenceMs": 126,
+      "scores": [
+        {
+          "title": "JavaScript async/await tutorial",
+          "related": true,
+          "score": 0.8469733254708349
+        },
+        {
+          "title": "Promise.all versus Promise.allSettled",
+          "related": true,
+          "score": 0.46215887526407323
+        },
+        {
+          "title": "Handling asynchronous errors in JavaScript",
+          "related": true,
+          "score": 0.5955680709627494
+        },
+        {
+          "title": "IPL cricket highlights",
+          "related": false,
+          "score": -0.06119409980130371
+        },
+        {
+          "title": "Wedding dresses sale",
+          "related": false,
+          "score": 0.03600361988134711
+        },
+        {
+          "title": "Homemade sourdough bread",
+          "related": false,
+          "score": -0.002147095427126381
+        }
+      ],
+      "passed": true,
+      "memory": {
+        "rssKiB": 353564,
+        "privateKiB": 240568,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 353564,
+            "highWaterKiB": 353564,
+            "privateKiB": 240568,
+            "swapKiB": 0,
+            "cpuTime": 2.3
+          }
+        ]
+      }
+    },
+    {
+      "phase": "embedding-disposed",
+      "memory": {
+        "rssKiB": 353612,
+        "privateKiB": 240424,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 353612,
+            "highWaterKiB": 353612,
+            "privateKiB": 240424,
+            "swapKiB": 0,
+            "cpuTime": 2.33
+          }
+        ]
+      }
+    },
+    {
+      "phase": "done",
+      "memory": {
+        "rssKiB": 323272,
+        "privateKiB": 210092,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 323272,
+            "highWaterKiB": 353324,
+            "privateKiB": 210092,
+            "swapKiB": 0,
+            "cpuTime": 2.33
+          }
+        ]
+      }
+    },
+    {
+      "phase": "worker-terminated",
+      "memory": {
+        "rssKiB": 315940,
+        "privateKiB": 202756,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 315940,
+            "highWaterKiB": 353324,
+            "privateKiB": 202756,
+            "swapKiB": 0,
+            "cpuTime": 2.35
+          }
+        ]
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 5000,
+      "memory": {
+        "rssKiB": 171548,
+        "privateKiB": 57892,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 171548,
+            "highWaterKiB": 190500,
+            "privateKiB": 57892,
+            "swapKiB": 0,
+            "cpuTime": 2.38
+          }
+        ]
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 10000,
+      "memory": {
+        "rssKiB": 171044,
+        "privateKiB": 57388,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 171044,
+            "highWaterKiB": 171104,
+            "privateKiB": 57388,
+            "swapKiB": 0,
+            "cpuTime": 2.39
+          }
+        ]
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 15000,
+      "memory": {
+        "rssKiB": 166544,
+        "privateKiB": 47588,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 166544,
+            "highWaterKiB": 174156,
+            "privateKiB": 47588,
+            "swapKiB": 0,
+            "cpuTime": 2.46
+          }
+        ]
+      }
+    },
+    {
+      "phase": "settled",
+      "memory": {
+        "rssKiB": 166544,
+        "privateKiB": 47588,
+        "processes": [
+          {
+            "pid": 85332,
+            "rssKiB": 166544,
+            "highWaterKiB": 174156,
+            "privateKiB": 47588,
+            "swapKiB": 0,
+            "cpuTime": 2.46
+          }
+        ]
+      }
+    }
+  ],
+  "peakRssKiB": 359572,
+  "peakPrivateKiB": 246984,
+  "browser": "Chrome/153.0.8010.12",
+  "peakRendererHwmKiB": 395368,
+  "afterForcedGC": {
+    "rssKiB": 163936,
+    "privateKiB": 44916,
+    "processes": [
+      {
+        "pid": 85332,
+        "rssKiB": 163936,
+        "highWaterKiB": 174156,
+        "privateKiB": 44916,
+        "swapKiB": 0,
+        "cpuTime": 2.58
+      }
+    ]
+  },
+  "pass": true
+}
