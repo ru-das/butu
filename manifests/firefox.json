@@ -12,7 +12,7 @@
   "browser_specific_settings": {
     "gecko": { "id": "butu@butu.test" }
   },
-  "action": { "default_title": "Butu" },
+  "action": { "default_title": "Butu", "default_popup": "src/popup/popup.html" },
   "content_security_policy": {
     "extension_pages": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; connect-src 'self' https://huggingface.co https://*.hf.co https://api.elevenlabs.io; media-src 'self' blob:"
   }

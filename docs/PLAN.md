@@ -43,7 +43,7 @@ STOP after Phase 0 and report results (times, memory, any blockers).
 - [x] 1.2 src/config.js with all model IDs, thresholds, stage timings, voice ID placeholder.
       Spec values documented; threshold, default volume and stage crossfade are
       explicitly unset pending task 2.4 / V5, as approved by the user.
-- [ ] 1.3 src/shared/: paper texture, pastel palette, bundled handwriting fonts
+- [x] 1.3 src/shared/: paper texture, pastel palette, bundled handwriting fonts
       (with licence files in assets/fonts/).
       Verify: fonts render offline in popup and a blank diary.html.
 - [ ] 1.4 Popup: Butu greeting, task input, duration picker, "Let's do it together!",

@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'Patrick Hand';
+  src: url('../../assets/fonts/patrick-hand/PatrickHand-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gaegu';
+  src: url('../../assets/fonts/gaegu/Gaegu-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --butu-paper: #fff8e9;
+  --butu-ink: #514438;
+  --butu-ink-soft: #756354;
+  --butu-rose: #f0c7c9;
+  --butu-peach: #f5d4b7;
+  --butu-butter: #f3e3a4;
+  --butu-sage: #ceddc7;
+  --butu-sky: #cbdfe8;
+  --butu-lavender: #dfd4ea;
+  --butu-focus: #705477;
+  --butu-font-body: 'Patrick Hand', cursive;
+  --butu-font-heading: 'Gaegu', cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1.5rem;
+  background: var(--butu-paper) url('./paper.svg') repeat;
+  color: var(--butu-ink);
+  font-family: var(--butu-font-body);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+h1, h2, h3 {
+  margin: 1.5em 0 0.5em;
+  font-family: var(--butu-font-heading);
+  font-weight: 400;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+main > :first-child {
+  margin-top: 0;
+}
+
+p {
+  max-inline-size: 65ch;
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--butu-focus);
+  text-underline-offset: 0.18em;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  caret-color: var(--butu-focus);
+}
+
+::placeholder {
+  color: var(--butu-ink-soft);
+  opacity: 1;
+}
+
+:focus-visible {
+  outline: 2px solid var(--butu-focus);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--butu-butter);
+  color: var(--butu-ink);
+}
+
+/* A static texture: no motion, including with prefers-reduced-motion. */
+@media (forced-colors: active) {
+  body {
+    background-image: none;
+  }
+}
