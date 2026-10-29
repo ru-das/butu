@@ -1,0 +1,151 @@
+{
+  "options": {
+    "name": "worker-text-25",
+    "text": true,
+    "tokens": 25,
+    "worker": true
+  },
+  "phases": [
+    {
+      "phase": "ready",
+      "memory": {
+        "rssKiB": 164360,
+        "privateKiB": 56224,
+        "processes": [
+          {
+            "pid": 73673,
+            "rssKiB": 164360,
+            "highWaterKiB": 164360,
+            "privateKiB": 56224,
+            "swapKiB": 0,
+            "cpuTime": 0.48
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-loaded",
+      "loadMs": 14991,
+      "memory": {
+        "rssKiB": 1343840,
+        "privateKiB": 1245944,
+        "processes": [
+          {
+            "pid": 73673,
+            "rssKiB": 1343840,
+            "highWaterKiB": 1343840,
+            "privateKiB": 1245944,
+            "swapKiB": 514616,
+            "cpuTime": 23.51
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "generationMs": 22088,
+      "raw": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.\n\nRewritten as",
+      "line": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.",
+      "memory": {
+        "rssKiB": 1084944,
+        "privateKiB": 984108,
+        "processes": [
+          {
+            "pid": 73673,
+            "rssKiB": 1084944,
+            "highWaterKiB": 1559560,
+            "privateKiB": 984108,
+            "swapKiB": 422528,
+            "cpuTime": 67.07
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-disposed",
+      "memory": {
+        "rssKiB": 1089712,
+        "privateKiB": 988864,
+        "processes": [
+          {
+            "pid": 73673,
+            "rssKiB": 1089712,
+            "highWaterKiB": 1559560,
+            "privateKiB": 988864,
+            "swapKiB": 419900,
+            "cpuTime": 67.84
+          }
+        ]
+      }
+    },
+    {
+      "phase": "done",
+      "memory": {
+        "rssKiB": 1071164,
+        "privateKiB": 970500,
+        "processes": [
+          {
+            "pid": 73673,
+            "rssKiB": 1071164,
+            "highWaterKiB": 1559560,
+            "privateKiB": 970500,
+            "swapKiB": 409260,
+            "cpuTime": 68.91
+          }
+        ]
+      }
+    },
+    {
+      "phase": "worker-terminated",
+      "memory": {
+        "rssKiB": 1070484,
+        "privateKiB": 505692,
+        "processes": [
+          {
+            "pid": 73673,
+            "rssKiB": 1070484,
+            "highWaterKiB": 1559560,
+            "privateKiB": 505692,
+            "swapKiB": 48616,
+            "cpuTime": 68.92
+          }
+        ]
+      }
+    },
+    {
+      "phase": "settled",
+      "memory": {
+        "rssKiB": 609428,
+        "privateKiB": 508544,
+        "processes": [
+          {
+            "pid": 73673,
+            "rssKiB": 609428,
+            "highWaterKiB": 1559560,
+            "privateKiB": 508544,
+            "swapKiB": 46540,
+            "cpuTime": 73.91
+          }
+        ]
+      }
+    }
+  ],
+  "peakRssKiB": 1552636,
+  "peakPrivateKiB": 1458464,
+  "browser": "Chrome/153.0.8010.12",
+  "afterForcedGC": {
+    "rssKiB": 611108,
+    "privateKiB": 510160,
+    "processes": [
+      {
+        "pid": 73673,
+        "rssKiB": 611108,
+        "highWaterKiB": 1559560,
+        "privateKiB": 510160,
+        "swapKiB": 46356,
+        "cpuTime": 75.21
+      }
+    ]
+  },
+  "pass": true
+}

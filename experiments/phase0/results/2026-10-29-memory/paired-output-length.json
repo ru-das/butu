@@ -1,0 +1,248 @@
+{
+  "options": {
+    "name": "paired-output-length",
+    "text": true,
+    "tokens": 48,
+    "tokenRuns": [
+      48,
+      25,
+      48,
+      25,
+      48,
+      25
+    ]
+  },
+  "phases": [
+    {
+      "phase": "ready",
+      "memory": {
+        "rssKiB": 157996,
+        "privateKiB": 49896,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 157996,
+            "highWaterKiB": 166564,
+            "privateKiB": 49896,
+            "swapKiB": 0,
+            "cpuTime": 0.38
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-loaded",
+      "loadMs": 13291,
+      "memory": {
+        "rssKiB": 920312,
+        "privateKiB": 835932,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 920312,
+            "highWaterKiB": 1751944,
+            "privateKiB": 835932,
+            "swapKiB": 703548,
+            "cpuTime": 35.28
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "tokens": 48,
+      "generationMs": 40445,
+      "raw": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.\n\nRewritten as a sad little ghost would say it:\n\nRewritten as a sad little ghost would say it:",
+      "line": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.",
+      "memory": {
+        "rssKiB": 1005316,
+        "privateKiB": 917824,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 1005316,
+            "highWaterKiB": 1007068,
+            "privateKiB": 917824,
+            "swapKiB": 511456,
+            "cpuTime": 91.03
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "tokens": 25,
+      "generationMs": 18926,
+      "raw": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.\n\nRewritten as",
+      "line": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.",
+      "memory": {
+        "rssKiB": 979828,
+        "privateKiB": 892148,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 979828,
+            "highWaterKiB": 1040324,
+            "privateKiB": 892148,
+            "swapKiB": 543652,
+            "cpuTime": 128.76
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "tokens": 48,
+      "generationMs": 36223,
+      "raw": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.\n\nRewritten as a sad little ghost would say it:\n\nRewritten as a sad little ghost would say it:",
+      "line": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.",
+      "memory": {
+        "rssKiB": 921764,
+        "privateKiB": 834988,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 921764,
+            "highWaterKiB": 1040324,
+            "privateKiB": 834988,
+            "swapKiB": 641836,
+            "cpuTime": 200.81
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "tokens": 25,
+      "generationMs": 18430,
+      "raw": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.\n\nRewritten as",
+      "line": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.",
+      "memory": {
+        "rssKiB": 428972,
+        "privateKiB": 348120,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 428972,
+            "highWaterKiB": 923596,
+            "privateKiB": 348120,
+            "swapKiB": 634680,
+            "cpuTime": 234.43
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "tokens": 48,
+      "generationMs": 24295,
+      "raw": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.\n\nRewritten as a sad little ghost would say it:\n\nRewritten as a sad little ghost would say it:",
+      "line": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.",
+      "memory": {
+        "rssKiB": 435236,
+        "privateKiB": 325360,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 435236,
+            "highWaterKiB": 923596,
+            "privateKiB": 325360,
+            "swapKiB": 634184,
+            "cpuTime": 258.76
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-generated",
+      "tokens": 25,
+      "generationMs": 12930,
+      "raw": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.\n\nRewritten as",
+      "line": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.",
+      "memory": {
+        "rssKiB": 415468,
+        "privateKiB": 328572,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 415468,
+            "highWaterKiB": 923596,
+            "privateKiB": 328572,
+            "swapKiB": 634072,
+            "cpuTime": 271.61
+          }
+        ]
+      }
+    },
+    {
+      "phase": "text-disposed",
+      "memory": {
+        "rssKiB": 418476,
+        "privateKiB": 331576,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 418476,
+            "highWaterKiB": 923596,
+            "privateKiB": 331576,
+            "swapKiB": 630672,
+            "cpuTime": 271.7
+          }
+        ]
+      }
+    },
+    {
+      "phase": "done",
+      "memory": {
+        "rssKiB": 418476,
+        "privateKiB": 331576,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 418476,
+            "highWaterKiB": 923596,
+            "privateKiB": 331576,
+            "swapKiB": 630672,
+            "cpuTime": 271.71
+          }
+        ]
+      }
+    },
+    {
+      "phase": "settled",
+      "memory": {
+        "rssKiB": 418476,
+        "privateKiB": 331576,
+        "processes": [
+          {
+            "pid": 74812,
+            "rssKiB": 418476,
+            "highWaterKiB": 418652,
+            "privateKiB": 331576,
+            "swapKiB": 630672,
+            "cpuTime": 271.71
+          }
+        ]
+      }
+    }
+  ],
+  "peakRssKiB": 1430168,
+  "peakPrivateKiB": 1337688,
+  "browser": "Chrome/153.0.8010.12",
+  "peakRendererHwmKiB": 1751944,
+  "afterForcedGC": {
+    "rssKiB": 405144,
+    "privateKiB": 318068,
+    "processes": [
+      {
+        "pid": 74812,
+        "rssKiB": 405144,
+        "highWaterKiB": 418652,
+        "privateKiB": 318068,
+        "swapKiB": 630348,
+        "cpuTime": 271.86
+      }
+    ]
+  },
+  "pass": true
+}

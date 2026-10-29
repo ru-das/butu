@@ -1,5 +1,5 @@
 import { env, pipeline } from './src/model-host/transformers.js';
-import { TEXT_MODEL_ID, TEXT_MODEL_REVISION, TEXT_MODEL_DTYPE } from './src/config.js';
+import { TEXT_MODEL_ID, TEXT_MODEL_REVISION, TEXT_MODEL_DTYPE, TEXT_MAX_NEW_TOKENS } from './src/config.js';
 import { EMBEDDING_MODEL_ID, EMBEDDING_MODEL_REVISION, EMBEDDING_MODEL_DTYPE } from './src/config.js';
 import { cos_sim } from './vendor/transformers.js';
 
@@ -63,7 +63,7 @@ try {
 
     const start = performance.now();
     const result = await generator([{ role: 'user', content: prompt }], {
-        max_new_tokens: 48,
+        max_new_tokens: TEXT_MAX_NEW_TOKENS,
         do_sample: false,
         return_full_text: false,
     });

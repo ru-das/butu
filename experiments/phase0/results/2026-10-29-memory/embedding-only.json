@@ -1,0 +1,247 @@
+{
+  "options": {
+    "name": "embedding-only",
+    "embedding": true
+  },
+  "phases": [
+    {
+      "phase": "ready",
+      "memory": {
+        "rssKiB": 346372,
+        "privateKiB": 67324,
+        "processes": [
+          {
+            "pid": 71092,
+            "rssKiB": 155392,
+            "highWaterKiB": 165820,
+            "privateKiB": 47920,
+            "swapKiB": 0,
+            "cpuTime": 0.38
+          },
+          {
+            "pid": 71064,
+            "rssKiB": 95324,
+            "highWaterKiB": 95324,
+            "privateKiB": 9496,
+            "swapKiB": 0,
+            "cpuTime": 0.08
+          },
+          {
+            "pid": 71063,
+            "rssKiB": 95656,
+            "highWaterKiB": 95656,
+            "privateKiB": 9908,
+            "swapKiB": 0,
+            "cpuTime": 0.08
+          }
+        ]
+      }
+    },
+    {
+      "phase": "embedding-loaded",
+      "loadMs": 8569,
+      "memory": {
+        "rssKiB": 592428,
+        "privateKiB": 308000,
+        "processes": [
+          {
+            "pid": 71092,
+            "rssKiB": 401364,
+            "highWaterKiB": 420676,
+            "privateKiB": 288648,
+            "swapKiB": 0,
+            "cpuTime": 5.45
+          },
+          {
+            "pid": 71064,
+            "rssKiB": 95404,
+            "highWaterKiB": 95404,
+            "privateKiB": 9508,
+            "swapKiB": 0,
+            "cpuTime": 0.09
+          },
+          {
+            "pid": 71063,
+            "rssKiB": 95660,
+            "highWaterKiB": 95660,
+            "privateKiB": 9844,
+            "swapKiB": 0,
+            "cpuTime": 0.09
+          }
+        ]
+      }
+    },
+    {
+      "phase": "embedding-generated",
+      "inferenceMs": 304,
+      "scores": [
+        0.2680489593482574,
+        0.1735348755381003,
+        0.059710662257280285
+      ],
+      "memory": {
+        "rssKiB": 661972,
+        "privateKiB": 364616,
+        "processes": [
+          {
+            "pid": 71092,
+            "rssKiB": 470908,
+            "highWaterKiB": 479540,
+            "privateKiB": 345264,
+            "swapKiB": 0,
+            "cpuTime": 8.57
+          },
+          {
+            "pid": 71064,
+            "rssKiB": 95404,
+            "highWaterKiB": 95404,
+            "privateKiB": 9508,
+            "swapKiB": 0,
+            "cpuTime": 0.09
+          },
+          {
+            "pid": 71063,
+            "rssKiB": 95660,
+            "highWaterKiB": 95660,
+            "privateKiB": 9844,
+            "swapKiB": 0,
+            "cpuTime": 0.09
+          }
+        ]
+      }
+    },
+    {
+      "phase": "embedding-disposed",
+      "memory": {
+        "rssKiB": 509728,
+        "privateKiB": 222636,
+        "processes": [
+          {
+            "pid": 71092,
+            "rssKiB": 318664,
+            "highWaterKiB": 479540,
+            "privateKiB": 203284,
+            "swapKiB": 0,
+            "cpuTime": 9.32
+          },
+          {
+            "pid": 71064,
+            "rssKiB": 95404,
+            "highWaterKiB": 95404,
+            "privateKiB": 9508,
+            "swapKiB": 0,
+            "cpuTime": 0.09
+          },
+          {
+            "pid": 71063,
+            "rssKiB": 95660,
+            "highWaterKiB": 95660,
+            "privateKiB": 9844,
+            "swapKiB": 0,
+            "cpuTime": 0.09
+          }
+        ]
+      }
+    },
+    {
+      "phase": "done",
+      "memory": {
+        "rssKiB": 509728,
+        "privateKiB": 222636,
+        "processes": [
+          {
+            "pid": 71092,
+            "rssKiB": 318664,
+            "highWaterKiB": 479540,
+            "privateKiB": 203284,
+            "swapKiB": 0,
+            "cpuTime": 9.32
+          },
+          {
+            "pid": 71064,
+            "rssKiB": 95404,
+            "highWaterKiB": 95404,
+            "privateKiB": 9508,
+            "swapKiB": 0,
+            "cpuTime": 0.09
+          },
+          {
+            "pid": 71063,
+            "rssKiB": 95660,
+            "highWaterKiB": 95660,
+            "privateKiB": 9844,
+            "swapKiB": 0,
+            "cpuTime": 0.09
+          }
+        ]
+      }
+    },
+    {
+      "phase": "settled",
+      "memory": {
+        "rssKiB": 504184,
+        "privateKiB": 217092,
+        "processes": [
+          {
+            "pid": 71092,
+            "rssKiB": 313144,
+            "highWaterKiB": 479540,
+            "privateKiB": 197764,
+            "swapKiB": 0,
+            "cpuTime": 9.33
+          },
+          {
+            "pid": 71064,
+            "rssKiB": 95380,
+            "highWaterKiB": 95380,
+            "privateKiB": 9484,
+            "swapKiB": 0,
+            "cpuTime": 0.09
+          },
+          {
+            "pid": 71063,
+            "rssKiB": 95660,
+            "highWaterKiB": 95660,
+            "privateKiB": 9844,
+            "swapKiB": 0,
+            "cpuTime": 0.09
+          }
+        ]
+      }
+    }
+  ],
+  "peakRssKiB": 661972,
+  "peakPrivateKiB": 364616,
+  "browser": "Chrome/153.0.8010.12",
+  "afterForcedGC": {
+    "rssKiB": 470000,
+    "privateKiB": 182780,
+    "processes": [
+      {
+        "pid": 71092,
+        "rssKiB": 278960,
+        "highWaterKiB": 479540,
+        "privateKiB": 163452,
+        "swapKiB": 0,
+        "cpuTime": 9.46
+      },
+      {
+        "pid": 71064,
+        "rssKiB": 95380,
+        "highWaterKiB": 95380,
+        "privateKiB": 9484,
+        "swapKiB": 0,
+        "cpuTime": 0.09
+      },
+      {
+        "pid": 71063,
+        "rssKiB": 95660,
+        "highWaterKiB": 95660,
+        "privateKiB": 9844,
+        "swapKiB": 0,
+        "cpuTime": 0.09
+      }
+    ]
+  },
+  "pass": true
+}

@@ -1,0 +1,1440 @@
+{
+  "options": {
+    "text": true,
+    "tokens": 25,
+    "worker": true,
+    "idleDelays": [
+      5000,
+      10000,
+      15000
+    ]
+  },
+  "phases": [
+    {
+      "phase": "ready",
+      "observedAt": 17595.686382401,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 164904,
+        "hwmKiB": 169856,
+        "privateKiB": 79704,
+        "swapKiB": 0
+      }
+    },
+    {
+      "phase": "text-loaded",
+      "loadMs": 13899,
+      "observedAt": 17610.717423109,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1032484,
+        "hwmKiB": 1069688,
+        "privateKiB": 951304,
+        "swapKiB": 214724
+      }
+    },
+    {
+      "phase": "text-generated",
+      "tokens": 25,
+      "generationMs": 14717,
+      "raw": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.\n\nRewritten as",
+      "line": "The cricket was a sad little ghost, a lonely soul, a ghost of a day.",
+      "observedAt": 17626.254463877,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1032836,
+        "hwmKiB": 1069688,
+        "privateKiB": 951208,
+        "swapKiB": 108936
+      }
+    },
+    {
+      "phase": "text-disposed",
+      "observedAt": 17627.287598215,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1033356,
+        "hwmKiB": 1069688,
+        "privateKiB": 951728,
+        "swapKiB": 108164
+      }
+    },
+    {
+      "phase": "done",
+      "observedAt": 17628.315230854,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116644,
+        "hwmKiB": 1069688,
+        "privateKiB": 34820,
+        "swapKiB": 28444
+      }
+    },
+    {
+      "phase": "worker-terminated",
+      "observedAt": 17628.327154258,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116644,
+        "hwmKiB": 1069688,
+        "privateKiB": 34820,
+        "swapKiB": 28444
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 5000,
+      "observedAt": 17633.84630206,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34972,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 10000,
+      "observedAt": 17643.869299101,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116828,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26240
+      }
+    },
+    {
+      "phase": "idle",
+      "delay": 15000,
+      "observedAt": 17658.894533075,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "phase": "settled",
+      "observedAt": 17658.902645491,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    }
+  ],
+  "samples": [
+    {
+      "time": 17594.652048804,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117364,
+        "hwmKiB": 117364,
+        "privateKiB": 36960,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17595.155719043,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 138280,
+        "hwmKiB": 143948,
+        "privateKiB": 53976,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17595.662448612,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 164904,
+        "hwmKiB": 169856,
+        "privateKiB": 79704,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17596.169995913,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 164904,
+        "hwmKiB": 169856,
+        "privateKiB": 79704,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17596.679366856,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 180908,
+        "hwmKiB": 180908,
+        "privateKiB": 94000,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17597.185174269,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 206124,
+        "hwmKiB": 209904,
+        "privateKiB": 118316,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17597.688856664,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 217388,
+        "hwmKiB": 217388,
+        "privateKiB": 129580,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17598.192491397,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 217388,
+        "hwmKiB": 217388,
+        "privateKiB": 129580,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17598.706775969,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 217388,
+        "hwmKiB": 217388,
+        "privateKiB": 129580,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17599.216225315,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 221040,
+        "hwmKiB": 234556,
+        "privateKiB": 133232,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17599.721106264,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 315736,
+        "hwmKiB": 315736,
+        "privateKiB": 230872,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17600.230885933,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 311024,
+        "hwmKiB": 322164,
+        "privateKiB": 223216,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17600.735192087,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 330160,
+        "hwmKiB": 453100,
+        "privateKiB": 241904,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17601.241490095,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 385460,
+        "hwmKiB": 453100,
+        "privateKiB": 296820,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17601.762063365,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 430008,
+        "hwmKiB": 453100,
+        "privateKiB": 341240,
+        "swapKiB": 0
+      }
+    },
+    {
+      "time": 17602.277561557,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 516184,
+        "hwmKiB": 516184,
+        "privateKiB": 429404,
+        "swapKiB": 10012
+      }
+    },
+    {
+      "time": 17602.784256628,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 583616,
+        "hwmKiB": 583616,
+        "privateKiB": 495032,
+        "swapKiB": 10012
+      }
+    },
+    {
+      "time": 17603.299056321,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 651236,
+        "hwmKiB": 651236,
+        "privateKiB": 571580,
+        "swapKiB": 16372
+      }
+    },
+    {
+      "time": 17603.818989738,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 726500,
+        "hwmKiB": 726500,
+        "privateKiB": 643572,
+        "swapKiB": 32244
+      }
+    },
+    {
+      "time": 17604.346378422,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 856832,
+        "hwmKiB": 856832,
+        "privateKiB": 783936,
+        "swapKiB": 32900
+      }
+    },
+    {
+      "time": 17604.868196254,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 959356,
+        "hwmKiB": 959356,
+        "privateKiB": 877724,
+        "swapKiB": 32464
+      }
+    },
+    {
+      "time": 17605.413066951,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1024108,
+        "hwmKiB": 1024108,
+        "privateKiB": 941164,
+        "swapKiB": 32460
+      }
+    },
+    {
+      "time": 17605.934846846,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1054284,
+        "hwmKiB": 1054284,
+        "privateKiB": 970060,
+        "swapKiB": 30232
+      }
+    },
+    {
+      "time": 17606.454888531,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1066392,
+        "hwmKiB": 1069688,
+        "privateKiB": 980124,
+        "swapKiB": 35500
+      }
+    },
+    {
+      "time": 17606.973498188,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1046924,
+        "hwmKiB": 1069688,
+        "privateKiB": 962432,
+        "swapKiB": 53220
+      }
+    },
+    {
+      "time": 17607.531952309,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1033344,
+        "hwmKiB": 1069688,
+        "privateKiB": 946304,
+        "swapKiB": 96252
+      }
+    },
+    {
+      "time": 17608.072108742,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 981180,
+        "hwmKiB": 1069688,
+        "privateKiB": 911064,
+        "swapKiB": 171156
+      }
+    },
+    {
+      "time": 17608.608040871,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 969764,
+        "hwmKiB": 1069688,
+        "privateKiB": 889560,
+        "swapKiB": 231196
+      }
+    },
+    {
+      "time": 17609.146596922,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 979896,
+        "hwmKiB": 1069688,
+        "privateKiB": 898600,
+        "swapKiB": 266756
+      }
+    },
+    {
+      "time": 17609.675842357,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 999756,
+        "hwmKiB": 1069688,
+        "privateKiB": 918888,
+        "swapKiB": 247776
+      }
+    },
+    {
+      "time": 17610.192551282,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1031372,
+        "hwmKiB": 1069688,
+        "privateKiB": 950256,
+        "swapKiB": 215340
+      }
+    },
+    {
+      "time": 17610.708502573,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1032484,
+        "hwmKiB": 1069688,
+        "privateKiB": 951304,
+        "swapKiB": 214724
+      }
+    },
+    {
+      "time": 17611.233142888,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1032560,
+        "hwmKiB": 1069688,
+        "privateKiB": 951436,
+        "swapKiB": 214640
+      }
+    },
+    {
+      "time": 17611.751810815,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1035116,
+        "hwmKiB": 1069688,
+        "privateKiB": 953744,
+        "swapKiB": 212300
+      }
+    },
+    {
+      "time": 17612.274078984,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1035176,
+        "hwmKiB": 1069688,
+        "privateKiB": 953804,
+        "swapKiB": 212248
+      }
+    },
+    {
+      "time": 17612.796050225,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1035176,
+        "hwmKiB": 1069688,
+        "privateKiB": 953804,
+        "swapKiB": 212248
+      }
+    },
+    {
+      "time": 17613.317347438,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1046644,
+        "hwmKiB": 1069688,
+        "privateKiB": 965272,
+        "swapKiB": 212060
+      }
+    },
+    {
+      "time": 17613.840850604,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1049364,
+        "hwmKiB": 1069688,
+        "privateKiB": 967992,
+        "swapKiB": 212044
+      }
+    },
+    {
+      "time": 17614.364889411,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1052220,
+        "hwmKiB": 1069688,
+        "privateKiB": 970848,
+        "swapKiB": 212028
+      }
+    },
+    {
+      "time": 17614.886750118,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1055608,
+        "hwmKiB": 1069688,
+        "privateKiB": 974236,
+        "swapKiB": 212012
+      }
+    },
+    {
+      "time": 17615.423588934,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 963768,
+        "hwmKiB": 1069688,
+        "privateKiB": 882332,
+        "swapKiB": 110856
+      }
+    },
+    {
+      "time": 17615.953662744,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 964412,
+        "hwmKiB": 1069688,
+        "privateKiB": 882996,
+        "swapKiB": 110836
+      }
+    },
+    {
+      "time": 17616.481527512,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 967368,
+        "hwmKiB": 1069688,
+        "privateKiB": 885932,
+        "swapKiB": 109804
+      }
+    },
+    {
+      "time": 17617.00802662,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 970548,
+        "hwmKiB": 1069688,
+        "privateKiB": 889112,
+        "swapKiB": 109796
+      }
+    },
+    {
+      "time": 17617.536652432,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 973652,
+        "hwmKiB": 1069688,
+        "privateKiB": 892216,
+        "swapKiB": 109760
+      }
+    },
+    {
+      "time": 17618.065365262,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 976732,
+        "hwmKiB": 1069688,
+        "privateKiB": 895296,
+        "swapKiB": 109760
+      }
+    },
+    {
+      "time": 17618.580982039,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 980016,
+        "hwmKiB": 1069688,
+        "privateKiB": 898580,
+        "swapKiB": 109760
+      }
+    },
+    {
+      "time": 17619.102595458,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 983324,
+        "hwmKiB": 1069688,
+        "privateKiB": 901888,
+        "swapKiB": 109760
+      }
+    },
+    {
+      "time": 17619.623196553,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 988784,
+        "hwmKiB": 1069688,
+        "privateKiB": 907220,
+        "swapKiB": 109692
+      }
+    },
+    {
+      "time": 17620.147542148,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 992296,
+        "hwmKiB": 1069688,
+        "privateKiB": 910668,
+        "swapKiB": 109680
+      }
+    },
+    {
+      "time": 17620.688874168,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 995896,
+        "hwmKiB": 1069688,
+        "privateKiB": 914268,
+        "swapKiB": 109644
+      }
+    },
+    {
+      "time": 17621.217897265,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 999216,
+        "hwmKiB": 1069688,
+        "privateKiB": 917588,
+        "swapKiB": 109640
+      }
+    },
+    {
+      "time": 17621.744602719,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1002940,
+        "hwmKiB": 1069688,
+        "privateKiB": 921312,
+        "swapKiB": 109040
+      }
+    },
+    {
+      "time": 17622.274432001,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1006476,
+        "hwmKiB": 1069688,
+        "privateKiB": 924848,
+        "swapKiB": 109040
+      }
+    },
+    {
+      "time": 17622.791418426,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1010100,
+        "hwmKiB": 1069688,
+        "privateKiB": 928472,
+        "swapKiB": 109040
+      }
+    },
+    {
+      "time": 17623.325892133,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1013924,
+        "hwmKiB": 1069688,
+        "privateKiB": 932296,
+        "swapKiB": 109032
+      }
+    },
+    {
+      "time": 17623.852025532,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1017716,
+        "hwmKiB": 1069688,
+        "privateKiB": 936088,
+        "swapKiB": 109028
+      }
+    },
+    {
+      "time": 17624.373564028,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1021380,
+        "hwmKiB": 1069688,
+        "privateKiB": 939752,
+        "swapKiB": 109028
+      }
+    },
+    {
+      "time": 17624.894944583,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1025136,
+        "hwmKiB": 1069688,
+        "privateKiB": 943508,
+        "swapKiB": 109028
+      }
+    },
+    {
+      "time": 17625.433766518,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1028792,
+        "hwmKiB": 1069688,
+        "privateKiB": 947164,
+        "swapKiB": 109028
+      }
+    },
+    {
+      "time": 17625.957470925,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1032796,
+        "hwmKiB": 1069688,
+        "privateKiB": 951204,
+        "swapKiB": 108940
+      }
+    },
+    {
+      "time": 17626.476479724,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1032836,
+        "hwmKiB": 1069688,
+        "privateKiB": 951208,
+        "swapKiB": 108936
+      }
+    },
+    {
+      "time": 17627.010069257,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1033356,
+        "hwmKiB": 1069688,
+        "privateKiB": 951728,
+        "swapKiB": 108164
+      }
+    },
+    {
+      "time": 17627.525725909,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 1033356,
+        "hwmKiB": 1069688,
+        "privateKiB": 951728,
+        "swapKiB": 108164
+      }
+    },
+    {
+      "time": 17628.064587231,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 575244,
+        "hwmKiB": 1069688,
+        "privateKiB": 183356,
+        "swapKiB": 61400
+      }
+    },
+    {
+      "time": 17628.571068872,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116644,
+        "hwmKiB": 1069688,
+        "privateKiB": 34820,
+        "swapKiB": 28444
+      }
+    },
+    {
+      "time": 17629.07777948,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116644,
+        "hwmKiB": 1069688,
+        "privateKiB": 34820,
+        "swapKiB": 28444
+      }
+    },
+    {
+      "time": 17629.585867804,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116732,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26320
+      }
+    },
+    {
+      "time": 17630.089306295,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116732,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26320
+      }
+    },
+    {
+      "time": 17630.597073076,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116740,
+        "hwmKiB": 1069688,
+        "privateKiB": 34916,
+        "swapKiB": 26312
+      }
+    },
+    {
+      "time": 17631.105467094,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116756,
+        "hwmKiB": 1069688,
+        "privateKiB": 34932,
+        "swapKiB": 26296
+      }
+    },
+    {
+      "time": 17631.614484906,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116756,
+        "hwmKiB": 1069688,
+        "privateKiB": 34932,
+        "swapKiB": 26296
+      }
+    },
+    {
+      "time": 17632.12363325,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116756,
+        "hwmKiB": 1069688,
+        "privateKiB": 34932,
+        "swapKiB": 26296
+      }
+    },
+    {
+      "time": 17632.631120975,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116756,
+        "hwmKiB": 1069688,
+        "privateKiB": 34932,
+        "swapKiB": 26296
+      }
+    },
+    {
+      "time": 17633.138799359,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116756,
+        "hwmKiB": 1069688,
+        "privateKiB": 34932,
+        "swapKiB": 26296
+      }
+    },
+    {
+      "time": 17633.647047609,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34972,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17634.158408336,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34972,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17634.661570769,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34972,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17635.170065137,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34972,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17635.678237152,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34972,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17636.187309535,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34972,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17636.69497911,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34972,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17637.209086039,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34972,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17637.712645131,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17638.220145481,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17638.727404663,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17639.23593472,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26256
+      }
+    },
+    {
+      "time": 17639.741551357,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34904,
+        "swapKiB": 26248
+      }
+    },
+    {
+      "time": 17640.250574344,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34904,
+        "swapKiB": 26248
+      }
+    },
+    {
+      "time": 17640.758367519,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34904,
+        "swapKiB": 26244
+      }
+    },
+    {
+      "time": 17641.266906199,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34904,
+        "swapKiB": 26244
+      }
+    },
+    {
+      "time": 17641.775075418,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34904,
+        "swapKiB": 26244
+      }
+    },
+    {
+      "time": 17642.282946429,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34904,
+        "swapKiB": 26244
+      }
+    },
+    {
+      "time": 17642.791482255,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34904,
+        "swapKiB": 26244
+      }
+    },
+    {
+      "time": 17643.301580534,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116824,
+        "hwmKiB": 1069688,
+        "privateKiB": 34904,
+        "swapKiB": 26244
+      }
+    },
+    {
+      "time": 17643.810180015,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116828,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26240
+      }
+    },
+    {
+      "time": 17644.318639835,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116828,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26240
+      }
+    },
+    {
+      "time": 17644.822163477,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116828,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26236
+      }
+    },
+    {
+      "time": 17645.331279103,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116828,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26236
+      }
+    },
+    {
+      "time": 17645.839738973,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116828,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26236
+      }
+    },
+    {
+      "time": 17646.349096303,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116828,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26236
+      }
+    },
+    {
+      "time": 17646.856412636,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116828,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26236
+      }
+    },
+    {
+      "time": 17647.365078555,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 116828,
+        "hwmKiB": 1069688,
+        "privateKiB": 34908,
+        "swapKiB": 26236
+      }
+    },
+    {
+      "time": 17647.873831253,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35384,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17648.381413463,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35384,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17648.89056638,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35384,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17649.399987231,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35384,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17649.905570598,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35384,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17650.419021387,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35384,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17650.928383306,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35384,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17651.438271468,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35384,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17651.948801005,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17652.457932807,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17652.966953699,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17653.477087603,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17653.986099058,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17654.493492959,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17654.996925212,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17655.501091066,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17656.008617508,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17656.517486736,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17657.02613049,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17657.529458182,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17658.038752703,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17658.548416853,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25852
+      }
+    },
+    {
+      "time": 17659.058125388,
+      "memory": {
+        "pid": 76459,
+        "rssKiB": 117496,
+        "hwmKiB": 1069688,
+        "privateKiB": 35224,
+        "swapKiB": 25848
+      }
+    }
+  ],
+  "session": {
+    "sessionId": "30133033-3393-4c6c-bde6-d9e7eea118d5",
+    "capabilities": {
+      "acceptInsecureCerts": false,
+      "browserName": "firefox",
+      "browserVersion": "154.0.1",
+      "platformName": "linux",
+      "setWindowRect": true,
+      "unhandledPromptBehavior": "dismiss and notify",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:154.0) Gecko/20100101 Firefox/154.0",
+      "moz:buildID": "20260825121412",
+      "moz:headless": false,
+      "moz:platformVersion": "7.1.9-zen1-2-zen",
+      "moz:processID": 76249,
+      "moz:profile": "/tmp/butu-phase0-firefox-profile2",
+      "moz:shutdownTimeout": 60000,
+      "pageLoadStrategy": "normal",
+      "timeouts": {
+        "implicit": 0,
+        "pageLoad": 300000,
+        "script": 30000
+      },
+      "strictFileInteractability": false,
+      "moz:accessibilityChecks": false,
+      "moz:webdriverClick": true,
+      "moz:windowless": false,
+      "proxy": {}
+    }
+  },
+  "baselineProcessInfo": {
+    "value": [
+      {
+        "pid": 76459,
+        "memory": 44969984
+      }
+    ]
+  },
+  "finalProcessInfo": {
+    "value": [
+      {
+        "pid": 76459,
+        "memory": 34332672
+      }
+    ]
+  },
+  "pass": true
+}

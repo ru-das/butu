@@ -13,6 +13,10 @@ same `background.js` test runner. Re-run after editing the experiment,
 `src/config.js` or the shared runtime wrapper. No install, bundler, server,
 or additional dependency is needed.
 
+The current rewrite cap is 25 tokens. Historical 0.2/0.4 measurements below used
+48 tokens. See [memory experiments](MEMORY.md) for paired timings, worker teardown,
+benchmark commands, and the remaining peak-memory blocker.
+
 ## Load and test in Firefox
 
 1. Open `about:processes` and note the memory of **Extensions** (if present).
@@ -38,8 +42,8 @@ or additional dependency is needed.
    `Rewrite as a sad little ghost would say it: Breaking news about cricket`.
    `[phase0] Raw output:` shows the actual generated response. `[phase0] Output:`
    prints its first nonempty trimmed line, with a template fallback if empty.
-   Generation is greedy with a 48-token cap; this is a runtime test, not a guarantee
-   of good ghost writing.
+   Generation is greedy with a 25-token cap from `src/config.js`; this is a runtime
+   test, not a guarantee of good ghost writing.
 6. Record **Model load ms** separately from **Generation ms**. Generation time
    includes tokenization, inference and decoding, but excludes the model download
    and initialization. The first inference may include additional warm-up work.
@@ -256,8 +260,8 @@ not cold-download timings or a completed cache audit (task 0.5).
 Chrome's baseline Task Manager had no Butu process; after generation the Butu row
 was PID 68126. Firefox's Extensions process, PID 67231, rose from a displayed
 43MB baseline to a displayed 1GB. These are whole-process measurements, including
-runtime overhead; Chrome's memory-footprint column and Firefox's resident-process
-measurement are different metrics. They are post-generation snapshots, not
+runtime overhead; Chrome's memory-footprint column and Firefox's resident-unique
+process measurement are different metrics. They are post-generation snapshots, not
 comparable model-only peaks. **Both exceed the spec's 500 MB memory budget.**
 
 Evidence (locally generated screenshots and captured test results):
