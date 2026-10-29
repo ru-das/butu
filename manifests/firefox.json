@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Butu",
+  "version": "0.1.0",
+  "description": "A little teddy bear to keep you company while you focus.",
+  "permissions": ["storage", "alarms"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "scripts": ["src/background.js"],
+    "type": "module"
+  },
+  "browser_specific_settings": {
+    "gecko": { "id": "butu@butu.test" }
+  },
+  "action": { "default_title": "Butu" },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; connect-src 'self' https://huggingface.co https://*.hf.co https://api.elevenlabs.io; media-src 'self' blob:"
+  }
+}

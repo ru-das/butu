@@ -37,8 +37,9 @@ Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
 STOP after Phase 0 and report results (times, memory, any blockers).
 
 ## Phase 1: Skeleton
-- [ ] 1.1 manifests/chrome.json, manifests/firefox.json, build.sh, .gitignore (.env, dist/).
+- [x] 1.1 manifests/chrome.json, manifests/firefox.json, build.sh, .gitignore (.env, dist/).
       Verify: empty extension loads in both browsers without errors.
+      Verified isolated Chrome/Firefox loads; permissions and manual steps: docs/SKELETON.md.
 - [ ] 1.2 src/config.js with all model IDs, thresholds, stage timings, voice ID placeholder.
 - [ ] 1.3 src/shared/: paper texture, pastel palette, bundled handwriting fonts
       (with licence files in assets/fonts/).
