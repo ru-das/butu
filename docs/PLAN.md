@@ -46,9 +46,11 @@ STOP after Phase 0 and report results (times, memory, any blockers).
 - [x] 1.3 src/shared/: paper texture, pastel palette, bundled handwriting fonts
       (with licence files in assets/fonts/).
       Verify: fonts render offline in popup and a blank diary.html.
-- [ ] 1.4 Popup: Butu greeting, task input, duration picker, "Let's do it together!",
+- [x] 1.4 Popup: Butu greeting, task input, duration picker, "Let's do it together!",
       countdown from stored end time.
       Verify: closing/reopening popup keeps countdown correct.
+      Verified extension popup pages in isolated Chrome/Firefox; storage contract,
+      scope and both-browser toolbar checks: src/popup/README.md.
 - [ ] 1.5 Session lifecycle in background.js: start, end on timer (chrome.alarms),
       manual stop, state in storage.local.
       Verify: session survives closing the popup and ends on time.
