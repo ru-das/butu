@@ -4,6 +4,8 @@ Work top to bottom. One task per request. Each task lists how to verify it.
 Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
 
 ## Phase 0: Prove the risky parts (do first)
+- [x] Phase 0 complete; measurements, remaining risks and both-browser checks:
+      [Phase 0 report](PHASE0-REPORT.md) (2026-10-29).
 - [x] 0.1 Vendor Transformers.js + ONNX Runtime WASM files into vendor/.
       Verify: files load from the extension, not a CDN.
 - [x] 0.2 Minimal Firefox extension: background page loads SmolLM2-135M-Instruct,
