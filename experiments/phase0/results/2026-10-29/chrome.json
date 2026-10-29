@@ -1,0 +1,296 @@
+{
+  "screenshots": "/tmp/butu-phase04-ui",
+  "lines": [
+    "[phase0] Loading embeddings Xenova/all-MiniLM-L6-v2 q8",
+    "[phase0] Embedding model load ms: 1485",
+    "[phase0] Embedding ms: 56",
+    "[phase0] Task: DBMS assignment on normalization",
+    "[phase0] Cosine similarity: Third normal form explained 0.2680489593482574",
+    "[phase0] Cosine similarity: Functional dependencies tutorial 0.1735348755381003",
+    "[phase0] Cosine similarity: IPL cricket highlights 0.059710662257280285",
+    "[phase0] Embedding ranking PASS",
+    "[phase0] Loading onnx-community/SmolLM2-135M-Instruct-ONNX-MHA q4",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "Unable to determine content-length from response headers. Will expand buffer when needed.",
+    "[phase0] Model Object",
+    "Unable to determine content-length from response headers. Will expand buffer when needed.",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model Object",
+    "[phase0] Model load ms: 9316",
+    "[phase0] Raw output: The cricket was a sad little ghost, a lonely soul, a ghost of a day.\n\nRewritten as a sad little ghost would say it:\n\nRewritten as a sad little ghost would say it:",
+    "[phase0] Output: The cricket was a sad little ghost, a lonely soul, a ghost of a day.",
+    "[phase0] Generation ms: 25350"
+  ],
+  "requests": [
+    {
+      "url": "chrome-extension://bfpckhgcgkaloeicfnchgmmfonenpmoo/vendor/ort-wasm-simd-threaded.jsep.wasm",
+      "method": "GET"
+    }
+  ],
+  "browser": "Chrome/153.0.8010.12",
+  "resources": {
+    "result": {
+      "type": "object",
+      "value": []
+    }
+  },
+  "contexts": {
+    "targetInfos": [
+      {
+        "targetId": "1235645AF343B524F74FAE8D82826417",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "36CBEF2434B028161640CEE03CCE5468"
+      },
+      {
+        "targetId": "4CF8CA587FAE3F00ADCB2D6CD9136CBC",
+        "type": "browser_ui",
+        "title": "Omnibox Popup",
+        "url": "chrome://omnibox-popup.top-chrome/",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "36CBEF2434B028161640CEE03CCE5468"
+      },
+      {
+        "targetId": "24A06B116CB13D1C8D67862372583DD3",
+        "type": "browser_ui",
+        "title": "Omnibox Popup",
+        "url": "chrome://omnibox-popup.top-chrome/omnibox_popup_aim.html",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "36CBEF2434B028161640CEE03CCE5468"
+      },
+      {
+        "targetId": "7161EDB772E10237FEDC5A282B444BCA",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "36CBEF2434B028161640CEE03CCE5468"
+      },
+      {
+        "targetId": "4D5F5301BC51FCC33A25C719CA51EA21",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "36CBEF2434B028161640CEE03CCE5468"
+      },
+      {
+        "targetId": "A92E5DAB5021997A7D1219A9D4C9608E",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "36CBEF2434B028161640CEE03CCE5468"
+      },
+      {
+        "targetId": "528CFF10869E49F35C4D24032C9B2F75",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "36CBEF2434B028161640CEE03CCE5468"
+      },
+      {
+        "targetId": "3C0E173FB1B915BC5B7BB67F3DFF916B",
+        "type": "background_page",
+        "title": "Butu phase 0 model host",
+        "url": "chrome-extension://bfpckhgcgkaloeicfnchgmmfonenpmoo/src/model-host/offscreen.html",
+        "attached": true,
+        "canAccessOpener": false,
+        "browserContextId": "36CBEF2434B028161640CEE03CCE5468"
+      },
+      {
+        "targetId": "C29DCB5B74006357A9640E3E8E0FABEE",
+        "type": "page",
+        "title": "about:blank",
+        "url": "about:blank",
+        "attached": false,
+        "canAccessOpener": false,
+        "browserContextId": "36CBEF2434B028161640CEE03CCE5468"
+      }
+    ]
+  },
+  "processes": {
+    "processInfo": [
+      {
+        "type": "browser",
+        "id": 67794,
+        "cpuTime": 6.53
+      },
+      {
+        "type": "renderer",
+        "id": 68138,
+        "cpuTime": 0.05
+      },
+      {
+        "type": "renderer",
+        "id": 68126,
+        "cpuTime": 35.07
+      },
+      {
+        "type": "renderer",
+        "id": 67978,
+        "cpuTime": 0.18
+      },
+      {
+        "type": "renderer",
+        "id": 67979,
+        "cpuTime": 0.13
+      },
+      {
+        "type": "renderer",
+        "id": 68043,
+        "cpuTime": 0.11
+      },
+      {
+        "type": "renderer",
+        "id": 68051,
+        "cpuTime": 0.09
+      },
+      {
+        "type": "renderer",
+        "id": 68084,
+        "cpuTime": 0.12
+      },
+      {
+        "type": "renderer",
+        "id": 68092,
+        "cpuTime": 0.1
+      },
+      {
+        "type": "renderer",
+        "id": 67964,
+        "cpuTime": 1.66
+      },
+      {
+        "type": "GPU",
+        "id": 67922,
+        "cpuTime": 0.62
+      },
+      {
+        "type": "network.mojom.NetworkService",
+        "id": 67926,
+        "cpuTime": 0.57
+      },
+      {
+        "type": "storage.mojom.StorageService",
+        "id": 67944,
+        "cpuTime": 0.02
+      }
+    ]
+  },
+  "processMemory": [
+    {
+      "type": "browser",
+      "id": 67794,
+      "cpuTime": 6.53,
+      "rss": "VmRSS:\t  292964 kB",
+      "highWater": "VmHWM:\t  386984 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 68138,
+      "cpuTime": 0.05,
+      "rss": "VmRSS:\t   55172 kB",
+      "highWater": "VmHWM:\t   76492 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 68126,
+      "cpuTime": 35.07,
+      "rss": "VmRSS:\t  858100 kB",
+      "highWater": "VmHWM:\t 1074868 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 67978,
+      "cpuTime": 0.18,
+      "rss": "VmRSS:\t   77228 kB",
+      "highWater": "VmHWM:\t  100996 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 67979,
+      "cpuTime": 0.13,
+      "rss": "VmRSS:\t   76032 kB",
+      "highWater": "VmHWM:\t   99492 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 68043,
+      "cpuTime": 0.11,
+      "rss": "VmRSS:\t   74576 kB",
+      "highWater": "VmHWM:\t   98408 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 68051,
+      "cpuTime": 0.09,
+      "rss": "VmRSS:\t   74540 kB",
+      "highWater": "VmHWM:\t   98372 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 68084,
+      "cpuTime": 0.12,
+      "rss": "VmRSS:\t   76172 kB",
+      "highWater": "VmHWM:\t   98296 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 68092,
+      "cpuTime": 0.1,
+      "rss": "VmRSS:\t   76168 kB",
+      "highWater": "VmHWM:\t   98176 kB"
+    },
+    {
+      "type": "renderer",
+      "id": 67964,
+      "cpuTime": 1.66,
+      "rss": "VmRSS:\t  127504 kB",
+      "highWater": "VmHWM:\t  168148 kB"
+    },
+    {
+      "type": "GPU",
+      "id": 67922,
+      "cpuTime": 0.62,
+      "rss": "VmRSS:\t   64376 kB",
+      "highWater": "VmHWM:\t  113160 kB"
+    },
+    {
+      "type": "network.mojom.NetworkService",
+      "id": 67926,
+      "cpuTime": 0.57,
+      "rss": "VmRSS:\t  105256 kB",
+      "highWater": "VmHWM:\t  122220 kB"
+    },
+    {
+      "type": "storage.mojom.StorageService",
+      "id": 67944,
+      "cpuTime": 0.02,
+      "rss": "VmRSS:\t   33032 kB",
+      "highWater": "VmHWM:\t   50168 kB"
+    }
+  ]
+}

@@ -199,9 +199,8 @@ from generation. The raw response repeated “Rewritten as…” after the first
 just as in Firefox. This proves runtime equivalence, not production text quality.
 No cache-reload test was performed (task 0.5).
 
-Headless verification did not measure the visible Chrome Task Manager memory;
-perform Chrome steps 2/7 to record that number. No Chrome memory-budget claim is
-made. The worker lifecycle regression, manifest/staging checks, JS/shell syntax,
+The graphical follow-up below records the visible Chrome Task Manager memory.
+The worker lifecycle regression, manifest/staging checks, JS/shell syntax,
 vendor checksums and `git diff --check` passed. Firefox's test runner and manifest
 are unchanged; its browser results remain those recorded for tasks 0.2/0.3.
 
@@ -228,5 +227,47 @@ these results do not establish acceptable product performance.
 Firefox's process-info API (`ChromeUtils.requestProcInfo`, also used by
 `about:processes`) reported 845,713,408 bytes (806.5 MiB) for the extension process
 after generation. This includes process/runtime overhead, not only model weights.
-The visible `about:processes` comparison remains a manual check using steps 1/7.
+The graphical follow-up below also records the visible `about:processes` comparison.
 JS/shell syntax, manifest JSON, staged file copies and vendor checksums also passed.
+
+## Graphical verification follow-up (2026-10-29)
+
+Both browser tests were run sequentially in isolated Xvfb displays, with their
+actual process-monitor windows captured before and after generation. The Chrome
+offscreen document ran the unchanged test runner. Firefox used a temporary copy
+with console/fetch logging; its test-profile background idle timeout was extended
+to 600,000 ms so inference could finish. This does not verify task 0.7's background
+lifetime under default preferences. Production files and model choices are unchanged.
+
+| Measurement | Chrome for Testing 153.0.8010.12 | Firefox 154.0.1 |
+| --- | ---: | ---: |
+| Embedding model load | 1,485 ms | 1,287 ms |
+| Embedding inference | 56 ms | 79 ms |
+| SmolLM2 model load | 9,316 ms | 6,592 ms |
+| Generation | 25,350 ms | 27,239 ms |
+| Post-generation process memory | Task Manager: 968,112K (about 945 MiB) | Process API: 1,092,608,000 bytes (about 1,042 MiB); UI rounds to 1GB |
+
+Both embedding ranking checks passed with the exact three scores recorded above.
+Both generated the same first line:
+`The cricket was a sad little ghost, a lonely soul, a ghost of a day.`
+These timings are repeat-run observations with previously used test profiles,
+not cold-download timings or a completed cache audit (task 0.5).
+
+Chrome's baseline Task Manager had no Butu process; after generation the Butu row
+was PID 68126. Firefox's Extensions process, PID 67231, rose from a displayed
+43MB baseline to a displayed 1GB. These are whole-process measurements, including
+runtime overhead; Chrome's memory-footprint column and Firefox's resident-process
+measurement are different metrics. They are post-generation snapshots, not
+comparable model-only peaks. **Both exceed the spec's 500 MB memory budget.**
+
+Evidence (locally generated screenshots and captured test results):
+
+- Chrome Task Manager: [before](results/2026-10-29/chrome-before.png),
+  [after](results/2026-10-29/chrome-after.png), [console/process data](results/2026-10-29/chrome.json).
+- Firefox `about:processes`: [before](results/2026-10-29/firefox-before.png),
+  [after](results/2026-10-29/firefox-after.png), [console/process data](results/2026-10-29/firefox.json).
+
+The captured Chrome offscreen network requests were extension-local ONNX Runtime
+loader/WASM GETs. This follow-up is not the complete cold/warm network audit in
+task 4.9. Both temporary browser instances and virtual displays were closed after
+capture. No next task was checked off.
