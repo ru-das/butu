@@ -1,0 +1,136 @@
+{
+  "runs": [
+    {
+      "label": "cold",
+      "target": "7FA7EF083F89B762FA6A1A55491BBE7B",
+      "audits": [
+        {
+          "fetches": [
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/onnx/model_quantized.onnx"
+          ],
+          "hits": [],
+          "misses": [
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/onnx/model_quantized.onnx",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/onnx/model_quantized.onnx"
+          ]
+        }
+      ],
+      "network": [
+        "chrome-extension://ckphbbnbfeoagidamppmkpgdailggjfi/src/model-host/embedding-host.js",
+        "chrome-extension://ckphbbnbfeoagidamppmkpgdailggjfi/src/config.js",
+        "chrome-extension://ckphbbnbfeoagidamppmkpgdailggjfi/src/templates.js",
+        "chrome-extension://ckphbbnbfeoagidamppmkpgdailggjfi/src/lib/templates.js",
+        "chrome-extension://ckphbbnbfeoagidamppmkpgdailggjfi/src/lib/embedding-protocol.js",
+        "chrome-extension://ckphbbnbfeoagidamppmkpgdailggjfi/src/model-host/embedding-worker.js"
+      ],
+      "runtime": {
+        "passed": true,
+        "scores": [
+          0.35404026839665215,
+          0.2663538474806193,
+          0.12826231421707068
+        ],
+        "modelLoadMs": 14572,
+        "inferenceMs": 501,
+        "templates": [
+          "You said we'd finish DBMS assignment on normalization together\u2026",
+          "I kept your place beside DBMS assignment on normalization. Come back soon?",
+          "IPL cricket highlights can wait a little. I'm still here with DBMS assignment on normalization.",
+          "Let's play a game. The game is finishing DBMS assignment on normalization.",
+          "I'm still holding our place in DBMS assignment on normalization.",
+          "We can start DBMS assignment on normalization again. I'll pretend you never left."
+        ],
+        "cacheHit": true,
+        "idleTeardown": true,
+        "released": true,
+        "rendererBudgetBytes": 500000000
+      },
+      "entries": [
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+          "bytes": 657
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+          "bytes": 366
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+          "bytes": 711649
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/onnx/model_quantized.onnx",
+          "bytes": 17452106
+        }
+      ]
+    },
+    {
+      "label": "reload",
+      "target": "CFA7011907C2DB24F772DE7C61263F2B",
+      "audits": [
+        {
+          "fetches": [],
+          "hits": [
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+            "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/onnx/model_quantized.onnx"
+          ],
+          "misses": []
+        }
+      ],
+      "network": [],
+      "runtime": {
+        "passed": true,
+        "scores": [
+          0.35404026839665215,
+          0.2663538474806193,
+          0.12826231421707068
+        ],
+        "modelLoadMs": 854,
+        "inferenceMs": 99,
+        "templates": [
+          "You said we'd finish DBMS assignment on normalization together\u2026",
+          "I kept your place beside DBMS assignment on normalization. Come back soon?",
+          "IPL cricket highlights can wait a little. I'm still here with DBMS assignment on normalization.",
+          "Let's play a game. The game is finishing DBMS assignment on normalization.",
+          "I'm still holding our place in DBMS assignment on normalization.",
+          "We can start DBMS assignment on normalization again. I'll pretend you never left."
+        ],
+        "cacheHit": true,
+        "idleTeardown": true,
+        "released": true,
+        "rendererBudgetBytes": 500000000
+      },
+      "entries": [
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+          "bytes": 657
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+          "bytes": 366
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+          "bytes": 711649
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/onnx/model_quantized.onnx",
+          "bytes": 17452106
+        }
+      ]
+    }
+  ],
+  "browser": "Chrome/153.0.8010.12",
+  "pass": true
+}

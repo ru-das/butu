@@ -18,7 +18,9 @@ Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
       Verify: both browsers pass ranking, bounds, cache, cancellation and release;
       record renderer peaks and distinguish them from whole-browser totals.
       Historical 0.2/0.3 generator/L6 results remain archived.
-- [ ] 0.5 Check model files cache: reload the extension, confirm no re-download.
+- [x] 0.5 Check model files cache: reload the extension, confirm no re-download.
+      Verified both browsers: four Cache API hits, zero remote model fetches;
+      evidence and manual Network checks in experiments/phase0/CACHE.md.
 - [ ] 0.6 Play a bundled MP3 from the Firefox background page and the Chrome
       offscreen document while a normal web page is focused.
       Verify: audio plays in both browsers without user interaction on the page.

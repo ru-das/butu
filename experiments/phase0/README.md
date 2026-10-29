@@ -46,7 +46,7 @@ additional permissions or new network hosts are needed.
    It should drop after worker termination. Remove the temporary add-on.
 
 Keeping Inspect open avoids confusing this test with task 0.7's background-page
-lifetime investigation. First model download/cache behavior remains task 0.5.
+lifetime investigation. For model-file persistence across extension reload, see [task 0.5](CACHE.md).
 A failed model request logs `[phase0] FAILED:` and releases the worker; template
 output alone is not a passing open-AI demonstration.
 
