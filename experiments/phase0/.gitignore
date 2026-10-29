@@ -6,3 +6,6 @@
 /src/templates.js
 /vendor/
 /chrome/
+
+/assets/
+/src/model-host/audio-probe.js

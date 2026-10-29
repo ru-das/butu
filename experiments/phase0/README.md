@@ -16,6 +16,9 @@ Preparation copies the canonical `src/`, vendored runtime and its licences into
 ignored staging directories. Re-run after source changes. No packages, bundler,
 additional permissions or new network hosts are needed.
 
+For task 0.6's message-triggered MP3 probe, browser steps and recorded results,
+see [AUDIO.md](AUDIO.md).
+
 ## Load and test in Chrome (116+)
 
 1. Open Shift+Esc and note the baseline memory. Use a clean test profile.
@@ -23,8 +26,8 @@ additional permissions or new network hosts are needed.
    and select `/home/rupam/butu/experiments/phase0/chrome/`.
 3. Inspect **offscreen.html** through Inspect views or `chrome://inspect/#extensions`.
    The service-worker console only reports creation/errors. No special launch flag
-   is required: the offscreen reason is now `WORKERS`, and the document actually
-   hosts the inference worker.
+   is required: the offscreen reasons are `WORKERS` and `AUDIO_PLAYBACK`; the
+   document hosts inference workers and bundled audio.
 4. Expect the required open-model header, three cosine scores and
    `Embedding ranking PASS`. Both DBMS headings must outrank cricket.
 5. Expect personalized `Template:` lines, `Score cache PASS`, then, after five
@@ -78,7 +81,7 @@ is by Sentence Transformers contributors, Apache-2.0, via
 [Xenova's ONNX export](https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2).
 Revision/dtype and limits live in `src/config.js`. Runtime licences are in
 [vendor/README.md](../../vendor/README.md). The starter template copy is original
-Butu text. No external font, image or audio asset was added in this revision.
+Butu text. The original bundled test chime has [CC0 credits](../../assets/audio/README.md).
 
 ## Historical experiments
 

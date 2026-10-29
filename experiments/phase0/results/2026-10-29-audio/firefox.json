@@ -1,0 +1,54 @@
+{
+  "events": [
+    {
+      "type": "playing",
+      "time": 0,
+      "duration": 1.750125,
+      "src": "moz-extension://0c308024-f5f3-4517-9864-22849a456109/assets/audio/test-chime.mp3",
+      "volume": 0.3,
+      "muted": false,
+      "activation": false
+    },
+    {
+      "type": "playing",
+      "time": 0,
+      "duration": 1.750125,
+      "src": "moz-extension://0c308024-f5f3-4517-9864-22849a456109/assets/audio/test-chime.mp3",
+      "volume": 0.3,
+      "muted": false,
+      "activation": false
+    },
+    {
+      "type": "ended",
+      "time": 1.750204,
+      "duration": 1.750204,
+      "src": "moz-extension://0c308024-f5f3-4517-9864-22849a456109/assets/audio/test-chime.mp3",
+      "volume": 0.3,
+      "muted": false,
+      "activation": false
+    }
+  ],
+  "browser": "154.0.1",
+  "focusBefore": {
+    "focused": true,
+    "visible": "visible",
+    "url": "http://127.0.0.1:8769/",
+    "activation": false
+  },
+  "reply": {
+    "playing": true
+  },
+  "focusAfter": {
+    "focused": true,
+    "visible": "visible",
+    "url": "http://127.0.0.1:8769/",
+    "activation": false
+  },
+  "pass": true,
+  "pcm": {
+    "peak": 1180,
+    "nonzeroSamples": 75412,
+    "sampleRate": 44100
+  },
+  "audioOutput": "Temporary PulseAudio null sink, monitor captured as mono 44100 Hz signed 16-bit PCM; no autoplay overrides"
+}

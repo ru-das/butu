@@ -1,4 +1,5 @@
 import { EmbeddingHost } from './src/model-host/embedding-host.js';
+import './src/model-host/audio-probe.js';
 import { EMBEDDING_MODEL_ID, EMBEDDING_MODEL_DTYPE, EMBEDDING_LIMITS } from './src/config.js';
 import { TAUNTS, STAGE4_LINES } from './src/templates.js';
 import { formatTemplate } from './src/lib/templates.js';

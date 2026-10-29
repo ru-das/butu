@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Butu audio probe</title>
+<p>Open this page's console, run the command below, then switch to a normal website within five seconds. No click on that website is needed.</p>
+<pre>setTimeout(() => chrome.runtime.sendMessage({ type: 'phase0:play-audio' }).then(console.log), 5000)</pre>
+</html>
