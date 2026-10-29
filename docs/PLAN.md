@@ -40,7 +40,9 @@ STOP after Phase 0 and report results (times, memory, any blockers).
 - [x] 1.1 manifests/chrome.json, manifests/firefox.json, build.sh, .gitignore (.env, dist/).
       Verify: empty extension loads in both browsers without errors.
       Verified isolated Chrome/Firefox loads; permissions and manual steps: docs/SKELETON.md.
-- [ ] 1.2 src/config.js with all model IDs, thresholds, stage timings, voice ID placeholder.
+- [x] 1.2 src/config.js with all model IDs, thresholds, stage timings, voice ID placeholder.
+      Spec values documented; threshold, default volume and stage crossfade are
+      explicitly unset pending task 2.4 / V5, as approved by the user.
 - [ ] 1.3 src/shared/: paper texture, pastel palette, bundled handwriting fonts
       (with licence files in assets/fonts/).
       Verify: fonts render offline in popup and a blank diary.html.
