@@ -1,2 +1,4 @@
-/src/
+/src/config.js
+/src/model-host/transformers.js
 /vendor/
+/chrome/

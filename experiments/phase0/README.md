@@ -1,4 +1,4 @@
-# Phase 0.2–0.3 — Firefox MV3 model tests
+# Phase 0.2–0.4 — Firefox and Chrome MV3 model tests
 
 Run from the repository root:
 
@@ -7,8 +7,10 @@ sh experiments/phase0/prepare.sh
 ```
 
 This copies the already-vendored runtime (including its licences) and the shared
-model configuration into ignored directories inside this extension. Re-run after
-editing `src/config.js` or the shared runtime wrapper. No install, bundler, server,
+model configuration into ignored directories inside this extension, and stages
+the Chrome version in `experiments/phase0/chrome/`. Both versions use the exact
+same `background.js` test runner. Re-run after editing the experiment,
+`src/config.js` or the shared runtime wrapper. No install, bundler, server,
 or additional dependency is needed.
 
 ## Load and test in Firefox
@@ -66,21 +68,74 @@ default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; con
 `wasm-unsafe-eval` permits the bundled ONNX Runtime to compile WASM; it does not
 permit JavaScript `eval` or remote scripts. `connect-src` permits local WASM plus
 the requested Hugging Face downloads, including its weight-file redirect hosts.
-Public model files use CORS; no API permissions or host permissions are requested.
+Public model files use CORS; no host permissions are requested. Firefox needs no
+API permissions; Chrome requests only `offscreen`, as required for task 0.4.
 Single-threaded WASM and no proxy worker reuse task 0.1's runtime configuration.
 
 Firefox MV3 uses a nonpersistent background **document**, not a service worker.
 See [MDN background](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/background)
 and [MDN extension CSP](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy).
 
-## Chrome
+## Load and test in Chrome (116+)
 
-This experiment is Firefox-only. Chrome generation via an offscreen document is
-task 0.4, as is the Chrome embedding check. For the existing runtime regression check in Chrome, follow
-[vendor/README.md — Chrome](../../vendor/README.md#chrome): prepare its temporary
-fixture, load it at `chrome://extensions` → **Load unpacked**, open
-`chrome-extension://<ID>/tests/vendor-smoke.html`, and expect `PASS` and `23`.
-Do not use this Firefox manifest to test Chrome generation.
+1. Run `sh experiments/phase0/prepare.sh` from the repository root.
+   Launch a separate Chrome test instance with the flag required by Chrome's
+   `TESTING` offscreen reason (Linux example; use your Chrome executable):
+
+   ```sh
+   google-chrome --user-data-dir=/tmp/butu-phase0-manual --offscreen-document-testing
+   ```
+
+   On macOS, use `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome`;
+   on Windows, pass the same flags to `chrome.exe`. A separate user-data directory
+   ensures the flags reach a new process rather than an already-running Chrome.
+2. Open Chrome Task Manager with **Shift+Esc**. Record the baseline memory;
+   a clean profile gives the most useful comparison.
+3. Open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**,
+   and select `/home/rupam/butu/experiments/phase0/chrome/` (the directory).
+   Do not select the Firefox experiment root.
+4. On **Butu phase 0: Chrome model tests**, expand **Inspect views** and click
+   **offscreen.html**. If it is not listed, open `chrome://inspect/#extensions`
+   and inspect the matching offscreen document there. Its Console contains the
+   model logs. The **service worker** console only reports host creation/errors.
+   For missed logs, reload the extension and inspect the new offscreen document.
+5. Wait for the three `[phase0] Cosine similarity:` lines and
+   `[phase0] Embedding ranking PASS`. The task and titles must match Firefox
+   step 4; both DBMS titles must beat cricket. Record model-load and embedding ms.
+6. Wait for `[phase0] Raw output:`, `[phase0] Output:` and
+   `[phase0] Generation ms:`. Verify the model, dtype and fixed prompt against
+   Firefox step 5. Generation may take several minutes on this machine. Record
+   load ms separately from generation ms. A fallback alone is not a successful
+   inference; any `[phase0] FAILED:` or `Embeddings FAILED:` needs investigation.
+7. Return to **Shift+Esc** and record the extension/offscreen process memory and
+   delta from baseline after generation. Record any service worker separately;
+   shared process memory includes runtime overhead. The generator remains loaded
+   intentionally for this measurement. The existing Firefox result exceeded the
+   spec's 500 MB budget, so report the actual number even if it is too high.
+8. In offscreen DevTools **Network**, capture a reload if needed. Runtime JS,
+   `.jsep.mjs` and `.wasm` must be under `chrome-extension://<ID>/vendor/`;
+   remote traffic must be Hugging Face model files/`*.hf.co` redirects only.
+   Neither fixed prompt nor comparison texts should be uploaded.
+9. Remove the extension from `chrome://extensions` after recording results;
+   this closes the offscreen host and releases its retained model.
+
+Chrome-specific startup is isolated in `src/model-host/chrome-worker.js` and
+`src/model-host/offscreen.html` inside this experiment, plus
+`manifests/chrome.json`. The worker checks `runtime.getContexts()` before creating
+the host, so a worker restart reuses it without rerunning inference. Chrome 116
+is required for that API. The offscreen HTML imports the same runner Firefox's
+background page uses; MiniLM is disposed before SmolLM2 loads in both browsers.
+
+The offscreen reason is `TESTING` for this Phase 0 experiment. Chrome requires
+the `--offscreen-document-testing` launch flag for this reason; without it the
+worker logs `[phase0] Offscreen FAILED:` with that requirement. It avoids the
+30-second silent-audio timeout of `AUDIO_PLAYBACK`; audio is task 0.6. This is
+not a production lifetime strategy. See the
+[Chrome offscreen API reference](https://developer.chrome.com/docs/extensions/reference/api/offscreen).
+Model caching and Firefox background lifetime remain tasks 0.5 and 0.7.
+
+Run the worker lifecycle regression check with `node --test tests/*.test.js`
+from the repository root (Node 22 does not accept `tests/` as a test directory).
 
 ## Model credits
 
@@ -120,7 +175,35 @@ The extension process reported 228,970,496 bytes (218.4 MiB) just after the
 embedding check; MiniLM had already been disposed and SmolLM2's download had
 started, so this is not a MiniLM peak-memory measurement. The automated run
 stopped there; task 0.2's generation result below is from its earlier run.
-Chrome embedding inference remains unverified until task 0.4.
+Chrome's task 0.4 result is recorded below.
+
+## Task 0.4 observed result (2026-10-29)
+
+Verified in Chrome for Testing 153.0.8010.12, headless, with an isolated profile,
+`--offscreen-document-testing`, and DevTools Protocol console capture attached to
+the actual offscreen document. The service worker created the document; both
+models ran there using the unchanged Firefox runner and shared configuration.
+
+All three cosine similarities matched Firefox's task 0.3 values above exactly;
+the embedding ranking check passed. Embedding model load including download:
+**19,777 ms**; embedding inference: **616 ms**.
+
+```text
+Model load ms: 243929
+Output: The cricket was a sad little ghost, a lonely soul, a ghost of a day.
+Generation ms: 35022
+```
+
+SmolLM2 load time includes its initial download and initialization; it is separate
+from generation. The raw response repeated “Rewritten as…” after the first line,
+just as in Firefox. This proves runtime equivalence, not production text quality.
+No cache-reload test was performed (task 0.5).
+
+Headless verification did not measure the visible Chrome Task Manager memory;
+perform Chrome steps 2/7 to record that number. No Chrome memory-budget claim is
+made. The worker lifecycle regression, manifest/staging checks, JS/shell syntax,
+vendor checksums and `git diff --check` passed. Firefox's test runner and manifest
+are unchanged; its browser results remain those recorded for tasks 0.2/0.3.
 
 ## Task 0.2 observed result (2026-10-29)
 

@@ -11,7 +11,7 @@ Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
       Verify: output in console; memory checked in about:processes.
 - [x] 0.3 Same extension: embed the DBMS task and compare three titles with all-MiniLM-L6-v2, log all cosine similarities.
       Verify: related strings score clearly higher than unrelated ones.
-- [ ] 0.4 Chrome equivalent using an offscreen document.
+- [x] 0.4 Chrome equivalent using an offscreen document.
       Verify: same outputs in Chrome; memory checked in Chrome Task Manager (Shift+Esc).
 - [ ] 0.5 Check model files cache: reload the extension, confirm no re-download.
 - [ ] 0.6 Play a bundled MP3 from the Firefox background page and the Chrome
