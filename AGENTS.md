@@ -83,6 +83,7 @@ sound design are core features, not extras. Other partner integrations are optio
 
 ## Working rules
 - Do one task from docs/PLAN.md per request. Tick its box when done.
+- Commit after every completed task.
 - Small, focused changes. Don't refactor or reformat unrelated files.
 - Pure logic goes in src/lib/ with a unit test.
 - After each task, list exact manual test steps for BOTH browsers.

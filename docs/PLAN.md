@@ -4,7 +4,7 @@ Work top to bottom. One task per request. Each task lists how to verify it.
 Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
 
 ## Phase 0: Prove the risky parts (do first)
-- [ ] 0.1 Vendor Transformers.js + ONNX Runtime WASM files into vendor/.
+- [x] 0.1 Vendor Transformers.js + ONNX Runtime WASM files into vendor/.
       Verify: files load from the extension, not a CDN.
 - [ ] 0.2 Minimal Firefox extension: background page loads SmolLM2-135M-Instruct,
       generates one line from a fixed prompt, logs generation time.
