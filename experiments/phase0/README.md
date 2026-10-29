@@ -1,4 +1,4 @@
-# Phase 0.2 — Firefox MV3 text generation
+# Phase 0.2–0.3 — Firefox MV3 model tests
 
 Run from the repository root:
 
@@ -17,11 +17,18 @@ or additional dependency is needed.
    This process can include other add-ons, so use a clean profile for useful numbers.
 2. Open `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…**.
    Select `/home/rupam/butu/experiments/phase0/manifest.json`.
-3. Find **Butu phase 0: Firefox text generation**, click **Inspect**, and select
+3. Find **Butu phase 0: Firefox model tests**, click **Inspect**, and select
    **Console**. Keep this toolbox open during the test. If Firefox shows the
    background as stopped, click **Start** first.
-4. The test runs automatically when the background page loads. First use downloads
-   model files; `onnx/model_q4.onnx` alone is 182,400,492 bytes (about 174 MiB).
+4. The test runs automatically when the background page loads. MiniLM runs first;
+   wait for three `[phase0] Cosine similarity:` logs and
+   `[phase0] Embedding ranking PASS`. Confirm the task is exactly
+   `DBMS assignment on normalization` and both DBMS titles score higher than
+   `IPL cricket highlights`. Nonfinite scores or wrong ordering log
+   `[phase0] Embeddings FAILED:`. This is a ranking check, not threshold tuning.
+   MiniLM is disposed before SmolLM2 loads, so the two models are never retained
+   together. First use downloads model files;
+   `onnx/model_q4.onnx` alone is 182,400,492 bytes (about 174 MiB).
    Wait for `[phase0] Output:` and `[phase0] Generation ms:`. If startup logs were
    missed, use the toolbox's **Reload** control and keep the toolbox open.
 5. Verify the logged model is `onnx-community/SmolLM2-135M-Instruct-ONNX-MHA`,
@@ -69,7 +76,7 @@ and [MDN extension CSP](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons
 ## Chrome
 
 This experiment is Firefox-only. Chrome generation via an offscreen document is
-task 0.4. For the existing runtime regression check in Chrome, follow
+task 0.4, as is the Chrome embedding check. For the existing runtime regression check in Chrome, follow
 [vendor/README.md — Chrome](../../vendor/README.md#chrome): prepare its temporary
 fixture, load it at `chrome://extensions` → **Load unpacked**, open
 `chrome-extension://<ID>/tests/vendor-smoke.html`, and expect `PASS` and `23`.
@@ -83,7 +90,39 @@ by Hugging Face, Apache-2.0; the experiment downloads the
 at the revision pinned in `src/config.js`. Model weights are not committed or
 bundled. Runtime licences and credits are in [vendor/README.md](../../vendor/README.md).
 
-## Observed result (2026-10-29)
+[all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
+by the Sentence Transformers contributors, Apache-2.0; this experiment downloads
+the [Xenova ONNX export](https://huggingface.co/Xenova/all-MiniLM-L6-v2), `q8`,
+at the revision pinned in `src/config.js`. Mean pooling and normalization follow
+that export's model card. Weights are not bundled or committed. All inference
+uses the local vendored WASM runtime; no text is sent over the network.
+
+## Task 0.3 observed result (2026-10-29)
+
+Verified in Firefox 154.0.1, headless, using a temporary copy with console capture
+and the same 300,000 ms background idle timeout described below. Only test-profile
+preferences were changed; keep Inspect open when testing manually.
+
+Task: `DBMS assignment on normalization`
+
+| Comparison | Cosine similarity |
+| --- | ---: |
+| Third normal form explained | 0.2680489593482574 |
+| Functional dependencies tutorial | 0.1735348755381003 |
+| IPL cricket highlights | 0.059710662257280285 |
+
+Embedding model load including first download: **26,046 ms**.
+Embedding inference for all four strings including tokenization, pooling and
+normalization: **127 ms**. Ranking check passed. These three examples do not
+establish a production threshold (task 2.4).
+
+The extension process reported 228,970,496 bytes (218.4 MiB) just after the
+embedding check; MiniLM had already been disposed and SmolLM2's download had
+started, so this is not a MiniLM peak-memory measurement. The automated run
+stopped there; task 0.2's generation result below is from its earlier run.
+Chrome embedding inference remains unverified until task 0.4.
+
+## Task 0.2 observed result (2026-10-29)
 
 Verified in Firefox 154.0.1, headless, using a temporary copy with console capture.
 The test profile extended `extensions.background.idle.timeout` to 300,000 ms;

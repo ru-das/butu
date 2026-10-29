@@ -9,7 +9,7 @@ Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
 - [x] 0.2 Minimal Firefox extension: background page loads SmolLM2-135M-Instruct,
       generates one line from a fixed prompt, logs generation time.
       Verify: output in console; memory checked in about:processes.
-- [ ] 0.3 Same extension: embed two strings with all-MiniLM-L6-v2, log cosine similarity.
+- [x] 0.3 Same extension: embed the DBMS task and compare three titles with all-MiniLM-L6-v2, log all cosine similarities.
       Verify: related strings score clearly higher than unrelated ones.
 - [ ] 0.4 Chrome equivalent using an offscreen document.
       Verify: same outputs in Chrome; memory checked in Chrome Task Manager (Shift+Esc).
