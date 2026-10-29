@@ -28,6 +28,8 @@ Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
       for 10+ minutes; embeddings may unload while idle and reload on demand.
       If the page gets suspended, propose
       a keep-alive approach and stop for approval.
+      Checkpoint: default Firefox suspension observed; proposal and pending
+      endurance checks in experiments/phase0/LIFETIME.md. Awaiting approval.
 
 STOP after Phase 0 and report results (times, memory, any blockers).
 
