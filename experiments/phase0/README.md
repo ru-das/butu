@@ -1,4 +1,4 @@
-# Phase 0.2–0.4 — Firefox and Chrome MV3 model tests
+# Phase 0 — required open embeddings and authored Butu text
 
 Run from the repository root:
 
@@ -6,167 +6,86 @@ Run from the repository root:
 sh experiments/phase0/prepare.sh
 ```
 
-This copies the already-vendored runtime (including its licences) and the shared
-model configuration into ignored directories inside this extension, and stages
-the Chrome version in `experiments/phase0/chrome/`. Both versions use the exact
-same `background.js` test runner. Re-run after editing the experiment,
-`src/config.js` or the shared runtime wrapper. No install, bundler, server,
-or additional dependency is needed.
+The Firefox background page and Chrome offscreen document run the same test.
+The normal entry point loads only **paraphrase-MiniLM-L3-v2 q8** in a dedicated
+worker, computes real semantic similarities, and personalizes authored text.
+It never loads SmolLM2 or FLAN-T5. There is no generative text call or cloud
+substitute. [Implementation, bounds and measurements](LOW-MEMORY.md).
 
-The current rewrite cap is 25 tokens. Historical 0.2/0.4 measurements below used
-48 tokens. See [memory experiments](MEMORY.md) for paired timings, worker teardown,
-benchmark commands, and the remaining peak-memory blocker.
-The current defaults are **paraphrase-MiniLM-L3-v2 q8** and **SmolLM2 MHA q8**.
-See [model comparison](MODELS.md) for the cross-browser evidence and text-quality
-limitations. Earlier measurements used MiniLM-L6 and SmolLM2 q4.
-
-## Load and test in Firefox
-
-1. Open `about:processes` and note the memory of **Extensions** (if present).
-   This process can include other add-ons, so use a clean profile for useful numbers.
-2. Open `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…**.
-   Select `/home/rupam/butu/experiments/phase0/manifest.json`.
-3. Find **Butu phase 0: Firefox model tests**, click **Inspect**, and select
-   **Console**. Keep this toolbox open during the test. If Firefox shows the
-   background as stopped, click **Start** first.
-4. The test runs automatically when the background page loads. MiniLM runs first;
-   wait for three `[phase0] Cosine similarity:` logs and
-   `[phase0] Embedding ranking PASS`. Confirm the task is exactly
-   `DBMS assignment on normalization` and both DBMS titles score higher than
-   `IPL cricket highlights`. Nonfinite scores or wrong ordering log
-   `[phase0] Embeddings FAILED:`. This is a ranking check, not threshold tuning.
-   MiniLM is disposed before SmolLM2 loads, so the two models are never retained
-   together. First use downloads model files;
-   the current text model's `onnx/model_quantized.onnx` is about 137 MB.
-   Wait for `[phase0] Output:` and `[phase0] Generation ms:`. If startup logs were
-   missed, use the toolbox's **Reload** control and keep the toolbox open.
-5. Verify the logged model is `onnx-community/SmolLM2-135M-Instruct-ONNX-MHA`,
-   dtype `q8`. The only user message is exactly:
-   `Rewrite as a sad little ghost would say it: Breaking news about cricket`.
-   `[phase0] Raw output:` shows the actual generated response. `[phase0] Output:`
-   prints its first nonempty trimmed line, with a template fallback if empty.
-   Generation is greedy with a 25-token cap from `src/config.js`; this is a runtime
-   test, not a guarantee of good ghost writing.
-6. Record **Model load ms** separately from **Generation ms**. Generation time
-   includes tokenization, inference and decoding, but excludes the model download
-   and initialization. The first inference may include additional warm-up work.
-7. With the toolbox still open, return to `about:processes`. Record the Extensions
-   process memory and the difference from step 1. The model stays referenced for
-   this check. This task does not establish background survival without DevTools;
-   that is task 0.7.
-8. In the extension toolbox **Network** panel, reload if necessary to capture
-   requests. Runtime JS, the `.jsep.mjs` loader and `.wasm` must resolve to
-   `moz-extension://…/vendor/`. Remote requests must be only Hugging Face model
-   files and their `*.hf.co` download redirects. No prompt is sent to a server.
-9. Click **Remove** in `about:debugging` after testing. Temporary add-ons are also
-   removed when Firefox exits.
-
-Errors appear as `[phase0] FAILED:` with the original error. An empty generated
-response is visible in the raw log; the fallback is not evidence of generation.
-
-## CSP and permissions
-
-The manifest uses:
-
-```text
-default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; connect-src 'self' https://huggingface.co https://*.hf.co
-```
-
-`wasm-unsafe-eval` permits the bundled ONNX Runtime to compile WASM; it does not
-permit JavaScript `eval` or remote scripts. `connect-src` permits local WASM plus
-the requested Hugging Face downloads, including its weight-file redirect hosts.
-Public model files use CORS; no host permissions are requested. Firefox needs no
-API permissions; Chrome requests only `offscreen`, as required for task 0.4.
-Single-threaded WASM and no proxy worker reuse task 0.1's runtime configuration.
-
-Firefox MV3 uses a nonpersistent background **document**, not a service worker.
-See [MDN background](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/background)
-and [MDN extension CSP](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy).
+Preparation copies the canonical `src/`, vendored runtime and its licences into
+ignored staging directories. Re-run after source changes. No packages, bundler,
+additional permissions or new network hosts are needed.
 
 ## Load and test in Chrome (116+)
 
-1. Run `sh experiments/phase0/prepare.sh` from the repository root.
-   Launch a separate Chrome test instance with the flag required by Chrome's
-   `TESTING` offscreen reason (Linux example; use your Chrome executable):
+1. Open Shift+Esc and note the baseline memory. Use a clean test profile.
+2. Open `chrome://extensions`, enable Developer mode, choose **Load unpacked**,
+   and select `/home/rupam/butu/experiments/phase0/chrome/`.
+3. Inspect **offscreen.html** through Inspect views or `chrome://inspect/#extensions`.
+   The service-worker console only reports creation/errors. No special launch flag
+   is required: the offscreen reason is now `WORKERS`, and the document actually
+   hosts the inference worker.
+4. Expect the required open-model header, three cosine scores and
+   `Embedding ranking PASS`. Both DBMS headings must outrank cricket.
+5. Expect personalized `Template:` lines, `Score cache PASS`, then, after five
+   idle seconds, `Idle teardown PASS` and a `Result:` object with `passed: true`.
+   The final object also confirms explicit session release cleared cached scores.
+   There should be no generative-model loading/output logs.
+6. Record active/idle memory in Shift+Esc. The model worker unloads automatically;
+   do not interpret the final idle number as its peak. The automated verifier
+   below records kernel high-water marks. Remove the test extension afterwards.
 
-   ```sh
-   google-chrome --user-data-dir=/tmp/butu-phase0-manual --offscreen-document-testing
-   ```
+## Load and test in Firefox
 
-   On macOS, use `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome`;
-   on Windows, pass the same flags to `chrome.exe`. A separate user-data directory
-   ensures the flags reach a new process rather than an already-running Chrome.
-2. Open Chrome Task Manager with **Shift+Esc**. Record the baseline memory;
-   a clean profile gives the most useful comparison.
-3. Open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**,
-   and select `/home/rupam/butu/experiments/phase0/chrome/` (the directory).
-   Do not select the Firefox experiment root.
-4. On **Butu phase 0: Chrome model tests**, expand **Inspect views** and click
-   **offscreen.html**. If it is not listed, open `chrome://inspect/#extensions`
-   and inspect the matching offscreen document there. Its Console contains the
-   model logs. The **service worker** console only reports host creation/errors.
-   For missed logs, reload the extension and inspect the new offscreen document.
-5. Wait for the three `[phase0] Cosine similarity:` lines and
-   `[phase0] Embedding ranking PASS`. The task and titles must match Firefox
-   step 4; both DBMS titles must beat cricket. Record model-load and embedding ms.
-6. Wait for `[phase0] Raw output:`, `[phase0] Output:` and
-   `[phase0] Generation ms:`. Verify the model, dtype and fixed prompt against
-   Firefox step 5. Generation may take several minutes on this machine. Record
-   load ms separately from generation ms. A fallback alone is not a successful
-   inference; any `[phase0] FAILED:` or `Embeddings FAILED:` needs investigation.
-7. Return to **Shift+Esc** and record the extension/offscreen process memory and
-   delta from baseline after generation. Record any service worker separately;
-   shared process memory includes runtime overhead. The generator remains loaded
-   intentionally for this measurement. The existing Firefox result exceeded the
-   spec's 500 MB budget, so report the actual number even if it is too high.
-8. In offscreen DevTools **Network**, capture a reload if needed. Runtime JS,
-   `.jsep.mjs` and `.wasm` must be under `chrome-extension://<ID>/vendor/`;
-   remote traffic must be Hugging Face model files/`*.hf.co` redirects only.
-   Neither fixed prompt nor comparison texts should be uploaded.
-9. Remove the extension from `chrome://extensions` after recording results;
-   this closes the offscreen host and releases its retained model.
+1. Run the same prepare command and note Extensions memory in `about:processes`.
+2. In `about:debugging` → This Firefox → **Load Temporary Add-on**, select
+   `/home/rupam/butu/experiments/phase0/manifest.json`.
+3. Immediately click **Inspect**, keep it open, and check the same model header,
+   ranking, template, cache, teardown and `passed: true` logs as Chrome.
+4. Record Extensions memory during inference and after idle in `about:processes`.
+   It should drop after worker termination. Remove the temporary add-on.
 
-Chrome-specific startup is isolated in `src/model-host/chrome-worker.js` and
-`src/model-host/offscreen.html` inside this experiment, plus
-`manifests/chrome.json`. The worker checks `runtime.getContexts()` before creating
-the host, so a worker restart reuses it without rerunning inference. Chrome 116
-is required for that API. The offscreen HTML imports the same runner Firefox's
-background page uses; MiniLM is disposed before SmolLM2 loads in both browsers.
+Keeping Inspect open avoids confusing this test with task 0.7's background-page
+lifetime investigation. First model download/cache behavior remains task 0.5.
+A failed model request logs `[phase0] FAILED:` and releases the worker; template
+output alone is not a passing open-AI demonstration.
 
-The offscreen reason is `TESTING` for this Phase 0 experiment. Chrome requires
-the `--offscreen-document-testing` launch flag for this reason; without it the
-worker logs `[phase0] Offscreen FAILED:` with that requirement. It avoids the
-30-second silent-audio timeout of `AUDIO_PLAYBACK`; audio is task 0.6. This is
-not a production lifetime strategy. See the
-[Chrome offscreen API reference](https://developer.chrome.com/docs/extensions/reference/api/offscreen).
-Model caching and Firefox background lifetime remain tasks 0.5 and 0.7.
+## Automated checks
 
-Run the worker lifecycle regression check with `node --test tests/*.test.js`
-from the repository root (Node 22 does not accept `tests/` as a test directory).
+```sh
+node --test tests/*.test.js
+sh experiments/phase0/prepare.sh
+BUTU_CHROME=/home/rupam/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome \
+  node experiments/phase0/src/model-host/low-memory-check.cjs
+python3 experiments/phase0/src/model-host/low-memory-firefox.py
+```
 
-## Model credits
+Run browser checks sequentially. Both use isolated test profiles; the Firefox
+harness extends only its test-profile idle timeout. See [LOW-MEMORY.md](LOW-MEMORY.md)
+for results, output paths and limits. Scores are cached locally in a bounded
+session map; this is separate from model-file caching and from the future
+per-URL verdict cache/threshold in tasks 2.3–2.4.
 
-[SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct)
-by Hugging Face, Apache-2.0; the experiment downloads the
-[ONNX Community MHA export](https://huggingface.co/onnx-community/SmolLM2-135M-Instruct-ONNX-MHA)
-at the revision pinned in `src/config.js`. Model weights are not committed or
-bundled. Runtime licences and credits are in [vendor/README.md](../../vendor/README.md).
+## CSP, permissions and credits
 
-[all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
-by the Sentence Transformers contributors, Apache-2.0; historical tests downloaded
-the [Xenova ONNX export](https://huggingface.co/Xenova/all-MiniLM-L6-v2), `q8`,
-at the revision pinned in `src/config.js`. Mean pooling and normalization follow
-that export's model card. Weights are not bundled or committed. All inference
-uses the local vendored WASM runtime; no text is sent over the network.
+CSP remains `default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; object-src
+'none'; connect-src 'self' https://huggingface.co https://*.hf.co`.
+Chrome requests only `offscreen`; Firefox requests no API permission. No host
+permission is added. Runtime JS/WASM comes from bundled `vendor/`, never a CDN.
 
-The current embedding model is
 [paraphrase-MiniLM-L3-v2](https://huggingface.co/sentence-transformers/paraphrase-MiniLM-L3-v2)
-by the Sentence Transformers contributors, Apache-2.0, via the
-[Xenova ONNX export](https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2), q8.
-Its revision is pinned in `src/config.js`; mean pooling/normalization are used.
-The optional benchmark also downloads Google's
-[FLAN-T5-small](https://huggingface.co/google/flan-t5-small), Apache-2.0, via
-[Xenova's export](https://huggingface.co/Xenova/flan-t5-small). It is not a default.
+is by Sentence Transformers contributors, Apache-2.0, via
+[Xenova's ONNX export](https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2).
+Revision/dtype and limits live in `src/config.js`. Runtime licences are in
+[vendor/README.md](../../vendor/README.md). The starter template copy is original
+Butu text. No external font, image or audio asset was added in this revision.
+
+## Historical experiments
+
+The results below and [MEMORY.md](MEMORY.md)/[MODELS.md](MODELS.md) describe earlier
+q4/q8 generative and L6 comparisons. The retained `memory-benchmark.cjs` cases are
+**opt-in historical tooling**; do not use them to measure the current normal
+embedding-only path. Original model credits and revisions remain in those reports.
 
 ## Task 0.3 observed result (2026-10-29)
 

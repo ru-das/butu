@@ -22,17 +22,20 @@ Settled. Do not reopen without asking the user first.
    It passed all three short relevance fixtures in both browsers. Set the real
    page threshold using this model in task 2.4; L6 scores are not interchangeable.
 
-5. **SmolLM2-135M-Instruct for text generation.**
-   Use the WASM-compatible MHA export at q8 after the model comparison: its file
-   is smaller and browser inference is faster than q4. The 500 MB peak-memory
-   target remains unmet. Raw writing is weak; validation, templates and (stretch)
-   fine-tuning remain necessary. FLAN-T5-small was tested but rejected for losing
-   task context/copying the wrong example. Evidence: experiments/phase0/MODELS.md.
-   Earlier rejected candidates: Gemma 3 270M, LFM2.5-230M, LFM3-1.7B (larger),
-   Cactus Needle (not a text generator).
+5. **No runtime generative text model (user-approved low-memory revision).**
+   Authored templates personalized with task/heading provide the haunting text,
+   stage-4 lines and diary captions. MiniLM-L3 remains required for semantic
+   detection: an open-weight model still powers the central product behavior.
+   SmolLM2 and FLAN-T5 experiments showed excessive memory or weak task-preserving
+   copy; historical evidence remains in experiments/phase0/MODELS.md.
+   Normal entry points load only the embedding worker. Its token count, input
+   sizes, queue and score cache are bounded; idle/session end terminates it.
+   The browser owns process allocation, so a universal whole-browser 500 MB cap
+   is not an enforceable extension setting. Measure the supported-browser budget.
 
-6. **Templates are a first-class feature, not a hack.**
-   Every generated string has a template fallback. Butu must never show junk.
+6. **Authored templates provide all character copy.**
+   Interpolate bounded task/heading values locally as plain text. Missing values
+   have safe defaults; render with textContent. Butu must never show junk.
 
 7. **Grace period before any haunting.**
    A quick glance at an off-task page is never punished.

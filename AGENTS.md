@@ -23,8 +23,10 @@ sound design are core features, not extras. Other partner integrations are optio
   No CDNs, no Google Fonts, no remote images.
 - Stack: plain JavaScript (ES modules), HTML, CSS. No frameworks, no TypeScript,
   no bundler. Only runtime dependency: Transformers.js, vendored in vendor/.
-- Memory: target machine has 4 GB RAM. Load models lazily (on first need during a
-  session) and release them when the session ends. Never load two text models.
+- Memory: target machine has 4 GB RAM. The only runtime model is the embedding
+  model, loaded lazily in one dedicated worker and released on idle/session end.
+  Use authored templates for visible text; never load a generative model in the
+  normal extension. Historical model benchmarks are explicitly opt-in tooling.
 - Config: model IDs, dtypes, thresholds, stage timings and voice IDs live only in
   src/config.js.
 - Cross-browser: one src/ for both browsers. Use `chrome.*` APIs. Browser-specific
@@ -64,7 +66,7 @@ sound design are core features, not extras. Other partner integrations are optio
     src/diary/                 diary.html: session pages, places-you-left-me-for, settings
                                (allow/blocklist, ElevenLabs key, volume, mute, test voice)
     src/shared/                shared CSS (paper texture, fonts, colours) for popup + diary
-    src/templates.js           fallback taunts, voice-line templates, stage-4 lines, diary captions
+    src/templates.js           authored taunts, voice-line templates, stage-4 lines, diary captions
     src/voice.js               session-start personalised TTS, audio cache, stage playback queue
     vendor/                    Transformers.js + ONNX Runtime WASM files
     scripts/audio/             build-time: voice design, music box, sound effects, base whisper pack
@@ -76,7 +78,7 @@ sound design are core features, not extras. Other partner integrations are optio
 
 ## Commands
 - Build: `./build.sh` → `dist/chrome/` and `dist/firefox/`
-- Unit tests: `node --test tests/`
+- Unit tests: `node --test tests/*.test.js`
 - Firefox: about:debugging → This Firefox → Load Temporary Add-on → dist/firefox/manifest.json
 - Chrome: chrome://extensions → Developer mode → Load unpacked → dist/chrome/
 - Audio generation (build time only): scripts in scripts/audio/, need ELEVENLABS_API_KEY

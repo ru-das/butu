@@ -1,78 +1,48 @@
-import { env, pipeline } from './src/model-host/transformers.js';
-import { TEXT_MODEL_ID, TEXT_MODEL_REVISION, TEXT_MODEL_DTYPE, TEXT_MAX_NEW_TOKENS } from './src/config.js';
-import { EMBEDDING_MODEL_ID, EMBEDDING_MODEL_REVISION, EMBEDDING_MODEL_DTYPE } from './src/config.js';
-import { cos_sim } from './vendor/transformers.js';
+import { EmbeddingHost } from './src/model-host/embedding-host.js';
+import { EMBEDDING_MODEL_ID, EMBEDDING_MODEL_DTYPE, EMBEDDING_LIMITS } from './src/config.js';
+import { TAUNTS, STAGE4_LINES } from './src/templates.js';
+import { formatTemplate } from './src/lib/templates.js';
 
-env.allowLocalModels = false;
+// Phase 0 proof only. Real tab/session routing remains later plan work.
 const task = 'DBMS assignment on normalization';
-const comparisons = [
-    'Third normal form explained',
-    'Functional dependencies tutorial',
-    'IPL cricket highlights',
-];
+const comparisons = ['Third normal form explained', 'Functional dependencies tutorial', 'IPL cricket highlights'];
+const host = new EmbeddingHost();
+globalThis.phase0Host = host;
 
-let extractor;
-try {
-    console.log('[phase0] Loading embeddings', EMBEDDING_MODEL_ID, EMBEDDING_MODEL_DTYPE);
-    const loadStart = performance.now();
-    extractor = await pipeline('feature-extraction', EMBEDDING_MODEL_ID, {
-        revision: EMBEDDING_MODEL_REVISION,
-        dtype: EMBEDDING_MODEL_DTYPE,
-        device: 'wasm',
-    });
-    console.log('[phase0] Embedding model load ms:', Math.round(performance.now() - loadStart));
-    const start = performance.now();
-    const vectors = (await extractor([task, ...comparisons], {
-        pooling: 'mean', normalize: true,
-    })).tolist();
-    console.log('[phase0] Embedding ms:', Math.round(performance.now() - start));
-    console.log('[phase0] Task:', task);
-    const scores = comparisons.map((text, i) => {
-        const score = cos_sim(vectors[0], vectors[i + 1]);
-        console.log('[phase0] Cosine similarity:', text, score);
-        return score;
-    });
-    if (!scores.every(Number.isFinite) || scores[0] <= scores[2] || scores[1] <= scores[2]) {
-        throw new Error('Expected both DBMS titles to score higher than cricket');
+async function run() {
+    try {
+        console.log('[phase0] Required open model:', EMBEDDING_MODEL_ID, EMBEDDING_MODEL_DTYPE);
+        const result = await host.compare(task, comparisons);
+        console.log('[phase0] Embedding model load ms:', result.loadMs);
+        console.log('[phase0] Embedding ms:', result.inferenceMs);
+        console.log('[phase0] Task:', task);
+        comparisons.forEach((title, i) => console.log('[phase0] Cosine similarity:', title, result.scores[i]));
+        if (result.scores[0] <= result.scores[2] || result.scores[1] <= result.scores[2]) {
+            throw new Error('Expected both DBMS titles to score higher than cricket');
+        }
+        console.log('[phase0] Embedding ranking PASS');
+        const templates = [...TAUNTS, ...STAGE4_LINES].map(template => formatTemplate(template, { task, heading: comparisons[2] }));
+        templates.forEach(line => console.log('[phase0] Template:', line));
+        const cached = await host.compare(task, comparisons);
+        if (!cached.cached) throw new Error('Score cache missed an identical request');
+        console.log('[phase0] Score cache PASS');
+        await new Promise(resolve => setTimeout(resolve, EMBEDDING_LIMITS.idleMs + 100));
+        if (host.worker !== null) throw new Error('Idle worker was not terminated');
+        const afterIdle = await host.compare(task, comparisons);
+        if (!afterIdle.cached || host.worker !== null) throw new Error('Cached scores restarted the worker');
+        console.log('[phase0] Idle teardown PASS');
+        host.release();
+        if (host.cache.size !== 0 || host.worker !== null) throw new Error('Session release retained state');
+        globalThis.phase0Result = { passed: true, scores: result.scores, modelLoadMs: result.loadMs,
+            inferenceMs: result.inferenceMs, templates, cacheHit: true, idleTeardown: true, released: true,
+            rendererBudgetBytes: EMBEDDING_LIMITS.rendererBudgetBytes };
+        console.log('[phase0] Result:', JSON.stringify(globalThis.phase0Result));
+    } catch (error) {
+        globalThis.phase0Result = { passed: false, error: String(error) };
+        console.error('[phase0] FAILED:', error);
+    } finally {
+        host.release();
     }
-    console.log('[phase0] Embedding ranking PASS');
-} catch (error) {
-    console.error('[phase0] Embeddings FAILED:', error);
-} finally {
-    // Never keep both models loaded on the 4 GB target machine.
-    if (extractor) await extractor.dispose();
-    extractor = null;
 }
 
-const prompt = 'Rewrite as a sad little ghost would say it: Breaking news about cricket';
-
-// Keep a reference for the manual memory check; removal unloads the experiment.
-let generator;
-try {
-    console.log('[phase0] Loading', TEXT_MODEL_ID, TEXT_MODEL_DTYPE);
-    const loadStart = performance.now();
-    generator = await pipeline('text-generation', TEXT_MODEL_ID, {
-        revision: TEXT_MODEL_REVISION,
-        dtype: TEXT_MODEL_DTYPE,
-        device: 'wasm',
-        progress_callback: event => {
-            if (event.status !== 'progress') console.log('[phase0] Model', event);
-        },
-    });
-    console.log('[phase0] Model load ms:', Math.round(performance.now() - loadStart));
-
-    const start = performance.now();
-    const result = await generator([{ role: 'user', content: prompt }], {
-        max_new_tokens: TEXT_MAX_NEW_TOKENS,
-        do_sample: false,
-        return_full_text: false,
-    });
-    const generationMs = Math.round(performance.now() - start);
-    const raw = result[0]?.generated_text?.at(-1)?.content;
-    console.log('[phase0] Raw output:', raw);
-    const line = typeof raw === 'string' ? raw.trim().split(/\r?\n/)[0] : '';
-    console.log('[phase0] Output:', line || 'Oh… cricket news, and nobody here to hear it with me.');
-    console.log('[phase0] Generation ms:', generationMs);
-} catch (error) {
-    console.error('[phase0] FAILED:', error);
-}
+globalThis.phase0Done = run();

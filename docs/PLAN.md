@@ -13,12 +13,18 @@ Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
       Verify: related strings score clearly higher than unrelated ones.
 - [x] 0.4 Chrome equivalent using an offscreen document.
       Verify: same outputs in Chrome; memory checked in Chrome Task Manager (Shift+Esc).
+- [x] 0.4a User-approved low-memory revision: required MiniLM-L3 in a lazy,
+      bounded worker; authored task/heading templates; no normal generative path.
+      Verify: both browsers pass ranking, bounds, cache, cancellation and release;
+      record renderer peaks and distinguish them from whole-browser totals.
+      Historical 0.2/0.3 generator/L6 results remain archived.
 - [ ] 0.5 Check model files cache: reload the extension, confirm no re-download.
 - [ ] 0.6 Play a bundled MP3 from the Firefox background page and the Chrome
       offscreen document while a normal web page is focused.
       Verify: audio plays in both browsers without user interaction on the page.
-- [ ] 0.7 Firefox background page lifetime: confirm models and audio stay loaded
-      for 10+ minutes of an active session. If the page gets suspended, propose
+- [ ] 0.7 Firefox background page lifetime: confirm session routing and audio work
+      for 10+ minutes; embeddings may unload while idle and reload on demand.
+      If the page gets suspended, propose
       a keep-alive approach and stop for approval.
 
 STOP after Phase 0 and report results (times, memory, any blockers).
@@ -62,8 +68,10 @@ STOP after Phase 0 and report results (times, memory, any blockers).
 - [ ] 3.5 prefers-reduced-motion variants.
 - [ ] 3.6 src/templates.js in Butu's tone: 20+ taunts, 10+ stage-4 lines,
       10+ voice-line templates using {task}, 10+ diary captions, popup summary lines.
-- [ ] 3.7 Possession text: few-shot prompt in Butu's voice, src/lib/validate.js
-      (+ unit test), retry once, template fallback.
+      A small starter pack and tested interpolation exist from 0.4a; expand it.
+- [ ] 3.7 Wire template-backed possession text into stages 2/4 and diary captions:
+      cache per-page template choice, interpolate bounded task/heading values as
+      plain text, restore original content on return. No generation/retry loop.
 
 ## Phase 3.5: Butu's Voice (primary prize target)
 - [ ] V1 scripts/audio/design-voice: create Butu's voice via ElevenLabs Voice Design
@@ -96,7 +104,8 @@ STOP after Phase 0 and report results (times, memory, any blockers).
 - [ ] 4.4 Diary: "Places you left me for" (domains in handwriting).
 - [ ] 4.5 Diary settings: allowlist/blocklist, ElevenLabs key, volume, mute,
       "test Butu's voice", characters used.
-- [ ] 4.6 Model release + audio cache clear on session end (verify memory drops).
+- [ ] 4.6 Wire embedding-host release + audio cache clear into session end
+      (verify memory drops; the standalone worker release API exists from 0.4a).
 - [ ] 4.7 First-run download progress UI ("Butu is waking up…").
 - [ ] 4.8 README: what Butu is, install for both browsers, ElevenLabs key setup,
       privacy boundary, limitations, credits and licences (fonts, models, assets).
@@ -114,8 +123,8 @@ STOP after Phase 0 and report results (times, memory, any blockers).
 
 ## Stretch (only if everything above is done)
 - [ ] S1 Diary sticker collection: one sticker per completed focused session.
-- [ ] S2 scripts/gen-data/: Ultramarine generates 300–500 rewrite examples in
-      Butu's tone; log token usage and total cost.
-- [ ] S3 scripts/finetune/: Colab notebook fine-tunes SmolLM2-135M, exports ONNX.
-- [ ] S4 Swap in fine-tuned model via config.js; before/after table on 10 headings.
 - [ ] S5 site/: landing page for the .tech domain with the demo video.
+
+S2–S4 (generative training data, SmolLM2 fine-tuning and model swapping) were
+retired by the user-approved embedding-only design. Their earlier experiment
+evidence is retained; they are not marked as completed work.

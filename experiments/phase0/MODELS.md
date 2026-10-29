@@ -1,5 +1,10 @@
 # Model comparison — 2026-10-29
 
+**Historical selection, superseded:** the user subsequently approved removing
+runtime text generation. Current normal entry points use MiniLM-L3 only and
+authored templates. See [LOW-MEMORY.md](LOW-MEMORY.md). The comparisons below remain
+available explicitly as research tooling.
+
 Selected defaults, pinned in `src/config.js`:
 
 - Embeddings: **Xenova/paraphrase-MiniLM-L3-v2, q8**, revision

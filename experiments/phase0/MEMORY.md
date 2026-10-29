@@ -1,5 +1,9 @@
 # Memory experiments — 2026-10-29
 
+**Historical experiment:** normal entry points now use only the bounded embedding
+worker and templates. See [the current implementation](LOW-MEMORY.md). Text-model
+cases below are opt-in research tooling, not normal extension behavior.
+
 These historical trials used MiniLM-L6 and SmolLM2 q4. The subsequent
 [model comparison](MODELS.md) selected L3/q8 defaults. The legacy matrix cases
 in the benchmark explicitly select the original baselines for reproducibility.

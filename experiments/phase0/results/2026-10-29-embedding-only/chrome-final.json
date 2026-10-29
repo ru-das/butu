@@ -1,0 +1,1235 @@
+{
+  "lines": [
+    "[phase0] Required open model: Xenova/paraphrase-MiniLM-L3-v2 q8",
+    "[phase0] Embedding model load ms: 1096",
+    "[phase0] Embedding ms: 95",
+    "[phase0] Task: DBMS assignment on normalization",
+    "[phase0] Cosine similarity: Third normal form explained 0.35404026839665215",
+    "[phase0] Cosine similarity: Functional dependencies tutorial 0.2663538474806193",
+    "[phase0] Cosine similarity: IPL cricket highlights 0.12826231421707068",
+    "[phase0] Embedding ranking PASS",
+    "[phase0] Template: You said we'd finish DBMS assignment on normalization together…",
+    "[phase0] Template: I kept your place beside DBMS assignment on normalization. Come back soon?",
+    "[phase0] Template: IPL cricket highlights can wait a little. I'm still here with DBMS assignment on normalization.",
+    "[phase0] Template: Let's play a game. The game is finishing DBMS assignment on normalization.",
+    "[phase0] Template: I'm still holding our place in DBMS assignment on normalization.",
+    "[phase0] Template: We can start DBMS assignment on normalization again. I'll pretend you never left.",
+    "[phase0] Score cache PASS",
+    "[phase0] Idle teardown PASS",
+    "[phase0] Result: {\"passed\":true,\"scores\":[0.35404026839665215,0.2663538474806193,0.12826231421707068],\"modelLoadMs\":1096,\"inferenceMs\":95,\"templates\":[\"You said we'd finish DBMS assignment on normalization together…\",\"I kept your place beside DBMS assignment on normalization. Come back soon?\",\"IPL cricket highlights can wait a little. I'm still here with DBMS assignment on normalization.\",\"Let's play a game. The game is finishing DBMS assignment on normalization.\",\"I'm still holding our place in DBMS assignment on normalization.\",\"We can start DBMS assignment on normalization again. I'll pretend you never left.\"],\"cacheHit\":true,\"idleTeardown\":true,\"released\":true,\"rendererBudgetBytes\":500000000}"
+  ],
+  "samples": [
+    {
+      "time": 1793279264859,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 112696,
+          "hwmKiB": 112696,
+          "privateKiB": 15296,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279265125,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 141392,
+          "hwmKiB": 141392,
+          "privateKiB": 36460,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279265383,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 227852,
+          "hwmKiB": 227852,
+          "privateKiB": 118048,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279265647,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 335432,
+          "hwmKiB": 335432,
+          "privateKiB": 225008,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279265918,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 286656,
+          "hwmKiB": 396936,
+          "privateKiB": 176216,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279266194,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 342520,
+          "hwmKiB": 396936,
+          "privateKiB": 231736,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279266456,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254332,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279266722,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254332,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279266990,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254332,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279267248,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254332,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279267513,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254332,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279267773,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254332,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279268047,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254332,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279268318,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254332,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279268585,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279268851,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279269110,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279269376,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279269645,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279269915,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279270185,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279270465,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279270737,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279271004,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279271276,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 365656,
+          "hwmKiB": 365656,
+          "privateKiB": 254316,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279271537,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 169848,
+          "hwmKiB": 365260,
+          "privateKiB": 58216,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279271545,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 169872,
+          "hwmKiB": 365260,
+          "privateKiB": 58244,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279271805,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 212952,
+          "hwmKiB": 365260,
+          "privateKiB": 99680,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279272075,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 289864,
+          "hwmKiB": 365260,
+          "privateKiB": 179976,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279272334,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 307188,
+          "hwmKiB": 408832,
+          "privateKiB": 191000,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279272599,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 341772,
+          "hwmKiB": 408832,
+          "privateKiB": 230072,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279272866,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 380060,
+          "hwmKiB": 408832,
+          "privateKiB": 268884,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279273137,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 441092,
+          "hwmKiB": 441092,
+          "privateKiB": 329420,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279273395,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 287680,
+          "hwmKiB": 442084,
+          "privateKiB": 176140,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279273402,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 275144,
+          "hwmKiB": 442084,
+          "privateKiB": 159096,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279273914,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 337368,
+          "hwmKiB": 442084,
+          "privateKiB": 225700,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279274426,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 343424,
+          "hwmKiB": 442084,
+          "privateKiB": 231760,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279274934,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 347632,
+          "hwmKiB": 442084,
+          "privateKiB": 235956,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279275442,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 349844,
+          "hwmKiB": 442084,
+          "privateKiB": 238168,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279275953,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 357732,
+          "hwmKiB": 442084,
+          "privateKiB": 246056,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279276468,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279276983,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279277496,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279278013,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279278527,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279279043,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279279560,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279280077,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279280591,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279281106,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279281623,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279282140,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279282654,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279283168,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279283682,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279284202,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279284720,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279285237,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279285751,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279286270,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279286784,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279287300,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279287808,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279288325,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279288842,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279289350,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279289865,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279290382,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279290898,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279291414,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279291928,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279292438,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279292954,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279293460,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279293975,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 80732,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279294483,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 192408,
+          "hwmKiB": 442084,
+          "privateKiB": 79036,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279294999,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279295518,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279296035,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279296549,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279297063,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279297578,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279298092,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279298606,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279299121,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279299629,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279300143,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279300657,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279301171,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279301678,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279302194,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279302712,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    },
+    {
+      "time": 1793279303227,
+      "processes": [
+        {
+          "pid": 16628,
+          "rssKiB": 171920,
+          "hwmKiB": 442084,
+          "privateKiB": 58184,
+          "swapKiB": 0
+        }
+      ]
+    }
+  ],
+  "peakRendererHwmKiB": 442084,
+  "peakCandidateRssKiB": 441092,
+  "browser": "Chrome/153.0.8010.12",
+  "runtime": {
+    "passed": true,
+    "scores": [
+      0.35404026839665215,
+      0.2663538474806193,
+      0.12826231421707068
+    ],
+    "modelLoadMs": 1096,
+    "inferenceMs": 95,
+    "templates": [
+      "You said we'd finish DBMS assignment on normalization together…",
+      "I kept your place beside DBMS assignment on normalization. Come back soon?",
+      "IPL cricket highlights can wait a little. I'm still here with DBMS assignment on normalization.",
+      "Let's play a game. The game is finishing DBMS assignment on normalization.",
+      "I'm still holding our place in DBMS assignment on normalization.",
+      "We can start DBMS assignment on normalization again. I'll pretend you never left."
+    ],
+    "cacheHit": true,
+    "idleTeardown": true,
+    "released": true,
+    "rendererBudgetBytes": 500000000
+  },
+  "bounds": {
+    "quality": [
+      {
+        "task": "DBMS assignment on normalization",
+        "positive": [
+          0.35404026839665215,
+          0.2663538474806193,
+          0.6026501232226255
+        ],
+        "negative": [
+          0.12826231421707068,
+          -0.14785527048422037,
+          -0.16377833034373382
+        ],
+        "passed": true
+      },
+      {
+        "task": "Write a cover letter for a software engineering internship",
+        "positive": [
+          0.8702542390807061,
+          0.7510342171788122,
+          0.48525356009722465
+        ],
+        "negative": [
+          -0.023424863198639453,
+          -0.04477145553322161,
+          -0.06408955770385731
+        ],
+        "passed": true
+      },
+      {
+        "task": "Learn JavaScript promises and async/await",
+        "positive": [
+          0.8023792205227239,
+          0.4208852959966986,
+          0.5525368500702423
+        ],
+        "negative": [
+          -0.054634861235201886,
+          0.07489801512189645,
+          0.0247570926406377
+        ],
+        "passed": true
+      }
+    ],
+    "scores": [
+      0.8142779869329747,
+      -0.06106854385761435
+    ],
+    "ranked": true,
+    "overflowRejected": true,
+    "cancelled": true
+  },
+  "final": {
+    "time": 1793279303227,
+    "processes": [
+      {
+        "pid": 16628,
+        "rssKiB": 171920,
+        "hwmKiB": 442084,
+        "privateKiB": 58184,
+        "swapKiB": 0
+      }
+    ]
+  },
+  "budget": {
+    "metric": "largest observed individual renderer HWM",
+    "limitBytes": 500000000,
+    "withinTarget": true
+  },
+  "pass": true
+}

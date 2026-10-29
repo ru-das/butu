@@ -3,7 +3,7 @@
 ## One-liner
 Butu is a sweet little hand-drawn teddy bear who keeps you company while you work.
 If you wander off to another page, Butu gets lonely, and the page slowly goes wrong.
-Powered by tiny open models running entirely inside your browser.
+Powered by an open embedding model running entirely inside your browser.
 
 ## Context
 Submission for the DEV Hacktoberfest Open-Source AI Challenge, Week 4
@@ -80,14 +80,11 @@ Doodles are bundled SVGs; no image generation at runtime.
   Examples: "You said we'd do the DBMS assignment together…",
   "Let's play a game! The game is the DBMS assignment.",
   "Why did you leave me alone with the DBMS assignment?"
-- One generation call per page at stage 2 (cached for that page).
-- Few-shot prompt: 4 example rewrites in Butu's voice, then the real heading + task.
-- Max ~25 new tokens, low temperature.
-- Validation: 3–20 words, not an echo of the prompt, no URLs, mentions the task or
-  a task keyword (4+ letters). Strip quotes and trailing junk.
-- On failure: retry once, then use a template from templates.js filled with
-  {task} and {heading}.
-- Stage 4 message and diary captions follow the same pipeline.
+- Select an authored template per page at stage 2 and cache that choice.
+- Fill {task} and {heading} locally with bounded plain-text values; missing values
+  have safe defaults. Insert with textContent. No runtime text-generation model.
+- Stage-4 messages and diary captions use the same template interpolation.
+- Semantic detection still uses the required open-weight embedding model.
 
 ### F6. Session summary (popup)
 At session end the popup shows: time spent, times you wandered, minutes Butu
@@ -138,16 +135,19 @@ Loads entirely from the extension; no network. Styled as a child's scrapbook.
 | Role | Model / service | Runs | Approx. size |
 |---|---|---|---|
 | On-task detection | Xenova/paraphrase-MiniLM-L3-v2 (embeddings) | Local, in browser | ~17.5 MB, q8 |
-| Possession text | HuggingFaceTB/SmolLM2-135M-Instruct, MHA ONNX export | Local, in browser | ~137 MB, q8 |
+| Possession text | Authored task/heading templates | Local, in browser | Bundled strings |
 | Butu's voice design | ElevenLabs Voice Design | Build time | n/a |
 | Music box lullaby | ElevenLabs Music | Build time, bundled | a few MB |
 | Sound effects | ElevenLabs Sound Effects | Build time, bundled | a few MB |
 | Base whispers | ElevenLabs TTS | Build time, bundled | a few MB |
 | Personalised lines | ElevenLabs TTS | Session start, opt-in | cached in memory |
-| Stretch | SmolLM2-135M fine-tuned on Butu rewrites | Local, in browser | same as base |
 
 - Local runtime: Transformers.js, WebAssembly on CPU. No GPU required.
 - Model host: Firefox background page; Chrome offscreen document.
+- Only embeddings run in a dedicated worker; audio stays in the host document.
+- Bound inference to 128 tokens, one string per model call, and one in-flight
+  job. Cap pending jobs at four and score-cache entries at 64. Terminate the worker
+  after five idle seconds or immediately at session end; clear session scores.
 - Memory budget: under 500 MB peak during a session.
 
 ## Privacy boundary
@@ -207,7 +207,7 @@ respect prefers-reduced-motion and do not add tracking eyes or sudden motion.
   via Music, sound effects, base whisper pack, opt-in personalised lines, demo narration.
 - Optional, only if time allows:
   - **.tech domain:** landing page (site/) with demo video and install steps.
-  - **Ultramarine:** build time only, drafts templates and fine-tuning data;
+  - **Ultramarine:** build time only, drafts authored template variants;
     actual run cost reported. Never sees user data.
   - **Entire / GitHub Copilot:** depending on build tooling.
 
@@ -217,7 +217,10 @@ text generation, blocking other apps, analytics of any kind.
 
 ## Known limitations (state openly in the write-up)
 - Can't follow the user to other apps, their phone, or browsers without Butu.
-- A 135M model is limited; templates are the safety net.
+- Semantic similarity can misclassify ambiguous pages; thresholds need real-page
+  testing and users can override domains. Character copy comes from templates.
+- The browser controls process overhead; the 500 MB target must be measured on
+  supported browsers and cannot be guaranteed universally by extension code.
 - Personalised voice needs the user's own ElevenLabs key; without it Butu uses
   bundled lines.
 - Built for absent-minded drift, not adversarial users.

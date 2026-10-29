@@ -1,4 +1,8 @@
 /src/config.js
 /src/model-host/transformers.js
+/src/model-host/embedding-host.js
+/src/model-host/embedding-worker.js
+/src/lib/
+/src/templates.js
 /vendor/
 /chrome/

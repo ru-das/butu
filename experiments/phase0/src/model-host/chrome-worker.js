@@ -9,8 +9,8 @@ async function ensureModelHost() {
 
     await chrome.offscreen.createDocument({
         url,
-        reasons: ['TESTING'], // Launch Chrome with --offscreen-document-testing.
-        justification: 'Run the phase 0 local WASM model tests in a document.',
+        reasons: ['WORKERS'],
+        justification: 'Host the dedicated worker for local semantic detection.',
     });
     console.log('[phase0] Offscreen model host created; inspect offscreen.html for results.');
 }
