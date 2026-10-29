@@ -1,0 +1,39 @@
+{
+  "browser": "Chrome/153.0.8010.12",
+  "focusBefore": {
+    "focused": true,
+    "visible": "visible",
+    "url": "http://127.0.0.1:8769/",
+    "activation": false
+  },
+  "reply": {
+    "playing": true
+  },
+  "media": {
+    "events": [
+      {
+        "type": "playing",
+        "time": 0,
+        "muted": false,
+        "volume": 0.3
+      },
+      {
+        "type": "ended",
+        "time": 1.750125,
+        "muted": false,
+        "volume": 0.3
+      }
+    ],
+    "src": "chrome-extension://bandffadcnpfcemkepkkklpefdfkopgc/assets/audio/test-chime.mp3",
+    "ended": true,
+    "time": 1.750125,
+    "duration": 1.750125,
+    "activation": false
+  },
+  "focusAfter": {
+    "focused": true,
+    "visible": "visible",
+    "activation": false
+  },
+  "pass": true
+}

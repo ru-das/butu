@@ -61,6 +61,15 @@ async function connect(url, onEvent = () => {}) {
  }
  if(!target)throw Error('No offscreen host');
  host=await connect(target.webSocketDebuggerUrl);
+ async function ready(page,url){
+  for(let i=0;i<100;i++){
+   const result=await page.call('Runtime.evaluate',{expression:`location.href===${JSON.stringify(url)}&&document.readyState==='complete'`,returnByValue:true});
+   if(result.result?.value)return;
+   await pause(100);
+  }
+  throw Error(`Page did not finish loading: ${url}`);
+ }
+ await ready(host,target.url);
  // Observe the actual native media element without changing its autoplay policy.
  await host.call('Runtime.evaluate',{expression:`globalThis.probeAudio=document.querySelector('audio');
  globalThis.audioEvents=[]; // Audio() is detached; capture it via the native play method.
@@ -72,7 +81,7 @@ async function connect(url, onEvent = () => {}) {
   const {targetId}=await browser.call('Target.createTarget',{url});
   const list=await (await fetch(`${endpoint}/json/list`)).json();
   const page=await connect(list.find(t=>t.id===targetId).webSocketDebuggerUrl);
-  await pause(500); return page;
+  await ready(page,url); return page;
  }
  sender=await open(`chrome-extension://${new URL(target.url).host}/src/model-host/audio-test.html`);
  website=await open('http://127.0.0.1:8769/');

@@ -9,3 +9,5 @@
 
 /assets/
 /src/model-host/audio-probe.js
+/src/model-host/firefox-session-lifetime.js
+__pycache__/

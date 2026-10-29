@@ -16,6 +16,8 @@ export const EMBEDDING_LIMITS = {
     rendererBudgetBytes: 500_000_000,
 };
 export const TEMPLATE_LIMITS = { taskChars: 200, headingChars: 160, templateChars: 400 };
+// Firefox event-page heartbeat, active only during a focus session.
+export const FIREFOX_HEARTBEAT_MS = 20_000;
 
 // Historical benchmarks only. Normal extension entry points never load these.
 export const TEXT_MODEL_ID = 'onnx-community/SmolLM2-135M-Instruct-ONNX-MHA';

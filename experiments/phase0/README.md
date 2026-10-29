@@ -19,6 +19,10 @@ additional permissions or new network hosts are needed.
 For task 0.6's message-triggered MP3 probe, browser steps and recorded results,
 see [AUDIO.md](AUDIO.md).
 
+For task 0.7's Firefox session-scoped heartbeat, endurance test and remaining
+full-product lifecycle limits, see [LIFETIME.md](LIFETIME.md). Its probe is
+Firefox-only and stays inactive until explicitly started.
+
 ## Load and test in Chrome (116+)
 
 1. Open Shift+Esc and note the baseline memory. Use a clean test profile.

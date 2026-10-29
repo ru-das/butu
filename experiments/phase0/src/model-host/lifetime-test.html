@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Butu Firefox lifetime probe</title>
+<h1>Firefox session lifetime</h1>
+<p>Start a probe, then close this tab and all extension inspectors during the quiet interval.</p>
+<label>Session minutes <input id="minutes" type="number" min="1" max="60" value="12"></label>
+<button id="start">Start</button>
+<button id="status">Status</button>
+<button id="audio">Play bundled chime</button>
+<button id="compare">Embed a new title</button>
+<button id="stop">Stop</button>
+<pre id="result" aria-live="polite"></pre>
+<script src="lifetime-test.js"></script>
+</html>

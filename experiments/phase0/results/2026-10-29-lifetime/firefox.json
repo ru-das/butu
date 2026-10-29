@@ -1,0 +1,665 @@
+{
+  "samples": [
+    {
+      "elapsedSeconds": 30.0,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 60.01,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 75.0,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 105.23,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 135.24,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 165.25,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 195.27,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 225.28,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 255.29,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 285.38,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 315.39,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 345.46,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 375.79,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 405.83,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 435.85,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 465.86,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 495.88,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 525.89,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 555.94,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 585.97,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 616.01,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 646.03,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 665.0,
+      "state": "running",
+      "debuggerAttached": false,
+      "views": [
+        "background"
+      ]
+    },
+    {
+      "elapsedSeconds": 708.58,
+      "state": "stopped",
+      "debuggerAttached": false,
+      "views": []
+    },
+    {
+      "elapsedSeconds": 723.58,
+      "state": "stopped",
+      "debuggerAttached": false,
+      "views": []
+    },
+    {
+      "elapsedSeconds": 762.0,
+      "state": "stopped",
+      "debuggerAttached": false,
+      "views": []
+    },
+    {
+      "elapsedSeconds": 777.0,
+      "state": "stopped",
+      "debuggerAttached": false,
+      "views": []
+    }
+  ],
+  "cacheProfileUsed": true,
+  "browser": "154.0.1",
+  "idleTimeoutMs": 30000,
+  "start": {
+    "instance": "ea75bdb3-93c1-4beb-89b8-84e440f1ec47",
+    "bornAt": 1793286862516,
+    "endsAt": 1793287764281,
+    "endReason": null,
+    "workerLoaded": false,
+    "cacheEntries": 0,
+    "audio": {
+      "paused": true,
+      "ended": false,
+      "time": 0,
+      "muted": false,
+      "volume": 0.3,
+      "events": []
+    }
+  },
+  "firstEmbedding": {
+    "instance": "ea75bdb3-93c1-4beb-89b8-84e440f1ec47",
+    "bornAt": 1793286862516,
+    "endsAt": 1793287764281,
+    "endReason": null,
+    "workerLoaded": true,
+    "cacheEntries": 1,
+    "audio": {
+      "paused": true,
+      "ended": false,
+      "time": 0,
+      "muted": false,
+      "volume": 0.3,
+      "events": []
+    },
+    "result": {
+      "scores": [
+        0.35404026839665215
+      ],
+      "cached": false,
+      "loadMs": 2204,
+      "inferenceMs": 49
+    }
+  },
+  "loopStart": {
+    "instance": "ea75bdb3-93c1-4beb-89b8-84e440f1ec47",
+    "bornAt": 1793286862516,
+    "endsAt": 1793287764281,
+    "endReason": null,
+    "workerLoaded": true,
+    "cacheEntries": 1,
+    "audio": {
+      "paused": false,
+      "ended": false,
+      "time": 0,
+      "muted": false,
+      "volume": 0.3,
+      "events": [
+        {
+          "type": "playing",
+          "at": 1793286866842,
+          "time": 0
+        }
+      ]
+    }
+  },
+  "loopAfter75Seconds": {
+    "instance": "ea75bdb3-93c1-4beb-89b8-84e440f1ec47",
+    "bornAt": 1793286862516,
+    "endsAt": 1793287764281,
+    "endReason": null,
+    "workerLoaded": false,
+    "cacheEntries": 1,
+    "audio": {
+      "paused": false,
+      "ended": false,
+      "time": 0.775147,
+      "muted": false,
+      "volume": 0.3,
+      "events": [
+        {
+          "type": "playing",
+          "at": 1793286866842,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286866845,
+          "time": 0
+        }
+      ]
+    }
+  },
+  "finiteClip": {
+    "instance": "ea75bdb3-93c1-4beb-89b8-84e440f1ec47",
+    "bornAt": 1793286862516,
+    "endsAt": 1793287764281,
+    "endReason": null,
+    "workerLoaded": false,
+    "cacheEntries": 1,
+    "audio": {
+      "paused": false,
+      "ended": false,
+      "time": 0,
+      "muted": false,
+      "volume": 0.3,
+      "events": [
+        {
+          "type": "playing",
+          "at": 1793286866842,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286866845,
+          "time": 0
+        },
+        {
+          "type": "pause",
+          "at": 1793286942108,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286942108,
+          "time": 0
+        }
+      ]
+    }
+  },
+  "after11Minutes": {
+    "instance": "ea75bdb3-93c1-4beb-89b8-84e440f1ec47",
+    "bornAt": 1793286862516,
+    "endsAt": 1793287764281,
+    "endReason": null,
+    "workerLoaded": false,
+    "cacheEntries": 1,
+    "audio": {
+      "paused": true,
+      "ended": true,
+      "time": 1.750204,
+      "muted": false,
+      "volume": 0.3,
+      "events": [
+        {
+          "type": "playing",
+          "at": 1793286866842,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286866845,
+          "time": 0
+        },
+        {
+          "type": "pause",
+          "at": 1793286942108,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286942108,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286942122,
+          "time": 0
+        },
+        {
+          "type": "pause",
+          "at": 1793286944134,
+          "time": 1.750204
+        },
+        {
+          "type": "ended",
+          "at": 1793286944134,
+          "time": 1.750204
+        }
+      ]
+    }
+  },
+  "lateEmbedding": {
+    "instance": "ea75bdb3-93c1-4beb-89b8-84e440f1ec47",
+    "bornAt": 1793286862516,
+    "endsAt": 1793287764281,
+    "endReason": null,
+    "workerLoaded": true,
+    "cacheEntries": 2,
+    "audio": {
+      "paused": true,
+      "ended": true,
+      "time": 1.750204,
+      "muted": false,
+      "volume": 0.3,
+      "events": [
+        {
+          "type": "playing",
+          "at": 1793286866842,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286866845,
+          "time": 0
+        },
+        {
+          "type": "pause",
+          "at": 1793286942108,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286942108,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286942122,
+          "time": 0
+        },
+        {
+          "type": "pause",
+          "at": 1793286944134,
+          "time": 1.750204
+        },
+        {
+          "type": "ended",
+          "at": 1793286944134,
+          "time": 1.750204
+        }
+      ]
+    },
+    "result": {
+      "scores": [
+        0.2663538474806193
+      ],
+      "cached": false,
+      "loadMs": 1920,
+      "inferenceMs": 53
+    }
+  },
+  "lateAudio": {
+    "instance": "ea75bdb3-93c1-4beb-89b8-84e440f1ec47",
+    "bornAt": 1793286862516,
+    "endsAt": 1793287764281,
+    "endReason": null,
+    "workerLoaded": true,
+    "cacheEntries": 2,
+    "audio": {
+      "paused": false,
+      "ended": false,
+      "time": 0,
+      "muted": false,
+      "volume": 0.3,
+      "events": [
+        {
+          "type": "playing",
+          "at": 1793286866842,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286866845,
+          "time": 0
+        },
+        {
+          "type": "pause",
+          "at": 1793286942108,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286942108,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286942122,
+          "time": 0
+        },
+        {
+          "type": "pause",
+          "at": 1793286944134,
+          "time": 1.750204
+        },
+        {
+          "type": "ended",
+          "at": 1793286944134,
+          "time": 1.750204
+        },
+        {
+          "type": "playing",
+          "at": 1793287544185,
+          "time": 0
+        }
+      ]
+    }
+  },
+  "manualStop": {
+    "instance": "ea75bdb3-93c1-4beb-89b8-84e440f1ec47",
+    "bornAt": 1793286862516,
+    "endsAt": null,
+    "endReason": "stopped",
+    "workerLoaded": false,
+    "cacheEntries": 0,
+    "audio": {
+      "paused": true,
+      "ended": false,
+      "time": 0,
+      "muted": false,
+      "volume": 0.3,
+      "events": [
+        {
+          "type": "playing",
+          "at": 1793286866842,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286866845,
+          "time": 0
+        },
+        {
+          "type": "pause",
+          "at": 1793286942108,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286942108,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793286942122,
+          "time": 0
+        },
+        {
+          "type": "pause",
+          "at": 1793286944134,
+          "time": 1.750204
+        },
+        {
+          "type": "ended",
+          "at": 1793286944134,
+          "time": 1.750204
+        },
+        {
+          "type": "playing",
+          "at": 1793287544185,
+          "time": 0
+        }
+      ]
+    }
+  },
+  "afterStop": {
+    "state": "stopped",
+    "debuggerAttached": false,
+    "views": []
+  },
+  "afterWake": {
+    "instance": "e30afca9-6456-4b52-964f-27cebcd45e1b",
+    "bornAt": 1793287591602,
+    "endsAt": null,
+    "endReason": null,
+    "workerLoaded": false,
+    "cacheEntries": 0,
+    "audio": {
+      "paused": true,
+      "ended": false,
+      "time": 0,
+      "muted": false,
+      "volume": 0.3,
+      "events": []
+    }
+  },
+  "expiryStart": {
+    "instance": "e30afca9-6456-4b52-964f-27cebcd45e1b",
+    "bornAt": 1793287591602,
+    "endsAt": 1793287596748,
+    "endReason": null,
+    "workerLoaded": false,
+    "cacheEntries": 0,
+    "audio": {
+      "paused": true,
+      "ended": false,
+      "time": 0,
+      "muted": false,
+      "volume": 0.3,
+      "events": []
+    }
+  },
+  "expiryAudio": {
+    "instance": "e30afca9-6456-4b52-964f-27cebcd45e1b",
+    "bornAt": 1793287591602,
+    "endsAt": 1793287596748,
+    "endReason": null,
+    "workerLoaded": false,
+    "cacheEntries": 0,
+    "audio": {
+      "paused": false,
+      "ended": false,
+      "time": 0,
+      "muted": false,
+      "volume": 0.3,
+      "events": [
+        {
+          "type": "playing",
+          "at": 1793287591833,
+          "time": 0
+        }
+      ]
+    }
+  },
+  "expired": {
+    "instance": "e30afca9-6456-4b52-964f-27cebcd45e1b",
+    "bornAt": 1793287591602,
+    "endsAt": null,
+    "endReason": "expired",
+    "workerLoaded": false,
+    "cacheEntries": 0,
+    "audio": {
+      "paused": true,
+      "ended": false,
+      "time": 0,
+      "muted": false,
+      "volume": 0.3,
+      "events": [
+        {
+          "type": "playing",
+          "at": 1793287591833,
+          "time": 0
+        },
+        {
+          "type": "playing",
+          "at": 1793287591837,
+          "time": 0
+        },
+        {
+          "type": "pause",
+          "at": 1793287596750,
+          "time": 0
+        }
+      ]
+    }
+  },
+  "afterExpiry": {
+    "state": "stopped",
+    "debuggerAttached": false,
+    "views": []
+  },
+  "enduranceSeconds": 665,
+  "pass": true
+}

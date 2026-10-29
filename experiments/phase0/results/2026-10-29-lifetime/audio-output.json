@@ -1,0 +1,7 @@
+{
+  "source": "isolated PulseAudio sink monitor during Firefox bundled loop",
+  "sampleRate": 44100,
+  "samples": 220482,
+  "nonzeroSamples": 213699,
+  "peak": 1180
+}

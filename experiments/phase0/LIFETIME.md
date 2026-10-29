@@ -1,8 +1,9 @@
 # Task 0.7 — Firefox event-page lifetime
 
-2026-10-29. **Approval checkpoint, not a completed endurance test.** Firefox
-suspension was observed. No keep-alive, permission, manifest or runtime change
-has been implemented. The 10+ minute routing/audio verification remains pending.
+2026-10-29. Firefox suspension was observed, and the user subsequently approved
+the proposed heartbeat. It is now implemented as an opt-in Phase 0 session probe.
+No permission, network host or dependency was added. Full stored-session recovery
+remains task 1.5; the heartbeat does not replace it.
 
 ## Can a 45-minute session lose its background page?
 
@@ -63,57 +64,104 @@ supports synchronous listeners, persisted state and alarms in place of timers.
 resets idle on parent API activity and exempts attached DevTools; this is an
 implementation detail to verify on supported versions, not a public keep-alive API.
 
-## Proposed approach — requires approval
+## Approved implementation
 
-Keep recovery based on stored session state even with a keep-alive. For Firefox
-only, propose a **session-scoped heartbeat in the host document**, calling
-`chrome.runtime.getPlatformInfo()` every 20 seconds while the stored session is
-active. Its parent API activity is expected to reset the observed 30-second idle
-timer. A JS interval by itself is insufficient; the extension API call is the
-relevant activity. Put the heartbeat interval in `src/config.js` and the Firefox
-adapter in `src/model-host/`. This needs no new permission, host, dependency,
-network traffic, content-script heartbeat or visible companion tab.
+`src/model-host/firefox-session-lifetime.js` implements a **session-scoped
+heartbeat in the host document**, calling `chrome.runtime.getPlatformInfo()`
+immediately and every 20 seconds until the supplied absolute end timestamp.
+`FIREFOX_HEARTBEAT_MS` lives in `src/config.js`. The parent API call, rather than
+the JS interval alone, resets event-page idle. Invalid/expired deadlines reject;
+stop, replacement, expiry and API failure clear the timers and invoke caller
+cleanup. A late API rejection cannot stop a newer session. Each heartbeat and
+probe request checks wall-clock expiry, covering delayed timers after sleep.
 
-Stop the heartbeat at manual stop/expiry and release worker/audio resources. It
-must not run merely because the extension is installed, and must not keep the
-embedding worker loaded. It makes roughly 135 inexpensive local calls over a
-45-minute session. Do not use a silent audio loop, change the user's Firefox
-preferences, assume an idle message port guarantees lifetime, or switch to MV2.
+The Firefox-only `background.html` imports an experiment probe; Chrome's offscreen
+document does not. Loading the extension does not start a heartbeat. Open
+`src/model-host/lifetime-test.html` and explicitly start a timed probe. Same-extension
+messages route status, audio, inference and stop requests. The probe uses the
+existing benchmark host when present, keeping one embedding host/worker. Its end
+callback releases the worker and score cache and stops/resets its bundled player.
+No heartbeat keeps the model loaded. A 45-minute session would make approximately
+135 local heartbeat calls. There is no silent audio keep-alive or preference change.
 
-This is a candidate to validate, not a guarantee against browser termination,
+This is not a guarantee against browser termination,
 sleep, delayed timers, process crashes or future Firefox lifecycle changes.
 On wake, re-read the end timestamp before routing any work or resuming audio;
 discard expired session work, reload embeddings on demand and fall back to
 bundled voice if session audio was lost. If the heartbeat fails the endurance
 test, stop and request a revised approach rather than adding another mechanism.
 Storage/alarms permissions belong to the later session implementation and need
-approval before being added; they are not added by this proposal.
+approval before being added; this change does not add them. The probe accepts an
+explicit deadline in memory; it does not claim to implement persisted recovery.
+
+## Repeat automated verification
+
+```sh
+node --test tests/*.test.js
+sh experiments/phase0/prepare.sh
+BUTU_LIFETIME_RESULTS=/tmp/butu-lifetime-new \
+  python3 experiments/phase0/src/model-host/lifetime-firefox.py
+```
+
+Use a fresh output directory and a graphical display (or prefix the Python
+command with `xvfb-run -a` on Linux). Native audio needs a working output device;
+the recorded run uses a temporary PulseAudio null sink to avoid hardware stalls:
+
+```sh
+pactl load-module module-null-sink sink_name=butu_lifetime_probe
+BUTU_LIFETIME_RESULTS=/tmp/butu-lifetime-new \
+  PULSE_SINK=butu_lifetime_probe xvfb-run -a \
+  python3 experiments/phase0/src/model-host/lifetime-firefox.py
+```
+
+Remove the sink afterwards with `pactl unload-module <returned-module-number>`.
+Optionally set `BUTU_LIFETIME_CACHE_PROFILE` to a **previous isolated test** profile
+containing the model cache. Only storage and extension UUID preferences are
+copied; idle/autoplay settings are not inherited. The original profile is never
+opened or changed. Without a warm cache, first inference may download permitted
+Hugging Face model files. The verifier leaves the eager ranking benchmark out of
+its temporary copy so all inference is session-triggered.
+
+The roughly 13-minute check observes Firefox's parent-process background state
+without waking it or attaching extension DevTools. All quiet samples require
+only a background view. It routes start/inference/audio, loops the real bundled
+MP3 for 75 seconds, verifies worker idle release, replaces the loop with a finite
+clip, and waits to 665 seconds total. It then checks the same host instance,
+native completion, fresh uncached inference, audio and immediate cleanup on stop.
+After 45 quiet seconds the host must suspend. A new message must wake a new,
+inactive instance. A separate five-second session verifies deadline cleanup and
+subsequent suspension. These are Phase 0 probe sessions, not the future product UI.
+
+Unit checks cover inactive installation, deadline validation, manual stop,
+expiry, replacement, stale API failure, active API failure and a wall-clock jump.
+The Chrome audio verifier also now waits for document readiness before attaching
+its native-player observation, avoiding a startup-navigation race.
 
 ## Exact manual verification
 
-### Firefox — current suspension check
+### Firefox — heartbeat and cleanup
 
 1. Run `sh experiments/phase0/prepare.sh`. In `about:debugging` → This Firefox →
    Load Temporary Add-on, choose `experiments/phase0/manifest.json`.
-2. For a cold model download, allow the model benchmark to finish while Inspect
-   is open. Close **all** extension inspectors, popup and extension tabs. Leave
-   Firefox focused on an ordinary page. Do not change the background idle pref.
-3. Wait at least 45 seconds. Check the background status in `about:debugging`
-   without clicking Inspect. Record whether it is stopped. This is a suspension
-   check, not a session or continuous-audio pass.
-4. Click Inspect only after recording that status. Obtain
-   `chrome.runtime.getURL('src/model-host/audio-test.html')`, open it in a tab and
-   close the extension inspector. In the test tab's console run:
-   `setTimeout(() => chrome.runtime.sendMessage({type:'phase0:play-audio'}).then(console.log), 5000)`.
-   Switch to an ordinary page within five seconds. Hear the chime; return and
-   check `playing: true`. Then close all extension views again.
-5. After approval/implementation, repeat for at least 11 minutes and then a full
-   45-minute session: silent focus, delayed chimes, long music, stage transitions,
-   an uncached embedding after idle, manual stop and expiry. Keep Inspect closed;
-   persist diagnostic instance IDs/timestamps for later inspection. Verify no
-   unexpected host replacement while active, worker idle release/reload, audio
-   completion, correct expiry and host suspension after stop. Test sleep/resume
-   and forced restart separately as recovery checks. These checks are pending.
+2. Allow the existing model benchmark to finish while Inspect is open. In its
+   console obtain `chrome.runtime.getURL('src/model-host/lifetime-test.html')`.
+   Save that URL, open it in a tab, then close **all** extension inspectors.
+3. Leave the duration at 12 minutes, click Start, and record `instance` and
+   `endsAt`. Click Embed a new title and Play bundled chime. Close the test tab
+   and leave an ordinary website focused for 11 minutes. Keep popup, diary and
+   all other extension views closed. Do not change the idle preference.
+4. Reopen the saved URL before the 12-minute deadline and click Status. Confirm
+   the same `instance`, an active deadline and `workerLoaded: false`. Click Embed
+   a new title: expect `result.cached: false` and valid scores. Replay the chime.
+5. Click Stop: expect `endsAt: null`, `endReason: stopped`, no loaded worker,
+   zero cache entries and paused audio. Close the tab, wait 45 seconds, and check
+   that `about:debugging` shows stopped without clicking Inspect.
+6. Reopen the URL: Status must show a new instance and no session. Set duration
+   to 1 minute, Start, play the chime, then close the tab. Reopen after 65 seconds
+   and check `endReason: expired` and inactive resources. Close again, wait 45
+   seconds and confirm host suspension. Remove the temporary add-on.
+7. A full 45-minute product session, stage transitions, persisted recovery after
+   a real crash, and real sleep/resume remain future integration checks.
 
 ### Chrome — regression check
 
@@ -141,5 +189,42 @@ after release/quiet time. The Chrome cold candidate renderer sum reached
 fetches on reload; [AUDIO.md](AUDIO.md) records short bundled playback reaching
 native `ended` and the output pipeline in both browsers.
 
-Blocker: default Firefox host suspension. Task 0.7 remains unchecked pending
-approval and successful 10+ minute verification; Phase 1 has not started.
+Task 0.7 and Phase 0 are complete at the experiment level. Phase 1 has not started.
+
+## Recorded results — approved run
+
+Firefox **154.0.1** passed the **665-second (11 min 5 s)** endurance interval with
+the default **30,000 ms** idle timeout. Every quiet sample had no attached
+extension debugger and no view other than the background document. The same
+instance survived looping audio and the silent interval. At 75 seconds the
+worker had unloaded while audio continued. The finite clip subsequently reached
+native `ended` at 1.750204 seconds, and audio started again after 11 minutes.
+Manual stop immediately paused audio, terminated the worker and cleared scores;
+the host was stopped within the following 45-second observation. A message woke
+a new, inactive instance. Five-second expiry stopped a playing loop and again
+allowed suspension within 45 seconds.
+
+Warm-cache embedding load/inference took **2,204 / 49 ms** initially and
+**1,920 / 53 ms** after the long idle interval (one title plus task per request).
+Both requests were uncached score computations, returning 0.35404026839665215
+for normal form and 0.2663538474806193 for functional dependencies. This run does
+not establish a production threshold or a cold-download time. Five seconds of
+the isolated sink's mono 44.1 kHz PCM contained **213,699 nonzero samples**, peak
+**1,180**, confirming looping audio reached the output pipeline. It is not a
+human speaker-listening assessment. Quiet Firefox intervals used `about:blank`;
+the ordinary-website focus/audio check remains covered by task 0.6.
+
+Chrome **153.0.8010.12** passed the bundled-audio regression through native
+`ended` (1.750125 seconds), with an ordinary website focused and no host/page
+user activation. Its first verifier attempt hit a document-loading race; waiting
+for document readiness fixed the verifier, with no Chrome runtime change.
+
+All five Node test files, JS/Python syntax checks, staging and `git diff --check`
+passed. No new memory peak was measured; the earlier memory numbers above remain
+the Phase 0 budget evidence. A full 45-minute product run, stage audio integration,
+actual crash/sleep recovery and final whole-extension memory measurement remain
+later integration checks. No ElevenLabs calls were made: **0 characters**.
+
+Evidence: [Firefox lifecycle and inference](results/2026-10-29-lifetime/firefox.json),
+[Firefox output measurement](results/2026-10-29-lifetime/audio-output.json),
+[Chrome audio regression](results/2026-10-29-lifetime/chrome.json).

@@ -24,12 +24,13 @@ Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
 - [x] 0.6 Play a bundled MP3 from the Firefox background page and the Chrome
       offscreen document while a normal web page is focused.
       Verify: audio plays in both browsers without user interaction on the page.
-- [ ] 0.7 Firefox background page lifetime: confirm session routing and audio work
+- [x] 0.7 Firefox background page lifetime: confirm session routing and audio work
       for 10+ minutes; embeddings may unload while idle and reload on demand.
       If the page gets suspended, propose
       a keep-alive approach and stop for approval.
-      Checkpoint: default Firefox suspension observed; proposal and pending
-      endurance checks in experiments/phase0/LIFETIME.md. Awaiting approval.
+      User-approved heartbeat verified for 665 seconds with default idle settings,
+      no visible extension views/debugger, worker idle release/reload, audio and cleanup.
+      Evidence and both-browser manual steps: experiments/phase0/LIFETIME.md.
 
 STOP after Phase 0 and report results (times, memory, any blockers).
 
