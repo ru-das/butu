@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Butu phase 0: Firefox text generation",
+  "version": "0.0.2",
+  "browser_specific_settings": {
+    "gecko": { "id": "phase0@butu.test" }
+  },
+  "background": { "page": "background.html" },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; connect-src 'self' https://huggingface.co https://*.hf.co"
+  }
+}
