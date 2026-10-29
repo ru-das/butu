@@ -51,9 +51,11 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       Verify: closing/reopening popup keeps countdown correct.
       Verified extension popup pages in isolated Chrome/Firefox; storage contract,
       scope and both-browser toolbar checks: src/popup/README.md.
-- [ ] 1.5 Session lifecycle in background.js: start, end on timer (chrome.alarms),
+- [x] 1.5 Session lifecycle in background.js: start, end on timer (chrome.alarms),
       manual stop, state in storage.local.
       Verify: session survives closing the popup and ends on time.
+      Background lifecycle regression test, storage/message contract and exact
+      Chrome/Firefox manual checks: src/popup/README.md.
 
 ## Phase 2: Detection
 - [ ] 2.1 content.js extracts title + meta description + first ~500 chars of main text.
