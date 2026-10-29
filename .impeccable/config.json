@@ -1,0 +1,18 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "src/diary/diary.html",
+          "src/popup/popup.html"
+        ],
+        "createdAt": "2026-10-29T17:29:24.107Z",
+        "reason": "Project spec: docs/SPEC.md Visual and sound design explicitly requires cream paper texture; task 1.3 implements that settled palette."
+      }
+    ]
+  }
+}
