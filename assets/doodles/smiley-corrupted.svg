@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">A lopsided sky-blue smiley with faded colour and restless crayon marks</title>
+  <!-- Original Butu artwork, CC0-1.0. See README.md. Static, transparent, self-contained. -->
+  <defs>
+    <pattern id="grain" width="9" height="11" patternUnits="userSpaceOnUse">
+      <path d="m1 2 1.6-.5m3 5 1.1.4M2 10l.8-.4" stroke="#000" stroke-width=".65" opacity=".32"/>
+    </pattern>
+    <mask id="wax"><path fill="#fff" d="M-20-20H660V260H-20Z"/><path fill="url(#grain)" d="M-20-20H660V260H-20Z"/></mask>
+  </defs>
+  <g stroke="#756354" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" mask="url(#wax)">
+<path d="M58 15C29 12 13 33 16 60 14 87 37 106 62 103 90 105 107 80 104 54 105 31 83 13 58 15Z" fill="#c5cecf"/>
+<path d="M58 15C29 12 13 33 16 60 14 87 37 106 62 103 90 105 107 80 104 54 105 31 83 13 58 15Z" fill="none" stroke="#8b817d" stroke-width=".9" transform="translate(1.2 -.8)" opacity=".65"/>
+<path d="M40 45l.3 4m36-6-.4 5" fill="none"/>
+<path d="M39 73q17-2 35 0" fill="none"/>
+<path d="m34 39 14 14m-13-1 12-16m24 3 12 14m-13 1 12-17m-48 9 15-1m21 3 14-5" fill="none" stroke="#756b72" stroke-width="1.8"/><path d="m23 56 5 3m4 24 7 2m47-45 4 5" fill="none" stroke="#fff8e9" stroke-width="1.1" opacity=".7"/>
+  </g>
+</svg>

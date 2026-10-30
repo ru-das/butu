@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">Butu — Abandoned: outstretched paws, drained colour and a returning uneven smile</title>
+  <!-- Original Butu artwork, CC0-1.0. See README.md. Static, transparent, self-contained. -->
+  <defs>
+    <pattern id="grain" width="9" height="11" patternUnits="userSpaceOnUse">
+      <path d="m1 2 1.6-.5m3 5 1.1.4M2 10l.8-.4" stroke="#000" stroke-width=".65" opacity=".32"/>
+    </pattern>
+    <mask id="wax"><path fill="#fff" d="M-20-20H660V260H-20Z"/><path fill="url(#grain)" d="M-20-20H660V260H-20Z"/></mask>
+  </defs>
+  <g stroke="#756354" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" mask="url(#wax)">
+<g transform="translate(10 8)">
+<path d="M9 78Q5 54 23 71L8 65Q21 48 12 84M78 75q20-36 12 7l-2-23 12 22M12 100l19-2-10 7 24-3m28-4 15 8-3-9 11 4" fill="none" stroke="#92868e" stroke-width="1.5"/><path d="M29 59C21 70 24 89 34 94c8 5 27 6 35-2 8-7 6-26-2-33" fill="#cfcbc5"/><path d="M40 69c-7 5-6 16 1 19 6 3 18 2 21-4 5-12-13-23-22-15Z" fill="#e6e0d4"/><path d="M30 69C13 58 8 75 19 82c7 4 17-2 18-7m34-6c18-11 22 7 11 13-7 4-16-2-18-7" fill="#cfcbc5"/><g transform="translate(0 5) rotate(-6 50 47)"><path d="M28 29C14 39 9 23 20 20c8-3 14-2 16 3m29 0C62 9 81 7 84 18c2 7-3 13-10 13" fill="#cfcbc5"/><path d="M49 19C23 17 18 35 23 48c3 13 16 17 28 17 15 0 27-8 27-23 0-15-12-23-29-23Z" fill="#cfcbc5"/><path d="M22 23q-3-8 5-7m46 2q7-4 6 4" fill="none" stroke="#d4b6a3" stroke-width="3"/><path d="M38 45c-6 11 17 18 24 9 9-13-18-18-24-9Z" fill="#e5e0d6" stroke="none"/><path d="m36 36 0 2m26-2 0 2m-15 8 5 0-3 3-2-3m2 4v3" fill="none"/><path d="M42 53q5 7 9 2 3-3 6-1" fill="none"/><path d="m32 33 8 7-7-1 6-8-4 11-4-5 10-1m17-3 8 7-9-1 7-8-2 11-7-7 11 1" fill="none" stroke="#70656d" stroke-width="1.6"/><path d="M49 19C23 17 18 35 23 48c3 13 16 17 28 17 15 0 27-8 27-23 0-15-12-23-29-23Z" fill="none" transform="translate(1.7 -1)" stroke-width="1.1" opacity=".8"/><path d="M49 19C23 17 18 35 23 48c3 13 16 17 28 17 15 0 27-8 27-23 0-15-12-23-29-23Z" fill="none" transform="translate(-1 1.5)" stroke-width=".8" opacity=".65"/></g><path d="M31 86c-11-4-14 8-7 12 6 3 16 1 16-5 0-4-4-6-9-7Zm34 1c-8-3-13 6-8 10 7 5 21 1 18-5-1-3-6-5-10-5Z" fill="#cfcbc5"/><path d="m28 76 5 6m-7-2 6 0m34-5-4 7m1-5 5 3M42 91l11 1" fill="none" stroke="#8a7c77" stroke-width="1.5"/><path d="m28 76 5 6m-7-2 6 0m34-5-4 7m1-5 5 3M42 91l11 1" fill="none" transform="translate(1 1)" stroke-width=".9"/><path d="M29 59C21 70 24 89 34 94c8 5 27 6 35-2 8-7 6-26-2-33" fill="none" transform="translate(.9 -.7)" stroke="#b49b88" stroke-width=".8" opacity=".7"/><path d="m30 30 4 1m33-5 4 1m-38 45 4 2m24 16 5-1" fill="none" stroke="#fff8e9" stroke-width="1.1"/></g>
+  </g>
+</svg>

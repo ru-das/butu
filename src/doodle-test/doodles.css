@@ -1,0 +1,43 @@
+/* A test sheet in Butu's existing paper-and-crayon visual language. */
+body { padding: clamp(1rem, 4vw, 3.5rem); }
+main { max-width: 1180px; margin-inline: auto; }
+header { padding-bottom: 2rem; }
+h1 { font-size: clamp(2.7rem, 6vw, 4rem); margin-bottom: .3rem; }
+nav { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+main > section { padding-block: 1.5rem 2rem; border-top: 1px solid var(--butu-peach); scroll-margin-top: 1rem; }
+h2 { margin-top: 0; }
+h3 { margin: .5rem 0 .25rem; }
+figure { margin: 0; min-width: 0; }
+img { display: block; max-width: 100%; height: auto; }
+figcaption p { font-size: 1.1rem; margin-bottom: 0; }
+.bear-strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+.bear-strip img { width: 100%; }
+.note { margin: 1.5rem 0 0; color: var(--butu-ink-soft); font-size: 1.1rem; }
+.pair-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 4rem; }
+.pair h3 { border-bottom: 1px dashed var(--butu-peach); padding-bottom: .35rem; }
+.pair-images { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.pair-images img { width: 150px; margin-inline: auto; }
+.pair-images figcaption { text-align: center; color: var(--butu-ink-soft); }
+.small-strip { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.small-strip img { width: 40px; height: 40px; }
+.overlay-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.paragraph-sample { position: relative; padding: 1.5rem .75rem; min-height: 160px; border-block: 1px dashed var(--butu-peach); }
+.paragraph-sample p { font-size: 1.05rem; line-height: 1.7; margin: 0; }
+.paragraph-sample img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
+details { margin-top: 2rem; }
+summary { cursor: pointer; text-decoration: underline; text-underline-offset: .18em; }
+.dark-paper { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; padding: 1.5rem; background: #363239; }
+.dark-paper img { width: 130px; height: 130px; object-fit: contain; }
+.dark-paper img:last-child { width: 300px; }
+footer { border-top: 1px solid var(--butu-peach); padding-top: 1.5rem; font-size: 1.05rem; }
+footer p { margin-bottom: .25rem; }
+@media (max-width: 760px) {
+  .bear-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .bear-strip img { max-width: 190px; margin-inline: auto; }
+  .pair-grid { gap: 1.5rem; }
+  .overlay-strip { grid-template-columns: 1fr; }
+  .paragraph-sample { min-height: 145px; }
+}
+@media (max-width: 420px) {
+  .pair-grid { grid-template-columns: 1fr; }
+}

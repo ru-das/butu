@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">A lavender flower with a sage stem with faded colour and restless crayon marks</title>
+  <!-- Original Butu artwork, CC0-1.0. See README.md. Static, transparent, self-contained. -->
+  <defs>
+    <pattern id="grain" width="9" height="11" patternUnits="userSpaceOnUse">
+      <path d="m1 2 1.6-.5m3 5 1.1.4M2 10l.8-.4" stroke="#000" stroke-width=".65" opacity=".32"/>
+    </pattern>
+    <mask id="wax"><path fill="#fff" d="M-20-20H660V260H-20Z"/><path fill="url(#grain)" d="M-20-20H660V260H-20Z"/></mask>
+  </defs>
+  <g stroke="#756354" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" mask="url(#wax)">
+<path d="M61 66Q65 91 57 112M61 97Q36 79 34 90 38 103 61 100M62 87Q87 74 89 85 79 96 62 94" fill="#ceddc7"/>
+<path d="M60 43C34 21 36 6 51 9 63 9 64 24 64 27 72 2 92 11 86 27 84 34 79 39 77 41 105 31 113 51 98 60 91 64 83 61 79 60 96 83 76 98 66 81L61 70C47 96 26 82 35 66L43 57C12 61 12 37 30 36 40 34 50 40 60 43Z" fill="#c7c1ce"/>
+<path d="M60 43C34 21 36 6 51 9 63 9 64 24 64 27 72 2 92 11 86 27 84 34 79 39 77 41 105 31 113 51 98 60 91 64 83 61 79 60 96 83 76 98 66 81L61 70C47 96 26 82 35 66L43 57C12 61 12 37 30 36 40 34 50 40 60 43Z" fill="none" stroke="#8b817d" stroke-width=".9" transform="translate(1.2 -.8)" opacity=".65"/>
+<path d="M59 43C44 41 43 61 58 64 72 67 79 45 59 43Z" fill="#d0cbbd"/><path d="m47 44 24 10-26 2 22 6M36 37l11 8m37-23-8 15M81 70l-9-6" fill="none" stroke="#8e7c87" stroke-width="2"/><path d="m23 56 5 3m4 24 7 2m47-45 4 5" fill="none" stroke="#fff8e9" stroke-width="1.1" opacity=".7"/>
+  </g>
+</svg>

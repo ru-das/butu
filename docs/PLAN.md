@@ -84,7 +84,7 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       storage contract and exact Chrome/Firefox manual steps: docs/OFF-TASK-TIMING.md.
       Installed headed-browser focus, navigation, reset and real expiry checks:
       docs/TIMING-CHECKS.md (both browsers verified, 2026-10-30).
-- [ ] 3.3 assets/doodles/: hand-drawn style SVGs, wobbly strokes, pastel crayon look.
+- [x] 3.3 assets/doodles/: hand-drawn style SVGs, wobbly strokes, pastel crayon look.
       Calm set: stars, smiley, small teddy-bear Butu, heart, flower.
       Butu variants: Calm, Waiting, Lonely, Something’s wrong, Abandoned; follow
       the appearance table in SPEC.md, including the returning uneven smile.
@@ -92,6 +92,8 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       plus 3 scribble overlays of increasing intensity.
       Verify: view all variants on one test page; calm set reads as innocent,
       and every stage is recognisably the same teddy bear.
+      16 original CC0 SVGs and an offline test sheet: src/doodle-test/index.html.
+      Inventory, credits and exact Chrome/Firefox checks: assets/doodles/README.md.
 - [ ] 3.4 haunt.css + stages 1–4 using doodles and placeholder text; full restore on return.
       Verify: return to on-task tab → page identical to original.
 - [ ] 3.5 prefers-reduced-motion variants.

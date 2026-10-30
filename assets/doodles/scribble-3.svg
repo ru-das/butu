@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" role="img" aria-labelledby="title">
+  <title id="title">Crayon scribble overlay 3: frantic overlapping scribbles</title>
+  <!-- Original Butu artwork, CC0-1.0. See README.md. Static, transparent, self-contained. -->
+  <defs>
+    <pattern id="grain" width="9" height="11" patternUnits="userSpaceOnUse">
+      <path d="m1 2 1.6-.5m3 5 1.1.4M2 10l.8-.4" stroke="#000" stroke-width=".65" opacity=".32"/>
+    </pattern>
+    <mask id="wax"><path fill="#fff" d="M-20-20H660V260H-20Z"/><path fill="url(#grain)" d="M-20-20H660V260H-20Z"/></mask>
+  </defs>
+  <g stroke="#756354" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" mask="url(#wax)">
+<path d="M12 59C61 2 92 111 143 55S226 9 272 60 361 108 407 53 500 14 548 62 596 83 627 38" fill="none" stroke="#b6a5bf" stroke-width="2.8" opacity="0.8"/>
+<path d="M19 119C85 63 69 172 143 110S197 169 263 113 311 74 365 126 440 164 493 110 564 147 622 98" fill="none" stroke="#a6b7b5" stroke-width="2.1" opacity="0.8"/>
+<path d="M37 26Q64 170 86 36T131 165 175 35 218 163 266 35 311 168 356 33 402 163 450 34 494 165 541 35 587 164" fill="none" stroke="#938995" stroke-width="1.7" opacity="0.8"/>
+<path d="M10 161 115 30 71 174 199 26 150 168 277 28 235 175 355 27 309 169 431 25 388 176 515 29 471 165 608 23 562 174" fill="none" stroke="#b6a5bf" stroke-width="2.8" opacity="0.8"/>
+<path d="M26 86C169 1 27 176 195 64S178 174 335 63 308 180 480 57 441 167 618 65" fill="none" stroke="#a6b7b5" stroke-width="2.1" opacity="0.8"/>
+<path d="M12 41 619 147 18 76 625 111 23 136 612 53 17 111 627 81" fill="none" stroke="#938995" stroke-width="1.7" opacity="0.8"/>
+<path d="M16 182Q311-23 624 178M14 21Q306 217 623 18" fill="none" stroke="#b6a5bf" stroke-width="2.8" opacity="0.8"/>
+<path d="M36 99c-18-82 81-82 57 12s-69-19-10-55 111 86 56 102-52-106 13-104 83 114 23 97 9-111 65-92 62 121 5 93 42-118 91-74 14 112-25 79 64-113 102-64-9 107-39 59 77-98 107-44-23 86-46 38 74-87 101-27" fill="none" stroke="#a6b7b5" stroke-width="2.1" opacity="0.8"/>
+<path d="M17 174 94 21 82 180 175 20 162 177 256 23 240 180 341 20 326 176 419 20 405 181 501 24 484 177 581 20 568 178 624 51" fill="none" stroke="#938995" stroke-width="1.7" opacity="0.8"/>
+  </g>
+</svg>

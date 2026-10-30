@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">Three wonky butter-yellow stars</title>
+  <!-- Original Butu artwork, CC0-1.0. See README.md. Static, transparent, self-contained. -->
+  <defs>
+    <pattern id="grain" width="9" height="11" patternUnits="userSpaceOnUse">
+      <path d="m1 2 1.6-.5m3 5 1.1.4M2 10l.8-.4" stroke="#000" stroke-width=".65" opacity=".32"/>
+    </pattern>
+    <mask id="wax"><path fill="#fff" d="M-20-20H660V260H-20Z"/><path fill="url(#grain)" d="M-20-20H660V260H-20Z"/></mask>
+  </defs>
+  <g stroke="#756354" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" mask="url(#wax)">
+<path d="M43 16 50 37 72 38 55 52 60 75 42 62 22 74 27 51 9 37 33 35Z M88 62 93 75 107 78 96 87 97 101 85 94 72 100 76 85 67 75 82 74Z M88 12 91 21 101 23 93 29 93 39 85 34 77 39 79 29 72 22 82 21Z" fill="#f3e3a4"/>
+<path d="M43 16 50 37 72 38 55 52 60 75 42 62 22 74 27 51 9 37 33 35Z M88 62 93 75 107 78 96 87 97 101 85 94 72 100 76 85 67 75 82 74Z M88 12 91 21 101 23 93 29 93 39 85 34 77 39 79 29 72 22 82 21Z" fill="none" stroke="#f3e3a4" stroke-width=".9" transform="translate(1.2 -.8)" opacity=".65"/>
+<path d="m23 56 5 3m4 24 7 2m47-45 4 5" fill="none" stroke="#fff8e9" stroke-width="1.1" opacity=".7"/>
+  </g>
+</svg>

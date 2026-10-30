@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" role="img" aria-labelledby="title">
+  <title id="title">Crayon scribble overlay 1: a few wandering loops</title>
+  <!-- Original Butu artwork, CC0-1.0. See README.md. Static, transparent, self-contained. -->
+  <defs>
+    <pattern id="grain" width="9" height="11" patternUnits="userSpaceOnUse">
+      <path d="m1 2 1.6-.5m3 5 1.1.4M2 10l.8-.4" stroke="#000" stroke-width=".65" opacity=".32"/>
+    </pattern>
+    <mask id="wax"><path fill="#fff" d="M-20-20H660V260H-20Z"/><path fill="url(#grain)" d="M-20-20H660V260H-20Z"/></mask>
+  </defs>
+  <g stroke="#756354" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" mask="url(#wax)">
+<path d="M12 59C61 2 92 111 143 55S226 9 272 60 361 108 407 53 500 14 548 62 596 83 627 38" fill="none" stroke="#b6a5bf" stroke-width="2.8" opacity="0.62"/>
+<path d="M19 119C85 63 69 172 143 110S197 169 263 113 311 74 365 126 440 164 493 110 564 147 622 98" fill="none" stroke="#a6b7b5" stroke-width="2.1" opacity="0.62"/>
+  </g>
+</svg>
