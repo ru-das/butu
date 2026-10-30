@@ -4,7 +4,11 @@
 domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 Three synthesized sine notes (C5, E5, G5), 1.7 seconds, mono MP3 at 64 kbps.
 No samples, external recording, voice service or API characters used.
-This is a playback probe, not the final ElevenLabs sound pack.
+This is a playback probe, not the final voice/sound pack. The free-profile
+revision uses a locally composed music box; standard ElevenLabs TTS and optional
+free-quota SFX have separate noncommercial/attribution terms, not this CC0 licence.
+The V1 previews live in `docs/voice-previews/`; their credit/terms and full audit
+are in [voice-design.md](../../docs/voice-design.md). V2–V4 will add runtime assets.
 
 Regenerate with the locally installed FFmpeg using `sh scripts/audio/test-chime.sh`.
 FFmpeg is build-time tooling only; the extension needs no encoder or new dependency.

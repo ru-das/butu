@@ -60,16 +60,37 @@ export const RETURN_FADE_MS = 2000;
 // Retain only the most recent diary sessions locally (F8).
 export const DIARY_MAX_SESSIONS = 50;
 
-// Filled with the chosen ElevenLabs Voice Design ID in task V1.
-export const ELEVENLABS_VOICE_ID = null;
+// Existing premade adult voice, selected only after a successful free-plan TTS check.
+export const ELEVENLABS_VOICE_ID = 'EXAVITQu4vr4xnSDxMaL';
+export const ELEVENLABS_TTS_MODEL_ID = 'eleven_multilingual_v2';
+export const ELEVENLABS_OUTPUT_FORMAT = 'mp3_44100_128';
+// Default voices retire after 2026-12-31; never silently replace with paid Library voices.
+export const ELEVENLABS_VOICE_EXPIRES_AT_MS = Date.UTC(2027, 0, 1);
+// Account-listed premade candidates; not Voice Library or newly designed voices.
+export const ELEVENLABS_VOICE_CANDIDATES = [
+    { id: 'EXAVITQu4vr4xnSDxMaL', name: 'Sarah', category: 'premade' },
+    { id: 'XrExE9yKIg1WjnnlVkGX', name: 'Matilda', category: 'premade' },
+    { id: 'pFZP5JQG7iQjIQuC4Bku', name: 'Lily', category: 'premade' },
+];
+export const ELEVENLABS_VOICE_SETTINGS = {
+    stability: 0.6, similarity_boost: 0.75, style: 0.2, speed: 0.85,
+    use_speaker_boost: true,
+};
+export const ELEVENLABS_BUDGET = {
+    requestChars: 300,
+    sessionChars: 600,
+    // Conservative local cap; credits are shared with other tools/account activity.
+    rolling31DayChars: 6000,
+    previewChars: 600,
+};
 // Minimum number of generic voiced lines bundled by task V4 (F7).
 export const BASE_WHISPER_MIN_LINES = 15;
 // Maximum number of generic voiced lines bundled by task V4 (F7).
 export const BASE_WHISPER_MAX_LINES = 20;
 // Minimum personalised lines prepared once at session start (F7).
-export const PERSONALISED_VOICE_MIN_LINES = 4;
+export const PERSONALISED_VOICE_MIN_LINES = 3;
 // Maximum personalised lines prepared once at session start (F7).
-export const PERSONALISED_VOICE_MAX_LINES = 5;
+export const PERSONALISED_VOICE_MAX_LINES = 3;
 // A whisper may play only once in each page visit (F7).
 export const WHISPER_PLAYS_PER_VISIT = 1;
 // Ambient sound starts enabled unless the user has muted it (F7).

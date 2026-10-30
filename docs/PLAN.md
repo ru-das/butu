@@ -1,6 +1,8 @@
 # Plan
 
 Work top to bottom. One task per request. Each task lists how to verify it.
+2026-10-30: user explicitly authorized the free-tier audio revision across tasks;
+V1 is replaced and later audio requirements below are updated, not marked implemented.
 Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
 
 ## Phase 0: Prove the risky parts (do first)
@@ -121,27 +123,43 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       docs/POSSESSION.md and docs/possession-checks.json.
 
 ## Phase 3.5: Butu's Voice (primary prize target)
-- [ ] V1 scripts/audio/design-voice: create Butu's voice via ElevenLabs Voice Design
-      (soft, sing-song, too sweet, nursery-rhyme narrator; check terms before
-      anything childlike). Generate 3+ previews, pick one. Save prompt, previews and
-      chosen voice ID to docs/voice-design.md; put the voice ID in src/config.js.
-- [ ] V2 scripts/audio/music-box: generate a short music box lullaby with ElevenLabs
-      Music, then 4 stage variants (in tune → slower → detuned → winding down and
-      stopping). Variants may be produced by re-generation or by local audio
-      processing; document which in docs/voice-design.md.
+- [x] V1 (revised) scripts/audio/voice-preview: generate three standard-TTS previews
+      from existing adult premade voices on a verified free account; select one
+      locally, without creating a voice. Sarah configured after live TTS success;
+      Sarah/Matilda/Lily MP3s saved, 435 characters/credits total. Free-profile
+      model/format/budgets/expiry in config, shared budget guard and tests, sources,
+      licence limits and exact both-browser listening checks: docs/voice-design.md.
+      Subjective listening review remains manual; no custom-voice claim.
+- [ ] V2 scripts/audio/music-box: compose an original short music box lullaby and
+      render locally, then produce 4 stage variants (in tune → slower → detuned →
+      winding down and stopping). No Music API or downloaded composition. Bundle
+      the files with project asset credits; document the process in docs/voice-design.md.
 - [ ] V3 scripts/audio/sfx: generate sound effects with the Sound Effects API
-      (crayon scribbling, happy return chime). Record prompts in docs/voice-design.md.
+      (crayon scribbling, happy return chime), at most two short build-time requests
+      after checking free quota. Stop on any restriction; use locally synthesized
+      effects as fallback. No runtime SFX calls. Record quota, prompts, source and
+      ElevenLabs attribution/noncommercial terms in docs/voice-design.md.
 - [ ] V4 scripts/audio/base-pack: voice 15–20 generic Butu lines; save to
-      assets/audio/ with a manifest listing line text per clip.
+      assets/audio/ with a manifest listing line text per clip. Use the verified
+      premade voice and standard TTS only; check remaining free quota before each
+      request, no retries. Include source/attribution and noncommercial terms.
 - [ ] V5 src/voice.js: stage-driven playback queue in the model host
       (crossfade music box variants, each whisper once per page visit,
       chime + fade out on return).
       Verify: walk an off-task page through all stages and back, in both browsers.
 - [ ] V6 Session-start personalised TTS: fill voice-line templates with task text
-      locally, send ONLY those lines to ElevenLabs, cache audio for the session,
+      locally (three lines), send ONLY those lines to standard ElevenLabs TTS,
+      cache audio for the session,
       clear on session end. Fallback to base pack on any error or missing key.
+      Enforce src/lib/voice-budget.js: 300 chars/request, 600/session, 6000 reserved
+      chars in a rolling 31-day window; persist reservations before dispatch,
+      keep uncertain/failed calls reserved, never auto-retry. Expired/unsupported
+      voice, oversized task batch or exhausted allowance → bundled pack, no calls.
+      No subscription/list-voices requests at runtime, no paid substitutions.
       Verify: devtools network tab shows only those TTS calls, containing only task text.
-- [ ] V7 Log ElevenLabs characters used per session; expose in the diary settings page.
+- [ ] V7 Log submitted/reserved characters and reported usage separately per session;
+      expose remaining local budget and bundled fallback in diary settings. Do not
+      claim a local count is the provider's remaining shared account quota.
 
 ## Phase 4: Diary and finish
 - [ ] 4.1 Session stats saved to storage.local (last 50 sessions).
@@ -150,7 +168,8 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       Butu drawing chosen by session quality (happy → uneasy → wrong).
 - [ ] 4.4 Diary: "Places you left me for" (domains in handwriting).
 - [ ] 4.5 Diary settings: allowlist/blocklist, ElevenLabs key, volume, mute,
-      "test Butu's voice", characters used.
+      "test Butu's voice" (bundled clip, no API test call), reserved/submitted
+      characters, local allowance/fallback status and ElevenLabs audio attribution.
 - [ ] 4.6 Wire embedding-host release + audio cache clear into session end
       (verify memory drops; the standalone worker release API exists from 0.4a).
 - [ ] 4.7 First-run download progress UI ("Butu is waking up…").
@@ -163,9 +182,13 @@ STOP after Phase 0 and report results (times, memory, any blockers).
 ## Demo and write-up support
 - [ ] D1 Record the demo: a real work session with sound on, showing the calm
       start, the drift, every stage, the return, and the diary.
-- [ ] D2 Narrate the demo intro/outro in Butu's voice (ElevenLabs).
-- [ ] D3 Collect for the write-up: voice design prompt and previews, music and
-      sound prompts, characters used and cost, memory and timing numbers from Phase 0,
+- [ ] D2 Narrate the demo intro/outro using the configured existing adult voice
+      and standard TTS within remaining free quota; no Voice Design/Music calls.
+      Include elevenlabs.io in the published audio/video title and credit free-plan
+      output as noncommercial. Use bundled narration if no eligible voice remains.
+- [ ] D3 Collect for the write-up: premade voice previews and settings, local music
+      composition and SFX prompts, free-plan attribution, characters used and cost,
+      voice retirement/account limitations, memory and timing numbers from Phase 0,
       before/after screenshots of a page at each stage.
 
 ## Stretch (only if everything above is done)

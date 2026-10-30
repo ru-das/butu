@@ -1,0 +1,111 @@
+#!/usr/bin/env node
+// Build-time only; uses standard TTS, never Voice Design, Music or Voice Library.
+const fs = require('node:fs/promises');
+const path = require('node:path');
+const { pathToFileURL } = require('node:url');
+const root = path.resolve(__dirname, '../..');
+const text = 'Hello, little star. I saved a quiet place beside me. We can take our work one tiny step at a time. I will still be right here when you come back.';
+
+async function request(endpoint, body) {
+    const response = await fetch(`https://api.elevenlabs.io${endpoint}`, {
+        method: body ? 'POST' : 'GET',
+        headers: { 'xi-api-key': process.env.ELEVENLABS_API_KEY, ...(body ? { 'Content-Type': 'application/json' } : {}) },
+        ...(body ? { body: JSON.stringify(body) } : {}),
+        redirect: 'error', signal: AbortSignal.timeout(120000),
+    });
+    if (!response.ok) {
+        const failure = await response.json().catch(() => null);
+        const code = failure?.detail?.status;
+        const reason = typeof code === 'string' && /^[a-z_]{1,80}$/.test(code) ? ` (${code})` : '';
+        throw new Error(`ElevenLabs HTTP ${response.status}${reason}; stopped without retry or paid-feature fallback.`);
+    }
+    return response;
+}
+
+async function main() {
+    const [command, directory, choice, ...extra] = process.argv.slice(2);
+    if (!command || command === '--help') {
+        console.log('Usage: scripts/audio/voice-preview generate <new-directory>\n       scripts/audio/voice-preview select <directory> <preview-number>\nGenerate uses free-plan quota for three standard-TTS previews. Select is local and creates no voice.');
+        return;
+    }
+    if (!['generate', 'select'].includes(command) || !directory || extra.length ||
+        (command === 'generate' && choice) || (command === 'select' && !/^[1-9]\d*$/.test(choice || ''))) {
+        throw new Error('Invalid arguments; use --help.');
+    }
+    const config = await import(pathToFileURL(path.join(root, 'src/config.js')));
+    const output = path.resolve(directory);
+    const manifestPath = path.join(output, 'manifest.json');
+    const save = value => fs.writeFile(manifestPath, `${JSON.stringify(value, null, 2)}\n`);
+    if (command === 'select') {
+        const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
+        const preview = manifest.previews.find(item => item.number === Number(choice) && item.status === 'saved');
+        if (!preview || !config.ELEVENLABS_VOICE_CANDIDATES.some(voice => voice.id === preview.voice_id)) throw new Error('Select a successfully saved premade preview.');
+        if (manifest.selection) throw new Error('Already selected; reuse the voice ID.');
+        const configPath = path.join(root, 'src/config.js');
+        const source = await fs.readFile(configPath, 'utf8');
+        if (!source.includes('export const ELEVENLABS_VOICE_ID = null;')) throw new Error('A voice is already configured.');
+        await fs.writeFile(configPath, source.replace('export const ELEVENLABS_VOICE_ID = null;', `export const ELEVENLABS_VOICE_ID = '${preview.voice_id}';`));
+        manifest.selection = { preview: preview.number, voice_id: preview.voice_id, name: preview.name, basis: 'adult voice metadata; listening review pending' };
+        await save(manifest);
+        console.log(`Selected ${preview.name} locally; no API call or new voice slot.`);
+        return;
+    }
+    try { process.loadEnvFile(path.join(root, '.env')); }
+    catch (error) { if (error.code !== 'ENOENT') throw new Error('Could not load project .env.'); }
+    if (!process.env.ELEVENLABS_API_KEY?.trim()) throw new Error('Set ELEVENLABS_API_KEY in the environment or gitignored project .env.');
+    await fs.mkdir(output, { recursive: false }); // Refuse overwrites before any API call.
+    const manifest = { created_at: new Date().toISOString(), provider: 'ElevenLabs',
+        model_id: config.ELEVENLABS_TTS_MODEL_ID, output_format: config.ELEVENLABS_OUTPUT_FORMAT,
+        voice_settings: config.ELEVENLABS_VOICE_SETTINGS, text,
+        attribution: 'elevenlabs.io', usage: 'noncommercial; ElevenLabs free-plan terms apply',
+        reserved_characters: 0, previews: [], status: 'checking-free-account' };
+    await save(manifest);
+    try {
+        const subscription = await (await request('/v1/user/subscription')).json();
+        if (subscription.tier !== 'free' || subscription.can_extend_character_limit !== false) throw new Error('This tool requires a free account with overages disabled.');
+        if (![subscription.character_limit, subscription.character_count].every(value => Number.isSafeInteger(value) && value >= 0)) throw new Error('Invalid account quota; no speech requested.');
+        const available = Math.max(0, subscription.character_limit - subscription.character_count);
+        manifest.account = { tier: subscription.tier, available_characters_before: available,
+            reset_unix: subscription.next_character_count_reset_unix };
+        const { voiceBatchBudget } = await import(pathToFileURL(path.join(root, 'src/lib/voice-budget.js')));
+        const candidates = config.ELEVENLABS_VOICE_CANDIDATES;
+        const budget = voiceBatchBudget(candidates.map(() => text), {
+            availableChars: available, batchLimit: config.ELEVENLABS_BUDGET.previewChars,
+        });
+        if (!budget.allowed) throw new Error('Insufficient free quota or preview budget; no speech requested.');
+        const voices = await (await request('/v2/voices?page_size=100&category=premade')).json();
+        if (!candidates.every(candidate => voices.voices?.some(voice => voice.voice_id === candidate.id && voice.category === 'premade'))) {
+            throw new Error('Premade candidates unavailable for this account; use bundled audio. No Voice Library replacement.');
+        }
+        for (const [index, candidate] of candidates.entries()) {
+            const preview = { number: index + 1, voice_id: candidate.id, name: candidate.name,
+                file: `preview-${index + 1}.mp3`, submitted_characters: text.length, status: 'request-started' };
+            manifest.previews.push(preview);
+            manifest.reserved_characters += text.length; // Keep reservation on failures/timeouts.
+            manifest.status = 'generating';
+            await save(manifest);
+            const response = await request(`/v1/text-to-speech/${encodeURIComponent(candidate.id)}?output_format=${config.ELEVENLABS_OUTPUT_FORMAT}`, {
+                text, model_id: config.ELEVENLABS_TTS_MODEL_ID, voice_settings: config.ELEVENLABS_VOICE_SETTINGS,
+            });
+            if (!response.headers.get('content-type')?.toLowerCase().startsWith('audio/')) throw new Error('Expected an audio response.');
+            const audio = Buffer.from(await response.arrayBuffer());
+            if (!audio.length || audio.length > 10_000_000) throw new Error('Invalid preview audio size.');
+            await fs.writeFile(path.join(output, preview.file), audio, { flag: 'wx' });
+            Object.assign(preview, { status: 'saved', bytes: audio.length, reported_character_cost: response.headers.get('character-cost') });
+            await save(manifest);
+            console.log(`Saved ${candidate.name}: ${preview.file} (${text.length} submitted characters).`);
+        }
+        manifest.status = 'ready-for-listening';
+        await save(manifest);
+    } catch (error) {
+        manifest.status = 'stopped';
+        // Only known local errors are emitted; never save a service body or key.
+        manifest.error = error.message.replaceAll(process.env.ELEVENLABS_API_KEY, '[REDACTED]');
+        await save(manifest);
+        throw error;
+    }
+}
+main().catch(error => {
+    console.error(error.message.replaceAll(process.env.ELEVENLABS_API_KEY || '\0', '[REDACTED]'));
+    process.exitCode = 1;
+});

@@ -52,9 +52,12 @@ Settled. Do not reopen without asking the user first.
 11. **Plain JS, no framework, no bundler.**
     Smaller surface, faster iteration, fewer extension CSP problems.
 
-12. **ElevenLabs is the primary prize target and a core feature.**
-    Butu's voice (Voice Design), music box lullaby (Music), sound effects,
-    a bundled base whisper pack, and opt-in personalised lines. Only the user's
+12. **ElevenLabs is the primary prize target and a core feature (free-tier revision, 2026-10-30).**
+    Standard TTS with an account-verified premade adult voice, sound effects
+    within free quota, a bundled base whisper pack, and opt-in personalised
+    lines. The music box is composed and rendered locally. Voice Design, cloning,
+    paid Voice Library voices and Music API are removed at the user's request.
+    Only the user's
     own task text is ever sent, once per session; page content and browsing
     history never are. Everything degrades gracefully to bundled audio without a key.
 
@@ -77,9 +80,9 @@ Settled. Do not reopen without asking the user first.
     dark and sets Butu apart from other entries. No gore, no jump scares,
     no screaming. Butu is lonely, not evil.
 
-17. **Butu's voice is an overly gentle adult voice by default.**
-    Soft, sing-song, too sweet, like a nursery-rhyme narrator. Anything childlike
-    only if ElevenLabs' terms clearly allow it.
+17. **Butu uses an existing gentle adult voice, never a child imitation.**
+    Standard TTS settings and authored lines aim for a soft, sweet narrator.
+    No custom voice design; the exact nursery-rhyme persona is no longer promised.
 
 18. **All assets bundled locally.**
     Fonts, doodles and audio ship inside the extension. Loading from CDNs or
@@ -92,3 +95,18 @@ Settled. Do not reopen without asking the user first.
 
 20. **Doodles are static SVGs, not generated images.**
     Predictable, tiny, reversible, and no image model needed at runtime.
+
+21. **Free-tier compatibility, approved by the user on 2026-10-30.**
+    Keep the free account, no SDK dependency or paid-service requirement. Live
+    standard TTS succeeded for Sarah, Matilda and Lily: 435 total characters/credits.
+    Sarah is the configured adult narrator based on metadata; listening review
+    remains a manual check. Premade Default voices are account-dependent and
+    retire after 2026-12-31; bundles must keep the app usable without API access.
+    Never switch automatically to a paid replacement voice. Model, format,
+    voice IDs, expiry and character budgets live in src/config.js. Reserve quota
+    before sending, including uncertain failures. Runtime V6 must enforce the
+    shared budget helper and persist a rolling 31-day reservation ledger; no
+    retries, overages or top-ups. Account/subscription discovery is build-time
+    only, preserving the session-start-TTS-only runtime network boundary.
+    Free-plan output is noncommercial with attribution; code and generated audio
+    have separate licensing. Sources and remaining tasks: docs/voice-design.md.

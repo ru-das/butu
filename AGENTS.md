@@ -12,6 +12,11 @@ All text AI runs locally in the browser.
 
 Primary prize target: Best Use of ElevenLabs. Butu's voice, the music box and the
 sound design are core features, not extras. Other partner integrations are optional.
+User-approved free-tier revision (2026-10-30): no Voice Design, voice cloning,
+paid Voice Library voices or Music API. Use standard TTS with verified premade
+adult voices where the account permits it, and a locally composed music box.
+Free-plan output is noncommercial and requires ElevenLabs attribution; see
+docs/voice-design.md. Always keep bundled audio as the fallback.
 
 ## Hard constraints
 - Privacy: network requests are allowed only for
@@ -69,7 +74,7 @@ sound design are core features, not extras. Other partner integrations are optio
     src/templates.js           authored taunts, voice-line templates, stage-4 lines, diary captions
     src/voice.js               session-start personalised TTS, audio cache, stage playback queue
     vendor/                    Transformers.js + ONNX Runtime WASM files
-    scripts/audio/             build-time: voice design, music box, sound effects, base whisper pack
+    scripts/audio/             build-time: premade voice previews, local music box, sound effects, base pack
     assets/audio/              generated clips bundled with the extension
     assets/doodles/            hand-drawn style SVGs (calm and corrupted variants)
     assets/fonts/              open-licence handwriting fonts (with licence files)
@@ -81,7 +86,9 @@ sound design are core features, not extras. Other partner integrations are optio
 - Unit tests: `node --test tests/*.test.js`
 - Firefox: about:debugging → This Firefox → Load Temporary Add-on → dist/firefox/manifest.json
 - Chrome: chrome://extensions → Developer mode → Load unpacked → dist/chrome/
-- Audio generation (build time only): scripts in scripts/audio/, need ELEVENLABS_API_KEY
+- ElevenLabs audio generation (build time only): scripts in scripts/audio/, need ELEVENLABS_API_KEY
+- Voice previews: scripts/audio/voice-preview generate <new-output-directory>
+- Local music/audio processing needs no ElevenLabs key or network.
 
 ## Working rules
 - Do one task from docs/PLAN.md per request. Tick its box when done.
@@ -94,3 +101,6 @@ sound design are core features, not extras. Other partner integrations are optio
 - Don't add dependencies, permissions, or network hosts without asking.
 - Include licence/credit info for every bundled font and asset.
 - Log ElevenLabs characters used per session so real costs can be reported.
+- Use the free-profile budgets in src/config.js and src/lib/voice-budget.js.
+  Reserve submitted characters before dispatch; no automatic retries, overages,
+  top-ups or paid-feature substitutions. Missing/expired voice or quota → bundled audio.
