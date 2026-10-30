@@ -147,8 +147,11 @@ STOP after Phase 0 and report results (times, memory, any blockers).
 - [ ] V4 scripts/audio/base-pack: voice 15–20 generic Butu lines; save to
       assets/audio/ with a manifest listing line text per clip. User-approved
       manual website workflow supplied 15 companion clips in assets/audio/voice/;
-      all decode, intended tagged scripts and credits are recorded. Finish the
-      source metadata/listening check when reaching this task after V2/V3.
+      all decode, intended tagged scripts and credits are recorded. V4 now maps
+      all 15 to BASE_VOICE_LINES in templates.js; scripts/audio/base-pack check
+      verifies text, hashes, format and decoding offline with zero API usage.
+      Source voice/model/plan and user listening confirmation remain pending;
+      leave unchecked until those final checks are resolved.
       Existing premade API tooling remains a separate fallback. For any further
       API generation check remaining free quota before each request, no retries.
       Include source/attribution and noncommercial terms.

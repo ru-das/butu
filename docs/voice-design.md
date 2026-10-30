@@ -362,3 +362,43 @@ restriction. No Voice Design previews or voice were created. Local diagnostic
 evidence stays in `.local-reports/voice-design-attempts/` (gitignored).
 The abandoned design script, design tests and design-model config have been
 removed; this document keeps the reason rather than a paid setup instruction.
+
+## V4: supplied companion base pack
+
+The existing 15 original MP3 exports in `assets/audio/voice/` are the intended
+Butu voice (decision 17), distinct from the Sarah API candidate. V4 makes no
+new generation requests, submits zero characters and changes none of the audio.
+Original website-generation credits/characters, voice ID, model and plan remain
+unknown and are explicitly null in the manifest; no account quota is inferred.
+Conservative ElevenLabs noncommercial/attribution terms remain in force.
+
+All 15 generic scripts are now authored in `BASE_VOICE_LINES` in
+`src/templates.js`, keyed by `butu-01` through `butu-15`. The
+[manifest](../assets/audio/voice/manifest.json) maps each clip to its template
+and records intended plain text plus tagged input. Intended text is not a
+verified transcript. Run `scripts/audio/base-pack check` for offline template,
+count, hash, format and full-decode verification. It never edits the recordings.
+Voice/model/plan and listening confirmation are still required to close V4.
+
+Verification: all 36 unit tests pass (the build test required running outside
+the sandbox after a child-shell EPERM). Both builds pass the pack checker;
+changed script text and a corrupted MP3 are correctly rejected in temporary
+fixtures. `git diff --check` passes. Browser listening is still pending.
+
+Exact manual checks, for **each browser separately**:
+
+1. Run `./build.sh`. In Chrome use Ctrl+O to open
+   `/home/rupam/butu/dist/chrome/assets/audio/voice/butu-01.mp3` through
+   `butu-15.mp3`; in Firefox open the corresponding files under
+   `/home/rupam/butu/dist/firefox/assets/audio/voice/`.
+2. Press Play on every clip. Compare every word against `intended_text` in
+   the manifest. Confirm tags are acted rather than spoken, a consistent sweet
+   companion voice, complete endings and no glitches or harsh peaks.
+3. Run `scripts/audio/base-pack check dist/chrome/assets/audio/voice` and
+   `scripts/audio/base-pack check dist/firefox/assets/audio/voice` to verify
+   each built pack and manifest match the source templates and original hashes.
+4. Chrome: reload `dist/chrome/` in `chrome://extensions`; Firefox:
+   `about:debugging` → This Firefox → Load Temporary Add-on →
+   `dist/firefox/manifest.json` (or Reload). In each browser open the popup,
+   start then stop a session and check the extension console for errors.
+   Automatic stage speech belongs to V5; this asset task adds no runtime calls.

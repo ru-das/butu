@@ -8,7 +8,7 @@
   "model_id": null,
   "generation_plan": null,
   "reported_characters_or_credits": null,
-  "usage_notes": "Voice/model/plan and actual usage await user confirmation. Intended input is recorded from the supplied script, not recovered from the MP3s; do not treat it as a verified transcript or billing record.",
+  "usage_notes": "Voice/model/plan and actual usage await user confirmation. Intended input is recorded from the supplied script, not recovered from the MP3s; do not treat it as a verified transcript or billing record. V4 validation makes zero API requests; original website-generation usage remains unknown.",
   "licence_notes": "Apply ElevenLabs Free-plan noncommercial and attribution restrictions conservatively until generation plan is confirmed. Not CC0; no source-code licence applies to these recordings.",
   "attribution": "elevenlabs.io",
   "licence_reference": "https://elevenlabs.io/docs/help-center/legal/can-i-publish-the-content-i-generate-on-the-platform",
@@ -28,7 +28,8 @@
       "sha256": "07f1cc55b942066c9b05354b7b91cf83fe89b92e1162872a0b664d04fd96a7a5",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-01"
     },
     {
       "file": "butu-02.mp3",
@@ -39,7 +40,8 @@
       "sha256": "af12176cce2eac910b6973f2a99232c9224226345beeea33ba07e01f5043c198",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-02"
     },
     {
       "file": "butu-03.mp3",
@@ -50,7 +52,8 @@
       "sha256": "3dfdf172ea107ec0669ee57e30e6cd3a104e3139175ec4f4907e37328d06a5b3",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-03"
     },
     {
       "file": "butu-04.mp3",
@@ -61,7 +64,8 @@
       "sha256": "fe6b1c927b800b1be7a3c26711becb1a30dafeaba1d307d7bef6deee3ace4eba",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-04"
     },
     {
       "file": "butu-05.mp3",
@@ -72,7 +76,8 @@
       "sha256": "e50c1980e480cb682e8a8bbf5dcc6b51ba15e2e65de11d768232400a69694084",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-05"
     },
     {
       "file": "butu-06.mp3",
@@ -83,7 +88,8 @@
       "sha256": "5ce9cd375dd8f087d4f9a75b2af882e480ae39b3ea7734c44ea322c4acf788b0",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-06"
     },
     {
       "file": "butu-07.mp3",
@@ -94,7 +100,8 @@
       "sha256": "d4bf8915c6e0c16a7af9493db76e3e9edcdd408e2ef06e266842a38ea172b3ae",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-07"
     },
     {
       "file": "butu-08.mp3",
@@ -105,7 +112,8 @@
       "sha256": "d1078ec6e3969d6985c39bf93b1f67dcd49f24078bbc3a39dadf2c1e3f805b5d",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-08"
     },
     {
       "file": "butu-09.mp3",
@@ -116,7 +124,8 @@
       "sha256": "390b675abca572e58a4ffc215fd85aaa520da10edb895d2eda22f1d59c6dc44b",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-09"
     },
     {
       "file": "butu-10.mp3",
@@ -127,7 +136,8 @@
       "sha256": "1cd94ebd7fa059f2d7ac65fa85c38e32adbb7fdd4a001d38281a499fa5a56828",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-10"
     },
     {
       "file": "butu-11.mp3",
@@ -138,7 +148,8 @@
       "sha256": "eb6d982b81e69e0191b8103783312ee31ba42ca6a99a94582f6f4ef2f3c15c16",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-11"
     },
     {
       "file": "butu-12.mp3",
@@ -149,7 +160,8 @@
       "sha256": "f96a9e862fff5720614762c19a048a71e03d02f042d31e6fc81994c6b73e2cae",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-12"
     },
     {
       "file": "butu-13.mp3",
@@ -160,7 +172,8 @@
       "sha256": "0f95fc62fb3900a9a46fb650da08966479193f13b5bfb3d9165ed1371acf8535",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-13"
     },
     {
       "file": "butu-14.mp3",
@@ -171,7 +184,8 @@
       "sha256": "313b0e2cbbe9ac8b8a0e851879a9ed5cff2e1303360e3affc2f1e937feecb9c7",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-14"
     },
     {
       "file": "butu-15.mp3",
@@ -182,7 +196,12 @@
       "sha256": "424d8aa3a73a4505c6f81d45104c8e49a4c7e66c36c365f9babf2d8dbccc5164",
       "codec": "mp3",
       "sample_rate_hz": 44100,
-      "channels": 1
+      "channels": 1,
+      "template_id": "butu-15"
     }
-  ]
+  ],
+  "template_source": "src/templates.js#BASE_VOICE_LINES",
+  "verification_command": "scripts/audio/base-pack check",
+  "v4_api_requests": 0,
+  "v4_submitted_characters": 0
 }

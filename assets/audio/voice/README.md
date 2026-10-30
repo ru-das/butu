@@ -20,9 +20,20 @@ published audio/video titles under the current
 [publication rules](https://elevenlabs.io/docs/help-center/legal/can-i-publish-the-content-i-generate-on-the-platform).
 The original test chime has separate CC0 credits in [../README.md](../README.md).
 
-This is asset intake following the user's manual-generation workflow. It does
-not complete playback integration: V2/V3 remain next in plan order, V4 still
-needs its final pack/source check, and V5 wires stage playback. The configured
+V4 reuses these original exports without new generation, editing or normalization.
+Their 15 generic scripts now live in `BASE_VOICE_LINES` in `src/templates.js`;
+each manifest entry names its matching template ID. Run the offline check:
+
+```sh
+scripts/audio/base-pack check
+```
+
+This verifies count, unique IDs, exact intended-text/template agreement, byte
+sizes, SHA-256 hashes, MP3 format/duration and full FFmpeg decoding. It makes
+zero network requests and submits zero characters. Original website generation
+usage remains unknown. FFmpeg/FFprobe are existing build-time tools only.
+V2/V3 are complete; V4's voice/model/plan and subjective transcript confirmation
+still await the user. V5 wires stage playback. The configured
 Sarah API voice is separate from this pack and has not been changed to an
 unknown custom voice ID.
 

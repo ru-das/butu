@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+// Offline verification of the manually exported Butu voice; never synthesizes or edits audio.
+const fs = require('node:fs');
+const path = require('node:path');
+const assert = require('node:assert/strict');
+const { createHash } = require('node:crypto');
+const { spawnSync } = require('node:child_process');
+const { pathToFileURL } = require('node:url');
+const root = path.resolve(__dirname, '../..');
+
+async function main() {
+    const [command, directory = path.join(root, 'assets/audio/voice'), ...extra] = process.argv.slice(2);
+    if (!command || command === '--help') {
+        console.log('Usage: scripts/audio/base-pack check [pack-directory]\nChecks manual exports against templates, hashes, format and full decoding. No network calls.');
+        return;
+    }
+    assert.ok(command === 'check' && !extra.length, 'Invalid arguments; use --help.');
+    const { BASE_VOICE_LINES } = await import(pathToFileURL(path.join(root, 'src/templates.js')));
+    const manifest = JSON.parse(fs.readFileSync(path.join(directory, 'manifest.json'), 'utf8'));
+    assert.ok(manifest.clips.length >= 15 && manifest.clips.length <= 20, 'Expected 15–20 clips.');
+    assert.equal(manifest.clips.length, BASE_VOICE_LINES.length, 'Every template needs a recording.');
+    assert.equal(new Set(manifest.clips.map(clip => clip.template_id)).size, manifest.clips.length, 'Duplicate template IDs.');
+    for (const clip of manifest.clips) {
+        const template = BASE_VOICE_LINES.find(line => line.id === clip.template_id);
+        assert.ok(template, `${clip.file}: missing template`);
+        assert.equal(clip.intended_text, template.text, `${clip.file}: template text differs`);
+        assert.ok(!/[{}]/u.test(template.text), 'Generic recordings cannot contain placeholders.');
+        assert.equal(clip.file, `${template.id}.mp3`);
+        const file = path.join(directory, clip.file);
+        const bytes = fs.readFileSync(file);
+        assert.equal(bytes.length, clip.bytes, `${clip.file}: size differs`);
+        assert.equal(createHash('sha256').update(bytes).digest('hex'), clip.sha256, `${clip.file}: hash differs`);
+        const probe = spawnSync('ffprobe', ['-v', 'error', '-show_streams', '-show_format', '-of', 'json', file], { encoding: 'utf8' });
+        assert.equal(probe.status, 0, `${clip.file}: ffprobe failed: ${probe.stderr || probe.error}`);
+        const metadata = JSON.parse(probe.stdout);
+        assert.equal(metadata.streams.length, 1);
+        const stream = metadata.streams[0];
+        assert.equal(stream.codec_name, clip.codec);
+        assert.equal(Number(stream.sample_rate), clip.sample_rate_hz);
+        assert.equal(stream.channels, clip.channels);
+        assert.ok(Math.abs(Number(metadata.format.duration) - clip.duration_secs) < 0.01, `${clip.file}: duration differs`);
+        const decode = spawnSync('ffmpeg', ['-v', 'error', '-xerror', '-i', file, '-f', 'null', '-'], { encoding: 'utf8' });
+        assert.equal(decode.status, 0, `${clip.file}: decode failed: ${decode.stderr || decode.error}`);
+    }
+    console.log(`Verified ${manifest.clips.length} clips: templates, hashes, format and full decoding. Zero API calls.`);
+    console.log(`Listening review: ${manifest.validation.transcript_and_subjective_listening}. Voice/model/plan: ${manifest.voice_id || 'unknown'}/${manifest.model_id || 'unknown'}/${manifest.generation_plan || 'unknown'}.`);
+}
+
+main().catch(error => { console.error(error.message); process.exitCode = 1; });

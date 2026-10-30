@@ -1,3 +1,68 @@
+// Generic bundled speech, matching the user-provided companion recordings.
+// IDs correspond to assets/audio/voice/manifest.json; no personal data or placeholders.
+export const BASE_VOICE_LINES = [
+    {
+        "id": "butu-01",
+        "text": "Hello, little star. Shall we begin?"
+    },
+    {
+        "id": "butu-02",
+        "text": "One tiny step at a time."
+    },
+    {
+        "id": "butu-03",
+        "text": "I like keeping you company."
+    },
+    {
+        "id": "butu-04",
+        "text": "I saved your place beside me."
+    },
+    {
+        "id": "butu-05",
+        "text": "Are we taking a little break?"
+    },
+    {
+        "id": "butu-06",
+        "text": "Our work is still waiting."
+    },
+    {
+        "id": "butu-07",
+        "text": "I thought we were doing this together."
+    },
+    {
+        "id": "butu-08",
+        "text": "It gets very quiet when you leave."
+    },
+    {
+        "id": "butu-09",
+        "text": "I am keeping your place warm."
+    },
+    {
+        "id": "butu-10",
+        "text": "Did you forget something?"
+    },
+    {
+        "id": "butu-11",
+        "text": "I counted the minutes for you."
+    },
+    {
+        "id": "butu-12",
+        "text": "Your chair is still here."
+    },
+    {
+        "id": "butu-13",
+        "text": "I knew you would come back."
+    },
+    {
+        "id": "butu-14",
+        "text": "There you are. That feels better."
+    },
+    {
+        "id": "butu-15",
+        "text": "We can try again together."
+    }
+];
+
 // Original Butu copy. Fill locally with formatTemplate; render with textContent.
 // Gentle coaxing for stage 2; {heading} stays on the device.
 export const TAUNTS = [
