@@ -43,8 +43,8 @@ export const TASK_MAX_CHARS = EMBEDDING_LIMITS.taskChars;
 export const SESSION_DURATION_PRESETS_MINUTES = [25, 45, 60];
 // Visible main text sampled in addition to title and meta description (F2).
 export const PAGE_MAIN_TEXT_CHARS = 500;
-// Unset until real-page MiniLM-L3 threshold tuning in task 2.4; not a numeric default.
-export const ON_TASK_THRESHOLD = null;
+// Recall-first MiniLM-L3 calibration on 20 real pages; see docs/threshold-notes.md.
+export const ON_TASK_THRESHOLD = 0.13;
 // Continuous on-task time required to reset per-tab off-task timers (F3).
 export const ON_TASK_RESET_SECONDS = 60;
 // Off-task stage entry times; stage 0 is the grace period (F4).

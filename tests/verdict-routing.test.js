@@ -71,7 +71,8 @@ test('background routes overrides, caches per session URL across wakes, and reje
     assert.equal(comparisons, 1);
     assert.equal(creates, 1);
     assert.equal(logs.at(-1)[1].score, 0.6);
-    assert.equal(logs.at(-1)[1].onTask, null);
+    assert.equal(logs.at(-1)[1].onTask, true);
+    assert.equal(logs.at(-1)[1].source, 'embedding');
     await visit('https://study.test/page');
     assert.equal(logs.at(-1)[1].cached, true);
     assert.equal(comparisons, 1);

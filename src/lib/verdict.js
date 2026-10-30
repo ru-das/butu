@@ -31,7 +31,7 @@ export function pageEmbeddingText(page) {
 
 export function scoreVerdict(score, threshold = ON_TASK_THRESHOLD) {
     validateEmbeddingScores([score], 1);
-    // Never coerce the intentionally unset threshold to zero before task 2.4.
+    // Never coerce a missing or invalid threshold to zero.
     const tuned = Number.isFinite(threshold) && threshold >= -1 && threshold <= 1;
     return { onTask: tuned ? score >= threshold : null,
         source: tuned ? 'embedding' : 'threshold-unset', score };

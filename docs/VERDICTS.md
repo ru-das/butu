@@ -36,9 +36,10 @@ not become off-task verdicts or enter the cache.
 Each completed evaluation logs `[Butu verdict]` with `url`, `onTask`, `score`,
 `source` and `cached` in the background console. Errors log `source: 'unavailable'`
 and null verdict/score; excluded pages produce no verdict log. These logs stay
-local. `ON_TASK_THRESHOLD` remains `null` as agreed for task 2.4: embeddings log
-real scores with `onTask: null, source: 'threshold-unset'`. Once tuned, scores at
-or above the configured threshold yield true; lower scores yield false.
+local. Task 2.4 sets `ON_TASK_THRESHOLD` from the real-page measurements in
+`threshold-notes.md`: scores at or above the configured threshold yield true;
+lower scores yield false, with `source: 'embedding'`. A missing/invalid threshold
+still yields `onTask: null, source: 'threshold-unset'`.
 
 ## Automated checks
 
@@ -63,7 +64,7 @@ real-page threshold measurements.
    then blocklist/false logs, both with null score. These visits alone must not
    create an offscreen model document or download a model.
 4. Visit `https://en.wikipedia.org/wiki/Database_normalization`. Allow the initial
-   Hugging Face download to finish. Expect a finite score and `threshold-unset`.
+   Hugging Face download to finish. Expect a finite score and `source: 'embedding'`.
    Open the extension's offscreen inspector to check for worker errors if needed.
 5. Switch away and back. Expect the identical score with `cached: true`. Navigate
    to a different article; expect a new URL/score. Same-document URL changes

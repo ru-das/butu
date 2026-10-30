@@ -68,9 +68,13 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       Console scores, bounded session cache, race/error checks and both-browser
       manual steps: docs/VERDICTS.md. Embedding verdicts remain explicitly untuned
       until task 2.4 sets ON_TASK_THRESHOLD.
-- [ ] 2.4 Threshold tuning: run against 20 real pages for one sample task,
+- [x] 2.4 Threshold tuning: run against 20 real pages for one sample task,
       record scores in docs/threshold-notes.md, set ON_TASK_THRESHOLD.
       Verify: a relevant YouTube video counts as on task; an unrelated one doesn't.
+      Set recall-first 0.13: 10/10 relevant, 6/10 unrelated correct; four false
+      positives documented. All 20 frozen inputs match exactly in Firefox;
+      live Chrome YouTube pair passes. Full inputs, logs and both-browser manual
+      checks: docs/threshold-notes.md.
 
 ## Phase 3: Corruption
 - [ ] 3.1 src/lib/stages.js (off-task seconds → stage) + unit test.
