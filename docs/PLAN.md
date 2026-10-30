@@ -58,7 +58,10 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       Chrome/Firefox manual checks: src/popup/README.md.
 
 ## Phase 2: Detection
-- [ ] 2.1 content.js extracts title + meta description + first ~500 chars of main text.
+- [x] 2.1 content.js extracts title + meta description + first ~500 chars of main text.
+      Skips navigation, footers, hidden and editable content; both browsers pass
+      22 DOM/message checks. Contract and exact installed-extension manual steps:
+      src/content/README.md.
 - [ ] 2.2 src/lib/similarity.js (cosine) + unit test.
 - [ ] 2.3 On-task verdict: allowlist/blocklist first, then embeddings; cache per URL.
       Skip extension pages, browser internal pages and the new tab page.

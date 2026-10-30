@@ -28,6 +28,13 @@ test('build copies both manifests and local trees, and removes stale output', ()
         ? ['storage', 'alarms', 'offscreen'] : ['storage', 'alarms']);
       const background = manifest.background.service_worker ?? manifest.background.scripts[0];
       assert.ok(existsSync(join(root, background)));
+      assert.deepEqual(manifest.content_scripts, [{
+        matches: ['http://*/*', 'https://*/*'],
+        js: ['src/content/content.js'], run_at: 'document_idle',
+      }]);
+      for (const resource of manifest.web_accessible_resources[0].resources) {
+        assert.ok(existsSync(join(root, resource)), `missing content module: ${resource}`);
+      }
       for (const tree of ['src', 'vendor', 'assets']) {
         assert.equal(readFileSync(join(output, tree, 'fixture.txt'), 'utf8'), tree);
       }
