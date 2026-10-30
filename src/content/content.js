@@ -8,7 +8,7 @@
             extractor = undefined;
             throw error;
         });
-        extractor.then(({ extractPageText }) => extractPageText()).then(respond, () => {
+        extractor.then(({ extractPageText }) => ({ ...extractPageText(), url: location.href })).then(respond, () => {
             respond({ error: 'Page text is unavailable.' });
         });
         return true;

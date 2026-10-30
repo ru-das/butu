@@ -4,7 +4,8 @@ Both manifests inject `content.js` at document idle into top-level HTTP(S) pages
 only. Browser internal pages, new tabs and extension pages do not match.
 No page text is read until an extension caller sends `{ type: 'page:extract' }`
 with `chrome.tabs.sendMessage(tabId, message)`. The response is
-`{ title, description, mainText }`, with whitespace collapsed. A module-loading
+`{ title, description, mainText, url }`, with whitespace collapsed in text fields.
+The URL lets the verdict caller discard extraction from a different navigation. A module-loading
 or extraction failure returns `{ error: 'Page text is unavailable.' }`.
 
 The sample prefers a nonempty `main` / `[role="main"]`, then `article`, then
@@ -24,7 +25,8 @@ The classic entry point imports bundled ES modules lazily. Only the extractor,
 its normalization helper and config are declared web-accessible so Chrome can
 load those modules. No dependency, permission or remote host was added.
 Extraction does not modify the DOM, store results, or make network requests.
-Verdict routing is task 2.3; no production caller is wired yet.
+The background requests extraction during active sessions; see
+[verdict routing and manual checks](../../docs/VERDICTS.md).
 
 ## Verification
 

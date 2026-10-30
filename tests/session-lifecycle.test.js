@@ -42,6 +42,11 @@ test('background owns sessions across popup closure, wake, alarms and concurrent
                 clear: (name, cb) => { alarm = undefined; queueMicrotask(cb); },
                 onAlarm: { addListener: (fn) => { listeners.alarm = fn; } },
             },
+            tabs: {
+                query: (options, cb) => cb([]),
+                onActivated: { addListener() {} },
+                onUpdated: { addListener() {} },
+            },
         };
         await import(`../src/background.js?test=${revision++}`);
         await flush();

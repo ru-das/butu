@@ -63,8 +63,11 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       22 DOM/message checks. Contract and exact installed-extension manual steps:
       src/content/README.md.
 - [x] 2.2 src/lib/similarity.js (cosine) + unit test.
-- [ ] 2.3 On-task verdict: allowlist/blocklist first, then embeddings; cache per URL.
+- [x] 2.3 On-task verdict: allowlist/blocklist first, then embeddings; cache per URL.
       Skip extension pages, browser internal pages and the new tab page.
+      Console scores, bounded session cache, race/error checks and both-browser
+      manual steps: docs/VERDICTS.md. Embedding verdicts remain explicitly untuned
+      until task 2.4 sets ON_TASK_THRESHOLD.
 - [ ] 2.4 Threshold tuning: run against 20 real pages for one sample task,
       record scores in docs/threshold-notes.md, set ON_TASK_THRESHOLD.
       Verify: a relevant YouTube video counts as on task; an unrelated one doesn't.
