@@ -2,8 +2,8 @@
 
 User-approved revision, 2026-10-30: remove Voice Design and other paid-only
 dependencies across the audio plan. V1 now selects an existing adult voice using
-standard TTS. V2 now bundles an original locally rendered music box. V5–V7
-remain implementation tasks; stage playback and session TTS are not yet wired.
+standard TTS. V2 now bundles an original locally rendered music box. V5 stage playback is complete. The later bundled-only decision below defers
+V6/V7; session TTS is not implemented.
 
 **Later user-directed manual workflow:** the user chose to create a fictional
 childlike companion voice through the website and has supplied 15 MP3 clips in
@@ -16,7 +16,7 @@ The original API-only restrictions described below apply to that earlier
 revision; website generation is a separate, user-approved workflow.
 See [the supplied pack](../assets/audio/voice/README.md) for credits and exact
 Chrome/Firefox listening checks. All 15 files decode; V4 is complete, and
-playback integration remains V5.
+V5 playback integration is complete (see [playback checks](VOICE-PLAYBACK.md)).
 
 ## Verified service limits
 
@@ -102,35 +102,41 @@ preview locally while the config voice is unset. It needs no key or API call.
 Sarah is already configured; changing the default later is an explicit local
 config decision. Do not rerun generation just to change the local selection.
 
-## Budget and fallback contract for the remaining app work
+## Current runtime audio decision (user-approved, 2026-10-30)
 
-The shared pure helper `src/lib/voice-budget.js` is used by the preview script
-now and must be used by session dispatch in V6:
+Decision 23 defers V6 personalised TTS and dependent V7 runtime usage/budget
+reporting. Sessions use the supplied custom Butu pack, bundled music box and
+SFX, with zero runtime TTS submissions and no ElevenLabs API requests. No key
+setup or runtime budget UI is required. Sarah remains a separate build-time API
+candidate; she is not substituted into sessions using the custom pack.
 
-- 300 submitted characters/request, 600/session, 6000 in a rolling 31-day
-  local reservation window; preview batch capped at 600.
-- Three personalised lines (one each for stages 2–4), replacing the old 4–5.
-  A long task that makes the complete batch exceed the cap uses bundled audio.
-- V6 persists reservations before network dispatch. Do not release uncertain
-  failures or auto-retry. V7 distinguishes reserved/submitted counts from
-  service-reported credits; source quotas may be spent elsewhere.
-- On missing key, unavailable voice, quota exhaustion, access error, timeout,
-  expired voice or budget failure: use bundled audio, no paid replacement.
-- The helper disables API synthesis after 2026-12-31. Do not silently migrate
-  to the suggested replacement voices: those may be paid Library voices.
-- Subscription/voice discovery is build-time only. Runtime remains opt-in
-  session-start TTS with authored task-only lines; no page content, URLs,
-  history or diary data. No new permissions or network hosts.
-- No automatic top-up, billing change, SDK dependency or paid feature.
-  A finite free allowance cannot provide unlimited personalised sessions.
-- Existing runtime code currently has no ElevenLabs synthesis path: V5/V6 are
-  still unchecked. The helper alone does not constitute runtime budget wiring.
+Keep the existing build-time usage records, asset provenance, attribution and
+noncommercial terms. The custom voice ID/model/original usage remain unknown.
+The shared `src/lib/voice-budget.js` helper and `src/config.js` limits remain for
+build-time tooling: reserve before dispatch, retain uncertain failures, never
+retry automatically or substitute paid features. Local reservations do not
+represent the provider's remaining shared account quota.
 
-At 600 characters/session the local 6000-character allowance covers ten
-maximum-size sessions per rolling 31 days. This leaves room within a typical
-10,000-credit allowance for the base pack and a few build-time effects, but
-only the provider knows the true shared remaining quota. Any further API
-generation must check it; V4 reused supplied exports without API calls.
+V6/V7 may be reconsidered only after verifying a free-compatible API path for
+the same custom voice and receiving explicit user approval. The prior runtime
+proposal (three task-only lines; 300 characters/request, 600/session, 6000 in a
+rolling 31-day persisted reservation window) remains a constraint if restored,
+not a current release requirement. No runtime synthesis or ledger is implemented.
+
+### Manual verification of the bundled-only policy
+
+Documentation-only revision; no new browser run is claimed. Existing stage
+playback evidence and full listening steps are in [VOICE-PLAYBACK.md](VOICE-PLAYBACK.md).
+
+- Chrome: run `./build.sh`; reload `dist/chrome` in `chrome://extensions`.
+  Inspect the service worker and offscreen document Network panels with Preserve
+  log enabled. Start a session, follow the stage/return/stop steps in
+  VOICE-PLAYBACK.md, and confirm bundled Butu speech with no requests to
+  `api.elevenlabs.io`. After model download, disconnect networking and repeat.
+- Firefox: load/reload `dist/firefox/manifest.json` in `about:debugging`, inspect
+  the background page Network panel with Persist Logs enabled, and perform the
+  same stage/return/stop sequence. Confirm bundled speech and no requests to
+  `api.elevenlabs.io`; repeat offline after the model download.
 
 ## Credits and publication
 
@@ -225,7 +231,7 @@ Chrome:
    confirm no clipped tail, restart or abrupt click.
 3. In `chrome://extensions`, reload/load unpacked `dist/chrome/`. Start and stop
    a session from the popup; confirm normal behavior and no extension errors.
-   Automatic stage music awaits V5. V2 adds no runtime network requests.
+   Automatic stage music is now wired in V5. V2 adds no runtime network requests.
 
 Firefox:
 
@@ -253,7 +259,7 @@ Chrome:
    Open the popup and start/stop a focus session; confirm normal behavior.
 5. In the extension service-worker Network panel confirm this revision adds no
    runtime ElevenLabs calls. Preview generation runs in Node only. Full
-   stage-audio/fallback checks belong to V5/V6, not this revision.
+   stage-audio checks are recorded in VOICE-PLAYBACK.md; V6 is deferred.
 
 Firefox:
 
@@ -265,7 +271,7 @@ Firefox:
    Add-on → `dist/firefox/manifest.json` (or Reload an existing install).
    Open the popup, start/stop a session, and check for errors.
 5. Check the extension Network panel: no new runtime ElevenLabs calls.
-   V5/V6 remain responsible for actual stage audio and session TTS integration.
+   V5 stage audio is complete; V6 session TTS is deferred (decision 23).
 
 Automated checks cover budget boundaries/expiry and a mocked complete preview
 workflow: paid accounts, overages, quota shortage, Library-only voices, HTTP
@@ -282,7 +288,7 @@ API call. A missing key, invalid/paid account, enabled overages, low quota or
 any API error stops generation immediately and retains local fallback files.
 No retries or paid-feature substitutions. A successful first clip is retained
 if the second request fails. Partial/uncertain requests keep their reservation.
-This build ledger is separate from V6's runtime TTS character budget.
+This build ledger remains relevant while V6 runtime TTS is deferred.
 
 The [Create sound effect API](https://elevenlabs.io/docs/api-reference/text-to-sound-effects/convert)
 uses `POST /v1/sound-generation?output_format=mp3_44100_128` with explicit

@@ -30,9 +30,8 @@ Chrome and Firefox desktop, Manifest V3, from one codebase. No server, no accoun
    progress indicator ("Butu is waking up…"). Cached afterwards.
 2. **Start.** Popup: Butu waves. "Hi! What are we working on today?" text field,
    duration (25 / 45 / 60 / custom minutes), button "Let's do it together!".
-   Toolbar badge shows remaining minutes. If an ElevenLabs key is set and the
-   free-profile voice and local budget permit it, three personalised voice lines
-   are prepared in the background; otherwise bundled audio is used.
+   Toolbar badge shows remaining minutes. Audio uses the bundled custom Butu
+   recordings, music box and SFX; no ElevenLabs key is needed.
 3. **Work.** On-task pages are never touched. Silence.
 4. **Drift.** Off-task page escalates through the corruption stages, visually and audibly.
 5. **Return.** Switching to an on-task tab pauses the off-task timer; doodles and
@@ -92,7 +91,7 @@ At session end the popup shows: time spent, times you wandered, minutes Butu
 waited alone, one line from Butu, and a link "Open our diary".
 
 ### F7. Butu's Voice (ElevenLabs): core feature, primary prize target
-Three layers, each working without the next:
+Two bundled layers (decision 23; V6/V7 deferred):
 
 1. **Ambient sound (always on unless muted).** Created at build time and bundled:
    - An original, locally composed and rendered music box lullaby, plus versions that are slower,
@@ -102,40 +101,24 @@ Three layers, each working without the next:
      quota at build time; locally synthesize them if API access/quota is unavailable.
 2. **Base whisper pack (no key needed).** 15–20 generic Butu lines voiced at build
    time in Butu's voice, bundled as audio.
-3. **Personalised voice (opt-in, user's own ElevenLabs key).** At session start,
-   fill three voice-line templates with the task text locally, send ONLY those lines
-   to standard ElevenLabs TTS using the configured premade adult voice, cache the audio for the session, and play
-   them at stages 2–4. Falls back to layer 2 on any error or without a key.
 
-Free-tier revision approved 2026-10-30: no Voice Design, cloning, paid Voice
-Library voice or Music API. Use an existing adult premade voice, with gentle
-delivery settings and authored sweet lines. Sarah is configured after successful
-free-plan synthesis; Sarah, Matilda and Lily previews/settings are documented in
-docs/voice-design.md. An exact custom nursery-rhyme persona is not promised.
+Personalised session-start TTS (V6) and runtime usage/budget reporting (V7) are
+deferred by user approval on 2026-10-30. They are not release requirements.
+Use the 15 supplied custom Butu recordings, whose listening quality and Free-plan
+origin the user confirmed. Exact voice ID/model/original usage remain unknown.
+Sarah and the other premade API previews remain separate build-time evidence;
+never silently mix them into sessions using the custom pack.
 
-Later user-approved exception: manually create an original fictional childlike
-companion voice on the website and export speech for the bundled pack. The user
-has supplied 15 MP3s; assets/audio/voice/manifest.json tracks their intended text
-and source gaps. This supersedes the adult-narrator direction for bundled speech,
-but does not enable Voice Design API calls. Sarah remains a separate tested API
-candidate, not the identity of the supplied recordings. V6 must use a verified
-matching voice for personalised lines or retain bundled speech, avoiding a
-silent voice change between the two.
+The earlier free-only API restrictions remain: no Voice Design API, cloning,
+paid Voice Library voice or Music API. Manual website Voice Design and the
+supplied exports are separately user-approved. Preserve build-time quota guards
+and usage records. Any future runtime TTS needs a verified free-compatible API
+path for the same custom voice and explicit user approval, with the original
+privacy and reservation limits retained (docs/voice-design.md).
 
-Free-profile limits (implementation of session dispatch remains task V6):
-- Maximum 300 characters per request, 600 per session, 6000 reserved in any rolling
-  31-day window. Use src/lib/voice-budget.js; settings live in src/config.js.
-- Persist reservations before dispatch, retaining failed/uncertain calls; no
-  automatic retries, top-ups, overages or paid-feature replacement.
-- These are local TTS limits, not a claim about remaining provider quota. Credits
-  are shared with build-time generation and other account activity. Any API
-  quota/access failure uses the bundled pack; no account queries at runtime.
-- Premade Default voices are account-dependent and expire after 2026-12-31.
-  Disable API synthesis at expiry; retain bundled audio and do not substitute a
-  paid replacement. Missing or inaccessible voice also uses the bundled pack.
-- Free-plan output is noncommercial and requires attribution. Include
-  `elevenlabs.io` in titles when publishing generated audio, per current terms.
-  Keep audio licensing/credits distinct from the extension's source licence.
+Free-plan output is noncommercial and requires ElevenLabs attribution. Include
+`elevenlabs.io` in titles when publishing generated audio, per the recorded terms.
+Keep audio licensing/credits distinct from the extension's source licence.
 
 Playback rules:
 - Audio plays from the model host (Firefox background page / Chrome offscreen
@@ -144,8 +127,8 @@ Playback rules:
 - Crossfade between stages; nothing overlaps harshly.
 - Each whisper plays at most once per page visit.
 - Fail silently if playback is blocked.
-- Log submitted/reserved characters and reported usage separately per session;
-  report API credits when returned rather than inventing a dollar cost.
+- Bundled playback submits zero runtime TTS characters. Keep build-time usage
+  records separate; do not infer original export costs or a dollar amount.
 
 ### F8. Our Diary (local dashboard page)
 An extension page (diary.html) opened in a normal tab via the popup link.
@@ -153,9 +136,9 @@ Loads entirely from the extension; no network. Styled as a child's scrapbook.
 - **Diary pages:** one per session with date, task, time spent, times wandered,
   and a Butu drawing chosen by how the session went (happy → uneasy → wrong).
 - **"Places you left me for":** distracting domains, in handwriting.
-- **Settings page:** allowlist/blocklist, ElevenLabs key, volume, mute,
-  "test Butu's voice" button (plays bundled audio; no paid test request),
-  local TTS allowance/fallback status, and ElevenLabs audio attribution.
+- **Settings page:** allowlist/blocklist, volume, mute,
+  "test Butu's voice" button (plays bundled audio), and ElevenLabs attribution.
+  No API-key or runtime TTS budget controls while V6/V7 are deferred.
 - Stores the last 50 sessions in chrome.storage.local. Never transmitted.
 - Stretch: sticker collection, one sticker per completed focused session.
 
@@ -164,11 +147,10 @@ Loads entirely from the extension; no network. Styled as a child's scrapbook.
 |---|---|---|---|
 | On-task detection | Xenova/paraphrase-MiniLM-L3-v2 (embeddings) | Local, in browser | ~17.5 MB, q8 |
 | Possession text | Authored task/heading templates | Local, in browser | Bundled strings |
-| Butu's voice selection | Existing premade adult voice, standard TTS previews | Build time | n/a |
+| Butu's voice selection | User-supplied custom voice exports | Manual website workflow | n/a |
 | Music box lullaby | Original local composition and synthesis | Build time, bundled | a few MB |
 | Sound effects | Free-quota ElevenLabs SFX or local synthesis | Build time, bundled | a few MB |
-| Base whispers | Standard ElevenLabs TTS, free-quota premade voice | Build time, bundled | a few MB |
-| Personalised lines | Standard ElevenLabs TTS, bounded free profile | Session start, opt-in | cached in memory |
+| Base whispers | 15 user-supplied custom Butu recordings | Bundled | a few MB |
 
 - Local runtime: Transformers.js, WebAssembly on CPU. No GPU required.
 - Model host: Firefox background page; Chrome offscreen document.
@@ -181,11 +163,9 @@ Loads entirely from the extension; no network. Styled as a child's scrapbook.
 ## Privacy boundary
 - Never leaves the device: page content, URLs, browsing history, verdicts,
   session stats, diary.
-- Leaves the device only if the user adds an ElevenLabs key: the user's own task
-  text, inside three short voice lines, once per session and within local budgets,
-  sent to api.elevenlabs.io. No voice/account discovery calls at runtime.
-- The key is stored in chrome.storage.local and used only for those TTS calls.
-  Build-time tools separately read ELEVENLABS_API_KEY from the environment/.env.
+- Task text stays local. No runtime ElevenLabs calls or API-key setup; V6/V7
+  are deferred. Build-time tools separately read ELEVENLABS_API_KEY from the
+  environment/.env and retain their free-only guards.
 - Model files are downloaded from Hugging Face once; no data is sent with them.
 - Fonts and doodles are bundled; nothing loads from external CDNs.
 
@@ -233,10 +213,10 @@ respect prefers-reduced-motion and do not add tracking eyes or sudden motion.
 - Summary: "I waited 11 minutes. That's okay. I'm used to waiting."
 
 ## Partner technology (prize categories)
-- **ElevenLabs (primary target):** free-quota standard TTS with existing adult
-  voices, optional build-time sound effects, base whisper pack, bounded opt-in
-  personalised lines and demo narration. Music is composed locally. No Voice
-  Design or Music API claims. Credit generated audio as `elevenlabs.io` and
+- **ElevenLabs (primary target):** supplied custom Butu speech exports,
+  build-time sound effects, premade API preview evidence and demo narration.
+  Music is composed locally. Manual website Voice Design is user-approved;
+  no Voice Design API or Music API claims. Credit generated audio as `elevenlabs.io` and
   describe the noncommercial free-plan and voice-retirement limitations.
 - Optional, only if time allows:
   - **.tech domain:** landing page (site/) with demo video and install steps.
@@ -254,10 +234,8 @@ text generation, blocking other apps, analytics of any kind.
   testing and users can override domains. Character copy comes from templates.
 - The browser controls process overhead; the 500 MB target must be measured on
   supported browsers and cannot be guaranteed universally by extension code.
-- Personalised voice needs the user's own ElevenLabs key, an API-eligible
-  premade voice and available quota; otherwise Butu uses bundled lines. A key
-  alone does not guarantee access. Default voice retirement disables this path
-  after 2026-12-31; some newer free accounts cannot use these voices at all.
+- Speech is bundled and generic; personalised TTS and its runtime budget UI are
+  deferred. The supplied custom voice ID/model/original usage remain unknown.
 - The free profile supports noncommercial use of ElevenLabs-generated audio
   with required attribution, not unrestricted commercial distribution.
 - Built for absent-minded drift, not adversarial users.
@@ -266,11 +244,10 @@ text generation, blocking other apps, analytics of any kind.
 - Session starts from popup, countdown visible, ends cleanly with a summary.
 - Off-task page reaches all stages on schedule; returning fully restores it.
 - On-task pages (including a relevant YouTube video) are never haunted.
-- Each stage has its sound; personalised lines play only with an eligible voice,
-  key and budget, and fall back to the base pack otherwise. Expiry, quota errors
-  and timeouts never cause retries or paid-feature calls.
+- Each stage has its bundled sound and custom Butu speech, with no runtime
+  synthesis or API-key requirement.
 - Diary page opens from the popup and shows past sessions and settings.
 - Works in Firefox and Chrome from the same src/.
 - Peak memory during a session under 500 MB on the 4 GB machine.
-- Network audit shows only Hugging Face model downloads and, if keyed, one batch
-  of ElevenLabs TTS calls at session start containing only task text.
+- Network audit shows only Hugging Face model downloads; no runtime ElevenLabs
+  requests. All audio works offline.

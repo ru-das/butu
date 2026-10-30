@@ -1,6 +1,8 @@
 # Decisions
 
 Settled. Do not reopen without asking the user first.
+Decision 23 supersedes the runtime TTS requirements in decisions 12, 13 and 21.
+Earlier generation evidence and free-only build-time restrictions remain valid.
 
 1. **Browser extension, not a desktop app.**
    Page corruption needs DOM access. A desktop app could only draw overlays and
@@ -123,3 +125,19 @@ Settled. Do not reopen without asking the user first.
     in order; V4 finalizes the pack and V5 wires playback. No new API requests
     or runtime behavior are part of asset intake. Manual creation is distinct
     from the paid Voice Design API restriction in decision 12.
+
+23. **Bundled-only runtime audio; V6/V7 deferred (user-approved, 2026-10-30).**
+    Keep the supplied custom Butu recordings as the session voice, with the
+    bundled music box and SFX. Sarah is a separate build-time API candidate;
+    never substitute or mix her into the custom pack during a session.
+    Defer V6 personalised session-start TTS and dependent V7 runtime usage/budget
+    UI. Neither is implemented or required for this release. No runtime
+    ElevenLabs requests, API-key setup or key/budget controls are needed;
+    bundled playback submits zero TTS characters. Runtime network access is
+    limited to the existing first-use Hugging Face model downloads.
+    Preserve build-time usage records, free-profile guards, asset provenance,
+    attribution and noncommercial terms. Unknown custom voice ID/model/original
+    usage remain unknown. Reconsider V6/V7 only after a matching custom voice's
+    free-compatible API path is verified and the user explicitly approves
+    restoring synthesis; the original privacy and reservation limits still apply.
+    Phase 4.1 is the next active task. See docs/PLAN.md and docs/SPEC.md.

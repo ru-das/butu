@@ -3,6 +3,8 @@
 Work top to bottom. One task per request. Each task lists how to verify it.
 2026-10-30: user explicitly authorized the free-tier audio revision across tasks;
 V1 is replaced and later audio requirements below are updated, not marked implemented.
+2026-10-30: user approved bundled-only runtime audio; V6/V7 are deferred,
+not implemented or required for this release (decision 23). Next task: 4.1.
 Primary prize target is ElevenLabs: Phase 3.5 is core work, not polish.
 
 ## Phase 0: Prove the risky parts (do first)
@@ -164,19 +166,14 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       live crossfade gains and 35 seconds of post-stop silence; 39 unit tests pass.
       Evidence and exact both-browser manual checks: docs/VOICE-PLAYBACK.md and
       docs/voice-playback-checks.json. No ElevenLabs requests or characters used.
-- [ ] V6 Session-start personalised TTS: fill voice-line templates with task text
-      locally (three lines), send ONLY those lines to standard ElevenLabs TTS,
-      cache audio for the session,
-      clear on session end. Fallback to base pack on any error or missing key.
-      Enforce src/lib/voice-budget.js: 300 chars/request, 600/session, 6000 reserved
-      chars in a rolling 31-day window; persist reservations before dispatch,
-      keep uncertain/failed calls reserved, never auto-retry. Expired/unsupported
-      voice, oversized task batch or exhausted allowance → bundled pack, no calls.
-      No subscription/list-voices requests at runtime, no paid substitutions.
-      Verify: devtools network tab shows only those TTS calls, containing only task text.
-- [ ] V7 Log submitted/reserved characters and reported usage separately per session;
-      expose remaining local budget and bundled fallback in diary settings. Do not
-      claim a local count is the provider's remaining shared account quota.
+V6 and V7 are deferred by user approval (decision 23), not completed tasks:
+
+- V6: session-start personalised TTS and its session audio cache. Reconsider only
+  after verifying a free-compatible API path for the same custom Butu voice and
+  receiving explicit approval to restore runtime synthesis.
+- V7: runtime submitted/reserved character logs and budget settings, dependent on
+  V6. Bundled playback submits zero runtime TTS characters. Keep build-time usage
+  records, bundled-asset provenance and ElevenLabs attribution.
 
 ## Phase 4: Diary and finish
 - [ ] 4.1 Session stats saved to storage.local (last 50 sessions).
@@ -184,16 +181,16 @@ STOP after Phase 0 and report results (times, memory, any blockers).
 - [ ] 4.3 Diary: session pages with date, task, time, times wandered, caption,
       Butu drawing chosen by session quality (happy → uneasy → wrong).
 - [ ] 4.4 Diary: "Places you left me for" (domains in handwriting).
-- [ ] 4.5 Diary settings: allowlist/blocklist, ElevenLabs key, volume, mute,
-      "test Butu's voice" (bundled clip, no API test call), reserved/submitted
-      characters, local allowance/fallback status and ElevenLabs audio attribution.
-- [ ] 4.6 Wire embedding-host release + audio cache clear into session end
+- [ ] 4.5 Diary settings: allowlist/blocklist, volume, mute,
+      "test Butu's voice" (bundled clip, no API test call) and ElevenLabs audio
+      attribution. No API-key field or runtime TTS budget UI while V6/V7 are deferred.
+- [ ] 4.6 Wire embedding-host release + bundled playback cleanup into session end
       (verify memory drops; the standalone worker release API exists from 0.4a).
 - [ ] 4.7 First-run download progress UI ("Butu is waking up…").
-- [ ] 4.8 README: what Butu is, install for both browsers, ElevenLabs key setup,
+- [ ] 4.8 README: what Butu is, install for both browsers, bundled audio (no key needed),
       privacy boundary, limitations, credits and licences (fonts, models, assets).
-- [ ] 4.9 Network audit in both browsers: only Hugging Face model downloads and,
-      if keyed, ElevenLabs TTS at session start. No fonts or images from the network.
+- [ ] 4.9 Network audit in both browsers: only Hugging Face model downloads;
+      no runtime ElevenLabs calls. No fonts or images from the network.
 - [ ] 4.10 Full run-through against the Definition of done in docs/SPEC.md.
 
 ## Demo and write-up support

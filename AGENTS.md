@@ -21,13 +21,17 @@ Later user direction permits manual website Voice Design for an original sweet,
 childlike teddy-bear companion. Fifteen user-provided speech exports are in
 assets/audio/voice/; source details are pending in its manifest. This does not
 change the free-only API restriction or authorize paid calls.
+Later user-approved bundled-only revision (2026-10-30, decision 23): defer V6/V7.
+Use the custom Butu pack, bundled music box and SFX; no runtime ElevenLabs calls,
+API-key setup or runtime TTS budget UI. Keep build-time usage records and credits.
+Reopening runtime TTS needs a verified free-compatible API path for the same
+custom voice and explicit user approval. Next active task: 4.1.
 
 ## Hard constraints
-- Privacy: network requests are allowed only for
-  (a) downloading model files from Hugging Face on first use, and
-  (b) ElevenLabs TTS at session start, opt-in, sending ONLY the user's task text.
-  Never send page content, URLs, browsing history, stats or diary data anywhere.
-  The ElevenLabs key is stored in chrome.storage.local and sent only to api.elevenlabs.io.
+- Privacy: runtime network requests are allowed only for downloading model files
+  from Hugging Face on first use. Runtime TTS is deferred (decision 23).
+  Never send task text, page content, URLs, browsing history, stats or diary data
+  anywhere at runtime. Build-time audio tools use the environment key separately.
 - No external assets at runtime: fonts, doodles (SVG) and audio are bundled.
   No CDNs, no Google Fonts, no remote images.
 - Stack: plain JavaScript (ES modules), HTML, CSS. No frameworks, no TypeScript,
@@ -73,10 +77,10 @@ change the free-only API restriction or authorize paid calls.
     src/popup/                 greeting, task input, duration, start/stop, countdown,
                                session summary, "Open our diary" link
     src/diary/                 diary.html: session pages, places-you-left-me-for, settings
-                               (allow/blocklist, ElevenLabs key, volume, mute, test voice)
+                               (allow/blocklist, volume, mute, test bundled voice)
     src/shared/                shared CSS (paper texture, fonts, colours) for popup + diary
     src/templates.js           authored taunts, voice-line templates, stage-4 lines, diary captions
-    src/voice.js               session-start personalised TTS, audio cache, stage playback queue
+    src/voice.js               bundled stage playback queue and cleanup
     vendor/                    Transformers.js + ONNX Runtime WASM files
     scripts/audio/             build-time: premade voice previews, local music box, sound effects, base pack
     assets/audio/              generated clips bundled with the extension
@@ -104,7 +108,8 @@ change the free-only API restriction or authorize paid calls.
   and don't silently switch approach (see docs/DECISIONS.md).
 - Don't add dependencies, permissions, or network hosts without asking.
 - Include licence/credit info for every bundled font and asset.
-- Log ElevenLabs characters used per session so real costs can be reported.
+- Bundled sessions submit zero runtime TTS characters; runtime usage UI is deferred.
+  Preserve build-time ElevenLabs usage records and bundled-asset provenance.
 - Use the free-profile budgets in src/config.js and src/lib/voice-budget.js.
   Reserve submitted characters before dispatch; no automatic retries, overages,
   top-ups or paid-feature substitutions. Missing/expired voice or quota → bundled audio.
