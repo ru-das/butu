@@ -15,11 +15,23 @@ test('task and heading interpolation is bounded plain text, with safe fallbacks'
     assert.throws(() => formatTemplate('x'.repeat(401)), /Invalid/);
 });
 
-test('all authored copy personalizes; voice templates contain only task text', async () => {
+test('authored packs meet task 3.6 counts and use supported plain-text placeholders', async () => {
     const { formatTemplate } = await import('../src/lib/templates.js');
     const packs = await import('../src/templates.js');
-    for (const lines of Object.values(packs)) {
-        for (const line of lines) assert.match(formatTemplate(line, { task: 'DBMS assignment', heading: 'Cricket' }), /DBMS assignment/);
+    const minimums = { TAUNTS: 20, STAGE4_LINES: 10, VOICE_LINE_TEMPLATES: 10, DIARY_CAPTIONS: 10, POPUP_SUMMARY_LINES: 5 };
+    for (const [name, minimum] of Object.entries(minimums)) {
+        const lines = packs[name];
+        assert.ok(lines.length >= minimum, name);
+        assert.equal(new Set(lines).size, lines.length, `${name}: no duplicate lines`);
+        for (const line of lines) {
+            assert.ok(formatTemplate(line).trim(), `${name}: safe defaults`);
+            const formatted = formatTemplate(line, { task: 'DBMS assignment', heading: 'Cricket' });
+            assert.ok(!/\{[^{}]*\}/u.test(formatted), `${name}: all placeholders filled`);
+            if (line.includes('{task}')) assert.match(formatted, /DBMS assignment/);
+            if (line.includes('{heading}')) assert.match(formatted, /Cricket/);
+        }
     }
+    assert.ok(packs.STAGE4_LINES.every(line => line.includes('{task}')));
+    assert.ok(packs.VOICE_LINE_TEMPLATES.every(line => line.includes('{task}')));
     assert.ok(packs.VOICE_LINE_TEMPLATES.every(line => !line.includes('{heading}')));
 });
