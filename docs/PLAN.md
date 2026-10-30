@@ -109,6 +109,8 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       24 taunts, 12 stage-4 lines, 12 task-only voice templates, 12 diary captions
       and 5 popup summary lines. Approved tone samples retained; pack counts,
       placeholders and interpolation verified by tests/templates.test.js.
+      Installed Chrome/Firefox popup-origin imports and all 65 lines pass;
+      checks and browser versions: docs/template-checks.json.
 - [ ] 3.7 Wire template-backed possession text into stages 2/4 and diary captions:
       cache per-page template choice, interpolate bounded task/heading values as
       plain text, restore original content on return. No generation/retry loop.

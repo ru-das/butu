@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-30",
+  "task": "3.6",
+  "method": "Installed unmodified dist builds in isolated headless Chrome and Firefox profiles; imported templates.js and lib/templates.js from each extension popup origin via CDP / Marionette.",
+  "checks": [
+    "All five exports import successfully with exact pack counts",
+    "All 65 templates format with task and heading replacements and no unresolved placeholders",
+    "All 65 templates format with safe missing-value defaults",
+    "Markup-like task and heading values create no elements when rendered with textContent",
+    "Every stage-4 line names the task",
+    "Voice templates use task and never heading"
+  ],
+  "limitations": "This checks the authored copy modules in installed extensions. UI integration remains task 3.7 and later tasks.",
+  "browsers": {
+    "chrome": {
+      "browser": "Chrome/153.0.8010.12",
+      "url": "chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/src/popup/popup.html",
+      "counts": {
+        "TAUNTS": 24,
+        "STAGE4_LINES": 12,
+        "VOICE_LINE_TEMPLATES": 12,
+        "DIARY_CAPTIONS": 12,
+        "POPUP_SUMMARY_LINES": 5
+      },
+      "lines": 65,
+      "samples": {
+        "TAUNTS": "You said we'd finish DBMS assignment together…",
+        "STAGE4_LINES": "I'm still holding our place in DBMS assignment.",
+        "VOICE_LINE_TEMPLATES": "Let's do DBMS assignment together. I'll stay right here.",
+        "DIARY_CAPTIONS": "We spent a little time with DBMS assignment. I kept the page for us.",
+        "POPUP_SUMMARY_LINES": "We did a little together. Those are my favourite kinds of minutes."
+      },
+      "pass": true
+    },
+    "firefox": {
+      "browser": "Firefox 154.0.1",
+      "url": "moz-extension://9fcc078a-bcaa-4f3e-a8c9-25276e489e5f/src/popup/popup.html",
+      "counts": {
+        "TAUNTS": 24,
+        "STAGE4_LINES": 12,
+        "VOICE_LINE_TEMPLATES": 12,
+        "DIARY_CAPTIONS": 12,
+        "POPUP_SUMMARY_LINES": 5
+      },
+      "lines": 65,
+      "samples": {
+        "TAUNTS": "You said we'd finish DBMS assignment together…",
+        "STAGE4_LINES": "I'm still holding our place in DBMS assignment.",
+        "VOICE_LINE_TEMPLATES": "Let's do DBMS assignment together. I'll stay right here.",
+        "DIARY_CAPTIONS": "We spent a little time with DBMS assignment. I kept the page for us.",
+        "POPUP_SUMMARY_LINES": "We did a little together. Those are my favourite kinds of minutes."
+      },
+      "pass": true
+    }
+  }
+}
