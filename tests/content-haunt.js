@@ -1,13 +1,21 @@
 // Real DOM coverage; no model, remote assets or runtime test hooks.
 import { RETURN_FADE_MS } from '../src/config.js';
+import { possessionTemplates } from '../src/lib/possession.js';
+import { formatTemplate } from '../src/lib/templates.js';
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 let changed, listener, tick, stage = 0, checks = 0, clicks = 0;
 let response;
 const realSetInterval = window.setInterval;
 const realClearInterval = window.clearInterval;
+const realInfo = console.info;
+const provenance = [];
 const session = { startedAt: Date.now(), endsAt: Date.now() + 600000, task: 'Study databases' };
 function check(ok, label) { checks++; if (!ok) throw Error(label); }
 try {
+    console.info = (message, detail) => {
+        if (message === 'Butu text') provenance.push(detail);
+        else realInfo(message, detail);
+    };
     window.setInterval = fn => { tick = fn; return 1; };
     window.clearInterval = () => {};
     window.chrome = {
@@ -31,10 +39,14 @@ try {
     await import('../src/content/content.js');
     for (let attempt = 0; !tick && attempt < 100; attempt++) await pause(50);
     check(!document.querySelector('[data-butu-haunt-root]'), 'grace period leaves no overlay');
+    const selected = possessionTemplates(session, location.href);
+    const headingText = document.querySelector('h1').textContent;
     for (stage = 1; stage <= 4; stage++) {
         tick();
         check(document.querySelector('[data-butu-stage]')?.dataset.butuStage === String(stage), `stage ${stage}`);
-        check(stage === 1 ? main.outerHTML === original : document.querySelector('h1').textContent.includes('together'), 'headings begin at stage 2');
+        check(stage === 1 ? main.outerHTML === original : document.querySelector('h1').textContent ===
+            formatTemplate(selected.taunt, { task: session.task, heading: headingText }), 'stage 2 uses authored task/heading text');
+        check(document.querySelector('.butu-haunt-line').textContent === formatTemplate(selected.stage4, session), 'stage 4 names the task using its cached template');
         check(document.querySelector('form h2').textContent === 'A form heading', 'form heading unchanged');
         check(document.querySelector('[contenteditable] h2').textContent === 'Editable title', 'editor unchanged');
         check(getComputedStyle(document.querySelector('.butu-haunt-butu')).backgroundImage.includes(
@@ -46,6 +58,13 @@ try {
             `stage ${stage} drawings and text stay static`);
         check(getComputedStyle(overlay).transitionProperty === 'opacity', 'return transition is opacity only');
     }
+    check(provenance.filter(entry => entry.kind === 'taunt').length === 2 &&
+        provenance.filter(entry => entry.kind === 'stage4').length === 1, 'each shown line logs template provenance');
+    const logged = provenance.length;
+    stage = 4; tick();
+    check(provenance.length === logged, 'unchanged timing ticks do not log lines again');
+    check(provenance.every(entry => entry.source === 'template' &&
+        Object.keys(entry).every(key => ['source', 'kind'].includes(key))), 'provenance never contains task text, heading text or URLs');
     link.click();
     check(clicks === 1 && link === document.querySelector('h1 a'), 'original link handler and identity survive');
     changed({ offTaskTiming: { newValue: { activeTabId: 2, tabs: { 2: { onTask: true } } } } }, 'local');
@@ -65,12 +84,28 @@ try {
     tick(); check(!document.querySelector('[data-butu-haunt-root]'), 'cannot haunt a focused form');
     input.blur(); await pause(10); tick();
     check(!!document.querySelector('[data-butu-stage="4"]'), 'resumes after leaving field');
+    check(document.querySelector('h1').textContent === formatTemplate(selected.taunt, { task: session.task, heading: headingText }), 'return and form restore retain the original template and heading value');
     let extraction;
     await new Promise(resolve => {
         listener({ type: 'page:extract' }, { id: 'bear' }, result => { extraction = result; resolve(); });
     });
-    check(main.outerHTML === original && !extraction.mainText.includes('remember?'), 'extraction uses original text');
+    check(main.outerHTML === original && !extraction.mainText.includes(session.task), 'extraction uses original text');
     tick();
+    check(document.querySelector('h1').textContent === formatTemplate(selected.taunt, { task: session.task, heading: headingText }), 'extraction restore does not change the page choice');
+    const originalUrl = location.href;
+    const nextUrl = new URL('?another-page', originalUrl).href;
+    history.pushState(null, '', nextUrl);
+    tick();
+    const nextChoice = possessionTemplates(session, nextUrl);
+    check(document.querySelector('h1').textContent === formatTemplate(nextChoice.taunt, { task: session.task, heading: headingText }), 'SPA navigation restores before applying the new page choice');
+    check(document.querySelector('.butu-haunt-line').textContent === formatTemplate(nextChoice.stage4, session), 'SPA navigation updates the central line');
+    history.replaceState(null, '', originalUrl);
+    tick();
+    check(document.querySelector('h1').textContent === formatTemplate(selected.taunt, { task: session.task, heading: headingText }), 'SPA revisit keeps its earlier template choice');
+    const malicious = { ...session, startedAt: session.startedAt + 1, task: '<img src=x onerror=alert(1)>{heading}$&' };
+    changed({ session: { newValue: malicious } }, 'local');
+    check(document.querySelector('.butu-haunt-line').textContent.includes(malicious.task) &&
+        !document.querySelector('.butu-haunt-line img'), 'new session task is literal text, never HTML');
     changed({ session: { newValue: null } }, 'local');
     response({ url: location.href, stage: 4 });
     check(main.outerHTML === original && !document.querySelector('[data-butu-haunt-root]'), 'stop and stale callback restore completely');
@@ -80,4 +115,5 @@ try {
 } finally {
     window.setInterval = realSetInterval;
     window.clearInterval = realClearInterval;
+    console.info = realInfo;
 }

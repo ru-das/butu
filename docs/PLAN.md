@@ -111,9 +111,14 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       placeholders and interpolation verified by tests/templates.test.js.
       Installed Chrome/Firefox popup-origin imports and all 65 lines pass;
       checks and browser versions: docs/template-checks.json.
-- [ ] 3.7 Wire template-backed possession text into stages 2/4 and diary captions:
+- [x] 3.7 Wire template-backed possession text into stages 2/4 and diary captions:
       cache per-page template choice, interpolate bounded task/heading values as
       plain text, restore original content on return. No generation/retry loop.
+      Stable page/session selection, stage-2/4 copy, current-session diary caption
+      and local template-source logs wired. Both browsers: 10 public pages,
+      28 template lines / 0 model lines each; exact markup and nodes restored.
+      31 unit tests and 58 DOM checks pass. Evidence and exact manual checks:
+      docs/POSSESSION.md and docs/possession-checks.json.
 
 ## Phase 3.5: Butu's Voice (primary prize target)
 - [ ] V1 scripts/audio/design-voice: create Butu's voice via ElevenLabs Voice Design

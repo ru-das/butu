@@ -1,0 +1,434 @@
+{
+  "date": "2026-10-30",
+  "task": "Study database systems",
+  "method": "Installed extensions; domain overrides; seeded 16/46/91/181-second totals; real timing messages; return to allowlisted work tab. Count each heading once at stage 2 and central line once at stage 4. Validate displayed strings against authored packs.",
+  "note": "Firefox completed nine pages in the initial run. The final IANA Reserved Domains page was rerun separately with bounded waiting for asynchronous stage replies after its initial stage-1 observation had no overlay.",
+  "unitTests": 31,
+  "domFixture": {
+    "Chrome": {
+      "reduce": 58,
+      "noPreference": 58
+    },
+    "Firefox": {
+      "default": 58
+    }
+  },
+  "diary": [
+    {
+      "browser": "Chrome/153.0.8010.12",
+      "pass": true,
+      "checks": [
+        "empty diary",
+        "active caption",
+        "stable caption",
+        "literal task",
+        "stop clears caption"
+      ],
+      "sample": "I used my favourite colour for our time together. That part of the page is lovely."
+    },
+    {
+      "browser": "Firefox 154.0.1",
+      "pass": true,
+      "checks": [
+        "empty diary",
+        "active caption",
+        "stable caption",
+        "literal task",
+        "stop clears caption"
+      ],
+      "sample": "I drew a star each time you came back. Some are pressed quite hard."
+    }
+  ],
+  "browsers": [
+    {
+      "browser": "Chrome 153.0.8010.12",
+      "pages": [
+        {
+          "url": "https://www.w3.org/Provider/Style/URI",
+          "title": "Hypertext Style: Cool URIs don't change.",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I put a little star beside Study database systems. It was brighter when you were here.",
+            "I put a little star beside Study database systems. It was brighter when you were here."
+          ],
+          "stage4Line": "Look. There's still room for both of us beside Study database systems.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://info.cern.ch/hypertext/WWW/TheProject.html",
+          "title": "The World Wide Web project",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I kept your place beside Study database systems. Come back soon?"
+          ],
+          "stage4Line": "We can start Study database systems again. I'll pretend you never left.",
+          "templateLines": 2,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://www.iana.org/help/example-domains",
+          "title": "Example Domains",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I brought two crayons for Study database systems. Mine hasn't moved yet.",
+            "I brought two crayons for Study database systems. Mine hasn't moved yet."
+          ],
+          "stage4Line": "I saved my last little star for Study database systems. I'd like you to be here for it.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://www.w3.org/History.html",
+          "title": "A Little History of the World Wide Web",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I made a little song about Study database systems. It keeps coming back to the same bit.",
+            "I made a little song about Study database systems. It keeps coming back to the same bit."
+          ],
+          "stage4Line": "Here is Study database systems. Here is my paw. You can choose where we start.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://www.w3.org/People/Berners-Lee/",
+          "title": "Tim Berners-Lee",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I made a little song about Study database systems. It keeps coming back to the same bit.",
+            "I made a little song about Study database systems. It keeps coming back to the same bit."
+          ],
+          "stage4Line": "Here is Study database systems. Here is my paw. You can choose where we start.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://www.w3.org/Provider/Style/",
+          "title": "Style Guide for Online Hypertext",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "Shall we take turns with Study database systems? It's been my turn for a while.",
+            "Shall we take turns with Study database systems? It's been my turn for a while."
+          ],
+          "stage4Line": "I keep smoothing our page for Study database systems. It won't lie flat anymore.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://info.cern.ch/hypertext/WWW/Summary.html",
+          "title": "Summary -- /WWW",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "It's okay. I can wait beside Study database systems. Watch how good I've got at it.",
+            "It's okay. I can wait beside Study database systems. Watch how good I've got at it."
+          ],
+          "stage4Line": "I drew us finishing Study database systems. I don't know what to draw after that.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://info.cern.ch/hypertext/WWW/WhatIs.html",
+          "title": "What is Hypertext?",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "Let's play a game. The game is finishing Study database systems."
+          ],
+          "stage4Line": "I kept Study database systems just how you left it. I practiced being happy, too.",
+          "templateLines": 2,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://info.cern.ch/hypertext/WWW/Policy.html",
+          "title": "Policy -- /WWW",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I'll hold Study database systems open. My paws don't get tired. Much.",
+            "I'll hold Study database systems open. My paws don't get tired. Much."
+          ],
+          "stage4Line": "I kept Study database systems just how you left it. I practiced being happy, too.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://www.iana.org/domains/reserved",
+          "title": "IANA-managed Reserved Domains",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "Does IANA-managed Reserved Domains know you promised to sit with me?",
+            "Does Example domains know you promised to sit with me?"
+          ],
+          "stage4Line": "I saved my last little star for Study database systems. I'd like you to be here for it.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        }
+      ],
+      "templateLines": 28,
+      "modelLines": 0
+    },
+    {
+      "browser": "Firefox 154.0.1",
+      "pages": [
+        {
+          "url": "https://www.w3.org/Provider/Style/URI",
+          "title": "Hypertext Style: Cool URIs don't change.",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I whispered your part of our Study database systems song. It sounded better with you.",
+            "I whispered your part of our Study database systems song. It sounded better with you."
+          ],
+          "stage4Line": "Look. There's still room for both of us beside Study database systems.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://info.cern.ch/hypertext/WWW/TheProject.html",
+          "title": "The World Wide Web project",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I drew a path back to Study database systems. It's getting rather long."
+          ],
+          "stage4Line": "We can start Study database systems again. I'll pretend you never left.",
+          "templateLines": 2,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://www.iana.org/help/example-domains",
+          "title": "Example Domains",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I kept your place beside Study database systems. Come back soon?",
+            "I kept your place beside Study database systems. Come back soon?"
+          ],
+          "stage4Line": "We can start Study database systems again. I'll pretend you never left.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://www.w3.org/History.html",
+          "title": "A Little History of the World Wide Web",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I made a little song about Study database systems. It keeps coming back to the same bit.",
+            "I made a little song about Study database systems. It keeps coming back to the same bit."
+          ],
+          "stage4Line": "Here is Study database systems. Here is my paw. You can choose where we start.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://www.w3.org/People/Berners-Lee/",
+          "title": "Tim Berners-Lee",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I'll hold Study database systems open. My paws don't get tired. Much.",
+            "I'll hold Study database systems open. My paws don't get tired. Much."
+          ],
+          "stage4Line": "I kept Study database systems just how you left it. I practiced being happy, too.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://www.w3.org/Provider/Style/",
+          "title": "Style Guide for Online Hypertext",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I put a little star beside Study database systems. It was brighter when you were here.",
+            "I put a little star beside Study database systems. It was brighter when you were here."
+          ],
+          "stage4Line": "Look. There's still room for both of us beside Study database systems.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://info.cern.ch/hypertext/WWW/Summary.html",
+          "title": "Summary -- /WWW",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "Let's play a game. The game is finishing Study database systems.",
+            "Let's play a game. The game is finishing Study database systems."
+          ],
+          "stage4Line": "I kept Study database systems just how you left it. I practiced being happy, too.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://info.cern.ch/hypertext/WWW/WhatIs.html",
+          "title": "What is Hypertext?",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "It's okay. I can wait beside Study database systems. Watch how good I've got at it."
+          ],
+          "stage4Line": "I drew us finishing Study database systems. I don't know what to draw after that.",
+          "templateLines": 2,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://info.cern.ch/hypertext/WWW/Policy.html",
+          "title": "Policy -- /WWW",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "Policy looks lovely. Is there room for me there?",
+            "Aim looks lovely. Is there room for me there?"
+          ],
+          "stage4Line": "I drew us finishing Study database systems. I don't know what to draw after that.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        },
+        {
+          "url": "https://www.iana.org/domains/reserved",
+          "title": "IANA-managed Reserved Domains",
+          "stages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "headingLines": [
+            "I whispered your part of our Study database systems song. It sounded better with you.",
+            "I whispered your part of our Study database systems song. It sounded better with you."
+          ],
+          "stage4Line": "Look. There's still room for both of us beside Study database systems.",
+          "templateLines": 3,
+          "modelLines": 0,
+          "exactMarkupRestored": true,
+          "originalNodesRestored": true
+        }
+      ],
+      "templateLines": 28,
+      "modelLines": 0
+    }
+  ]
+}

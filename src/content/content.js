@@ -6,6 +6,8 @@
     let tickMs;
     let leaving = false;
     let config;
+    let copy;
+    let pageCopy;
     let root;
     let font;
     let fade;
@@ -58,16 +60,24 @@
             while (walker.nextNode()) text.push([walker.currentNode, walker.currentNode.textContent]);
             if (!text.some(([, value]) => value.trim())) continue;
             originals.set(heading, { text, attribute: heading.getAttribute('data-butu-haunt-heading') });
-            text.forEach(([node], index) => { node.textContent = index ? '' : "We were going to work together… remember?"; });
+            const line = copy.formatTemplate(pageCopy.taunt, {
+                task: session.task, heading: text.map(([, value]) => value).join(''),
+            });
+            text.forEach(([node], index) => { node.textContent = index ? '' : line; });
             heading.setAttribute('data-butu-haunt-heading', '');
+            console.info('Butu text', { source: 'template', kind: 'taunt' });
         }
     }
 
     function applyStage(stage) {
-        if (!config || !Number.isInteger(stage) || stage < 0 || stage > 4) return;
+        if (!config || !copy || !Number.isInteger(stage) || stage < 0 || stage > 4) return;
         if (!session || Date.now() >= session.endsAt || leaving || editing() ||
             !['http:', 'https:'].includes(location.protocol)) { restore(true); return; }
         if (!stage) { if (currentStage) restore(); return; }
+        if (pageCopy?.url !== location.href) {
+            restore(true);
+            pageCopy = { url: location.href, ...copy.possessionTemplates(session, location.href) };
+        }
         if (stage === currentStage && root?.isConnected) return;
         if (stage < currentStage) restore(true);
         clearTimeout(fade);
@@ -92,7 +102,7 @@
             scribble.className = 'butu-haunt-scribble';
             const line = document.createElement('p');
             line.className = 'butu-haunt-line';
-            line.textContent = "I'm still here. We have work to do together.";
+            line.textContent = copy.formatTemplate(pageCopy.stage4, { task: session.task });
             root.append(scribble, line);
             document.documentElement.append(root);
         }
@@ -105,6 +115,7 @@
         root.removeAttribute('data-butu-returning');
         root.setAttribute('data-butu-stage', String(stage));
         if (stage >= 2 && !originals.size) rewriteHeadings();
+        if (stage === 4 && currentStage !== 4) console.info('Butu text', { source: 'template', kind: 'stage4' });
         currentStage = stage;
     }
     function reportTiming() {
@@ -138,6 +149,7 @@
         if (area === 'local' && changes.session) {
             request++;
             restore(true);
+            pageCopy = undefined;
             session = changes.session.newValue;
             refreshTiming();
         }
@@ -146,8 +158,13 @@
         session = result.session;
         refreshTiming();
     });
-    import(chrome.runtime.getURL('src/config.js')).then(settings => {
+    Promise.all([
+        import(chrome.runtime.getURL('src/config.js')),
+        import(chrome.runtime.getURL('src/lib/possession.js')),
+        import(chrome.runtime.getURL('src/lib/templates.js')),
+    ]).then(([settings, possession, templates]) => {
         config = settings;
+        copy = { ...possession, ...templates };
         tickMs = config.TIMING_TICK_MS;
         refreshTiming();
     }).catch(() => {});
@@ -166,7 +183,7 @@
         }
         if (message?.type !== 'page:extract' || sender.id !== chrome.runtime.id) return;
         if (!['http:', 'https:'].includes(location.protocol)) return;
-        // Detection must see the site's text, never Butu's placeholders.
+        // Detection must see the site's text, never Butu's copy.
         restore(true);
         extractor ??= import(chrome.runtime.getURL('src/content/extract.js')).catch((error) => {
             extractor = undefined;

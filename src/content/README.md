@@ -261,3 +261,14 @@ Automated verification: Chrome 153 and Firefox 154 each pass the fixture's
 styles at every stage, an intermediate fade opacity, and exact DOM restoration.
 All 29 node tests and both extension builds pass. The fixture does not exercise
 installed-extension routing; that remains covered by the manual checks above.
+
+# Template possession text (task 3.7)
+
+The placeholders described in task 3.4 are now replaced by authored templates.
+Stage 2 uses bounded task/original-heading values; stage 4 names the task.
+Choices stay stable per session/page, including reloads and SPA revisits.
+Local `Butu text` console records identify each rendered line as template copy.
+The diary shell renders a stable current-session caption; saved history remains
+Phase 4. Full contract, ten-page evidence and updated exact Chrome/Firefox
+manual checks: [docs/POSSESSION.md](../../docs/POSSESSION.md).
+The expanded DOM fixture now reports `PASS: 58 haunting checks`.

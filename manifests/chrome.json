@@ -16,7 +16,7 @@
     "run_at": "document_idle"
   }],
   "web_accessible_resources": [{
-    "resources": ["src/content/extract.js", "src/lib/page-text.js", "src/config.js", "assets/doodles/*.svg", "assets/fonts/patrick-hand/PatrickHand-Regular.ttf"],
+    "resources": ["src/content/extract.js", "src/lib/page-text.js", "src/config.js", "src/templates.js", "src/lib/templates.js", "src/lib/possession.js", "assets/doodles/*.svg", "assets/fonts/patrick-hand/PatrickHand-Regular.ttf"],
     "matches": ["http://*/*", "https://*/*"]
   }],
   "action": { "default_title": "Butu", "default_popup": "src/popup/popup.html" },
