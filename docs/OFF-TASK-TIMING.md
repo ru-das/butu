@@ -36,7 +36,9 @@ tab's off-task total becomes zero. Stage visuals/audio remain future tasks.
 
 Verified on 2026-10-30: all 29 Node tests pass; headless Chrome and Firefox each
 pass the 15 content timing checks and the existing 22 extraction checks.
-The operating-system focus scenarios below remain manual checks.
+Installed-extension checks also ran in headed Chrome and Firefox on isolated
+desktops, using real operating-system focus, minimization and keyboard input.
+Measurements and test-environment details: [TIMING-CHECKS.md](TIMING-CHECKS.md).
 
 ## Manual installed-extension checks — Chrome
 

@@ -82,6 +82,8 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       Per-tab totals survive navigation/background wakes; 60 foreground on-task
       seconds reset all tabs. Regression coverage, browser content-script checks,
       storage contract and exact Chrome/Firefox manual steps: docs/OFF-TASK-TIMING.md.
+      Installed headed-browser focus, navigation, reset and real expiry checks:
+      docs/TIMING-CHECKS.md (both browsers verified, 2026-10-30).
 - [ ] 3.3 assets/doodles/: hand-drawn style SVGs, wobbly strokes, pastel crayon look.
       Calm set: stars, smiley, small teddy-bear Butu, heart, flower.
       Butu variants: Calm, Waiting, Lonely, Something’s wrong, Abandoned; follow
