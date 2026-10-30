@@ -6,15 +6,15 @@
   "voice_name": null,
   "voice_id": null,
   "model_id": null,
-  "generation_plan": null,
+  "generation_plan": "free",
   "reported_characters_or_credits": null,
-  "usage_notes": "Voice/model/plan and actual usage await user confirmation. Intended input is recorded from the supplied script, not recovered from the MP3s; do not treat it as a verified transcript or billing record. V4 validation makes zero API requests; original website-generation usage remains unknown.",
-  "licence_notes": "Apply ElevenLabs Free-plan noncommercial and attribution restrictions conservatively until generation plan is confirmed. Not CC0; no source-code licence applies to these recordings.",
+  "usage_notes": "User confirmed all 15 clips sound correct, use their custom voice and were generated on the Free plan. Exact voice name/ID, model and original website-generation usage remain unknown. Scripts are user-confirmed, not machine-transcribed or billing records. V4 validation makes zero API requests and submits zero characters.",
+  "licence_notes": "ElevenLabs Free-plan output: noncommercial, attribution required. Not CC0; no source-code licence applies to these recordings.",
   "attribution": "elevenlabs.io",
   "licence_reference": "https://elevenlabs.io/docs/help-center/legal/can-i-publish-the-content-i-generate-on-the-platform",
   "validation": {
     "ffprobe_and_full_ffmpeg_decode": "passed for all 15 clips",
-    "transcript_and_subjective_listening": "not performed",
+    "transcript_and_subjective_listening": "User confirmed all 15 clips sound correct; browser-specific listening coverage not separately reported.",
     "total_bytes": 907304,
     "total_duration_secs": 39.92
   },
@@ -203,5 +203,6 @@
   "template_source": "src/templates.js#BASE_VOICE_LINES",
   "verification_command": "scripts/audio/base-pack check",
   "v4_api_requests": 0,
-  "v4_submitted_characters": 0
+  "v4_submitted_characters": 0,
+  "voice_type": "user-created custom voice"
 }

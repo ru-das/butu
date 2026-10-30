@@ -144,14 +144,15 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       original CC0 local fallbacks bundled in assets/audio/sfx/. Quota/error/
       no-retry checks: tests/sfx.test.js; exact both-browser listening steps:
       docs/voice-design.md. Subjective listening remains manual; V5 wires playback.
-- [ ] V4 scripts/audio/base-pack: voice 15–20 generic Butu lines; save to
+- [x] V4 scripts/audio/base-pack: voice 15–20 generic Butu lines; save to
       assets/audio/ with a manifest listing line text per clip. User-approved
       manual website workflow supplied 15 companion clips in assets/audio/voice/;
       all decode, intended tagged scripts and credits are recorded. V4 now maps
       all 15 to BASE_VOICE_LINES in templates.js; scripts/audio/base-pack check
       verifies text, hashes, format and decoding offline with zero API usage.
-      Source voice/model/plan and user listening confirmation remain pending;
-      leave unchecked until those final checks are resolved.
+      User confirmed all 15 sound correct, use their custom voice and were
+      generated on the Free plan. Exact voice ID/model and original usage remain
+      explicitly unknown; attribution/noncommercial terms are recorded.
       Existing premade API tooling remains a separate fallback. For any further
       API generation check remaining free quota before each request, no retries.
       Include source/attribution and noncommercial terms.

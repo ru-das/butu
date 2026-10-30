@@ -2,20 +2,21 @@
 
 User-approved revision, 2026-10-30: remove Voice Design and other paid-only
 dependencies across the audio plan. V1 now selects an existing adult voice using
-standard TTS. V2 now bundles an original locally rendered music box. V4–V7
+standard TTS. V2 now bundles an original locally rendered music box. V5–V7
 remain implementation tasks; stage playback and session TTS are not yet wired.
 
 **Later user-directed manual workflow:** the user chose to create a fictional
 childlike companion voice through the website and has supplied 15 MP3 clips in
 `assets/audio/voice/`. The asset manifest records intended tagged input and file
-validation; voice name/ID, model, plan, actual billed usage and subjective
-listening remain unconfirmed. These are separate from the earlier Sarah API
+validation. The user confirmed their custom voice, Free-plan generation and
+that all 15 clips sound correct. Exact voice name/ID, model and billed usage
+remain unknown. These are separate from the earlier Sarah API
 previews below. No custom voice ID has been guessed or put into config.
 The original API-only restrictions described below apply to that earlier
 revision; website generation is a separate, user-approved workflow.
 See [the supplied pack](../assets/audio/voice/README.md) for credits and exact
-Chrome/Firefox listening checks. All 15 files decode; V2/V3 are complete, V4 needs
-its final source/pack check, and playback integration remains V5.
+Chrome/Firefox listening checks. All 15 files decode; V4 is complete, and
+playback integration remains V5.
 
 ## Verified service limits
 
@@ -128,7 +129,8 @@ now and must be used by session dispatch in V6:
 At 600 characters/session the local 6000-character allowance covers ten
 maximum-size sessions per rolling 31 days. This leaves room within a typical
 10,000-credit allowance for the base pack and a few build-time effects, but
-only the provider knows the true shared remaining quota. V4 must check it.
+only the provider knows the true shared remaining quota. Any further API
+generation must check it; V4 reused supplied exports without API calls.
 
 ## Credits and publication
 
@@ -368,22 +370,25 @@ removed; this document keeps the reason rather than a paid setup instruction.
 The existing 15 original MP3 exports in `assets/audio/voice/` are the intended
 Butu voice (decision 17), distinct from the Sarah API candidate. V4 makes no
 new generation requests, submits zero characters and changes none of the audio.
-Original website-generation credits/characters, voice ID, model and plan remain
-unknown and are explicitly null in the manifest; no account quota is inferred.
-Conservative ElevenLabs noncommercial/attribution terms remain in force.
+The user confirmed these recordings use their custom voice and were generated
+on the Free plan. Exact voice name/ID, model and original website-generation
+credits/characters remain explicitly unknown; no account quota is inferred.
+ElevenLabs Free-plan noncommercial/attribution terms apply.
 
 All 15 generic scripts are now authored in `BASE_VOICE_LINES` in
 `src/templates.js`, keyed by `butu-01` through `butu-15`. The
 [manifest](../assets/audio/voice/manifest.json) maps each clip to its template
-and records intended plain text plus tagged input. Intended text is not a
-verified transcript. Run `scripts/audio/base-pack check` for offline template,
+and records intended plain text plus tagged input. The user confirmed all 15
+clips sound correct; this is listening acceptance, not machine transcription. Run `scripts/audio/base-pack check` for offline template,
 count, hash, format and full-decode verification. It never edits the recordings.
-Voice/model/plan and listening confirmation are still required to close V4.
+V4 is complete. Exact voice ID/model and billed usage remain optional
+provenance details; no custom ID is inferred or substituted into API config.
 
 Verification: all 36 unit tests pass (the build test required running outside
 the sandbox after a child-shell EPERM). Both builds pass the pack checker;
 changed script text and a corrupted MP3 are correctly rejected in temporary
-fixtures. `git diff --check` passes. Browser listening is still pending.
+fixtures. `git diff --check` passes. User listening acceptance is confirmed;
+browser-specific listening coverage was not separately reported.
 
 Exact manual checks, for **each browser separately**:
 

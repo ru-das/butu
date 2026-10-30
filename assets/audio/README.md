@@ -13,8 +13,8 @@ speech clips are now in [voice/](voice/README.md), with their own manifest and
 separate ElevenLabs terms. The original V2 music box is bundled in
 [music-box/](music-box/README.md). V3's [sound effects](sfx/README.md) include
 ElevenLabs outputs and original local fallbacks with separate terms;
-the 15-clip voice pack has an offline validator; source/listening confirmation
-and V5 playback wiring remain pending.
+the 15-clip custom voice pack is user-approved, with Free-plan provenance and
+an offline validator. V5 playback wiring remains pending.
 
 Regenerate with the locally installed FFmpeg using `sh scripts/audio/test-chime.sh`.
 FFmpeg is build-time tooling only; the extension needs no encoder or new dependency.
