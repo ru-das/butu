@@ -39,12 +39,21 @@ try {
         check(document.querySelector('[contenteditable] h2').textContent === 'Editable title', 'editor unchanged');
         check(getComputedStyle(document.querySelector('.butu-haunt-butu')).backgroundImage.includes(
             ['waiting', 'lonely', 'wrong', 'abandoned'][stage - 1]), 'correct bear');
+        const overlay = document.querySelector('[data-butu-haunt-root]');
+        check([overlay, ...overlay.querySelectorAll('*')].every(node =>
+            getComputedStyle(node).animationName === 'none'), `stage ${stage} has no looping motion`);
+        check([...overlay.children].every(node => getComputedStyle(node).transitionDuration === '0s'),
+            `stage ${stage} drawings and text stay static`);
+        check(getComputedStyle(overlay).transitionProperty === 'opacity', 'return transition is opacity only');
     }
     link.click();
     check(clicks === 1 && link === document.querySelector('h1 a'), 'original link handler and identity survive');
     changed({ offTaskTiming: { newValue: { activeTabId: 2, tabs: { 2: { onTask: true } } } } }, 'local');
     check(main.outerHTML === original && document.querySelector('h1').firstChild === text, 'return restores markup and text node identity');
     await pause(RETURN_FADE_MS / 2);
+    const fading = document.querySelector('[data-butu-returning]');
+    check(fading && +getComputedStyle(fading).opacity > 0 && +getComputedStyle(fading).opacity < 1,
+        'return gently fades rather than moving or disappearing instantly');
     changed({ offTaskTiming: { newValue: { activeTabId: 2, tabs: { 2: { onTask: true } } } } }, 'local');
     await pause(RETURN_FADE_MS / 2 + 100);
     check(!document.querySelector('[data-butu-haunt-root]'), 'repeated work ticks do not restart the fade');

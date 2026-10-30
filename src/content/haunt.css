@@ -114,5 +114,18 @@
     text-align: center !important;
     overflow-wrap: anywhere !important;
 }
-/* Static drawings and an opacity-only return already meet the motion constraint.
-   Further stage variants belong to task 3.5. */
+/* Keep every stage static in reduced motion; only the return opacity may fade.
+   CSS responds to preference changes even while a haunting is already visible.
+   Scope this to our overlay so the host page's own effects remain untouched. */
+@media (prefers-reduced-motion: reduce) {
+    [data-butu-haunt-root],
+    [data-butu-haunt-root] * {
+        animation: none !important;
+    }
+    [data-butu-haunt-root] {
+        transition: opacity var(--butu-return-ms, 2000ms) ease-out !important;
+    }
+    [data-butu-haunt-root] * {
+        transition: none !important;
+    }
+}

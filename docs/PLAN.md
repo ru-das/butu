@@ -100,7 +100,10 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       HTML and node identity restored on return. Both browsers pass 32 additional
       DOM checks. Evidence: docs/haunt-checks.json; exact manual steps and
       restoration/asset contract: src/content/README.md.
-- [ ] 3.5 prefers-reduced-motion variants.
+- [x] 3.5 prefers-reduced-motion variants.
+      All stages stay static; the opacity-only return fade remains. Scoped CSS
+      responds to live preference changes without affecting host-page effects.
+      Both-browser checks and manual steps: src/content/README.md.
 - [ ] 3.6 src/templates.js in Butu's tone: 20+ taunts, 10+ stage-4 lines,
       10+ voice-line templates using {task}, 10+ diary captions, popup summary lines.
       A small starter pack and tested interpolation exist from 0.4a; expand it.

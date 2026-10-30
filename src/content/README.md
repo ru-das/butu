@@ -208,5 +208,56 @@ in [docs/haunt-checks.json](../../docs/haunt-checks.json).
 
 The standalone DOM fixture passed **32 checks in each browser**. Build and
 all **29 node tests** passed. The Impeccable mechanical detector reported no
-findings. Template personalization and dedicated reduced-motion variants
-remain the later plan tasks; the current drawings have no spatial animation.
+findings. Template personalization remains a later plan task.
+
+# Reduced motion (task 3.5)
+
+`haunt.css` explicitly handles `prefers-reduced-motion: reduce` for the overlay
+and all its descendants. All four stages retain static doodles, scribbles and
+text; animations and child transitions are disabled. The only animated effect
+currently shipped is the `RETURN_FADE_MS` opacity-only return, which remains
+available under reduced motion as specified. Static centering transforms and
+desaturation do not move. Shared paper, popup, diary and bundled SVGs have no
+animations to replace. Host-page animations are not overridden.
+
+The media query responds immediately when the preference changes, including
+during a haunting or return fade; no reload, listener, permission or dependency
+is needed. Stage timing, restoration and form protections are unchanged.
+
+## Manual Chrome checks
+
+1. Run `./build.sh`. Reload Butu at `chrome://extensions` (or load unpacked
+   `dist/chrome`). Start `python3 -m http.server 8776 --bind 127.0.0.1` in the
+   repository.
+2. Open `http://127.0.0.1:8776/tests/content-haunt.html`. In DevTools, open
+   More tools → Rendering and set **Emulate CSS media feature
+   prefers-reduced-motion** to **reduce**. Reload the fixture and confirm
+   `PASS: 45 haunting checks` after the return fade.
+3. Repeat with **no-preference** and confirm the same result. This fixture uses
+   a mocked extension runtime; it exercises the real content script and CSS.
+4. For installed-extension checks, repeat the task 3.4 Chrome steps above with
+   **reduce** enabled on the off-task page. At stages 1–4 confirm still doodles,
+   scribbles and central text. Toggle **no-preference** then **reduce** during
+   stage 4: the stage and layout must stay intact. Return to the work tab:
+   headings restore immediately, and the overlay fades out over two seconds.
+   Stop the session or focus a form field to confirm immediate cleanup.
+
+## Manual Firefox checks
+
+1. Build and reload Butu in `about:debugging#/runtime/this-firefox` (or load
+   `dist/firefox/manifest.json` as a Temporary Add-on). Start the same server.
+2. In `about:config`, record the existing value of `ui.prefersReducedMotion`.
+   Set/create it as a Number with value **1**. Open/reload the fixture URL
+   above and confirm `PASS: 45 haunting checks`.
+3. Set the preference to **0**, reload and confirm the same result.
+4. Repeat the installed-extension task 3.4 Firefox steps above with value **1**.
+   Check all four static stages, toggle **0** then **1** during stage 4, and
+   confirm the unchanged stage/layout, gentle return fade, full restoration
+   and immediate cleanup on session stop or form focus. Restore/reset the
+   preference to its original value afterward.
+
+Automated verification: Chrome 153 and Firefox 154 each pass the fixture's
+45 checks with reduced motion enabled and disabled, including computed motion
+styles at every stage, an intermediate fade opacity, and exact DOM restoration.
+All 29 node tests and both extension builds pass. The fixture does not exercise
+installed-extension routing; that remains covered by the manual checks above.
