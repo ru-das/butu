@@ -2,8 +2,8 @@
 
 User-approved revision, 2026-10-30: remove Voice Design and other paid-only
 dependencies across the audio plan. V1 now selects an existing adult voice using
-standard TTS. V2–V7 remain implementation tasks; this revision does not claim
-that music, base-pack generation, stage playback or session TTS already exists.
+standard TTS. V2 now bundles an original locally rendered music box. V3–V7
+remain implementation tasks; stage playback and session TTS are not yet wired.
 
 **Later user-directed manual workflow:** the user chose to create a fictional
 childlike companion voice through the website and has supplied 15 MP3 clips in
@@ -14,7 +14,7 @@ previews below. No custom voice ID has been guessed or put into config.
 The original API-only restrictions described below apply to that earlier
 revision; website generation is a separate, user-approved workflow.
 See [the supplied pack](../assets/audio/voice/README.md) for credits and exact
-Chrome/Firefox listening checks. All 15 files decode; V2/V3 remain next, V4 needs
+Chrome/Firefox listening checks. All 15 files decode; V2 is complete, V3 is next, V4 needs
 its final source/pack check, and playback integration remains V5.
 
 ## Verified service limits
@@ -140,11 +140,102 @@ or `11.ai` in the title per the linked publication rules. Keep that credit in
 asset manifests, audio credits, demo titles and the eventual diary settings.
 A project-wide code licence does not override these audio terms.
 
-The original local test chime is separately CC0; see
-[its credits](../assets/audio/README.md). V2 will credit the original local
-composition and synthesis separately. V3 must record whether each effect was
+The original local test chime and V2 music box are separately CC0; see
+[their credits](../assets/audio/README.md). V3 must record whether each effect was
 generated with ElevenLabs or synthesized locally. No real-person voice
 recordings, cloning or reference likenesses were used.
+
+## V2: original local music box
+
+User confirmed the local approach. **No ElevenLabs Music API, downloads, key,
+requests, characters or credits used (all zero).** The four bundled MP3s are in
+[`assets/audio/music-box/`](../assets/audio/music-box/README.md), with source
+durations, PCM peaks, encoder version and SHA-256 hashes in its manifest.
+Original composition and synthesized recordings: Butu project,
+“A Place Beside Me”, dedicated under CC0 1.0. These files have separate rights
+from the ElevenLabs speech assets.
+
+The authored score in `src/lib/music-box.js` is eight bars of 3/4, C major,
+24 beats total. Melody (durations in quarter-note beats):
+
+| Bar | Melody | Lower tine on beat 1 |
+| --- | --- | --- |
+| 1 | E6(1), G6(½), E6(½), C6(1) | C5 |
+| 2 | D6(1), E6(1), G6(1) | G4 |
+| 3 | A6(1½), G6(½), E6(1) | A4 |
+| 4 | D6(2), B5(1) | G4 |
+| 5 | E6(1), G6(½), C7(½), B6(1) | C5 |
+| 6 | A6(1), G6(1), E6(1) | A4 |
+| 7 | F6(1), E6(½), D6(½), B5(1) | F4 |
+| 8 | D6(1), C6(2) | C5 |
+
+Each tine is additive synthesis: fundamental plus quiet inharmonic partials at
+2.76× and 5.4× frequency, weighted 0.85/0.12/0.03 and decaying with time
+constants 0.65/0.22/0.10 seconds. A 6 ms attack and final 80 ms release soften
+boundaries; each strike rings for at most three seconds. Melody gain is 0.14,
+lower-tine gain 0.045. No loudness normalization or random source is used.
+
+| Stage / file | Process |
+| --- | --- |
+| 1 / `stage-1-in-tune.mp3` | Render the full score at 80 BPM, A4=440 Hz equal temperament; 0.1 s lead-in and 2 s after the 24-beat score (20.1 s total). |
+| 2 / `stage-2-slower.mp3` | Re-render identical notes at 64 BPM: note spacing grows 25%, pitch and tine decay stay unchanged (24.6 s total). No resampling/pitch shift. |
+| 3 / `stage-3-detuned.mp3` | Keep stage 2 timing; cycle per-strike offsets of 0, −23, +17, −35, +29, −12, +8 cents, plus ±9 cents sinusoidal wobble at 1.7 Hz. Integrate instantaneous frequency to avoid phase jumps (24.6 s total). |
+| 4 / `stage-4-winding-down.mp3` | Use the same score but stop strikes before beat 16, leaving the phrase unfinished. At score beat b, onset is `0.1 + (60/64) × (b + 0.055b²)` seconds. Retain stage 3 offsets/wobble, subtract 32b cents per strike and another 45 cents per second as it rings. Strike gain falls by `1 − 0.65b/16`. End four seconds after the last strike: three seconds of decay, then one full second of silence. |
+
+`scripts/audio/music-box` renders deterministic 44.1 kHz PCM with Node's standard
+library, checks finite samples/headroom, then invokes the installed FFmpeg
+`libmp3lame` encoder for mono 128 kbps MP3. FFmpeg is build-time only. Reproduction:
+
+```sh
+scripts/audio/music-box generate /tmp/butu-music-box-review
+node --test tests/music-box.test.js
+./build.sh
+```
+
+Choose a fresh output directory; the generator refuses overwrites. Identical
+PCM is reproducible; encoded byte identity depends on the installed FFmpeg/LAME
+version. The build copies the bundled files to both browser distributions.
+These are finite cues with silent tails, not certified seamless loops. Stage 4
+must play once and stay stopped; looping and crossfade policy belongs to V5.
+
+Automated checks verify score length, unchanged stage 2 tuning, slower onsets,
+stage 3 offsets, progressive stage 4 spacing/pitch loss, finite unclipped samples,
+and silent tails (a full final second for stage 4). MP3 decode/format and build inclusion are checked
+separately during V2 verification. Automated checks do not judge musical quality.
+
+V2 verification: all 34 Node tests pass; `./build.sh` and `git diff --check` pass.
+FFprobe reports mono 44.1 kHz MP3 for all four clips; FFmpeg decodes each without
+errors. Source hashes match the manifest and copies in both browser builds.
+Stage 4's final half-second decodes to zero PCM samples. Existing-directory
+generation is rejected without overwriting the pack.
+
+Exact manual listening checks (still pending):
+
+Chrome:
+
+1. Run `./build.sh`. Open Chrome and press Ctrl+O for each file, in order:
+   `dist/chrome/assets/audio/music-box/stage-1-in-tune.mp3`,
+   `stage-2-slower.mp3`, `stage-3-detuned.mp3`, `stage-4-winding-down.mp3`
+   (all four in that same directory). Press Play each time.
+2. At comfortable low system volume, confirm a gentle recognizable melody;
+   stage 2 slower with unchanged pitch, stage 3 mildly wrong without harshness,
+   stage 4 slowing/falling/weakening, then stopping. Let stage 4 reach its end;
+   confirm no clipped tail, restart or abrupt click.
+3. In `chrome://extensions`, reload/load unpacked `dist/chrome/`. Start and stop
+   a session from the popup; confirm normal behavior and no extension errors.
+   Automatic stage music awaits V5. V2 adds no runtime network requests.
+
+Firefox:
+
+1. Run `./build.sh`. In Firefox use Ctrl+O to open and Play, in order,
+   `dist/firefox/assets/audio/music-box/stage-1-in-tune.mp3`,
+   `stage-2-slower.mp3`, `stage-3-detuned.mp3`, `stage-4-winding-down.mp3`
+   (all four in that same directory).
+2. Repeat the same low-volume melody, speed, tuning and full-stop checks;
+   listen to each full cue, especially the final ring and silence in stage 4.
+3. In `about:debugging` → This Firefox, reload the add-on or Load Temporary
+   Add-on → `dist/firefox/manifest.json`. Start/stop a popup session and check
+   extension errors. Automatic stage music awaits V5; no runtime requests added.
 
 ## Exact manual checks
 

@@ -1,0 +1,51 @@
+{
+  "title": "A Place Beside Me",
+  "composer": "Butu project (original authored score and additive synthesis)",
+  "licence": "CC0-1.0",
+  "source": "src/lib/music-box.js",
+  "generator": "scripts/audio/music-box",
+  "encoder": "ffmpeg version n9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "sample_rate": 44100,
+  "channels": 1,
+  "format": "MP3 128 kbps",
+  "api_requests": 0,
+  "elevenlabs_characters": 0,
+  "clips": [
+    {
+      "stage": 1,
+      "name": "in-tune",
+      "bpm": 80,
+      "file": "stage-1-in-tune.mp3",
+      "duration_seconds": 20.100022675736962,
+      "pcm_peak_dbfs": -12.63306938108171,
+      "sha256": "82f9cd1b644f25d933644889e4e5dea2dcb392f34340de934b0c8dd7f54f097c"
+    },
+    {
+      "stage": 2,
+      "name": "slower",
+      "bpm": 64,
+      "file": "stage-2-slower.mp3",
+      "duration_seconds": 24.6,
+      "pcm_peak_dbfs": -13.388569737112206,
+      "sha256": "01ba16866665c214800703134a9b9b8d5894ef3b1665bf6faa81d60ee4f8164d"
+    },
+    {
+      "stage": 3,
+      "name": "detuned",
+      "bpm": 64,
+      "file": "stage-3-detuned.mp3",
+      "duration_seconds": 24.6,
+      "pcm_peak_dbfs": -13.510830811480833,
+      "sha256": "cc57f4490fee075883b783661f2fe522919907dc497532876eb001bec066af37"
+    },
+    {
+      "stage": 4,
+      "name": "winding-down",
+      "bpm": 64,
+      "file": "stage-4-winding-down.mp3",
+      "duration_seconds": 29.76408163265306,
+      "pcm_peak_dbfs": -14.944083106456972,
+      "sha256": "7a45e87dea65edbd77859afb78fec2f0d0e8bddedb05ffa0a7f2e980f99e90b3"
+    }
+  ]
+}

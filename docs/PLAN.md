@@ -130,7 +130,7 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       model/format/budgets/expiry in config, shared budget guard and tests, sources,
       licence limits and exact both-browser listening checks: docs/voice-design.md.
       Subjective listening review remains manual; no custom-voice claim.
-- [ ] V2 scripts/audio/music-box: compose an original short music box lullaby and
+- [x] V2 scripts/audio/music-box: compose an original short music box lullaby and
       render locally, then produce 4 stage variants (in tune → slower → detuned →
       winding down and stopping). No Music API or downloaded composition. Bundle
       the files with project asset credits; document the process in docs/voice-design.md.

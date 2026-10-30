@@ -1,0 +1,60 @@
+#!/usr/bin/env node
+// Offline build-time renderer: Node standard library + locally installed FFmpeg.
+const fs = require('node:fs');
+const path = require('node:path');
+const os = require('node:os');
+const { spawnSync } = require('node:child_process');
+const { pathToFileURL } = require('node:url');
+const { createHash } = require('node:crypto');
+const root = path.resolve(__dirname, '../..');
+
+async function main() {
+    const [command, directory, ...extra] = process.argv.slice(2);
+    if (command === '--help' || !command) {
+        console.log('Usage: scripts/audio/music-box generate <new-output-directory>\nOffline original composition; four MP3 stages. Refuses existing directories.');
+        return;
+    }
+    if (command !== 'generate' || !directory || extra.length) throw new Error('Invalid arguments; use --help.');
+    const version = spawnSync('ffmpeg', ['-version'], { encoding: 'utf8' });
+    if (version.status !== 0) throw new Error('Install FFmpeg locally before generating audio.');
+    const { MUSIC_BOX_STAGES, MUSIC_BOX_SAMPLE_RATE, renderMusicBox } = await import(pathToFileURL(path.join(root, 'src/lib/music-box.js')));
+    const output = path.resolve(directory);
+    fs.mkdirSync(output); // Never overwrite an existing pack.
+    const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'butu-music-box-'));
+    try {
+        const clips = [];
+        for (const profile of MUSIC_BOX_STAGES) {
+            const samples = renderMusicBox(profile.stage);
+            const pcm = Buffer.alloc(samples.length * 2);
+            let peak = 0;
+            for (const [i, sample] of samples.entries()) {
+                if (!Number.isFinite(sample) || Math.abs(sample) >= 1) throw new Error('Invalid or clipped synthesis; stopped.');
+                peak = Math.max(peak, Math.abs(sample));
+                pcm.writeInt16LE(Math.round(sample * 32767), i * 2);
+            }
+            const raw = path.join(temporary, 'music-box.pcm');
+            fs.writeFileSync(raw, pcm);
+            const file = `stage-${profile.stage}-${profile.name}.mp3`;
+            const encoded = spawnSync('ffmpeg', ['-hide_banner', '-loglevel', 'error',
+                '-f', 's16le', '-ar', String(MUSIC_BOX_SAMPLE_RATE), '-ac', '1', '-i', raw,
+                '-map_metadata', '-1', '-codec:a', 'libmp3lame', '-b:a', '128k',
+                path.join(output, file)], { encoding: 'utf8' });
+            if (encoded.status !== 0) throw new Error(`FFmpeg failed: ${encoded.stderr}`);
+            clips.push({ ...profile, file, duration_seconds: samples.length / MUSIC_BOX_SAMPLE_RATE,
+                pcm_peak_dbfs: 20 * Math.log10(peak),
+                sha256: createHash('sha256').update(fs.readFileSync(path.join(output, file))).digest('hex') });
+        }
+        fs.writeFileSync(path.join(output, 'manifest.json'), JSON.stringify({
+            title: 'A Place Beside Me', composer: 'Butu project (original authored score and additive synthesis)',
+            licence: 'CC0-1.0', source: 'src/lib/music-box.js',
+            generator: 'scripts/audio/music-box', encoder: version.stdout.split('\n')[0],
+            sample_rate: MUSIC_BOX_SAMPLE_RATE, channels: 1, format: 'MP3 128 kbps',
+            api_requests: 0, elevenlabs_characters: 0, clips,
+        }, null, 2) + '\n');
+        console.log(`Generated four stages in ${output}; zero network calls or API usage.`);
+    } finally {
+        fs.rmSync(temporary, { recursive: true, force: true });
+    }
+}
+
+main().catch(error => { console.error(error.message); process.exitCode = 1; });
