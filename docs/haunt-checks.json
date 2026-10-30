@@ -1,0 +1,296 @@
+{
+  "date": "2026-10-30",
+  "method": "Installed extensions; domain overrides bypass model; seed persisted seconds at 16/46/91/181; real timing:poll/activity routing applies each stage; activate an actual on-task tab for restoration.",
+  "browsers": {
+    "Chrome": "153.0.8010.12",
+    "Firefox": "154.0.1"
+  },
+  "results": {
+    "Chrome": [
+      {
+        "url": "https://www.w3.org/Provider/Style/URI",
+        "baseline": {
+          "title": "Hypertext Style: Cool URIs don't change.",
+          "headings": 11
+        },
+        "stages": [
+          {
+            "stage": "1",
+            "headings": 0,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-waiting.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "2",
+            "headings": 2,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-lonely.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "3",
+            "headings": 2,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-wrong.svg\")",
+            "scribble": "block",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "4",
+            "headings": 2,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-abandoned.svg\")",
+            "scribble": "block",
+            "line": "block",
+            "font": true
+          }
+        ],
+        "restored": {
+          "identical": true,
+          "nodes": true,
+          "text": true,
+          "root": false
+        }
+      },
+      {
+        "url": "https://info.cern.ch/hypertext/WWW/TheProject.html",
+        "baseline": {
+          "title": "The World Wide Web project",
+          "headings": 1
+        },
+        "stages": [
+          {
+            "stage": "1",
+            "headings": 0,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-waiting.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "2",
+            "headings": 1,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-lonely.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "3",
+            "headings": 1,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-wrong.svg\")",
+            "scribble": "block",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "4",
+            "headings": 1,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-abandoned.svg\")",
+            "scribble": "block",
+            "line": "block",
+            "font": true
+          }
+        ],
+        "restored": {
+          "identical": true,
+          "nodes": true,
+          "text": true,
+          "root": false
+        }
+      },
+      {
+        "url": "https://www.iana.org/help/example-domains",
+        "baseline": {
+          "title": "Example Domains",
+          "headings": 2
+        },
+        "stages": [
+          {
+            "stage": "1",
+            "headings": 0,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-waiting.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "2",
+            "headings": 2,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-lonely.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "3",
+            "headings": 2,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-wrong.svg\")",
+            "scribble": "block",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "4",
+            "headings": 2,
+            "bear": "url(\"chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/assets/doodles/butu-abandoned.svg\")",
+            "scribble": "block",
+            "line": "block",
+            "font": true
+          }
+        ],
+        "restored": {
+          "identical": true,
+          "nodes": true,
+          "text": true,
+          "root": false
+        }
+      }
+    ],
+    "Firefox": [
+      {
+        "url": "https://www.w3.org/Provider/Style/URI",
+        "baseline": {
+          "title": "Hypertext Style: Cool URIs don't change.",
+          "headings": 11
+        },
+        "stages": [
+          {
+            "stage": "1",
+            "headings": 0,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-waiting.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "2",
+            "headings": 2,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-lonely.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "3",
+            "headings": 2,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-wrong.svg\")",
+            "scribble": "block",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "4",
+            "headings": 2,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-abandoned.svg\")",
+            "scribble": "block",
+            "line": "block",
+            "font": true
+          }
+        ],
+        "restored": {
+          "identical": true,
+          "nodes": true,
+          "text": true,
+          "root": false
+        }
+      },
+      {
+        "url": "https://info.cern.ch/hypertext/WWW/TheProject.html",
+        "baseline": {
+          "title": "The World Wide Web project",
+          "headings": 1
+        },
+        "stages": [
+          {
+            "stage": "1",
+            "headings": 0,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-waiting.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "2",
+            "headings": 1,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-lonely.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "3",
+            "headings": 1,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-wrong.svg\")",
+            "scribble": "block",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "4",
+            "headings": 1,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-abandoned.svg\")",
+            "scribble": "block",
+            "line": "block",
+            "font": true
+          }
+        ],
+        "restored": {
+          "identical": true,
+          "nodes": true,
+          "text": true,
+          "root": false
+        }
+      },
+      {
+        "url": "https://www.iana.org/help/example-domains",
+        "baseline": {
+          "title": "Example Domains",
+          "headings": 2
+        },
+        "stages": [
+          {
+            "stage": "1",
+            "headings": 0,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-waiting.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "2",
+            "headings": 2,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-lonely.svg\")",
+            "scribble": "none",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "3",
+            "headings": 2,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-wrong.svg\")",
+            "scribble": "block",
+            "line": "none",
+            "font": true
+          },
+          {
+            "stage": "4",
+            "headings": 2,
+            "bear": "url(\"moz-extension://72bcfab7-bd72-4cad-8b23-0ab48f99461b/assets/doodles/butu-abandoned.svg\")",
+            "scribble": "block",
+            "line": "block",
+            "font": true
+          }
+        ],
+        "restored": {
+          "identical": true,
+          "nodes": true,
+          "text": true,
+          "root": false
+        }
+      }
+    ]
+  }
+}

@@ -57,12 +57,12 @@ test('timing messages verify browser focus, persist across wakes, reset across t
     activated({ tabId: 1, windowId: 10 });
     activated({ tabId: 2, windowId: 20 });
     await flush();
-    await activity(1);
+    assert.equal((await activity(1)).stage, 0, 'grace period has no visuals');
     now += 15000;
     await activity(2);
     assert.equal(seconds(1), 15);
     assert.equal(seconds(2), 0, 'active tab in an unfocused window cannot count');
-    await activity(1, false);
+    assert.equal((await activity(1, false)).stage, 1, 'stage is returned for the sender tab');
     now += 90000;
     await activity(1, false);
     assert.equal(seconds(1), 15, 'hidden time excluded');
@@ -92,6 +92,7 @@ test('timing messages verify browser focus, persist across wakes, reset across t
     activated({ tabId: 3, windowId: 10 });
     await flush();
     await activity(3);
+    assert.equal((await activity(1, false)).stage, 0, 'returning to work suppresses haunting in other tabs');
     now += 59999;
     await activity(3);
     assert.equal(seconds(1), 20);

@@ -94,8 +94,12 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       and every stage is recognisably the same teddy bear.
       16 original CC0 SVGs and an offline test sheet: src/doodle-test/index.html.
       Inventory, credits and exact Chrome/Firefox checks: assets/doodles/README.md.
-- [ ] 3.4 haunt.css + stages 1–4 using doodles and placeholder text; full restore on return.
+- [x] 3.4 haunt.css + stages 1–4 using doodles and placeholder text; full restore on return.
       Verify: return to on-task tab → page identical to original.
+      Installed Chrome/Firefox: all four stages on W3C, CERN and IANA; exact
+      HTML and node identity restored on return. Both browsers pass 32 additional
+      DOM checks. Evidence: docs/haunt-checks.json; exact manual steps and
+      restoration/asset contract: src/content/README.md.
 - [ ] 3.5 prefers-reduced-motion variants.
 - [ ] 3.6 src/templates.js in Butu's tone: 20+ taunts, 10+ stage-4 lines,
       10+ voice-line templates using {task}, 10+ diary captions, popup summary lines.

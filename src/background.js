@@ -3,6 +3,7 @@ import { EMBEDDING_LIMITS } from './config.js';
 import { pagePolicy, pageEmbeddingText, scoreVerdict, sessionKey } from './lib/verdict.js';
 import { comparePage } from './model-host/client.js';
 import { updateTiming } from './lib/off-task-timer.js';
+import { getStage } from './lib/stages.js';
 
 const SESSION_ALARM = 'butu-session-end';
 let pending = Promise.resolve();
@@ -69,9 +70,12 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
                     else resolve(result);
                 });
             });
-            await recordTiming({ type: 'activity', tabId: tab.id, windowId: tab.windowId,
+            const timing = await recordTiming({ type: 'activity', tabId: tab.id, windowId: tab.windowId,
                 url: tab.url, visible: message.visible && tab.active, focused: window.focused }, now);
-        }).then(() => respond({}), () => respond({}));
+            const entry = timing?.tabs[tab.id];
+            const working = timing?.tabs[timing.activeTabId]?.onTask === true;
+            return { url: tab.url, stage: !working && entry?.onTask === false ? getStage(entry.seconds) : 0 };
+        }).then(result => respond(result ?? {}), () => respond({}));
         return true;
     }
     if (!['session:start', 'session:stop', 'session:get'].includes(message?.type)) return;
@@ -132,6 +136,7 @@ async function recordTiming(event, now = Date.now()) {
     const previous = offTaskTiming?.sessionKey === key ? offTaskTiming : null;
     const next = updateTiming(previous, event, Math.min(now, session.endsAt));
     await storage('set', { offTaskTiming: { ...next, sessionKey: key } });
+    return next;
 }
 
 function pauseTiming(event) {

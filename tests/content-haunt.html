@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Butu restoration checks</title>
+<link rel="stylesheet" href="../src/content/haunt.css">
+<style>body { margin: 80px; font: 18px/1.5 sans-serif; } h1 { color: navy; } </style>
+<body>
+<main><h1 data-butu-haunt-heading="original">An <a href="#article">original <em>linked</em> heading</a></h1>
+<h2>Another heading</h2><p id="article">The same page, before and after Butu visits.</p>
+<form><h2>A form heading</h2><input value="Unsaved draft"><textarea>Private notes</textarea></form>
+<div contenteditable="true"><h2>Editable title</h2>Private editor</div>
+<button id="action">Try the original handler</button></main>
+<pre id="result">Running…</pre>
+<script type="module" src="content-haunt.js"></script>
+</body>
+</html>

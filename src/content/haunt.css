@@ -1,0 +1,118 @@
+/* Original CC0 doodles and OFL Patrick Hand; see assets/{doodles,fonts}/README.md.
+   Every selector is restricted to Butu's own nodes or saved heading markers. */
+[data-butu-haunt-heading] {
+    font-family: 'Butu Haunt Hand', cursive !important;
+    color: #705477 !important;
+}
+
+[data-butu-haunt-root] {
+    all: initial !important;
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 2147483647 !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    overflow: hidden !important;
+    opacity: 1 !important;
+    transition: opacity var(--butu-return-ms, 2000ms) ease-out !important;
+}
+
+[data-butu-haunt-root][data-butu-returning] { opacity: 0 !important; }
+
+[data-butu-haunt-root] > * {
+    all: initial !important;
+    display: block !important;
+    position: absolute !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
+}
+
+[data-butu-haunt-root] > span {
+    width: 72px !important;
+    height: 72px !important;
+    background: center / contain no-repeat !important;
+}
+
+[data-butu-haunt-root] > .butu-haunt-stars {
+    top: 12% !important;
+    left: 8px !important;
+    background-image: var(--butu-stars-calm) !important;
+}
+[data-butu-haunt-root] > .butu-haunt-smiley {
+    top: 30% !important;
+    right: 8px !important;
+    background-image: var(--butu-smiley-calm) !important;
+}
+[data-butu-haunt-root] > .butu-haunt-heart {
+    bottom: 24% !important;
+    left: 8px !important;
+    background-image: var(--butu-heart-calm) !important;
+}
+[data-butu-haunt-root] > .butu-haunt-flower {
+    top: 58% !important;
+    right: 8px !important;
+    background-image: var(--butu-flower-calm) !important;
+}
+[data-butu-haunt-root] > .butu-haunt-butu {
+    bottom: 12px !important;
+    right: 12px !important;
+    width: 110px !important;
+    height: 110px !important;
+    background-image: var(--butu-butu-waiting) !important;
+}
+[data-butu-stage='2'] > .butu-haunt-butu {
+    background-image: var(--butu-butu-lonely) !important;
+}
+[data-butu-stage='3'] > .butu-haunt-butu {
+    background-image: var(--butu-butu-wrong) !important;
+}
+[data-butu-stage='4'] > .butu-haunt-butu {
+    background-image: var(--butu-butu-abandoned) !important;
+}
+[data-butu-stage='3'] > .butu-haunt-stars, [data-butu-stage='4'] > .butu-haunt-stars {
+    background-image: var(--butu-stars-corrupted) !important;
+}
+[data-butu-stage='3'] > .butu-haunt-smiley, [data-butu-stage='4'] > .butu-haunt-smiley {
+    background-image: var(--butu-smiley-corrupted) !important;
+}
+[data-butu-stage='3'] > .butu-haunt-heart, [data-butu-stage='4'] > .butu-haunt-heart {
+    background-image: var(--butu-heart-corrupted) !important;
+}
+[data-butu-stage='3'] > .butu-haunt-flower, [data-butu-stage='4'] > .butu-haunt-flower {
+    background-image: var(--butu-flower-corrupted) !important;
+}
+[data-butu-haunt-root] > .butu-haunt-scribble {
+    display: none !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+[data-butu-stage='3'] > .butu-haunt-scribble {
+    display: block !important;
+    background: center / 640px 200px repeat-y var(--butu-scribble-1) !important;
+    backdrop-filter: grayscale(0.65) !important;
+    opacity: 0.6 !important;
+}
+[data-butu-stage='4'] > .butu-haunt-scribble {
+    display: block !important;
+    background: center / 640px 200px repeat var(--butu-scribble-3) !important;
+    backdrop-filter: grayscale(1) !important;
+}
+[data-butu-haunt-root] > .butu-haunt-line { display: none !important; }
+[data-butu-stage='4'] > .butu-haunt-line {
+    display: block !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: max-content !important;
+    max-width: calc(100% - 48px) !important;
+    padding: 16px 24px !important;
+    background: #fff8e9 !important;
+    color: #514438 !important;
+    font: 32px/1.3 'Butu Haunt Hand', cursive !important;
+    text-align: center !important;
+    overflow-wrap: anywhere !important;
+}
+/* Static drawings and an opacity-only return already meet the motion constraint.
+   Further stage variants belong to task 3.5. */
