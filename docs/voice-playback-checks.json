@@ -1,0 +1,232 @@
+{
+  "date": "2026-10-30",
+  "task": "V5",
+  "method": "Installed isolated extensions, default autoplay, local pages, seeded elapsed seconds; native media events, intermediate Web Audio gains and actual speaker-monitor recordings. No playback-policy override.",
+  "unit_tests": {
+    "passed": 39,
+    "failed": 0,
+    "command": "node --test tests/*.test.js"
+  },
+  "browsers": [
+    {
+      "browser": "Chrome-153.0.8010.12",
+      "passed": 23,
+      "failed": 0,
+      "checks": [
+        {
+          "label": "foreground off-task visit detected",
+          "pass": true
+        },
+        {
+          "label": "stage 1 native audio plays",
+          "pass": true
+        },
+        {
+          "label": "audio context running at stage 1",
+          "pass": true
+        },
+        {
+          "label": "stage 2 music crossfade has two intermediate gains",
+          "pass": true
+        },
+        {
+          "label": "stage 2 native audio plays",
+          "pass": true
+        },
+        {
+          "label": "audio context running at stage 2",
+          "pass": true
+        },
+        {
+          "label": "whisper 2 once",
+          "pass": true
+        },
+        {
+          "label": "stage 3 music crossfade has two intermediate gains",
+          "pass": true
+        },
+        {
+          "label": "stage 3 native audio plays",
+          "pass": true
+        },
+        {
+          "label": "audio context running at stage 3",
+          "pass": true
+        },
+        {
+          "label": "whisper 3 once",
+          "pass": true
+        },
+        {
+          "label": "stage 4 music crossfade has two intermediate gains",
+          "pass": true
+        },
+        {
+          "label": "stage 4 native audio plays",
+          "pass": true
+        },
+        {
+          "label": "audio context running at stage 4",
+          "pass": true
+        },
+        {
+          "label": "whisper 4 once",
+          "pass": true
+        },
+        {
+          "label": "winding-down ends without looping after 35 seconds of silence",
+          "pass": true
+        },
+        {
+          "label": "return chime plays once",
+          "pass": true
+        },
+        {
+          "label": "return fades all haunting players",
+          "pass": true
+        },
+        {
+          "label": "same visit does not repeat first whisper",
+          "pass": true
+        },
+        {
+          "label": "mute releases audio players",
+          "pass": true
+        },
+        {
+          "label": "unmute resumes music",
+          "pass": true
+        },
+        {
+          "label": "same-URL reload permits one new whisper",
+          "pass": true
+        },
+        {
+          "label": "session end releases players and audio context",
+          "pass": true
+        }
+      ],
+      "recording": ".local-reports/v5/run-1793378229574/Chrome-153.0.8010.12.wav",
+      "raw_events": ".local-reports/v5/run-1793378229574/Chrome-153.0.8010.12.json",
+      "audio": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "duration_seconds": 107.05,
+        "peak_pcm16": 3824,
+        "peak_dbfs": -18.66,
+        "longest_digital_silence_seconds": 36.49
+      }
+    },
+    {
+      "browser": "Firefox-154.0.1",
+      "passed": 23,
+      "failed": 0,
+      "checks": [
+        {
+          "label": "foreground off-task visit detected",
+          "pass": true
+        },
+        {
+          "label": "stage 1 native audio plays",
+          "pass": true
+        },
+        {
+          "label": "audio context running at stage 1",
+          "pass": true
+        },
+        {
+          "label": "stage 2 music crossfade has two intermediate gains",
+          "pass": true
+        },
+        {
+          "label": "stage 2 native audio plays",
+          "pass": true
+        },
+        {
+          "label": "audio context running at stage 2",
+          "pass": true
+        },
+        {
+          "label": "whisper 2 once",
+          "pass": true
+        },
+        {
+          "label": "stage 3 music crossfade has two intermediate gains",
+          "pass": true
+        },
+        {
+          "label": "stage 3 native audio plays",
+          "pass": true
+        },
+        {
+          "label": "audio context running at stage 3",
+          "pass": true
+        },
+        {
+          "label": "whisper 3 once",
+          "pass": true
+        },
+        {
+          "label": "stage 4 music crossfade has two intermediate gains",
+          "pass": true
+        },
+        {
+          "label": "stage 4 native audio plays",
+          "pass": true
+        },
+        {
+          "label": "audio context running at stage 4",
+          "pass": true
+        },
+        {
+          "label": "whisper 4 once",
+          "pass": true
+        },
+        {
+          "label": "winding-down ends without looping after 35 seconds of silence",
+          "pass": true
+        },
+        {
+          "label": "return chime plays once",
+          "pass": true
+        },
+        {
+          "label": "return fades all haunting players",
+          "pass": true
+        },
+        {
+          "label": "same visit does not repeat first whisper",
+          "pass": true
+        },
+        {
+          "label": "mute releases audio players",
+          "pass": true
+        },
+        {
+          "label": "unmute resumes music",
+          "pass": true
+        },
+        {
+          "label": "same-URL reload permits one new whisper",
+          "pass": true
+        },
+        {
+          "label": "session end releases players and audio context",
+          "pass": true
+        }
+      ],
+      "recording": ".local-reports/v5/run-1793378744185/Firefox-154.0.1.wav",
+      "raw_events": ".local-reports/v5/run-1793378744185/Firefox-154.0.1.json",
+      "audio": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "duration_seconds": 111.6,
+        "peak_pcm16": 3239,
+        "peak_dbfs": -20.1,
+        "longest_digital_silence_seconds": 37.91
+      }
+    }
+  ],
+  "manual_steps": "docs/VOICE-PLAYBACK.md",
+  "listening_limit": "Objective output/playback verification; subjective listening is human."
+}

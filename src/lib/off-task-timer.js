@@ -17,7 +17,11 @@ export function updateTiming(previous, event, now) {
         }
     }
     state.updatedAt = Math.max(state.updatedAt, now);
-    if (event.type === 'verdict' || event.type === 'activity') {
+    if (event.type === 'navigate') {
+        const tab = state.tabs[event.tabId];
+        if (tab) { tab.visit = (tab.visit ?? 0) + 1; tab.onTask = null; }
+        if (state.activeTabId === event.tabId) state.activeTabId = null;
+    } else if (event.type === 'verdict' || event.type === 'activity') {
         let tab = state.tabs[event.tabId];
         if (!tab) tab = state.tabs[event.tabId] = { seconds: 0, onTask: null };
         if (tab.url !== event.url) tab.onTask = null;

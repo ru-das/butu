@@ -8,7 +8,7 @@ async function ensureOffscreen() {
             contextTypes: ['OFFSCREEN_DOCUMENT'], documentUrls: [chrome.runtime.getURL(url)],
         });
         if (!contexts.length) await chrome.offscreen.createDocument({
-            url, reasons: ['WORKERS'], justification: 'Run local semantic detection in a dedicated worker.',
+            url, reasons: ['WORKERS', 'AUDIO_PLAYBACK'], justification: 'Run local semantic detection and bundled focus-session audio.',
         });
     })().finally(() => { creating = null; });
     return creating;
@@ -23,4 +23,19 @@ export async function comparePage(task, page) {
     const result = await chrome.runtime.sendMessage({ target: 'model-host', type: 'embedding:compare', task, page });
     if (!result || result.error) throw new Error('Local detection unavailable');
     return result;
+}
+
+let voiceHost;
+export async function syncVoiceHost(state) {
+    if (!chrome.offscreen) {
+        if (state.stage) voiceHost ??= import('./voice-host.js');
+        if (voiceHost) (await voiceHost).updateVoice(state);
+        return;
+    }
+    if (state.stage) await ensureOffscreen();
+    else {
+        const contexts = await chrome.runtime.getContexts({ contextTypes: ['OFFSCREEN_DOCUMENT'] });
+        if (!contexts.length) return;
+    }
+    await chrome.runtime.sendMessage({ target: 'model-host', type: 'voice:update', state });
 }

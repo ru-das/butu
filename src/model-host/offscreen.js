@@ -1,3 +1,4 @@
+import './voice-host.js';
 import { EmbeddingHost } from './embedding-host.js';
 const host = new EmbeddingHost();
 chrome.runtime.onMessage.addListener((message, sender, respond) => {

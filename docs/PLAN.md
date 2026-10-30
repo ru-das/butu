@@ -156,10 +156,14 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       Existing premade API tooling remains a separate fallback. For any further
       API generation check remaining free quota before each request, no retries.
       Include source/attribution and noncommercial terms.
-- [ ] V5 src/voice.js: stage-driven playback queue in the model host
+- [x] V5 src/voice.js: stage-driven playback queue in the model host
       (crossfade music box variants, each whisper once per page visit,
       chime + fade out on return).
       Verify: walk an off-task page through all stages and back, in both browsers.
+      Chrome 153 / Firefox 154: 23 playback checks each, actual speaker recordings,
+      live crossfade gains and 35 seconds of post-stop silence; 39 unit tests pass.
+      Evidence and exact both-browser manual checks: docs/VOICE-PLAYBACK.md and
+      docs/voice-playback-checks.json. No ElevenLabs requests or characters used.
 - [ ] V6 Session-start personalised TTS: fill voice-line templates with task text
       locally (three lines), send ONLY those lines to standard ElevenLabs TTS,
       cache audio for the session,

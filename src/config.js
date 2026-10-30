@@ -103,10 +103,10 @@ export const PERSONALISED_VOICE_MAX_LINES = 3;
 export const WHISPER_PLAYS_PER_VISIT = 1;
 // Ambient sound starts enabled unless the user has muted it (F7).
 export const DEFAULT_MUTED = false;
-// Unset until the low playback volume is selected with the bundled audio in V5.
-export const DEFAULT_VOLUME = null;
-// Unset until stage transitions can be auditioned with the bundled audio in V5.
-export const AUDIO_CROSSFADE_MS = null;
+// Quiet starting mix; diary settings can override it.
+export const DEFAULT_VOLUME = 0.25;
+// Smooth music transitions, scheduled on the host audio clock.
+export const AUDIO_CROSSFADE_MS = 1200;
 
 // Firefox event-page heartbeat, active only during a focus session.
 export const FIREFOX_HEARTBEAT_MS = 20_000;

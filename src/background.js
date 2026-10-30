@@ -1,9 +1,10 @@
 import { createSession, remainingSeconds } from './lib/session.js';
 import { EMBEDDING_LIMITS } from './config.js';
 import { pagePolicy, pageEmbeddingText, scoreVerdict, sessionKey } from './lib/verdict.js';
-import { comparePage } from './model-host/client.js';
+import { comparePage, syncVoiceHost } from './model-host/client.js';
 import { updateTiming } from './lib/off-task-timer.js';
 import { getStage } from './lib/stages.js';
+import { voiceState } from './lib/voice-state.js';
 
 const SESSION_ALARM = 'butu-session-end';
 let pending = Promise.resolve();
@@ -232,7 +233,7 @@ chrome.tabs.onActivated.addListener(({ tabId, windowId }) => {
     void evaluateTab(tabId);
 });
 chrome.tabs.onUpdated.addListener((tabId, change) => {
-    if (change.url || change.status === 'loading') pauseTiming({ type: 'pause', tabId });
+    if (change.url || change.status === 'loading') pauseTiming({ type: 'navigate', tabId });
     // URL changes include same-document SPA navigation; complete covers fresh documents.
     if (change.url || change.status === 'complete') void evaluateTab(tabId);
 });
@@ -240,4 +241,13 @@ chrome.tabs.onRemoved.addListener(tabId => pauseTiming({ type: 'remove', tabId }
 chrome.windows.onFocusChanged.addListener(() => {
     pauseTiming({ type: 'pause' });
     void evaluateActiveTabs();
+});
+
+// Serialize with timer writes, so late reads cannot restart an ended session.
+chrome.storage.onChanged?.addListener((changes, area) => {
+    if (area !== 'local' || !['session', 'offTaskTiming', 'volume', 'muted'].some(key => key in changes)) return;
+    void enqueue(async () => {
+        const data = await storage('get', ['session', 'offTaskTiming', 'volume', 'muted']);
+        await syncVoiceHost(voiceState(data));
+    }).catch(() => {});
 });
