@@ -46,7 +46,9 @@ test('background owns sessions across popup closure, wake, alarms and concurrent
                 query: (options, cb) => cb([]),
                 onActivated: { addListener() {} },
                 onUpdated: { addListener() {} },
+                onRemoved: { addListener() {} },
             },
+            windows: { onFocusChanged: { addListener() {} } },
         };
         await import(`../src/background.js?test=${revision++}`);
         await flush();

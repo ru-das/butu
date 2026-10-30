@@ -1,0 +1,62 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { updateTiming } from '../src/lib/off-task-timer.js';
+import { getStage } from '../src/lib/stages.js';
+
+test('per-tab timing pauses, survives navigation, and resets every tab after 60 foreground on-task seconds', () => {
+    let state;
+    let now = 0;
+    const send = (event, seconds = 0) => {
+        now += seconds * 1000;
+        const original = structuredClone(state);
+        const next = updateTiming(state, event, now);
+        assert.deepEqual(state, original, 'pure reducer does not mutate its input');
+        state = next;
+    };
+    const verdict = (tabId, onTask, url = `https://page.test/${tabId}`) =>
+        ({ type: 'verdict', tabId, windowId: 1, url, onTask });
+    const activity = (tabId, visible = true, focused = true, url = `https://page.test/${tabId}`) =>
+        ({ type: 'activity', tabId, windowId: 1, url, visible, focused });
+    send(verdict(1, false));
+    send(activity(1));
+    send(activity(1, false), 15.25);
+    assert.equal(state.tabs[1].seconds, 15.25);
+    assert.equal(getStage(state.tabs[1].seconds), 1);
+    send(activity(1, true, false), 100);
+    send(activity(1), 100);
+    assert.equal(state.tabs[1].seconds, 15.25, 'hidden and unfocused intervals excluded');
+    send(verdict(2, false), 1);
+    send(activity(2));
+    send({ type: 'pause', windowId: 2 }, 10);
+    assert.equal(state.activeTabId, 2, 'unfocused window switching tabs cannot pause the foreground');
+    send(activity(2), 10);
+    assert.equal(state.tabs[1].seconds, 16.25);
+    assert.equal(state.tabs[2].seconds, 20);
+    send(activity(2, false));
+    send(activity(1));
+    send(activity(1, true, true, 'https://new.test/'), 2);
+    send(verdict(1, false, 'https://new.test/'), 30);
+    assert.equal(state.tabs[1].seconds, 18.25, 'navigation preserves per-tab total; unknown verdict does not count');
+    send(activity(1, false, false, 'https://new.test/'));
+    send(verdict(3, true));
+    send(activity(3));
+    send(activity(3), 59.999);
+    assert.equal(state.tabs[2].seconds, 20, 'no reset before the boundary');
+    send(verdict(4, true));
+    send(activity(4));
+    send(activity(4), 0.001);
+    assert.equal(state.tabs[1].seconds, 0);
+    assert.equal(state.tabs[2].seconds, 0, 'on-task time across pages resets all tabs');
+    send(activity(2));
+    send(activity(2), 7);
+    send(activity(3));
+    send(activity(3), 40);
+    send(activity(2));
+    send(activity(3), 1);
+    send(activity(3), 20);
+    assert.equal(state.tabs[2].seconds, 8, 'an off-task visit breaks the on-task reset streak');
+    send({ type: 'restart' }, 1000);
+    assert.equal(state.tabs[2].seconds, 8, 'restart cannot count browser downtime');
+    send({ type: 'remove', tabId: 2 });
+    assert.equal(state.tabs[2], undefined);
+});

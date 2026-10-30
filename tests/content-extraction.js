@@ -54,7 +54,9 @@ try {
 
     // Exercise the real classic-script entry point, using local module URLs.
     let listener;
-    window.chrome = { runtime: {
+    window.chrome = { storage: {
+        onChanged: { addListener() {} }, local: { get: (key, callback) => callback({}) },
+    }, runtime: {
         id: 'butu-check',
         getURL: (path) => new URL(`../${path}`, location.href).href,
         onMessage: { addListener: (callback) => { listener = callback; } },

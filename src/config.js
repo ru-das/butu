@@ -47,6 +47,8 @@ export const PAGE_MAIN_TEXT_CHARS = 500;
 export const ON_TASK_THRESHOLD = 0.13;
 // Continuous on-task time required to reset per-tab off-task timers (F3).
 export const ON_TASK_RESET_SECONDS = 60;
+// Persist foreground timing once per second; elapsed time comes from timestamps.
+export const TIMING_TICK_MS = 1000;
 // Off-task stage entry times; stage 0 is the grace period (F4).
 export const STAGE_START_SECONDS = [0, 15, 45, 90, 180];
 // Minimum number of real headings rewritten at stage 2 (F4).

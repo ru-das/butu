@@ -45,13 +45,16 @@ test('background routes overrides, caches per session URL across wakes, and reje
                 get: (id, cb) => queueMicrotask(() => cb({ ...tab })),
                 query: (options, cb) => cb([tab]),
                 sendMessage: (id, message, options, cb) => {
+                    if (message.type === 'timing:poll') { cb({}); return; }
                     extracts++;
                     assert.equal(options.frameId, 0);
                     queueMicrotask(() => cb({ url: tab.url, title: 'Database normalization', description: '', mainText: 'Normal forms' }));
                 },
                 onActivated: { addListener: fn => { activated = fn; } },
                 onUpdated: { addListener: fn => { updated = fn; } },
+                onRemoved: { addListener() {} },
             },
+            windows: { onFocusChanged: { addListener() {} } },
         };
         await import(`../src/background.js?routing=${revision}`);
         await flush();

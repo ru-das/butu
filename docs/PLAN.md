@@ -78,7 +78,10 @@ STOP after Phase 0 and report results (times, memory, any blockers).
 
 ## Phase 3: Corruption
 - [x] 3.1 src/lib/stages.js (off-task seconds → stage) + unit test.
-- [ ] 3.2 Off-task timer in content.js: counts only when tab visible and window focused.
+- [x] 3.2 Off-task timer in content.js: counts only when tab visible and window focused.
+      Per-tab totals survive navigation/background wakes; 60 foreground on-task
+      seconds reset all tabs. Regression coverage, browser content-script checks,
+      storage contract and exact Chrome/Firefox manual steps: docs/OFF-TASK-TIMING.md.
 - [ ] 3.3 assets/doodles/: hand-drawn style SVGs, wobbly strokes, pastel crayon look.
       Calm set: stars, smiley, small teddy-bear Butu, heart, flower.
       Butu variants: Calm, Waiting, Lonely, Something’s wrong, Abandoned; follow
