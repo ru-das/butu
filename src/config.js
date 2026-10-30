@@ -64,6 +64,14 @@ export const DIARY_MAX_SESSIONS = 50;
 export const ELEVENLABS_VOICE_ID = 'EXAVITQu4vr4xnSDxMaL';
 export const ELEVENLABS_TTS_MODEL_ID = 'eleven_multilingual_v2';
 export const ELEVENLABS_OUTPUT_FORMAT = 'mp3_44100_128';
+// Build-time SFX only; conservative documented rate, separate from TTS chars.
+export const ELEVENLABS_SFX = {
+    modelId: 'eleven_text_to_sound_v2',
+    creditsPerSecond: 40,
+    maxRequests: 2,
+    maxCredits: 200,
+    promptInfluence: 0.5,
+};
 // Default voices retire after 2026-12-31; never silently replace with paid Library voices.
 export const ELEVENLABS_VOICE_EXPIRES_AT_MS = Date.UTC(2027, 0, 1);
 // Account-listed premade candidates; not Voice Library or newly designed voices.

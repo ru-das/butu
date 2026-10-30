@@ -2,7 +2,7 @@
 
 User-approved revision, 2026-10-30: remove Voice Design and other paid-only
 dependencies across the audio plan. V1 now selects an existing adult voice using
-standard TTS. V2 now bundles an original locally rendered music box. V3–V7
+standard TTS. V2 now bundles an original locally rendered music box. V4–V7
 remain implementation tasks; stage playback and session TTS are not yet wired.
 
 **Later user-directed manual workflow:** the user chose to create a fictional
@@ -14,7 +14,7 @@ previews below. No custom voice ID has been guessed or put into config.
 The original API-only restrictions described below apply to that earlier
 revision; website generation is a separate, user-approved workflow.
 See [the supplied pack](../assets/audio/voice/README.md) for credits and exact
-Chrome/Firefox listening checks. All 15 files decode; V2 is complete, V3 is next, V4 needs
+Chrome/Firefox listening checks. All 15 files decode; V2/V3 are complete, V4 needs
 its final source/pack check, and playback integration remains V5.
 
 ## Verified service limits
@@ -269,6 +269,89 @@ Automated checks cover budget boundaries/expiry and a mocked complete preview
 workflow: paid accounts, overages, quota shortage, Library-only voices, HTTP
 errors with retained reservations, overwrite protection and local selection.
 These checks do not judge subjective voice quality.
+
+## V3: sound effects
+
+`scripts/audio/sfx generate <new-output-directory>` bundles the crayon sound
+and return chime using Node's built-in fetch and local FFmpeg. No new dependency,
+permission or runtime network host. `--local` skips all network requests and
+renders original CC0 fallbacks. Existing directories are refused before any
+API call. A missing key, invalid/paid account, enabled overages, low quota or
+any API error stops generation immediately and retains local fallback files.
+No retries or paid-feature substitutions. A successful first clip is retained
+if the second request fails. Partial/uncertain requests keep their reservation.
+This build ledger is separate from V6's runtime TTS character budget.
+
+The [Create sound effect API](https://elevenlabs.io/docs/api-reference/text-to-sound-effects/convert)
+uses `POST /v1/sound-generation?output_format=mp3_44100_128` with explicit
+`model_id: eleven_text_to_sound_v2`, `loop: false`, and `prompt_influence: 0.5`.
+The [capability guide](https://elevenlabs.io/docs/overview/capabilities/sound-effects)
+lists 40 credits/second for specified durations; reserve that conservative
+estimate before dispatch. The provider-reported cost is recorded separately,
+never inferred from prompt character counts. No voice ID, task text, page data
+or browsing history is used by this build-time tool.
+
+Prompts (verbatim):
+
+- **crayon-scribbling**, 3 seconds: “Close-up of a wax crayon scribbling little doodles on textured paper. Soft dry grainy strokes, short irregular back-and-forth movements, tiny pauses. Gentle and intimate, quiet room, no voices, no music, no sharp impacts.”
+- **happy-return-chime**, 2 seconds: “A tiny warm toy bell welcome chime, softly rising with a happy relieved feeling, like a teddy bear greeting a returning friend. Delicate rounded music-box tones with a short gentle decay into silence. No voices, no dramatic swell, no harsh attack.”
+
+Live generation, 2026-10-30:
+
+- Both pre-request subscription checks returned `tier: free`,
+  `can_extend_character_limit: false`, `character_count: 1614`,
+  `character_limit: 10000`: 8,386 credits available at those observations.
+  The shared counter had not updated before the second request; the script
+  also subtracts its own reservations from the initial observed allowance.
+- Exactly two SFX requests: 120 + 80 = **200 credits reserved**;
+  `character-cost` response headers reported **30 + 20 = 50 credits**.
+  **468 prompt characters** submitted; these are not the billing unit.
+  No retries, top-ups, Music API calls or paid replacements.
+- Post-generation remaining account quota was not queried; do not present
+  8,386 as the current balance. Future invocations recheck the live account.
+- Both API files and both local fallbacks fully decode at 44.1 kHz, with
+  measured durations of 3s/2s (API stereo, fallbacks mono). Subjective listening is pending.
+  Source, hashes, encoder, quota snapshots and costs are in
+  `assets/audio/sfx/manifest.json`.
+- API asset credit: **Sound effects generated with ElevenLabs —
+  [elevenlabs.io](https://elevenlabs.io)**. Free-plan outputs are
+  **noncommercial, attribution required**, not CC0; see the
+  [publication rules](https://elevenlabs.io/docs/help-center/legal/can-i-publish-the-content-i-generate-on-the-platform).
+  The separately retained `*-fallback.mp3` files are original Butu project
+  synthesis, **CC0-1.0**, from `src/lib/sfx.js`, without samples or recordings.
+
+Verification: `node --test tests/sfx.test.js` covers deterministic quiet
+fallbacks, free-account/overage/quota checks, changing quota, persisted
+reservations before dispatch, API restriction, timeout, invalid content type,
+no retries, secret redaction, offline mode and overwrite protection. Full
+unit tests and `./build.sh` also apply. These checks do not judge the sound.
+
+Manual Chrome checks:
+
+1. Press Ctrl+O and open `/home/rupam/butu/assets/audio/sfx/crayon-scribbling.mp3`;
+   press Play. Expect soft, dry crayon strokes with small pauses, no speech or
+   harsh impact. Open `happy-return-chime.mp3` from the same directory and play:
+   expect a gentle welcoming rise and decay, without an abrupt loud attack.
+2. Repeat with `crayon-scribbling-fallback.mp3` and
+   `happy-return-chime-fallback.mp3`; check complete playback and gentle endings.
+3. Run `./build.sh`, reload `dist/chrome/` at `chrome://extensions`, open the
+   popup, start then stop a session, and check the service-worker console for
+   errors. All four files must exist under `dist/chrome/assets/audio/sfx/`.
+4. Inspect the extension Network panel: no runtime `/v1/sound-generation`
+   requests. Automatic stage scribbles/chime playback will be wired in V5.
+
+Manual Firefox checks:
+
+1. Press Ctrl+O and open the same `crayon-scribbling.mp3`, then
+   `happy-return-chime.mp3`; press Play for each and check the same soft strokes
+   and gentle welcoming chime with no voices, harsh attack or truncated ending.
+2. Open and play both `*-fallback.mp3` files; check complete playback and fades.
+3. After `./build.sh`, use `about:debugging` → This Firefox → Load Temporary
+   Add-on → `dist/firefox/manifest.json` (or Reload). Open the popup, start then
+   stop a session and check the extension console for errors. Confirm all four
+   MP3s under `dist/firefox/assets/audio/sfx/`.
+4. Inspect the extension Network panel: no runtime `/v1/sound-generation`
+   requests. Actual stage-audio integration remains V5 in both browsers.
 
 ## Retired Voice Design experiment
 

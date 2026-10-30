@@ -134,11 +134,16 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       render locally, then produce 4 stage variants (in tune → slower → detuned →
       winding down and stopping). No Music API or downloaded composition. Bundle
       the files with project asset credits; document the process in docs/voice-design.md.
-- [ ] V3 scripts/audio/sfx: generate sound effects with the Sound Effects API
+- [x] V3 scripts/audio/sfx: generate sound effects with the Sound Effects API
       (crayon scribbling, happy return chime), at most two short build-time requests
       after checking free quota. Stop on any restriction; use locally synthesized
       effects as fallback. No runtime SFX calls. Record quota, prompts, source and
       ElevenLabs attribution/noncommercial terms in docs/voice-design.md.
+      Two successful free-account calls: 3s crayon + 2s return chime; 200 credits
+      conservatively reserved, 50 provider-reported credits. Both API MP3s and
+      original CC0 local fallbacks bundled in assets/audio/sfx/. Quota/error/
+      no-retry checks: tests/sfx.test.js; exact both-browser listening steps:
+      docs/voice-design.md. Subjective listening remains manual; V5 wires playback.
 - [ ] V4 scripts/audio/base-pack: voice 15–20 generic Butu lines; save to
       assets/audio/ with a manifest listing line text per clip. User-approved
       manual website workflow supplied 15 companion clips in assets/audio/voice/;

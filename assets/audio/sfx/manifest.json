@@ -1,0 +1,63 @@
+{
+  "created_at": "2026-10-30T16:07:05.466Z",
+  "generator": "scripts/audio/sfx",
+  "model_id": "eleven_text_to_sound_v2",
+  "output_format": "mp3_44100_128",
+  "prompt_influence": 0.5,
+  "attribution": "Sound effects generated with ElevenLabs — elevenlabs.io",
+  "api_licence": "Noncommercial; ElevenLabs free-plan terms and attribution required. Not CC0.",
+  "fallback_licence": "CC0-1.0; original Butu project synthesis, src/lib/sfx.js",
+  "encoder": "ffmpeg version n9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "reserved_credits": 200,
+  "submitted_prompt_characters": 468,
+  "api_requests": 2,
+  "quota_checks": [
+    {
+      "at": "2026-10-30T16:07:07.244Z",
+      "tier": "free",
+      "character_count": 1614,
+      "character_limit": 10000,
+      "available_credits": 8386,
+      "overages": false,
+      "reset_unix": 1795837589
+    },
+    {
+      "at": "2026-10-30T16:07:10.908Z",
+      "tier": "free",
+      "character_count": 1614,
+      "character_limit": 10000,
+      "available_credits": 8386,
+      "overages": false,
+      "reset_unix": 1795837589
+    }
+  ],
+  "clips": [
+    {
+      "name": "crayon-scribbling",
+      "duration_seconds": 3,
+      "prompt": "Close-up of a wax crayon scribbling little doodles on textured paper. Soft dry grainy strokes, short irregular back-and-forth movements, tiny pauses. Gentle and intimate, quiet room, no voices, no music, no sharp impacts.",
+      "file": "crayon-scribbling.mp3",
+      "fallback": "crayon-scribbling-fallback.mp3",
+      "fallback_sha256": "aeb84640047f115fd472530bcc70ab8db1f21086dab7e024d8974a5ad7ba539e",
+      "source": "ElevenLabs Sound Effects API",
+      "status": "saved",
+      "reserved_credits": 120,
+      "reported_character_cost": "30",
+      "sha256": "b3474c5253eb4531f0a02b8631c2cbe1afbee83cef5c5cccca3732b8ee550207"
+    },
+    {
+      "name": "happy-return-chime",
+      "duration_seconds": 2,
+      "prompt": "A tiny warm toy bell welcome chime, softly rising with a happy relieved feeling, like a teddy bear greeting a returning friend. Delicate rounded music-box tones with a short gentle decay into silence. No voices, no dramatic swell, no harsh attack.",
+      "file": "happy-return-chime.mp3",
+      "fallback": "happy-return-chime-fallback.mp3",
+      "fallback_sha256": "0327141fca221befc10fac536b0ee587241f2a901d77564fefb5a341f542759f",
+      "source": "ElevenLabs Sound Effects API",
+      "status": "saved",
+      "reserved_credits": 80,
+      "reported_character_cost": "20",
+      "sha256": "f86fe0cc38c72972f82da8e734e19bb7b8a7333cbf9b97abe1a4e6cc77adf822"
+    }
+  ],
+  "status": "api-ready-for-listening"
+}

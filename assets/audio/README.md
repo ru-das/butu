@@ -11,7 +11,9 @@ The V1 previews live in `docs/voice-previews/`; their credit/terms and full audi
 are in [voice-design.md](../../docs/voice-design.md). User-provided companion
 speech clips are now in [voice/](voice/README.md), with their own manifest and
 separate ElevenLabs terms. The original V2 music box is bundled in
-[music-box/](music-box/README.md); V3 and final pack/playback wiring remain pending.
+[music-box/](music-box/README.md). V3's [sound effects](sfx/README.md) include
+ElevenLabs outputs and original local fallbacks with separate terms;
+final voice-pack/playback wiring remains pending.
 
 Regenerate with the locally installed FFmpeg using `sh scripts/audio/test-chime.sh`.
 FFmpeg is build-time tooling only; the extension needs no encoder or new dependency.
