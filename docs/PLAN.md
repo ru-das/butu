@@ -62,7 +62,7 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       Skips navigation, footers, hidden and editable content; both browsers pass
       22 DOM/message checks. Contract and exact installed-extension manual steps:
       src/content/README.md.
-- [ ] 2.2 src/lib/similarity.js (cosine) + unit test.
+- [x] 2.2 src/lib/similarity.js (cosine) + unit test.
 - [ ] 2.3 On-task verdict: allowlist/blocklist first, then embeddings; cache per URL.
       Skip extension pages, browser internal pages and the new tab page.
 - [ ] 2.4 Threshold tuning: run against 20 real pages for one sample task,
