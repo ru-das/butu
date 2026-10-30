@@ -77,7 +77,7 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       checks: docs/threshold-notes.md.
 
 ## Phase 3: Corruption
-- [ ] 3.1 src/lib/stages.js (off-task seconds → stage) + unit test.
+- [x] 3.1 src/lib/stages.js (off-task seconds → stage) + unit test.
 - [ ] 3.2 Off-task timer in content.js: counts only when tab visible and window focused.
 - [ ] 3.3 assets/doodles/: hand-drawn style SVGs, wobbly strokes, pastel crayon look.
       Calm set: stars, smiley, small teddy-bear Butu, heart, flower.
