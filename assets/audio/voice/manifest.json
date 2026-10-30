@@ -1,0 +1,188 @@
+{
+  "title": "Butu companion voice pack — elevenlabs.io",
+  "source": "User-provided ElevenLabs website exports, following the manual speech-pack workflow",
+  "received_date": "2026-10-30",
+  "direction": "Sweet fictional childlike teddy-bear companion",
+  "voice_name": null,
+  "voice_id": null,
+  "model_id": null,
+  "generation_plan": null,
+  "reported_characters_or_credits": null,
+  "usage_notes": "Voice/model/plan and actual usage await user confirmation. Intended input is recorded from the supplied script, not recovered from the MP3s; do not treat it as a verified transcript or billing record.",
+  "licence_notes": "Apply ElevenLabs Free-plan noncommercial and attribution restrictions conservatively until generation plan is confirmed. Not CC0; no source-code licence applies to these recordings.",
+  "attribution": "elevenlabs.io",
+  "licence_reference": "https://elevenlabs.io/docs/help-center/legal/can-i-publish-the-content-i-generate-on-the-platform",
+  "validation": {
+    "ffprobe_and_full_ffmpeg_decode": "passed for all 15 clips",
+    "transcript_and_subjective_listening": "not performed",
+    "total_bytes": 907304,
+    "total_duration_secs": 39.92
+  },
+  "clips": [
+    {
+      "file": "butu-01.mp3",
+      "intended_text": "Hello, little star. Shall we begin?",
+      "intended_tagged_input": "[cheerful] Hello, little star. [giggles] Shall we begin?",
+      "bytes": 76704,
+      "duration_secs": 3.68,
+      "sha256": "07f1cc55b942066c9b05354b7b91cf83fe89b92e1162872a0b664d04fd96a7a5",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-02.mp3",
+      "intended_text": "One tiny step at a time.",
+      "intended_tagged_input": "[gently] One tiny step at a time.",
+      "bytes": 58731,
+      "duration_secs": 2.56,
+      "sha256": "af12176cce2eac910b6973f2a99232c9224226345beeea33ba07e01f5043c198",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-03.mp3",
+      "intended_text": "I like keeping you company.",
+      "intended_tagged_input": "[warmly] I like keeping you company.",
+      "bytes": 52462,
+      "duration_secs": 2.16,
+      "sha256": "3dfdf172ea107ec0669ee57e30e6cd3a104e3139175ec4f4907e37328d06a5b3",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-04.mp3",
+      "intended_text": "I saved your place beside me.",
+      "intended_tagged_input": "[playfully] I saved your place beside me.",
+      "bytes": 54970,
+      "duration_secs": 2.32,
+      "sha256": "fe6b1c927b800b1be7a3c26711becb1a30dafeaba1d307d7bef6deee3ace4eba",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-05.mp3",
+      "intended_text": "Are we taking a little break?",
+      "intended_tagged_input": "[curious] Are we taking a little break?",
+      "bytes": 52462,
+      "duration_secs": 2.16,
+      "sha256": "e50c1980e480cb682e8a8bbf5dcc6b51ba15e2e65de11d768232400a69694084",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-06.mp3",
+      "intended_text": "Our work is still waiting.",
+      "intended_tagged_input": "[gently] Our work is still waiting.",
+      "bytes": 52462,
+      "duration_secs": 2.16,
+      "sha256": "5ce9cd375dd8f087d4f9a75b2af882e480ae39b3ea7734c44ea322c4acf788b0",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-07.mp3",
+      "intended_text": "I thought we were doing this together.",
+      "intended_tagged_input": "[hesitant] I thought we were doing this together.",
+      "bytes": 65419,
+      "duration_secs": 2.96,
+      "sha256": "d4bf8915c6e0c16a7af9493db76e3e9edcdd408e2ef06e266842a38ea172b3ae",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-08.mp3",
+      "intended_text": "It gets very quiet when you leave.",
+      "intended_tagged_input": "[sighs] It gets very quiet when you leave.",
+      "bytes": 83391,
+      "duration_secs": 4.08,
+      "sha256": "d1078ec6e3969d6985c39bf93b1f67dcd49f24078bbc3a39dadf2c1e3f805b5d",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-09.mp3",
+      "intended_text": "I am keeping your place warm.",
+      "intended_tagged_input": "[softly] I am keeping your place warm.",
+      "bytes": 56224,
+      "duration_secs": 2.4,
+      "sha256": "390b675abca572e58a4ffc215fd85aaa520da10edb895d2eda22f1d59c6dc44b",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-10.mp3",
+      "intended_text": "Did you forget something?",
+      "intended_tagged_input": "[curious] Did you forget something?",
+      "bytes": 51208,
+      "duration_secs": 2.08,
+      "sha256": "1cd94ebd7fa059f2d7ac65fa85c38e32adbb7fdd4a001d38281a499fa5a56828",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-11.mp3",
+      "intended_text": "I counted the minutes for you.",
+      "intended_tagged_input": "[quietly] I counted the minutes for you.",
+      "bytes": 51208,
+      "duration_secs": 2.08,
+      "sha256": "eb6d982b81e69e0191b8103783312ee31ba42ca6a99a94582f6f4ef2f3c15c16",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-12.mp3",
+      "intended_text": "Your chair is still here.",
+      "intended_tagged_input": "[whispering] Your chair is still here.",
+      "bytes": 57478,
+      "duration_secs": 2.48,
+      "sha256": "f96a9e862fff5720614762c19a048a71e03d02f042d31e6fc81994c6b73e2cae",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-13.mp3",
+      "intended_text": "I knew you would come back.",
+      "intended_tagged_input": "[relieved] I knew you would come back.",
+      "bytes": 54970,
+      "duration_secs": 2.32,
+      "sha256": "0f95fc62fb3900a9a46fb650da08966479193f13b5bfb3d9165ed1371acf8535",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-14.mp3",
+      "intended_text": "There you are. That feels better.",
+      "intended_tagged_input": "[happy] There you are. [exhales] That feels better.",
+      "bytes": 85899,
+      "duration_secs": 4.24,
+      "sha256": "313b0e2cbbe9ac8b8a0e851879a9ed5cff2e1303360e3affc2f1e937feecb9c7",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    },
+    {
+      "file": "butu-15.mp3",
+      "intended_text": "We can try again together.",
+      "intended_tagged_input": "[warmly] We can try again together.",
+      "bytes": 53716,
+      "duration_secs": 2.24,
+      "sha256": "424d8aa3a73a4505c6f81d45104c8e49a4c7e66c36c365f9babf2d8dbccc5164",
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1
+    }
+  ]
+}

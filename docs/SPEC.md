@@ -113,6 +113,15 @@ delivery settings and authored sweet lines. Sarah is configured after successful
 free-plan synthesis; Sarah, Matilda and Lily previews/settings are documented in
 docs/voice-design.md. An exact custom nursery-rhyme persona is not promised.
 
+Later user-approved exception: manually create an original fictional childlike
+companion voice on the website and export speech for the bundled pack. The user
+has supplied 15 MP3s; assets/audio/voice/manifest.json tracks their intended text
+and source gaps. This supersedes the adult-narrator direction for bundled speech,
+but does not enable Voice Design API calls. Sarah remains a separate tested API
+candidate, not the identity of the supplied recordings. V6 must use a verified
+matching voice for personalised lines or retain bundled speech, avoiding a
+silent voice change between the two.
+
 Free-profile limits (implementation of session dispatch remains task V6):
 - Maximum 300 characters per request, 600 per session, 6000 reserved in any rolling
   31-day window. Use src/lib/voice-budget.js; settings live in src/config.js.

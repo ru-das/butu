@@ -5,6 +5,18 @@ dependencies across the audio plan. V1 now selects an existing adult voice using
 standard TTS. V2–V7 remain implementation tasks; this revision does not claim
 that music, base-pack generation, stage playback or session TTS already exists.
 
+**Later user-directed manual workflow:** the user chose to create a fictional
+childlike companion voice through the website and has supplied 15 MP3 clips in
+`assets/audio/voice/`. The asset manifest records intended tagged input and file
+validation; voice name/ID, model, plan, actual billed usage and subjective
+listening remain unconfirmed. These are separate from the earlier Sarah API
+previews below. No custom voice ID has been guessed or put into config.
+The original API-only restrictions described below apply to that earlier
+revision; website generation is a separate, user-approved workflow.
+See [the supplied pack](../assets/audio/voice/README.md) for credits and exact
+Chrome/Firefox listening checks. All 15 files decode; V2/V3 remain next, V4 needs
+its final source/pack check, and playback integration remains V5.
+
 ## Verified service limits
 
 | Feature | Free-profile decision | Evidence |

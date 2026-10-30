@@ -8,7 +8,9 @@ This is a playback probe, not the final voice/sound pack. The free-profile
 revision uses a locally composed music box; standard ElevenLabs TTS and optional
 free-quota SFX have separate noncommercial/attribution terms, not this CC0 licence.
 The V1 previews live in `docs/voice-previews/`; their credit/terms and full audit
-are in [voice-design.md](../../docs/voice-design.md). V2–V4 will add runtime assets.
+are in [voice-design.md](../../docs/voice-design.md). User-provided companion
+speech clips are now in [voice/](voice/README.md), with their own manifest and
+separate ElevenLabs terms. V2/V3 and final pack/playback wiring remain pending.
 
 Regenerate with the locally installed FFmpeg using `sh scripts/audio/test-chime.sh`.
 FFmpeg is build-time tooling only; the extension needs no encoder or new dependency.

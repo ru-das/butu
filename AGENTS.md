@@ -12,11 +12,15 @@ All text AI runs locally in the browser.
 
 Primary prize target: Best Use of ElevenLabs. Butu's voice, the music box and the
 sound design are core features, not extras. Other partner integrations are optional.
-User-approved free-tier revision (2026-10-30): no Voice Design, voice cloning,
+User-approved free-tier revision (2026-10-30): no Voice Design API, voice cloning,
 paid Voice Library voices or Music API. Use standard TTS with verified premade
 adult voices where the account permits it, and a locally composed music box.
 Free-plan output is noncommercial and requires ElevenLabs attribution; see
 docs/voice-design.md. Always keep bundled audio as the fallback.
+Later user direction permits manual website Voice Design for an original sweet,
+childlike teddy-bear companion. Fifteen user-provided speech exports are in
+assets/audio/voice/; source details are pending in its manifest. This does not
+change the free-only API restriction or authorize paid calls.
 
 ## Hard constraints
 - Privacy: network requests are allowed only for

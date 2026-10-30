@@ -80,9 +80,13 @@ Settled. Do not reopen without asking the user first.
     dark and sets Butu apart from other entries. No gore, no jump scares,
     no screaming. Butu is lonely, not evil.
 
-17. **Butu uses an existing gentle adult voice, never a child imitation.**
-    Standard TTS settings and authored lines aim for a soft, sweet narrator.
-    No custom voice design; the exact nursery-rhyme persona is no longer promised.
+17. **Butu is a sweet, fictional childlike companion (later user correction).**
+    The earlier adult-narrator default was superseded by the user's direction
+    and approval of manual website Voice Design. Use the supplied original
+    character recordings as the intended bundled voice. Their exact source voice
+    ID/model is pending, not inferred from the audio. Sarah remains only the
+    separately verified premade API candidate; do not claim it is the supplied
+    custom voice or silently mix both voices in a session.
 
 18. **All assets bundled locally.**
     Fonts, doodles and audio ship inside the extension. Loading from CDNs or
@@ -110,3 +114,12 @@ Settled. Do not reopen without asking the user first.
     only, preserving the session-start-TTS-only runtime network boundary.
     Free-plan output is noncommercial with attribution; code and generated audio
     have separate licensing. Sources and remaining tasks: docs/voice-design.md.
+
+22. **Manual speech-pack handoff, following the user's website workflow.**
+    Fifteen clips received in assets/audio/voice/, plus intended scripts/tags,
+    file hashes, format checks and credits. Original MP3s stay unchanged.
+    Voice ID/model/plan/actual usage and subjective transcript checks remain
+    unconfirmed; the manifest records those gaps explicitly. V2/V3 remain next
+    in order; V4 finalizes the pack and V5 wires playback. No new API requests
+    or runtime behavior are part of asset intake. Manual creation is distinct
+    from the paid Voice Design API restriction in decision 12.

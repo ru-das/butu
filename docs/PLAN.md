@@ -140,9 +140,13 @@ STOP after Phase 0 and report results (times, memory, any blockers).
       effects as fallback. No runtime SFX calls. Record quota, prompts, source and
       ElevenLabs attribution/noncommercial terms in docs/voice-design.md.
 - [ ] V4 scripts/audio/base-pack: voice 15–20 generic Butu lines; save to
-      assets/audio/ with a manifest listing line text per clip. Use the verified
-      premade voice and standard TTS only; check remaining free quota before each
-      request, no retries. Include source/attribution and noncommercial terms.
+      assets/audio/ with a manifest listing line text per clip. User-approved
+      manual website workflow supplied 15 companion clips in assets/audio/voice/;
+      all decode, intended tagged scripts and credits are recorded. Finish the
+      source metadata/listening check when reaching this task after V2/V3.
+      Existing premade API tooling remains a separate fallback. For any further
+      API generation check remaining free quota before each request, no retries.
+      Include source/attribution and noncommercial terms.
 - [ ] V5 src/voice.js: stage-driven playback queue in the model host
       (crossfade music box variants, each whisper once per page visit,
       chime + fade out on return).
