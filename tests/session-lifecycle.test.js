@@ -83,9 +83,13 @@ test('background owns sessions across popup closure, wake, alarms and concurrent
     await flush();
     assert.equal(stored.session, null, 'alarm ends session without a popup');
     assert.equal(alarm, undefined);
+    assert.equal(stored.sessionHistory.length, 1);
+    assert.equal(stored.sessionHistory[0].completed, true);
+    assert.equal(stored.sessionHistory[0].elapsedSeconds, 60);
 
     await start();
     assert.deepEqual(await send({ type: 'session:stop' }), { session: null });
+    assert.equal(stored.sessionHistory.length, 2, 'repeated stops do not archive twice');
     assert.equal(stored.session, null);
     assert.equal(alarm, undefined);
     assert.deepEqual(await send({ type: 'session:stop' }), { session: null });
@@ -105,12 +109,22 @@ test('background owns sessions across popup closure, wake, alarms and concurrent
     assert.equal(stored.session, null);
     assert.equal(alarm, undefined);
     failWrite = true;
+    const historyBeforeFailure = structuredClone(stored.sessionHistory);
     assert.ok((await start()).error);
     assert.equal(stored.session, null);
     failWrite = false;
     failAlarm = true;
     assert.ok((await start()).error);
     assert.equal(stored.session, null, 'alarm creation failure rolls back start');
+    assert.deepEqual(stored.sessionHistory, historyBeforeFailure, 'failed starts are not sessions');
     failAlarm = false;
     assert.ok((await start()).session, 'queue recovers after errors');
+    const activeBeforeFailure = structuredClone(stored.session);
+    failWrite = true;
+    assert.ok((await send({ type: 'session:stop' })).error);
+    assert.deepEqual(stored.session, activeBeforeFailure, 'failed archive preserves active session');
+    assert.deepEqual(stored.sessionHistory, historyBeforeFailure);
+    failWrite = false;
+    await send({ type: 'session:stop' });
+    assert.equal(stored.sessionHistory.length, historyBeforeFailure.length + 1);
 });

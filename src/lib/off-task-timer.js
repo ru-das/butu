@@ -7,8 +7,16 @@ export function updateTiming(previous, event, now) {
     });
     const elapsed = Math.max(0, now - state.updatedAt) / 1000;
     const active = state.tabs[state.activeTabId];
+    state.stats ??= { offTaskSeconds: 0, timesWandered: 0, domains: [] };
     if (event.type !== 'restart' && active?.onTask === false) {
         active.seconds += elapsed;
+        if (elapsed > 0) {
+            state.stats.offTaskSeconds += elapsed;
+            if (!state.wandering) state.stats.timesWandered++;
+            state.wandering = true;
+            const domain = new URL(active.url).hostname;
+            if (!state.stats.domains.includes(domain)) state.stats.domains.push(domain);
+        }
         state.onTaskSeconds = 0;
     } else if (event.type !== 'restart' && active?.onTask === true) {
         state.onTaskSeconds = Math.min(ON_TASK_RESET_SECONDS, state.onTaskSeconds + elapsed);
@@ -36,5 +44,10 @@ export function updateTiming(previous, event, now) {
             (event.windowId == null || active?.windowId === event.windowId)) state.activeTabId = null;
         if (event.type === 'remove') delete state.tabs[event.tabId];
     }
+    const next = state.tabs[state.activeTabId];
+    if (event.type === 'restart' || next?.onTask !== false ||
+        state.activeTabId !== previous?.activeTabId ||
+        next?.url !== previous?.tabs[previous.activeTabId]?.url ||
+        event.type === 'navigate' && event.tabId === state.activeTabId) state.wandering = false;
     return state;
 }

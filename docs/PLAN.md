@@ -176,7 +176,11 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
   records, bundled-asset provenance and ElevenLabs attribution.
 
 ## Phase 4: Diary and finish
-- [ ] 4.1 Session stats saved to storage.local (last 50 sessions).
+- [x] 4.1 Session stats saved to storage.local (last 50 sessions).
+      Cumulative foreground off-task totals, wander count, domains and authored
+      caption; atomic archive/cleanup on stop or expiry. Retention, wake/race,
+      rollback and timing checks pass. Contract and exact both-browser manual
+      steps: docs/SESSION-STATS.md.
 - [ ] 4.2 Popup session summary + "Open our diary" link (opens diary.html in a tab).
 - [ ] 4.3 Diary: session pages with date, task, time, times wandered, caption,
       Butu drawing chosen by session quality (happy → uneasy → wrong).

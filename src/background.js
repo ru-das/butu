@@ -5,6 +5,7 @@ import { comparePage, syncVoiceHost } from './model-host/client.js';
 import { updateTiming } from './lib/off-task-timer.js';
 import { getStage } from './lib/stages.js';
 import { voiceState } from './lib/voice-state.js';
+import { saveSession } from './lib/session-stats.js';
 
 const SESSION_ALARM = 'butu-session-end';
 let pending = Promise.resolve();
@@ -36,9 +37,13 @@ function clearAlarm() {
     });
 }
 
-async function endSession() {
-    // Clear persisted state first: a leftover alarm is harmless after a restart.
-    await storage('set', { session: null, verdictCache: null, offTaskTiming: null });
+async function endSession(save = true) {
+    const { session, offTaskTiming, sessionHistory } = await storage('get',
+        ['session', 'offTaskTiming', 'sessionHistory']);
+    // Archive and clear together so retries/wakes cannot duplicate or lose an entry.
+    const history = save ? saveSession(sessionHistory, session, offTaskTiming) : sessionHistory;
+    await storage('set', { session: null, verdictCache: null, offTaskTiming: null,
+        ...(history !== undefined ? { sessionHistory: history } : {}) });
     await clearAlarm();
     return null;
 }
@@ -93,7 +98,7 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
         try {
             await chrome.alarms.create(SESSION_ALARM, { when: session.endsAt });
         } catch (error) {
-            await endSession();
+            await endSession(false);
             throw error;
         }
         return session;
