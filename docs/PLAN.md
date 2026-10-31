@@ -218,8 +218,13 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       Root README includes component licence/provenance links, separate CC0 and
       ElevenLabs noncommercial terms, source-licence gap and exact Chrome/Firefox
       install and manual smoke checks. Network/final audits remain 4.9/4.10.
-- [ ] 4.9 Network audit in both browsers: only Hugging Face model downloads;
+- [x] 4.9 Network audit in both browsers: only Hugging Face model downloads;
       no runtime ElevenLabs calls. No fonts or images from the network.
+      Native Chrome/Firefox capture, CSP/HTTPS-block negative controls, cold model
+      GETs and fully offline cached inference, all stage audio, diary/settings
+      and exact restoration pass. Removed stale ElevenLabs CSP allowance.
+      Step-by-step audit and exact manual steps: docs/NETWORK-AUDIT.md;
+      tracked evidence: docs/network-audit-checks.json.
 - [ ] 4.10 Full run-through against the Definition of done in docs/SPEC.md.
 
 ## Demo and write-up support

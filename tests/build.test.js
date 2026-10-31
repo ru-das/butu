@@ -24,6 +24,8 @@ test('build copies both manifests and local trees, and removes stale output', ()
         readFileSync(join(root, 'manifests', `${browser}.json`), 'utf8'));
       const manifest = JSON.parse(readFileSync(join(output, 'manifest.json'), 'utf8'));
       assert.equal(manifest.manifest_version, 3);
+      assert.match(manifest.content_security_policy.extension_pages, /connect-src 'self' https:\/\/huggingface\.co https:\/\/\*\.hf\.co;/);
+      assert.ok(!manifest.content_security_policy.extension_pages.includes('elevenlabs'));
       assert.deepEqual(manifest.permissions, browser === 'chrome'
         ? ['storage', 'alarms', 'offscreen'] : ['storage', 'alarms']);
       const background = manifest.background.service_worker ?? manifest.background.scripts[0];

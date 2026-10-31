@@ -1,0 +1,456 @@
+{
+  "date": "2026-10-31",
+  "scope": "Installed extension, real cold model download, native HTTPS blocking, cached inference and bundled stage playback. Synthetic local pages; no API key.",
+  "runtimeElevenLabsRequests": 0,
+  "browsers": [
+    {
+      "browser": "Chrome-153.0.8010.12",
+      "rawEvidence": ".local-reports/audit/run-1793424290312/Chrome-153.0.8010.12.json",
+      "startedAt": "2026-10-31T05:25:01.762Z",
+      "finishedAt": "2026-10-31T05:25:35.332Z",
+      "checks": [
+        {
+          "label": "audit negative control sees both forbidden CSP attempts",
+          "pass": true,
+          "detail": [
+            {
+              "url": "https://api.elevenlabs.io/v1/user",
+              "directive": "connect-src"
+            },
+            {
+              "url": "https://example.com/butu-negative-control",
+              "directive": "connect-src"
+            }
+          ]
+        },
+        {
+          "label": "popup starts session and shows countdown",
+          "pass": true
+        },
+        {
+          "label": "cold model produces an on-task verdict",
+          "pass": true,
+          "detail": {
+            "entries": [
+              {
+                "score": 0.62386939447882,
+                "url": "http://127.0.0.1:8789/work"
+              }
+            ],
+            "sessionKey": "[1793424302685,1793425802685,\"DBMS assignment on normalization\"]"
+          }
+        },
+        {
+          "label": "first download reports progress",
+          "pass": true
+        },
+        {
+          "label": "cold runtime remote requests only Hugging Face GETs without user text",
+          "pass": true
+        },
+        {
+          "label": "cold audit actually observed model requests",
+          "pass": true
+        },
+        {
+          "label": "stop archives and displays summary",
+          "pass": true
+        },
+        {
+          "label": "native offline guard rejects and records an allowed-origin probe",
+          "pass": true
+        },
+        {
+          "label": "cached semantic inference succeeds with external network blocked",
+          "pass": true
+        },
+        {
+          "label": "diary from popup shows both real sessions",
+          "pass": true
+        },
+        {
+          "label": "settings voice test works offline",
+          "pass": true
+        },
+        {
+          "label": "offline stage 1 visuals and native audio",
+          "pass": true
+        },
+        {
+          "label": "offline stage 2 visuals and native audio",
+          "pass": true
+        },
+        {
+          "label": "offline stage 3 visuals and native audio",
+          "pass": true
+        },
+        {
+          "label": "offline stage 4 visuals and native audio",
+          "pass": true
+        },
+        {
+          "label": "all stage speech uses bundled custom pack",
+          "pass": true
+        },
+        {
+          "label": "return restores exact HTML and original nodes",
+          "pass": true
+        },
+        {
+          "label": "on-task work page remains untouched",
+          "pass": true
+        },
+        {
+          "label": "offline runtime has zero external HTTP attempts",
+          "pass": true
+        },
+        {
+          "label": "fonts images and audio never request network origins",
+          "pass": true
+        }
+      ],
+      "coldModelRequests": [
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/api/resolve-cache/models/Xenova/paraphrase-MiniLM-L3-v2/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/api/resolve-cache/models/Xenova/paraphrase-MiniLM-L3-v2/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/api/resolve-cache/models/Xenova/paraphrase-MiniLM-L3-v2/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/onnx/model_quantized.onnx",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://us.aws.cdn.hf.co/xet-bridge-us/646cce40c51833760b557a2d/765414bd097cd8272bbc5218b62e906fb9610ad8b7081f8eefad31c5ffd5cbee",
+          "method": "GET",
+          "hasBody": false
+        }
+      ],
+      "offlineExternalAttempts": 0,
+      "browserSystemRequests": 0,
+      "audio": {
+        "clips": [
+          {
+            "path": "music-box/stage-1-in-tune",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "music-box/stage-2-slower",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "voice/butu-06",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "music-box/stage-3-detuned",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "sfx/crayon-scribbling",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "voice/butu-08",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "music-box/stage-4-winding-down",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "voice/butu-12",
+            "events": [
+              "playing"
+            ]
+          }
+        ],
+        "players": 2,
+        "context": "running"
+      }
+    },
+    {
+      "browser": "Firefox-154.0.1",
+      "rawEvidence": ".local-reports/audit/run-1793424679596/Firefox-154.0.1.json",
+      "startedAt": "2026-10-31T05:31:48.032Z",
+      "finishedAt": "2026-10-31T05:32:35.476Z",
+      "checks": [
+        {
+          "label": "audit negative control sees both forbidden CSP attempts",
+          "pass": true,
+          "detail": [
+            {
+              "url": "https://api.elevenlabs.io/v1/user",
+              "directive": "connect-src"
+            },
+            {
+              "url": "https://example.com/butu-negative-control",
+              "directive": "connect-src"
+            }
+          ]
+        },
+        {
+          "label": "popup starts session and shows countdown",
+          "pass": true
+        },
+        {
+          "label": "cold model produces an on-task verdict",
+          "pass": true,
+          "detail": {
+            "sessionKey": "[1793424710733,1793426210733,\"DBMS assignment on normalization\"]",
+            "entries": [
+              {
+                "url": "http://127.0.0.1:8789/work",
+                "score": 0.62386939447882
+              }
+            ]
+          }
+        },
+        {
+          "label": "first download reports progress",
+          "pass": true
+        },
+        {
+          "label": "cold runtime remote requests only Hugging Face GETs without user text",
+          "pass": true
+        },
+        {
+          "label": "cold audit actually observed model requests",
+          "pass": true
+        },
+        {
+          "label": "stop archives and displays summary",
+          "pass": true
+        },
+        {
+          "label": "native offline guard rejects and records an allowed-origin probe",
+          "pass": true
+        },
+        {
+          "label": "cached semantic inference succeeds with external network blocked",
+          "pass": true
+        },
+        {
+          "label": "diary from popup shows both real sessions",
+          "pass": true
+        },
+        {
+          "label": "settings voice test works offline",
+          "pass": true
+        },
+        {
+          "label": "offline stage 1 visuals and native audio",
+          "pass": true
+        },
+        {
+          "label": "offline stage 2 visuals and native audio",
+          "pass": true
+        },
+        {
+          "label": "offline stage 3 visuals and native audio",
+          "pass": true
+        },
+        {
+          "label": "offline stage 4 visuals and native audio",
+          "pass": true
+        },
+        {
+          "label": "all stage speech uses bundled custom pack",
+          "pass": true
+        },
+        {
+          "label": "return restores exact HTML and original nodes",
+          "pass": true
+        },
+        {
+          "label": "on-task work page remains untouched",
+          "pass": true
+        },
+        {
+          "label": "offline runtime has zero external HTTP attempts",
+          "pass": true
+        },
+        {
+          "label": "fonts images and audio never request network origins",
+          "pass": true
+        }
+      ],
+      "coldModelRequests": [
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/api/resolve-cache/models/Xenova/paraphrase-MiniLM-L3-v2/f2d931077e6527467d9ffc873f647d835e589e82/config.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/api/resolve-cache/models/Xenova/paraphrase-MiniLM-L3-v2/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/api/resolve-cache/models/Xenova/paraphrase-MiniLM-L3-v2/f2d931077e6527467d9ffc873f647d835e589e82/tokenizer_config.json",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://huggingface.co/Xenova/paraphrase-MiniLM-L3-v2/resolve/f2d931077e6527467d9ffc873f647d835e589e82/onnx/model_quantized.onnx",
+          "method": "GET",
+          "hasBody": false
+        },
+        {
+          "url": "https://us.aws.cdn.hf.co/xet-bridge-us/646cce40c51833760b557a2d/765414bd097cd8272bbc5218b62e906fb9610ad8b7081f8eefad31c5ffd5cbee",
+          "method": "GET",
+          "hasBody": false
+        }
+      ],
+      "offlineExternalAttempts": 0,
+      "browserSystemRequests": 121,
+      "audio": {
+        "clips": [
+          {
+            "path": "music-box/stage-1-in-tune",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "music-box/stage-2-slower",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "voice/butu-06",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "music-box/stage-3-detuned",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "sfx/crayon-scribbling",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "voice/butu-08",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "music-box/stage-4-winding-down",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "voice/butu-12",
+            "events": [
+              "playing"
+            ]
+          }
+        ],
+        "players": 2,
+        "context": "running"
+      }
+    }
+  ],
+  "runtimeSourceHashes": {
+    "src/background.js": "0aee8223c2d39a6758cb070b1866bddaf4f06da494521308f0a6e5f87c47b113",
+    "src/config.js": "3a2c84beaa9daf10bb12807a0106212a3c7fe4e4c63da9d5bf7da1da1567f7c3",
+    "src/content/content.js": "e37fd22819fe2bbc33782a58e358ccfc5e0ab8de7ad311b5ab642db4e50dc1b5",
+    "src/content/extract.js": "acd5b575d57111b9136dbeeb4d719872d6bbc88cecbc4f7f9aef72eddf1aa30b",
+    "src/diary/diary.js": "9ed2f51b963519f37731159d1c5db6456d78b0fc30d3df215b846890f6c9c03f",
+    "src/diary/settings.js": "22f62d81b18b924aa975d67387e71e4b4cc647d08e16b9b3e4e028566f9fa914",
+    "src/lib/diary.js": "b2b01f6af82a1fae5e713b9f283d5bf548644e7dc56eb11d52cdbf021744a472",
+    "src/lib/download-progress.js": "0314f7dd96022456e5073ee83ad66f9bfeeed7155efe3e3952fbd68d99857da5",
+    "src/lib/embedding-protocol.js": "ef50635d51923330307b43ce5e260f0a77b8b9b8247263638987c496a98bd061",
+    "src/lib/music-box.js": "6619e6a9c3fca603e37ca085e4718f47afacae67ddb0ebbd2b03842ca7609f47",
+    "src/lib/off-task-timer.js": "e099e3417a11a6c371e47f4b617ce635fdebaa9461934bf5300ac11bf561f7b8",
+    "src/lib/page-text.js": "f4d3200b384bf97f3b47f5b233589db25a82d4958b8eaf717d05c66c19e93586",
+    "src/lib/possession.js": "f3c409c343963159eee877e5b768eaa3e56668d21ab2f248f5e7d93fd7ee9b9e",
+    "src/lib/session-stats.js": "827edef21b460e8ee2691a051be103754e2afbcd39cf335ded68db8c6a4d6fb5",
+    "src/lib/session.js": "aa4808dca9e50a937cb584c87a3d78bdc66605f3795982faa70bc983e5a619a0",
+    "src/lib/settings.js": "b5decfa15bbe06aa49f73f6189d517b8f142ff4cbc8954e60b1a529624370376",
+    "src/lib/sfx.js": "a85d1349de7b95e12b69f7d895df1edeb82ec9ac4ae650143526f09ab59422bb",
+    "src/lib/similarity.js": "36174a562ced748c01adfda9b3d6a020ded7ab88bbc2b2921216643ebf87d9a1",
+    "src/lib/stages.js": "0448c1882ec391aea857bf4980c74b7f3f3143c604a4f5469e0a39fc893c7d95",
+    "src/lib/templates.js": "48f3a24795d7923eba6002d82ac236370721ff31d24761f7487653496d9c4a13",
+    "src/lib/verdict.js": "3e14adacd629d0c5722debc32e9bf094425aad5017add292d7decb4fcc298aae",
+    "src/lib/voice-budget.js": "416b70184cef84a2e8fa961bfd5a73b5c6156c0a49012e09d0c4e8c0237b17e9",
+    "src/lib/voice-state.js": "2d4982aaad5df54c2862ed719c73f28eff5cbabc971dde561a31ae9b8e3fae0e",
+    "src/model-host/audio-probe.js": "3b5ea0ddd68d7449197d2624c7631c37f680de9b2df1e9ed6d301ab063c3e475",
+    "src/model-host/client.js": "a211f490d6ffb8f5fdf50637f48515e484b13901fe49fb26fa7aa2fe97f8cb31",
+    "src/model-host/embedding-host.js": "d7b6fbaeb4009669d9e3d776651ee971f662c0043a6e4b9d464c57eaf04097e0",
+    "src/model-host/embedding-worker.js": "4ef674e8db10f9dd40e9a20d7beb54a2861aaaaff547e860d471ca08805d82bd",
+    "src/model-host/firefox-session-lifetime.js": "96decc00c5b4a24bf0575ecf0f0f07e1efa3aba30f88b947b5d6f8d531e3ce5e",
+    "src/model-host/offscreen.js": "89fe0a7311d583f9fad3542064bb97fbc58fc860f937a9429e6b1de84d34251e",
+    "src/model-host/transformers.js": "4b5e8200bad2d918b066f71066a7adc0946b53ea2c8170f7658420b90b26e0e8",
+    "src/model-host/voice-host.js": "fa140643d9dcb5decdbcd40d797f278de8df85d27a6e59620267d2fd2b07a57f",
+    "src/popup/popup.js": "5cd7861520d24babea14665ffa5a75d4e225b511894502faf56b47c72768ba0a",
+    "src/templates.js": "a22c64ab87d2b1f5b1e1556cba7ec7442dc3bea2fdf1263b3298004349a8c7ba",
+    "src/voice.js": "6b726abd14989aa90291028ea9151160cd51172090f3121b19b46198f540ec1d"
+  }
+}
