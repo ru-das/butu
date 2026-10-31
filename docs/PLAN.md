@@ -234,6 +234,15 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       manual steps: docs/FINAL-CHECKS.md; evidence: docs/definition-of-done-checks.json.
 
 ## Demo and write-up support
+- [x] User-requested Week 4 article image pass: add hidden placement comments
+      with filenames, alt text and captions to the existing DEV article; capture
+      ten real Chrome screenshots (popup, original page, four actual-time stages,
+      restoration, summary, diary and voice settings). Files, provenance and exact
+      Chrome/Firefox reproduction steps: docs/article-images/README.md.
+- [ ] Add the user's actual ElevenLabs website screenshot to the article's
+      voice slot (custom Butu voice, existing line and generated playback).
+      Account access is unavailable to local capture; an optional SFX history
+      screenshot is also described in docs/article-images/README.md.
 - [x] User-requested Firefox submission fix: declare no data collection using
       `browser_specific_settings.gecko.data_collection_permissions.required` =
       `["none"]`; rebuild the unsigned upload ZIP. Chrome manifest is unchanged.

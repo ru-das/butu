@@ -1,0 +1,83 @@
+{
+  "capturedAt": "2026-10-31T06:43:06.613Z",
+  "sourceRevision": "6721e41",
+  "page": "https://en.wikipedia.org/wiki/Minecraft",
+  "task": "DBMS assignment on normalization",
+  "capture": "Real installed extension, fresh isolated Chrome profile, actual foreground stage timings. Wikipedia explicitly blocklisted for a predictable demonstration; no semantic-detection claim.",
+  "images": [
+    {
+      "file": "01-start-session.png",
+      "url": "chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/src/popup/popup.html",
+      "capturedAt": "2026-10-31T06:43:09.133Z"
+    },
+    {
+      "file": "02-before.png",
+      "url": "https://en.wikipedia.org/wiki/Minecraft",
+      "capturedAt": "2026-10-31T06:43:12.265Z"
+    },
+    {
+      "file": "03-stage-1.png",
+      "url": "https://en.wikipedia.org/wiki/Minecraft",
+      "capturedAt": "2026-10-31T06:43:28.746Z"
+    },
+    {
+      "file": "04-stage-2.png",
+      "url": "https://en.wikipedia.org/wiki/Minecraft",
+      "capturedAt": "2026-10-31T06:43:58.600Z"
+    },
+    {
+      "file": "05-stage-3.png",
+      "url": "https://en.wikipedia.org/wiki/Minecraft",
+      "capturedAt": "2026-10-31T06:44:43.830Z"
+    },
+    {
+      "file": "06-stage-4.png",
+      "url": "https://en.wikipedia.org/wiki/Minecraft",
+      "capturedAt": "2026-10-31T06:46:14.430Z"
+    },
+    {
+      "file": "07-restored.png",
+      "url": "https://en.wikipedia.org/wiki/Minecraft",
+      "capturedAt": "2026-10-31T06:46:20.820Z"
+    },
+    {
+      "file": "09-diary.png",
+      "url": "chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/src/diary/diary.html",
+      "capturedAt": "2026-10-31T06:47:32.633Z"
+    },
+    {
+      "file": "10-voice-settings.png",
+      "url": "chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/src/diary/settings.html",
+      "capturedAt": "2026-10-31T06:47:33.974Z"
+    },
+    {
+      "file": "08-session-summary.png",
+      "url": "chrome-extension://nnbhagcmmphggmejphpdlnkjhfcjhlmo/src/popup/popup.html",
+      "capturedAt": "2026-10-31T06:49:33.457Z"
+    }
+  ],
+  "browser": "Chrome/153.0.8010.12",
+  "foregroundTiming": {
+    "activeTabId": 943327259,
+    "onTaskSeconds": 0,
+    "sessionKey": "[1793428992271,1793430492271,\"DBMS assignment on normalization\"]",
+    "stats": {
+      "domains": [
+        "en.wikipedia.org"
+      ],
+      "offTaskSeconds": 182.00499999999997,
+      "timesWandered": 1
+    },
+    "tabs": {
+      "943327259": {
+        "onTask": false,
+        "seconds": 182.00499999999997,
+        "url": "https://en.wikipedia.org/wiki/Minecraft",
+        "windowId": 943327256
+      }
+    },
+    "updatedAt": 1793429174290,
+    "wandering": true
+  },
+  "originalHeadingRestored": true
+}
