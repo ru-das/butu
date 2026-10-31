@@ -31,6 +31,9 @@ dl { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; margin: 0 0 1.5rem; }
 dt { font-size: 1.05rem; color: var(--butu-ink-soft); }
 dd { margin: 0; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
 .session-caption { margin: 0; }
+.session-places h3 { margin-top: 1.25rem; }
+.places-list { margin: 0; padding-inline-start: 1.25rem; }
+.places-empty { margin: 0; color: var(--butu-ink-soft); }
 figure { align-self: center; margin: 0; text-align: center; }
 .session-drawing { display: block; max-width: 100%; height: auto; margin-inline: auto; }
 figcaption { font-family: var(--butu-font-heading); font-size: 1.5rem; }

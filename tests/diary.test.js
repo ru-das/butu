@@ -1,9 +1,17 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { diarySessions, sessionDrawing } from '../src/lib/diary.js';
+import { diarySessions, sessionDrawing, sessionPlaces } from '../src/lib/diary.js';
 
 const entry = { task: 'Study DBMS', startedAt: 0, elapsedSeconds: 600,
     offTaskSeconds: 0, timesWandered: 0 };
+
+test('places show unique hostnames and reject URLs, paths, markup and malformed data', () => {
+    const domains = ['Reddit.com', 'reddit.com.', 'video.example.com', '<img>',
+        'example.com/path', 'https://example.com', 'user@example.com', null, 2];
+    assert.deepEqual(sessionPlaces(domains), ['reddit.com', 'video.example.com']);
+    assert.equal(domains.length, 9);
+    for (const value of [undefined, null, {}, 'reddit.com']) assert.deepEqual(sessionPlaces(value), []);
+});
 
 test('drawing follows off-task share, including exact boundaries and an instant stop', () => {
     for (const [offTaskSeconds, file] of [[0, 'butu-calm'], [59.9, 'butu-calm'],

@@ -17,8 +17,10 @@ The diary reads only local storage, tolerates missing history, skips incomplete
 entries and renders at most 50 saved pages. Task/caption strings use `textContent`.
 No model, audio or network call is made by this page. It inherits static paper,
 pastels and bundled handwriting fonts, with taped sheets and a stacked narrow
-layout. No animation is used, including under reduced motion. Domains and
-settings remain tasks 4.4 and 4.5.
+layout. No animation is used, including under reduced motion. Each sheet lists unique distracting hostnames under “Places you left me for”.
+Missing or empty domain lists show “You stayed beside me.” URLs, paths and invalid
+entries are omitted; domains are plain handwritten text, never clickable links.
+Settings remain task 4.5.
 
 All imagery is reused from the original CC0 set in
 [doodle credits](../assets/doodles/README.md); typography retains its bundled
@@ -84,3 +86,18 @@ literal markup, all three drawings, reload persistence, local fonts/images,
 Set `BUTU_CHROME` / `BUTU_FIREFOX` for other binaries. Evidence and full-page
 screenshots go under ignored `.local-reports/diary/`; checked-in results are in
 [diary-checks.json](diary-checks.json).
+
+## Task 4.4 manual checks — both browsers
+
+Chrome: build and reload `dist/chrome` at `chrome://extensions`. Firefox: build
+and reload `dist/firefox/manifest.json` at `about:debugging`. For each browser:
+
+1. Open the diary in an isolated profile, run the fixture above with
+   `domains: ['Reddit.com', 'reddit.com.', 'video.example.com', 'bad/path']`.
+2. Confirm each sheet has “Places you left me for” with `reddit.com` and
+   `video.example.com` once each, in handwriting, without links or paths.
+3. Change the fixture to `domains: []`, then omit `domains`: both show
+   “You stayed beside me.” Reload; the same result persists.
+4. Repeat at 390px width and 200% zoom with a long hostname; no horizontal scroll.
+5. Start a real session with a blocklisted domain, spend foreground time there,
+   stop the session and confirm that domain appears on the new sheet.

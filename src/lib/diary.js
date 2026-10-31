@@ -25,3 +25,14 @@ export function diarySessions(history) {
         Number.isSafeInteger(entry.timesWandered) && entry.timesWandered >= 0)
         .slice(-DIARY_MAX_SESSIONS).reverse();
 }
+
+export function sessionPlaces(domains) {
+    if (!Array.isArray(domains)) return [];
+    return [...new Set(domains.flatMap(domain => {
+        if (typeof domain !== 'string') return [];
+        const host = domain.trim().toLowerCase().replace(/\.$/u, '');
+        try {
+            return host && new URL(`https://${host}`).hostname === host ? [host] : [];
+        } catch { return []; }
+    }))];
+}

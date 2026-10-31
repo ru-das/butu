@@ -1,6 +1,6 @@
 import { diaryCaption } from '../lib/possession.js';
 import { remainingSeconds, formatCountdown } from '../lib/session.js';
-import { diarySessions, sessionDrawing } from '../lib/diary.js';
+import { diarySessions, sessionDrawing, sessionPlaces } from '../lib/diary.js';
 
 const caption = document.querySelector('#caption');
 const current = document.querySelector('#current-session');
@@ -26,6 +26,15 @@ function render({ session, sessionHistory }) {
         page.querySelector('.session-wanders').textContent = String(entry.timesWandered);
         page.querySelector('.session-caption').textContent = typeof entry.caption === 'string' && entry.caption
             ? entry.caption : diaryCaption(entry);
+        const domains = sessionPlaces(entry.domains);
+        const places = page.querySelector('.places-list');
+        for (const domain of domains) {
+            const item = document.createElement('li');
+            item.textContent = domain;
+            places.append(item);
+        }
+        places.hidden = domains.length === 0;
+        page.querySelector('.places-empty').hidden = domains.length > 0;
         const drawing = sessionDrawing(entry);
         const image = page.querySelector('.session-drawing');
         image.src = `../../assets/doodles/${drawing.file}.svg`;

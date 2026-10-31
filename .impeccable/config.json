@@ -12,6 +12,15 @@
         ],
         "createdAt": "2026-10-29T17:29:24.107Z",
         "reason": "Project spec: docs/SPEC.md Visual and sound design explicitly requires cream paper texture; task 1.3 implements that settled palette."
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "tests/diary.test.js"
+        ],
+        "createdAt": "2026-10-31T04:42:06.949Z",
+        "reason": "Agent review: literal malformed markup is a validation test fixture, not a rendered image."
       }
     ]
   }

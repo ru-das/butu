@@ -192,7 +192,10 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       off-task share: <10% happy, 10–30% uneasy, >30% wrong (decision 24).
       43 unit tests and 10 installed-extension checks per browser pass; exact
       manual steps and evidence: docs/DIARY.md, docs/diary-checks.json.
-- [ ] 4.4 Diary: "Places you left me for" (domains in handwriting).
+- [x] 4.4 Diary: "Places you left me for" (domains in handwriting).
+      Unique validated hostnames per sheet, gentle empty state, local storage only.
+      44 unit tests and 11 installed-extension checks per browser pass;
+      exact Chrome/Firefox manual steps: docs/DIARY.md.
 - [ ] 4.5 Diary settings: allowlist/blocklist, volume, mute,
       "test Butu's voice" (bundled clip, no API test call) and ElevenLabs audio
       attribution. No API-key field or runtime TTS budget UI while V6/V7 are deferred.

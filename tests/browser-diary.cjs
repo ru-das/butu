@@ -11,11 +11,12 @@ async function scenario(name,E) {
  const count=()=>E("return document.querySelectorAll('.session-page').length;");
  await waitFor(()=>E("return document.querySelector('#pages').getAttribute('aria-busy')==='false';"));
  check('fresh diary shows helpful empty state',await E("return !document.querySelector('#empty').hidden;"));
- await E("const now=Date.now();await chrome.storage.local.set({sessionHistory:[0,120,600].map((off,i)=>({task:i===2?'<b>Study DBMS</b>':'Study DBMS '+i,startedAt:now-i*3600000,endsAt:now+600000,endedAt:now,elapsedSeconds:600,completed:i===0,offTaskSeconds:off,timesWandered:i,caption:'A little page for us.'}))});return true;");
+ await E("const now=Date.now();await chrome.storage.local.set({sessionHistory:[0,120,600].map((off,i)=>({task:i===2?'<b>Study DBMS</b>':'Study DBMS '+i,startedAt:now-i*3600000,endsAt:now+600000,endedAt:now,elapsedSeconds:600,completed:i===0,offTaskSeconds:off,timesWandered:i,domains:i===2?['Reddit.com','reddit.com.','video.example.com','bad/path']:[],caption:'A little page for us.'}))});return true;");
  await waitFor(async()=>await count()===3);
  check('three saved sessions update live',await E("return document.querySelector('#empty').hidden;"));
  check('newest saved entry appears first and markup stays literal',await E("const t=document.querySelector('.session-task');return t.textContent==='<b>Study DBMS</b>'&&!t.querySelector('b');"));
  check('date time wanders and saved caption appear',await E("const p=document.querySelector('.session-page');return !!p.querySelector('time').dateTime&&p.querySelector('.session-time').textContent==='10:00'&&p.querySelector('.session-wanders').textContent==='2'&&p.querySelector('.session-caption').textContent==='A little page for us.';"));
+ check('places show unique domains, never paths, and a gentle empty state',await E("const p=document.querySelector('.session-page');return [...p.querySelectorAll('.places-list li')].map(i=>i.textContent).join(',')==='reddit.com,video.example.com'&&p.querySelector('.places-empty').hidden&&!document.querySelectorAll('.session-page')[1].querySelector('.places-empty').hidden;"));
  check('all three drawing qualities are bundled and described',await E("return [...document.querySelectorAll('.session-drawing')].map(i=>i.getAttribute('src')).join(',')==='../../assets/doodles/butu-wrong.svg,../../assets/doodles/butu-waiting.svg,../../assets/doodles/butu-calm.svg'&&[...document.querySelectorAll('.session-drawing')].every(i=>i.alt);"));
  await E("setTimeout(()=>location.reload(),100);return true;");await sleep(1000);await waitFor(async()=>await count()===3);
  check('pages persist after reload',true);
