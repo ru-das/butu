@@ -186,8 +186,12 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       minutes and authored copy shown. Start-again form and bundled diary link;
       Chrome/Firefox each pass 11 installed-extension checks. Contract, evidence
       and exact manual steps: docs/SESSION-STATS.md, docs/session-summary-checks.json.
-- [ ] 4.3 Diary: session pages with date, task, time, times wandered, caption,
+- [x] 4.3 Diary: session pages with date, task, time, times wandered, caption,
       Butu drawing chosen by session quality (happy → uneasy → wrong).
+      Scrapbook sheets reuse bundled paper, fonts and CC0 drawings. User-approved
+      off-task share: <10% happy, 10–30% uneasy, >30% wrong (decision 24).
+      43 unit tests and 10 installed-extension checks per browser pass; exact
+      manual steps and evidence: docs/DIARY.md, docs/diary-checks.json.
 - [ ] 4.4 Diary: "Places you left me for" (domains in handwriting).
 - [ ] 4.5 Diary settings: allowlist/blocklist, volume, mute,
       "test Butu's voice" (bundled clip, no API test call) and ElevenLabs audio

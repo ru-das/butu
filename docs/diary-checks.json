@@ -1,0 +1,36 @@
+{
+  "task": "4.3",
+  "checkedAt": "2026-10-31",
+  "results": [
+    {
+      "browser": "Chrome-153.0.8010.12",
+      "checks": [
+        "fresh diary shows helpful empty state",
+        "three saved sessions update live",
+        "newest saved entry appears first and markup stays literal",
+        "date time wanders and saved caption appear",
+        "all three drawing qualities are bundled and described",
+        "pages persist after reload",
+        "bundled fonts and drawings decode",
+        "page fits current viewport",
+        "50 valid pages and long text fit",
+        "cleared history returns to empty state"
+      ]
+    },
+    {
+      "browser": "Firefox-154.0.1",
+      "checks": [
+        "fresh diary shows helpful empty state",
+        "three saved sessions update live",
+        "newest saved entry appears first and markup stays literal",
+        "date time wanders and saved caption appear",
+        "all three drawing qualities are bundled and described",
+        "pages persist after reload",
+        "bundled fonts and drawings decode",
+        "page fits current viewport",
+        "50 valid pages and long text fit",
+        "cleared history returns to empty state"
+      ]
+    }
+  ]
+}

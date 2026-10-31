@@ -5,12 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Our diary — Butu</title>
     <link rel="stylesheet" href="../shared/theme.css">
+    <link rel="stylesheet" href="diary.css">
   </head>
   <body>
     <main>
-      <h1>Our diary</h1>
-      <p id="caption" hidden></p>
+      <header class="diary-heading">
+        <img src="../../assets/doodles/heart-calm.svg" width="72" height="72" alt="">
+        <div><h1>Our diary</h1><p>I kept these little bits of us.</p></div>
+      </header>
+      <aside id="current-session" hidden aria-label="Our session now">
+        <h2>Keeping you company now</h2>
+        <p id="caption"></p>
+      </aside>
+      <p id="status" role="status">Finding our pages…</p>
+      <section id="empty" class="empty-page" hidden aria-labelledby="empty-title">
+        <img src="../../assets/doodles/butu-calm.svg" width="160" height="160" alt="Butu smiling, ready to keep you company">
+        <h2 id="empty-title">Our first page is waiting.</h2>
+        <p>Start a focus session from Butu in your toolbar. When our time ends, I’ll keep a page here for us.</p>
+      </section>
+      <section id="pages" aria-label="Our saved sessions" aria-busy="true"></section>
+      <footer>Our last 50 sessions stay here, on this device.</footer>
     </main>
+    <template id="session-page">
+      <article class="session-page">
+        <div class="page-writing">
+          <p class="page-date"><time></time><span class="session-ending"></span></p>
+          <h2 class="session-task"></h2>
+          <dl>
+            <div><dt>Time together</dt><dd class="session-time"></dd></div>
+            <div><dt>Times you wandered</dt><dd class="session-wanders"></dd></div>
+          </dl>
+          <p class="session-caption"></p>
+        </div>
+        <figure>
+          <img class="session-drawing" src="../../assets/doodles/butu-calm.svg" width="200" height="200" loading="lazy" alt="">
+          <figcaption></figcaption>
+        </figure>
+      </article>
+    </template>
     <script type="module" src="diary.js"></script>
   </body>
 </html>

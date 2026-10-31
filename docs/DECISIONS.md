@@ -141,3 +141,10 @@ Earlier generation evidence and free-only build-time restrictions remain valid.
     free-compatible API path is verified and the user explicitly approves
     restoring synthesis; the original privacy and reservation limits still apply.
     Phase 4.1 is the next active task. See docs/PLAN.md and docs/SPEC.md.
+
+24. **Diary drawing quality uses off-task share (user-approved, 2026-10-31).**
+    Compare cumulative foreground off-task seconds with actual elapsed session
+    seconds: happy below 10%, uneasy from 10% through 30%, wrong above 30%.
+    A zero-duration session uses happy. Reuse the bundled calm, waiting and wrong
+    Butu SVGs; cutoffs live in src/config.js. This is a drawing choice, not a
+    claim that all remaining wall-clock time was productive work.

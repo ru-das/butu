@@ -59,6 +59,8 @@ export const STAGE_2_MAX_HEADINGS = 2;
 export const RETURN_FADE_MS = 2000;
 // Retain only the most recent diary sessions locally (F8).
 export const DIARY_MAX_SESSIONS = 50;
+// User-approved share of elapsed session time spent off task (task 4.3).
+export const DIARY_QUALITY = { uneasyFrom: 0.1, wrongAbove: 0.3 };
 
 // Existing premade adult voice, selected only after a successful free-plan TTS check.
 export const ELEVENLABS_VOICE_ID = 'EXAVITQu4vr4xnSDxMaL';
