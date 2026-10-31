@@ -10,7 +10,10 @@
     "type": "module"
   },
   "browser_specific_settings": {
-    "gecko": { "id": "butu@butu.test" }
+    "gecko": {
+      "id": "butu@butu.test",
+      "data_collection_permissions": { "required": ["none"] }
+    }
   },
   "content_scripts": [{
     "matches": ["http://*/*", "https://*/*"],

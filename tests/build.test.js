@@ -17,6 +17,14 @@ test('build copies both manifests and local trees, and removes stale output', ()
       mkdirSync(join(fixture, tree));
       writeFileSync(join(fixture, tree, 'fixture.txt'), tree);
     }
+    mkdirSync(join(fixture, 'src/model-host'));
+    for (const browser of ['chrome', 'firefox']) {
+      cpSync(join(root, `src/model-host/client-${browser}.js`),
+        join(fixture, `src/model-host/client-${browser}.js`));
+    }
+    for (const file of ['offscreen.html', 'offscreen.js']) {
+      writeFileSync(join(fixture, 'src/model-host', file), 'Chrome only');
+    }
     execFileSync('sh', [join(fixture, 'build.sh')], { cwd: tmpdir() });
     for (const browser of ['chrome', 'firefox']) {
       const output = join(fixture, 'dist', browser);
@@ -24,6 +32,16 @@ test('build copies both manifests and local trees, and removes stale output', ()
         readFileSync(join(root, 'manifests', `${browser}.json`), 'utf8'));
       const manifest = JSON.parse(readFileSync(join(output, 'manifest.json'), 'utf8'));
       assert.equal(manifest.manifest_version, 3);
+      assert.equal(readFileSync(join(output, 'src/model-host/client.js'), 'utf8'),
+        readFileSync(join(root, `src/model-host/client-${browser}.js`), 'utf8'));
+      assert.equal(existsSync(join(output, 'src/model-host/client-chrome.js')), false);
+      assert.equal(existsSync(join(output, 'src/model-host/client-firefox.js')), false);
+      assert.equal(existsSync(join(output, 'src/model-host/offscreen.js')), browser === 'chrome');
+      if (browser === 'firefox') {
+        assert.deepEqual(manifest.browser_specific_settings.gecko.data_collection_permissions,
+          { required: ['none'] });
+        assert.ok(!readFileSync(join(output, 'src/model-host/client.js'), 'utf8').includes('offscreen'));
+      }
       assert.match(manifest.content_security_policy.extension_pages, /connect-src 'self' https:\/\/huggingface\.co https:\/\/\*\.hf\.co;/);
       assert.ok(!manifest.content_security_policy.extension_pages.includes('elevenlabs'));
       assert.deepEqual(manifest.permissions, browser === 'chrome'

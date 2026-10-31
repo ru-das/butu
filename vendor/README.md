@@ -11,11 +11,11 @@ Pinned versions, not a floating CDN import:
 
 ## Files and provenance
 
-All three runtime files are copied **unmodified** from `package/dist/` in the
-Transformers.js archive. The two ORT files were also compared byte-for-byte with
-`package/dist/` in the matching ONNX Runtime archive: identical.
+All three runtime files originate from `package/dist/` in the Transformers.js
+archive. Before the CSP patches below, the two ORT files were also compared
+byte-for-byte with `package/dist/` in the matching ONNX Runtime archive: identical.
 
-| Local file | Archive member | Bytes |
+| Local file | Archive member | Upstream bytes before patches |
 | --- | --- | ---: |
 | transformers.js | package/dist/transformers.js | 2253735 |
 | ort-wasm-simd-threaded.jsep.mjs | package/dist/ort-wasm-simd-threaded.jsep.mjs | 44484 |
@@ -46,6 +46,23 @@ sha512-0uS76OPgH0hWCPrFKlL8kYVV7ckM7t/36HfbgoFw6Nd0CZVVbQC4PkrR8mBX8LtNUFZO25IQB
 
 `SHA256SUMS` covers the bundled runtime and licence files. Verify from this directory
 with `sha256sum -c SHA256SUMS`.
+
+## Extension CSP patches
+
+Run `python3 scripts/patch-vendor.py` from the repository root after extracting
+the pinned upstream files. It applies exact, idempotent replacements:
+
+- In both JavaScript bundles, replace the legacy `Function("return this")`
+  global-object fallback with `globalThis`, which all supported browsers provide.
+- In `transformers.js`, replace ONNX's variable module import with the literal
+  `./ort-wasm-simd-threaded.jsep.mjs`. Reject any requested loader URL that does
+  not resolve to that bundled file. Butu uses only this WASM backend with one
+  thread and no proxy; arbitrary loader overrides are intentionally unsupported.
+
+The WASM binary and licence files remain unchanged. `SHA256SUMS` records the
+patched JavaScript hashes. No CSP relaxation, remote script execution or new
+runtime dependency is introduced. Mozilla reviewers can reproduce these changes
+from the upstream archives and the patch script.
 
 ## Local loading
 

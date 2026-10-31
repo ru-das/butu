@@ -234,6 +234,13 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       manual steps: docs/FINAL-CHECKS.md; evidence: docs/definition-of-done-checks.json.
 
 ## Demo and write-up support
+- [x] User-requested Firefox submission fix: declare no data collection using
+      `browser_specific_settings.gecko.data_collection_permissions.required` =
+      `["none"]`; rebuild the unsigned upload ZIP. Chrome manifest is unchanged.
+- [x] User-requested Firefox validator warning fixes: package only the selected
+      browser host client; remove legacy global-object eval fallbacks and use a
+      literal bundled ONNX loader import. Vendor patches are reproducible with
+      scripts/patch-vendor.py; provenance is documented in vendor/README.md.
 - [ ] D1 Record the demo: a real work session with sound on, showing the calm
       start, the drift, every stage, the return, and the diary.
 - [ ] D2 Narrate the demo intro/outro using the configured existing adult voice
