@@ -1,0 +1,56 @@
+{
+  "tasks": [
+    "4.4",
+    "4.5"
+  ],
+  "date": "2026-10-31",
+  "note": "Installed extensions in isolated profiles. Headless checks confirm routing, not subjective audio. Manual listening and full browser steps: docs/DIARY.md.",
+  "results": [
+    {
+      "browser": "Chrome-153.0.8010.12",
+      "checks": [
+        "fresh diary shows helpful empty state",
+        "three saved sessions update live",
+        "newest saved entry appears first and markup stays literal",
+        "date time wanders and saved caption appear",
+        "places show unique domains, never paths, and a gentle empty state",
+        "all three drawing qualities are bundled and described",
+        "pages persist after reload",
+        "bundled fonts and drawings decode",
+        "page fits current viewport",
+        "50 valid pages and long text fit",
+        "cleared history returns to empty state",
+        "settings link opens bundled page with quiet defaults",
+        "settings save canonical domain lists, volume and mute locally",
+        "voice test respects saved mute",
+        "invalid URLs block saving without losing stored settings",
+        "saved settings persist across reload",
+        "unmuted voice test reaches the model host without a session",
+        "settings fit viewport and credit ElevenLabs"
+      ]
+    },
+    {
+      "browser": "Firefox-154.0.1",
+      "checks": [
+        "fresh diary shows helpful empty state",
+        "three saved sessions update live",
+        "newest saved entry appears first and markup stays literal",
+        "date time wanders and saved caption appear",
+        "places show unique domains, never paths, and a gentle empty state",
+        "all three drawing qualities are bundled and described",
+        "pages persist after reload",
+        "bundled fonts and drawings decode",
+        "page fits current viewport",
+        "50 valid pages and long text fit",
+        "cleared history returns to empty state",
+        "settings link opens bundled page with quiet defaults",
+        "settings save canonical domain lists, volume and mute locally",
+        "voice test respects saved mute",
+        "invalid URLs block saving without losing stored settings",
+        "saved settings persist across reload",
+        "unmuted voice test reaches the model host without a session",
+        "settings fit viewport and credit ElevenLabs"
+      ]
+    }
+  ]
+}

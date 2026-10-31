@@ -21,6 +21,15 @@
         ],
         "createdAt": "2026-10-31T04:42:06.949Z",
         "reason": "Agent review: literal malformed markup is a validation test fixture, not a rendered image."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "src/diary/settings.html"
+        ],
+        "createdAt": "2026-10-31T04:47:28.309Z",
+        "reason": "Project spec docs/SPEC.md requires cream scrapbook paper; settings extends the existing diary palette."
       }
     ]
   }

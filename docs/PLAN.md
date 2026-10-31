@@ -196,9 +196,13 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       Unique validated hostnames per sheet, gentle empty state, local storage only.
       44 unit tests and 11 installed-extension checks per browser pass;
       exact Chrome/Firefox manual steps: docs/DIARY.md.
-- [ ] 4.5 Diary settings: allowlist/blocklist, volume, mute,
+- [x] 4.5 Diary settings: allowlist/blocklist, volume, mute,
       "test Butu's voice" (bundled clip, no API test call) and ElevenLabs audio
       attribution. No API-key field or runtime TTS budget UI while V6/V7 are deferred.
+      Validated local saves, domain precedence, muted/zero-volume preview guards;
+      host-only bundled test with replay/error cleanup. 18 installed-extension
+      checks per browser; manual steps and evidence: docs/DIARY.md,
+      docs/diary-settings-checks.json.
 - [ ] 4.6 Wire embedding-host release + bundled playback cleanup into session end
       (verify memory drops; the standalone worker release API exists from 0.4a).
 - [ ] 4.7 First-run download progress UI ("Butu is waking up…").

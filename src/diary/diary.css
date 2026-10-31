@@ -1,5 +1,21 @@
 body { padding: 2.5rem 1.5rem; }
 main { max-width: 56rem; margin-inline: auto; }
+nav { margin-bottom: 1.5rem; }
+.settings-page { max-width: 40rem; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+legend { font-family: var(--butu-font-heading); font-size: 2rem; margin-bottom: 0.5rem; }
+label { display: block; margin-bottom: 0.4rem; }
+textarea { display: block; width: 100%; resize: vertical; margin-bottom: 1.5rem; padding: 0.65rem; border: 1px solid var(--butu-ink-soft); border-radius: 6px; background: var(--butu-paper); }
+input { accent-color: var(--butu-focus); }
+input[type="range"] { display: block; width: 100%; margin: 0.75rem 0 1.5rem; }
+.mute-label { margin-bottom: 1.5rem; }
+button { min-height: 44px; padding: 0.45rem 1rem; margin: 0 0.5rem 0.75rem 0; border: 1px solid var(--butu-ink-soft); border-radius: 6px; background: var(--butu-sage); cursor: pointer; }
+#test-voice { background: var(--butu-peach); }
+button:hover { background: var(--butu-butter); }
+button:disabled { opacity: 0.6; cursor: default; }
+#voice-help, #domain-help { color: var(--butu-ink-soft); }
+#settings-status { min-height: 1.5em; margin-top: 1rem; }
+.audio-credits { border-top: 1px solid var(--butu-ink-soft); margin-top: 2rem; }
 .diary-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
 .diary-heading h1 { margin: 0; font-size: 3.5rem; }
 .diary-heading p { margin: 0; }

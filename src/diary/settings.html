@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings — Butu</title>
+    <link rel="stylesheet" href="../shared/theme.css">
+    <link rel="stylesheet" href="diary.css">
+  </head>
+  <body>
+    <main class="settings-page">
+      <nav aria-label="Diary"><a href="diary.html">Back to our diary</a></nav>
+      <header class="diary-heading">
+        <img src="../../assets/doodles/heart-calm.svg" width="72" height="72" alt="">
+        <div><h1>Settings</h1><p>A few little things, just how you like them.</p></div>
+      </header>
+      <form id="settings">
+        <fieldset disabled id="settings-fields">
+          <legend>Places for work and wandering</legend>
+          <p id="domain-help">One domain per line, like example.com. Subdomains are included. If both lists match, always on task wins.</p>
+          <label for="allowlist">Always on task (allowlist)</label>
+          <textarea id="allowlist" rows="4" spellcheck="false" autocapitalize="none" aria-describedby="domain-help"></textarea>
+          <label for="blocklist">Always off task (blocklist)</label>
+          <textarea id="blocklist" rows="4" spellcheck="false" autocapitalize="none" aria-describedby="domain-help"></textarea>
+          <h2>Butu’s sounds</h2>
+          <label for="volume">Volume <output id="volume-value" for="volume"></output></label>
+          <input id="volume" type="range" min="0" max="100" step="1">
+          <label class="mute-label"><input id="muted" type="checkbox"> Mute all Butu sounds</label>
+          <button type="submit" id="save-settings">Save settings</button>
+          <button type="button" id="test-voice" aria-describedby="voice-help">Test Butu’s voice</button>
+          <p id="voice-help">Save changes before testing. The test uses your saved volume and mute setting.</p>
+        </fieldset>
+      </form>
+      <p id="settings-status" role="status">Finding your settings…</p>
+      <section class="audio-credits" aria-labelledby="credits-title">
+        <h2 id="credits-title">A little voice, with thanks</h2>
+        <p>Butu’s bundled voice and sound effects were created with ElevenLabs (elevenlabs.io). Free-plan audio is for noncommercial use, with attribution. The music box was composed locally.</p>
+        <p>Your settings stay on this device.</p>
+      </section>
+    </main>
+    <script type="module" src="settings.js"></script>
+  </body>
+</html>

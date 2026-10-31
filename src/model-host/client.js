@@ -26,6 +26,17 @@ export async function comparePage(task, page) {
 }
 
 let voiceHost;
+export async function testVoiceHost(volume) {
+    if (!chrome.offscreen) {
+        voiceHost ??= import('./voice-host.js');
+        (await voiceHost).testVoice(volume);
+        return;
+    }
+    await ensureOffscreen();
+    const result = await chrome.runtime.sendMessage({ target: 'model-host', type: 'voice:test', volume });
+    if (!result?.ok) throw new Error('Voice host unavailable');
+}
+
 export async function syncVoiceHost(state) {
     if (!chrome.offscreen) {
         if (state.stage) voiceHost ??= import('./voice-host.js');

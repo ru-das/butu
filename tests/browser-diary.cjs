@@ -30,6 +30,26 @@ async function scenario(name,E) {
  check('cleared history returns to empty state',await E("return !document.querySelector('#empty').hidden;"));
  await E("const now=Date.now();await chrome.storage.local.set({sessionHistory:[0,120,600].map((off,i)=>({task:['Read a chapter on databases','Finish the little project','Study DBMS'][i],startedAt:now-i*86400000,elapsedSeconds:600,completed:true,offTaskSeconds:off,timesWandered:i,caption:['We made a little more today. I gave that bit a gold star.','I left a space beside our work for you. See? Just your shape.','I tried drawing the waiting. It went over the edge of the paper.'][i]}))});return true;");
  await waitFor(async()=>await count()===3);await E("await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode()));return true;");
+ await E("document.querySelector('nav a').click();return true;");
+ await waitFor(()=>E("return !!document.querySelector('#settings-fields')&&!document.querySelector('#settings-fields').disabled;"));
+ check('settings link opens bundled page with quiet defaults',await E("return document.querySelector('#volume').value==='25'&&!document.querySelector('#muted').checked&&document.querySelector('#allowlist').value==='';"));
+ await E("document.querySelector('#allowlist').value='Work.Example.\\nwork.example';document.querySelector('#blocklist').value='play.example';document.querySelector('#volume').value='37';document.querySelector('#muted').checked=true;document.querySelector('#save-settings').click();return true;");
+ await waitFor(()=>E("return document.querySelector('#settings-status').textContent==='Your settings are saved.';"));
+ check('settings save canonical domain lists, volume and mute locally',await E("const d=await chrome.storage.local.get(['allowlist','blocklist','volume','muted']);return d.allowlist.join(',')==='work.example'&&d.blocklist.join(',')==='play.example'&&d.volume===.37&&d.muted;"));
+ await E("document.querySelector('#test-voice').click();return true;");
+ await waitFor(()=>E("return document.querySelector('#settings-status').textContent.startsWith('Butu is quiet.');"));
+ check('voice test respects saved mute',true);
+ await E("document.querySelector('#blocklist').value='https://play.example/path';document.querySelector('#save-settings').click();return true;");
+ check('invalid URLs block saving without losing stored settings',await E("const d=await chrome.storage.local.get('blocklist');return !document.querySelector('#blocklist').validity.valid&&d.blocklist[0]==='play.example';"));
+ await E("setTimeout(()=>location.reload(),100);return true;");await sleep(1000);
+ await waitFor(()=>E("return !!document.querySelector('#settings-fields')&&!document.querySelector('#settings-fields').disabled;"));
+ check('saved settings persist across reload',await E("return document.querySelector('#allowlist').value==='work.example'&&document.querySelector('#blocklist').value==='play.example'&&document.querySelector('#volume').value==='37'&&document.querySelector('#volume-value').textContent==='37%'&&document.querySelector('#muted').checked;"));
+ await E("document.querySelector('#muted').checked=false;document.querySelector('#save-settings').click();return true;");
+ await waitFor(()=>E("return document.querySelector('#settings-status').textContent==='Your settings are saved.';"));
+ await E("document.querySelector('#test-voice').click();return true;");
+ await waitFor(()=>E("return document.querySelector('#settings-status').textContent.startsWith('Voice test requested.');"));
+ check('unmuted voice test reaches the model host without a session',true);
+ check('settings fit viewport and credit ElevenLabs',await E("return document.documentElement.scrollWidth<=innerWidth&&document.querySelector('.audio-credits').textContent.includes('elevenlabs.io')&&!document.querySelector('input[type=password]')&&!document.querySelector('audio');"));
  fs.writeFileSync(out+'/'+name+'.json',JSON.stringify({browser:name,checks},null,2));
 }
 async function chromeRun(){

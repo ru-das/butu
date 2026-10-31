@@ -15,12 +15,12 @@ second was productive work; elapsed time includes breaks and unknown intervals.
 
 The diary reads only local storage, tolerates missing history, skips incomplete
 entries and renders at most 50 saved pages. Task/caption strings use `textContent`.
-No model, audio or network call is made by this page. It inherits static paper,
+No model or network call is made by this page. It inherits static paper,
 pastels and bundled handwriting fonts, with taped sheets and a stacked narrow
 layout. No animation is used, including under reduced motion. Each sheet lists unique distracting hostnames under “Places you left me for”.
 Missing or empty domain lists show “You stayed beside me.” URLs, paths and invalid
 entries are omitted; domains are plain handwritten text, never clickable links.
-Settings remain task 4.5.
+The Settings link opens the bundled settings page described below.
 
 All imagery is reused from the original CC0 set in
 [doodle credits](../assets/doodles/README.md); typography retains its bundled
@@ -101,3 +101,69 @@ and reload `dist/firefox/manifest.json` at `about:debugging`. For each browser:
 4. Repeat at 390px width and 200% zoom with a long hostname; no horizontal scroll.
 5. Start a real session with a blocklisted domain, spend foreground time there,
    stop the session and confirm that domain appears on the new sheet.
+
+## Settings (task 4.5)
+
+The diary’s Settings link opens `src/diary/settings.html`, with a back link.
+Allowlist and blocklist accept one bare hostname per line. Saves trim whitespace,
+normalize case/trailing dots and remove duplicates; URLs, paths, wildcard prefixes
+and credentials fail validation without changing storage. Existing classifier
+semantics apply: parent domains include subdomains, allowlist wins conflicts,
+and browser/extension pages stay excluded. Saved domain changes re-evaluate active
+web tabs; they do not rewrite old diary pages.
+
+Volume defaults to 25%, mute defaults off. Save settings persists all four keys
+(`allowlist`, `blocklist`, `volume`, `muted`) in `storage.local`. Loading disables
+controls; read/write failures show recovery copy. Voice tests use the **saved**
+volume/mute state, not unsaved edits. At zero volume or while muted, the test
+explains how to hear Butu without playing. Otherwise the background routes a
+fixed bundled `butu-01.mp3` to the Firefox background audio host or Chrome offscreen
+document. No model is loaded for this test, and no synthesis/API call occurs.
+Repeated tests replace the previous preview; completion, decode/autoplay failure
+and mute clean it up. Playback blocked by the browser stays silent.
+
+The settings page credits ElevenLabs/elevenlabs.io and states noncommercial
+Free-plan terms. Provenance and original usage records remain in the existing
+voice/SFX manifests and docs/voice-design.md. No new assets, permissions,
+dependencies, network hosts, API-key fields or runtime budget controls were added.
+The same bundled paper/fonts and static responsive layout are reused.
+
+### Exact settings checks — Chrome
+
+1. Run `./build.sh`, reload `dist/chrome` at `chrome://extensions`, open Butu →
+   Open our diary → Settings. In a fresh profile, confirm empty domain lists,
+   25% volume, mute off, attribution and the back link.
+2. Enter `Work.Example.` twice (one per line) in Always on task, and
+   `play.example` in Always off task. Set volume to 37%, enable mute, click
+   Save settings. Confirm “Your settings are saved.” and `work.example` once.
+3. Click Test Butu’s voice. Confirm the quiet message and silence. Uncheck mute,
+   Save settings, then test: listen for “Hello, little star. Shall we begin?”
+   Repeat while the clip plays: the old test should stop. Set volume to zero,
+   save and test again: silence and the quiet message.
+4. Enter `https://play.example/path` in a list and save. Confirm inline browser
+   validation and no stored change. Reload: the last valid lists, volume and mute
+   persist. Remove both lists and save: empty lists persist after reload.
+5. Set `example.com` in Always off task. Start a session and visit
+   `https://example.com`; after the grace period verify haunting. In Settings,
+   add `example.com` to Always on task and save; return to the page and verify
+   it is on task. Remove it from Always on task and save; it is off task again.
+   A parent entry must also apply to its subdomains; extension/internal pages
+   must stay excluded. Stop the session afterward.
+6. Navigate back and forward, use only the keyboard, narrow to 390 CSS pixels,
+   zoom to 200%, and enable reduced motion. Controls and labels must remain
+   readable and reachable without horizontal scroll. Disconnect the network:
+   saved settings and bundled voice test still work.
+
+### Exact settings checks — Firefox
+
+1. Run `./build.sh`; reload `dist/firefox/manifest.json` at
+   `about:debugging#/runtime/this-firefox`. Open Butu → Open our diary → Settings.
+2. Repeat Chrome steps 1–6, including audible tests, reload persistence, domain
+   precedence, keyboard/narrow/zoom checks and offline playback. Reload the
+   temporary add-on rather than restarting Firefox.
+
+Automated installed-extension coverage: `node tests/browser-diary.cjs` now also
+checks settings navigation, defaults, canonical saves, invalid-input rejection,
+persistence, muted/unmuted voice routing without a session, credits and layout.
+Headless checks verify routing and cleanup; the listening steps above still
+require a person. Evidence/screenshots remain under `.local-reports/diary/`.

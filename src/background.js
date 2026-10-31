@@ -1,7 +1,7 @@
 import { createSession, remainingSeconds } from './lib/session.js';
 import { EMBEDDING_LIMITS } from './config.js';
 import { pagePolicy, pageEmbeddingText, scoreVerdict, sessionKey } from './lib/verdict.js';
-import { comparePage, syncVoiceHost } from './model-host/client.js';
+import { comparePage, syncVoiceHost, testVoiceHost } from './model-host/client.js';
 import { updateTiming } from './lib/off-task-timer.js';
 import { getStage } from './lib/stages.js';
 import { voiceState } from './lib/voice-state.js';
@@ -63,6 +63,17 @@ async function reconcile(flush = true) {
 }
 
 chrome.runtime.onMessage.addListener((message, sender, respond) => {
+    if (message?.type === 'voice:test') {
+        if (sender.id !== chrome.runtime.id ||
+            !sender.url?.startsWith(chrome.runtime.getURL(''))) return;
+        enqueue(async () => {
+            const data = await storage('get', ['volume', 'muted']);
+            const { volume } = voiceState(data);
+            if (volume) await testVoiceHost(volume);
+            return { ok: true, muted: !volume };
+        }).then(respond, () => respond({ ok: false }));
+        return true;
+    }
     if (message?.type === 'timing:activity') {
         if (sender.id !== chrome.runtime.id || sender.frameId !== 0 ||
             !Number.isInteger(sender.tab?.id) || pagePolicy(sender.url)?.source === 'excluded' ||
@@ -252,6 +263,7 @@ chrome.windows.onFocusChanged.addListener(() => {
 
 // Serialize with timer writes, so late reads cannot restart an ended session.
 chrome.storage.onChanged?.addListener((changes, area) => {
+    if (area === 'local' && (changes.allowlist || changes.blocklist)) void evaluateActiveTabs();
     if (area !== 'local' || !['session', 'offTaskTiming', 'volume', 'muted'].some(key => key in changes)) return;
     void enqueue(async () => {
         const data = await storage('get', ['session', 'offTaskTiming', 'volume', 'muted']);

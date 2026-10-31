@@ -107,6 +107,7 @@ export const WHISPER_PLAYS_PER_VISIT = 1;
 export const DEFAULT_MUTED = false;
 // Quiet starting mix; diary settings can override it.
 export const DEFAULT_VOLUME = 0.25;
+export const VOICE_PREVIEW_CLIP = 'voice/butu-01';
 // Smooth music transitions, scheduled on the host audio clock.
 export const AUDIO_CROSSFADE_MS = 1200;
 
