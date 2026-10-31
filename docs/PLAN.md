@@ -213,8 +213,11 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       Both browsers pass real model download, popup-state and memory checks;
       51 unit tests pass. Evidence: docs/model-lifecycle-checks.json; exact
       Chrome/Firefox steps: docs/MODEL-LIFECYCLE.md.
-- [ ] 4.8 README: what Butu is, install for both browsers, bundled audio (no key needed),
+- [x] 4.8 README: what Butu is, install for both browsers, bundled audio (no key needed),
       privacy boundary, limitations, credits and licences (fonts, models, assets).
+      Root README includes component licence/provenance links, separate CC0 and
+      ElevenLabs noncommercial terms, source-licence gap and exact Chrome/Firefox
+      install and manual smoke checks. Network/final audits remain 4.9/4.10.
 - [ ] 4.9 Network audit in both browsers: only Hugging Face model downloads;
       no runtime ElevenLabs calls. No fonts or images from the network.
 - [ ] 4.10 Full run-through against the Definition of done in docs/SPEC.md.
