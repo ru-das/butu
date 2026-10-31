@@ -1,7 +1,7 @@
 import { createSession, remainingSeconds } from './lib/session.js';
 import { EMBEDDING_LIMITS } from './config.js';
 import { pagePolicy, pageEmbeddingText, scoreVerdict, sessionKey } from './lib/verdict.js';
-import { comparePage, syncVoiceHost, testVoiceHost } from './model-host/client.js';
+import { comparePage, syncVoiceHost, testVoiceHost, releaseSessionHost } from './model-host/client.js';
 import { updateTiming } from './lib/off-task-timer.js';
 import { getStage } from './lib/stages.js';
 import { voiceState } from './lib/voice-state.js';
@@ -9,6 +9,7 @@ import { saveSession } from './lib/session-stats.js';
 
 const SESSION_ALARM = 'butu-session-end';
 let pending = Promise.resolve();
+let detectionGeneration = 0;
 
 // Serialize popup commands and alarm delivery so an old end cannot erase a new start.
 function enqueue(action) {
@@ -46,6 +47,8 @@ async function endSession(save = true, flush = true) {
     const history = save ? saveSession(sessionHistory, session, timing) : sessionHistory;
     await storage('set', { session: null, verdictCache: null, offTaskTiming: null,
         ...(history !== undefined ? { sessionHistory: history } : {}) });
+    detectionGeneration++;
+    await releaseSessionHost().catch(() => {});
     await clearAlarm();
     return null;
 }
@@ -185,6 +188,7 @@ async function evaluateTab(tabId) {
         const { session, allowlist, blocklist, verdictCache } = await storage('get',
             ['session', 'allowlist', 'blocklist', 'verdictCache']);
         if (!remainingSeconds(session)) return;
+        const generation = detectionGeneration;
         const key = sessionKey(session);
         const workKey = JSON.stringify([key, tabId, url]);
         if (evaluating.has(workKey) || evaluating.size >= EMBEDDING_LIMITS.pending) return;
@@ -202,6 +206,7 @@ async function evaluateTab(tabId) {
                     if (page?.url !== url) return;
                     const text = pageEmbeddingText(page);
                     if (!text) throw new Error('Empty page text');
+                    if (generation !== detectionGeneration || !remainingSeconds(session)) return;
                     const result = await comparePage(session.task, text);
                     if (!Array.isArray(result.scores) || result.scores.length !== 1) throw new Error('Invalid scores');
                     verdict = scoreVerdict(result.scores[0]);

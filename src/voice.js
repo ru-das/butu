@@ -16,6 +16,19 @@ export class VoiceQueue {
         this.music = this.spoken = null;
     }
 
+    release() {
+        clearTimeout(this.queueTimer);
+        clearTimeout(this.closeTimer);
+        this.queue = [];
+        this.visits.clear();
+        this.awaitingReturn = false;
+        this.state = {};
+        for (const player of this.players) this.dispose(player);
+        this.music = this.spoken = null;
+        if (this.context) void this.context.close().catch(() => {});
+        this.context = null;
+    }
+
     ramp(player, volume, ms) {
         const now = this.context.currentTime;
         const gain = player.gain.gain;

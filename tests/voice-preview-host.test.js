@@ -17,7 +17,7 @@ test('bundled preview is host-only, bounded, replaceable, respects mute and clea
         removeAttribute() { this.src = ''; }
         load() {}
     };
-    const { testVoice, updateVoice } = await import('../src/model-host/voice-host.js');
+    const { testVoice, updateVoice, releaseVoice } = await import('../src/model-host/voice-host.js');
     for (const value of [0, -1, 2, NaN, '0.5']) testVoice(value);
     assert.equal(clips.length, 0);
     const message = { target: 'model-host', type: 'voice:test', volume: .25 };
@@ -44,4 +44,8 @@ test('bundled preview is host-only, bounded, replaceable, respects mute and clea
     testVoice(.3);
     clips[3].onended();
     assert.equal(clips[3].src, '');
+    testVoice(.3);
+    releaseVoice();
+    assert.equal(clips[4].paused, true);
+    assert.equal(clips[4].src, '');
 });

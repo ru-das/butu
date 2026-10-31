@@ -203,8 +203,10 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       host-only bundled test with replay/error cleanup. 18 installed-extension
       checks per browser; manual steps and evidence: docs/DIARY.md,
       docs/diary-settings-checks.json.
-- [ ] 4.6 Wire embedding-host release + bundled playback cleanup into session end
-      (verify memory drops; the standalone worker release API exists from 0.4a).
+- [x] 4.6 Wire embedding-host release + bundled playback cleanup into session end
+      Stop/expiry explicitly release the host; pending extraction/host creation cannot
+      restart an ended session. Real-model RSS falls in both browsers; measurements,
+      test harness and exact manual checks: docs/MODEL-LIFECYCLE.md.
 - [ ] 4.7 First-run download progress UI ("Butu is waking up…").
 - [ ] 4.8 README: what Butu is, install for both browsers, bundled audio (no key needed),
       privacy boundary, limitations, credits and licences (fonts, models, assets).

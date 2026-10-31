@@ -78,7 +78,12 @@ test('stage queue crossfades, reserves whispers per visit, cancels stale speech,
     unblock(); await flush(0);
     assert.equal(q.music.gain.gain.target, .25, 'fade begins when playback starts');
     pendingPlay = null;
-    send({ stage: 0, session: null, tabs: {} }); await flush(3000);
+    const context = q.context;
+    q.release();
+    assert.equal(context.state, 'closed');
+    assert.equal(q.players.size, 0);
+    assert.equal(q.context, null);
+    assert.equal(q.visits.size, 0);
     blocked = true;
     send({ session: 'two', stage: 2, visit: '[2,2,"a"]', tabs: { 2: {} } });
     await flush(2000); await flush(0);

@@ -28,6 +28,13 @@ export function testVoice(volume) {
 const queue = new VoiceQueue();
 let expiry;
 let endsAt;
+export function releaseVoice() {
+    clearTimeout(expiry);
+    endsAt = null;
+    lifetime?.stop();
+    stopPreview();
+    queue.release();
+}
 function expire() {
     updateVoice({ ...queue.state, session: null, endsAt: null, stage: 0, visit: null, returned: false, tabs: {} });
 }

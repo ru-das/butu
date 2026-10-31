@@ -1,6 +1,7 @@
 // All browser-specific model routing stays in model-host/.
 let host;
 let creating;
+let generation = 0;
 async function ensureOffscreen() {
     creating ??= (async () => {
         const url = 'src/model-host/offscreen.html';
@@ -15,11 +16,15 @@ async function ensureOffscreen() {
 }
 
 export async function comparePage(task, page) {
+    const current = generation;
     if (!chrome.offscreen) {
         host ??= import('./embedding-host.js').then(({ EmbeddingHost }) => new EmbeddingHost());
-        return (await host).compare(task, [page]);
+        const embedding = await host;
+        if (current !== generation) throw new Error('Embedding session ended');
+        return embedding.compare(task, [page]);
     }
     await ensureOffscreen();
+    if (current !== generation) throw new Error('Embedding session ended');
     const result = await chrome.runtime.sendMessage({ target: 'model-host', type: 'embedding:compare', task, page });
     if (!result || result.error) throw new Error('Local detection unavailable');
     return result;
@@ -49,4 +54,17 @@ export async function syncVoiceHost(state) {
         if (!contexts.length) return;
     }
     await chrome.runtime.sendMessage({ target: 'model-host', type: 'voice:update', state });
+}
+
+// Never create a host just to clean it up. Invalidate dispatches awaiting creation.
+export async function releaseSessionHost() {
+    generation++;
+    if (!chrome.offscreen) {
+        if (host) (await host).release();
+        if (voiceHost) (await voiceHost).releaseVoice();
+        return;
+    }
+    if (creating) await creating;
+    const contexts = await chrome.runtime.getContexts({ contextTypes: ['OFFSCREEN_DOCUMENT'] });
+    if (contexts.length) await chrome.offscreen.closeDocument();
 }
