@@ -1,0 +1,126 @@
+[
+ {
+  "t": 4.2,
+  "type": "typing",
+  "dur": 1.4,
+  "desc": "types DBMS assignment"
+ },
+ {
+  "t": 6.3,
+  "type": "click",
+  "desc": "Let's do it together"
+ },
+ {
+  "t": 7.6,
+  "type": "movement",
+  "desc": "cursor heads for new tab"
+ },
+ {
+  "t": 9.6,
+  "type": "click",
+  "desc": "opens tube.example"
+ },
+ {
+  "t": 13.8,
+  "type": "click",
+  "desc": "clicks the Minecraft video"
+ },
+ {
+  "t": 30.1,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.35,
+  "gain": -9
+ },
+ {
+  "t": 32.4,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.3,
+  "gain": -9
+ },
+ {
+  "t": 34,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.4,
+  "gain": -9
+ },
+ {
+  "t": 35.6,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.35,
+  "gain": -9
+ },
+ {
+  "t": 37,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.5,
+  "gain": -9
+ },
+ {
+  "t": 38.2,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.4,
+  "gain": -9
+ },
+ {
+  "t": 39.2,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.5,
+  "gain": -9
+ },
+ {
+  "t": 40,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.5,
+  "gain": -9
+ },
+ {
+  "t": 40.8,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.6,
+  "gain": -9
+ },
+ {
+  "t": 41.5,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.6,
+  "gain": -9
+ },
+ {
+  "t": 42.1,
+  "type": "error_or_tech",
+  "desc": "glitch burst",
+  "max": 0.5,
+  "gain": -9
+ },
+ {
+  "t": 36.0,
+  "type": "build_up",
+  "dur": 6.6,
+  "desc": "builds to the song stopping"
+ },
+ {
+  "t": 46.6,
+  "type": "click",
+  "desc": "clicks back to DBMS tab"
+ },
+ {
+  "t": 47.7,
+  "type": "movement",
+  "desc": "camera into Butu"
+ },
+ {
+  "t": 52.3,
+  "type": "movement",
+  "desc": "pull out to browser, diary, lockup"
+ }
+]

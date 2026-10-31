@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Butu launch video</title>
+<!-- Serve from the repo root (python3 -m http.server) to preview. Assets come from ../assets and ../src. -->
+<style>
+@font-face { font-family: 'Patrick Hand'; src: url('../assets/fonts/patrick-hand/PatrickHand-Regular.ttf'); }
+@font-face { font-family: 'Gaegu'; src: url('../assets/fonts/gaegu/Gaegu-Regular.ttf'); }
+:root { --paper:#fff8e9; --ink:#514438; --soft:#756354; --rose:#f0c7c9; --peach:#f5d4b7; --butter:#f3e3a4; --sage:#ceddc7; --sky:#cbdfe8; --lav:#dfd4ea; --plum:#705477; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #2b2622; overflow: hidden; }
+#stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); transform-origin: 0 0; perspective: 1800px; color: var(--ink); font-family: 'Patrick Hand', cursive; }
+#tilt { position: absolute; inset: 0; transform-origin: 50% 50%; }
+#world { position: absolute; left: 0; top: 0; width: 6000px; height: 4000px; transform-origin: 0 0;
+  background-image: radial-gradient(circle, #eadfc6 2.4px, transparent 2.8px); background-size: 64px 64px; }
+#world > *, .win > *, #popup > *, #diary > *, #lockup > * { position: absolute; white-space: nowrap; }
+img { display: block; }
+
+/* browser windows */
+.win { width: 1600px; height: 1000px; border: 4px solid var(--soft); border-radius: 22px; background: #fbf2de; overflow: hidden; box-shadow: 10px 14px 0 #efe3c9; }
+.tab { top: 12px; height: 44px; width: 240px; border: 3px solid var(--soft); border-bottom: 0; border-radius: 14px 14px 0 0; padding: 4px 18px; font-size: 25px; background: #f4e9d0; }
+.tab.on { background: var(--paper); }
+.url { left: 20px; top: 62px; right: 20px; height: 32px; width: 1552px; border: 2px solid #cdbfa8; border-radius: 16px; padding: 0 18px; font-size: 21px; line-height: 27px; color: var(--soft); background: var(--paper); }
+.page { left: 0; top: 104px; width: 1600px; height: 896px; overflow: hidden; }
+.page > * { position: absolute; white-space: nowrap; }
+.bar { height: 16px; border-radius: 8px; background: #d9cdb8; }
+
+#pageD { background: var(--paper); }
+#bpage { background: #fff; color: #202122; font-family: Georgia, 'DejaVu Serif', serif; }
+.sub { left: 0; top: 0; width: 1600px; height: 896px; }
+.sub > * { position: absolute; white-space: nowrap; }
+#pageM .bar { background: #c9ccd1; }
+#pageM .bar.link { background: #6f97e0; }
+#plus { top: 14px; font-size: 34px; line-height: 40px; width: 40px; text-align: center; border-radius: 10px; }
+#pageV { background: #17161c; color: #f4f2f8; font-family: 'DejaVu Sans', Arial, sans-serif; }
+#logo { left: 40px; top: 26px; font-size: 30px; font-weight: 700; color: #ff5a5f; }
+#search { left: 300px; top: 22px; width: 460px; height: 44px; border: 2px solid #4a4855; border-radius: 22px; padding: 7px 20px; font-size: 21px; color: #a9a6b5; }
+#player { left: 40px; top: 88px; width: 900px; height: 470px; overflow: hidden; border-radius: 12px; }
+#player svg { display: block; }
+#seek { position: absolute; left: 0; bottom: 0; width: 100%; height: 10px; background: #0007; }
+#seekFill { height: 100%; width: 100%; background: #ff5a5f; transform-origin: 0 50%; }
+#vtitle { left: 40px; top: 578px; font-size: 34px; font-weight: 700; }
+#upnext { left: 300px; top: 632px; font-size: 25px; color: #cfccd9; }
+.thumb { left: 975px; width: 390px; height: 140px; border-radius: 10px; }
+.thumb i { position: absolute; left: 0; top: 0; width: 160px; height: 140px; border-radius: 10px; }
+.thumb b { position: absolute; left: 174px; top: 8px; width: 210px; white-space: normal; font-size: 23px; line-height: 31px; font-weight: 600; }
+#thumbBlocks { background: linear-gradient(#7fb04f 0 34%, #8a5f3c 34% 86%, #6b6b6b 86%); }
+#pageM .title { left: 300px; top: 28px; width: 1300px; font-size: 68px; }
+#pageM .rule { left: 300px; top: 118px; width: 960px; height: 3px; background: #a2a9b1; }
+#pageM .lede { left: 300px; top: 142px; width: 660px; white-space: normal; font-family: Georgia, 'DejaVu Serif', serif; font-size: 27px; line-height: 40px; }
+#blocks { left: 990px; top: 150px; width: 270px; height: 270px; display: grid; grid-template: repeat(6,1fr) / repeat(6,1fr); }
+#over { left: 0; top: 0; width: 1600px; height: 896px; overflow: hidden; }
+#over > * { position: absolute; white-space: nowrap; }
+#taunt { left: 296px; top: 34px; font-size: 56px; color: var(--plum); font-family: 'Patrick Hand', cursive; }
+#side-taunt { left: 28px; top: 430px; width: 230px; white-space: normal; font-size: 27px; line-height: 33px; color: var(--plum); font-family: 'Patrick Hand', cursive; }
+#song { left: 280px; top: 390px; width: 1040px; padding: 22px 0; text-align: center; font-size: 46px; color: var(--ink); background: var(--paper); font-family: 'Patrick Hand', cursive; box-shadow: 0 6px 0 #efe3c9; }
+
+/* popup */
+#popup { left: 1340px; top: 340px; width: 460px; height: 770px; background: var(--paper); border: 3px solid var(--soft); border-radius: 20px; box-shadow: 8px 10px 0 #efe3c9; transform-origin: 90% 100%; }
+#popup h1 { margin: 0; left: 0; width: 460px; top: 160px; font: 400 44px/56px 'Gaegu', cursive; text-align: center; }
+.lbl { left: 30px; font-size: 28px; }
+.box { left: 30px; width: 400px; border: 2px solid var(--soft); border-radius: 13px; background: #fffaf0; padding: 10px 14px; font-size: 28px; }
+#btn { left: 30px; top: 615px; width: 400px; height: 70px; border: 2px solid var(--soft); border-radius: 13px; background: var(--sage); font-size: 31px; text-align: center; line-height: 64px; }
+#dlink { left: 0; width: 460px; top: 710px; text-align: center; font-size: 28px; color: var(--plum); text-decoration: underline; }
+#caret { width: 3px; height: 32px; background: var(--ink); }
+
+/* diary */
+#diary { left: 300px; top: 1580px; width: 1200px; height: 880px; background: var(--paper); border: 3px solid #e6d9bd; border-radius: 12px; box-shadow: 10px 14px 0 #efe3c9; }
+#diary h2 { margin: 0; left: 150px; top: 30px; font: 400 76px 'Gaegu', cursive; }
+#diary h3 { margin: 0; font: 400 46px 'Gaegu', cursive; }
+#tape { left: 60px; top: 196px; width: 140px; height: 40px; background: var(--sage); opacity: .8; transform: rotate(-3deg); }
+.meta { font-size: 25px; color: var(--soft); }
+.num { font-size: 36px; }
+#hl { left: 54px; top: 714px; width: 250px; height: 100px; background: var(--butter); border-radius: 10px; transform-origin: 0 50%; }
+
+/* lockup */
+#lockup { left: 2400px; top: 1000px; width: 1800px; height: 800px; }
+#lockup h1 { margin: 0; left: 470px; top: 110px; font: 400 240px/1 'Gaegu', cursive; }
+#tag { left: 480px; top: 360px; font-size: 64px; }
+#sub { left: 480px; top: 450px; font-size: 42px; color: var(--soft); }
+#credits { left: 480px; top: 540px; font-size: 27px; color: var(--soft); }
+
+#vig { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 35%, #140e18 100%); }
+#ctl[hidden] { display: none; }
+#ctl { position: fixed; left: 12px; right: 12px; bottom: 8px; display: flex; gap: 8px; }
+#ctl input { flex: 1; }
+</style>
+</head>
+<body>
+<div id="stage"><div id="tilt"><div id="world">
+  <div class="win" id="A" style="left:300px;top:300px">
+    <div class="tab on" id="tabD" style="left:20px">DBMS notes</div>
+    <div class="tab" id="tabO" style="left:262px"></div>
+    <div id="plus">+</div>
+    <div class="url" id="url"></div>
+    <div class="page" id="bpage">
+      <div id="pageV" class="sub">
+        <div id="logo">tube.example</div>
+        <div id="search">search</div>
+        <div id="player">
+          <svg width="900" height="470" viewBox="0 0 900 470"><rect width="900" height="470" fill="#ffd166"/><rect y="350" width="900" height="120" fill="#ef8354"/><rect x="520" y="250" width="300" height="24" fill="#7a5233"/><rect x="560" y="274" width="20" height="96" fill="#7a5233"/><rect x="760" y="274" width="20" height="96" fill="#7a5233"/><path id="cup" d="M640 250v-46h44v46Z" fill="#8ecae6" stroke="#fff" stroke-width="4"/><g fill="#3d3a4b"><ellipse cx="500" cy="205" rx="74" ry="50"/><circle cx="440" cy="160" r="42"/><path d="m408 132-6-40 34 20Zm64 0 6-40-34 20Z"/><path d="M570 200q58-14 44-74" fill="none" stroke="#3d3a4b" stroke-width="16" stroke-linecap="round"/></g><circle cx="427" cy="155" r="7" fill="#ffd166"/><circle cx="455" cy="155" r="7" fill="#ffd166"/></svg>
+          <div id="seek"><div id="seekFill"></div></div>
+        </div>
+        <div id="vtitle">Cats knocking things off tables, part 7</div>
+        <div id="upnext">Up next in 3…</div>
+        <div class="thumb" style="top:32px"><i style="background:#ef476f"></i><b>Cat vs cucumber, the rematch</b></div>
+        <div class="thumb" style="top:190px"><i style="background:#118ab2"></i><b>Ten hours of rain on a tin roof</b></div>
+        <div class="thumb" id="thumbM" style="top:348px"><i id="thumbBlocks"></i><b>Minecraft, fully explained</b></div>
+        <div class="thumb" style="top:506px"><i style="background:#06d6a0"></i><b>I tried studying for 24 hours</b></div>
+      </div>
+      <div id="pageM" class="sub">
+        <div class="bar link" style="left:40px;top:44px;width:150px"></div>
+        <div class="bar link" style="left:40px;top:84px;width:180px"></div>
+        <div class="bar link" style="left:40px;top:124px;width:120px"></div>
+        <div class="bar link" style="left:40px;top:320px;width:170px"></div>
+        <div class="bar link" style="left:40px;top:360px;width:130px"></div>
+        <div class="title" id="btitle">Minecraft</div>
+        <div class="rule"></div>
+        <div class="lede" id="lede">Minecraft is a sandbox video game. Players explore a blocky world and build whatever they like, one block at a time.</div>
+        <div id="blocks"></div>
+        <div class="bar" style="left:300px;top:480px;width:940px"></div>
+        <div class="bar link" style="left:300px;top:522px;width:420px"></div>
+        <div class="bar" style="left:740px;top:522px;width:480px"></div>
+        <div class="bar" style="left:300px;top:564px;width:900px"></div>
+        <div class="bar" style="left:300px;top:606px;width:960px"></div>
+        <div class="bar link" style="left:300px;top:648px;width:300px"></div>
+        <div class="bar" style="left:620px;top:648px;width:520px"></div>
+        <div class="bar" style="left:300px;top:690px;width:860px"></div>
+        <div class="bar" style="left:300px;top:732px;width:940px"></div>
+        <div class="bar" style="left:300px;top:774px;width:640px"></div>
+      </div>
+      <div id="over"></div>
+    </div>
+    <div class="page" id="pageD">
+      <div style="left:90px;top:44px;font:400 74px 'Gaegu',cursive">Unit 4: Normalization</div>
+      <div style="left:96px;top:150px;font-size:34px;color:var(--soft)">Why do we split tables at all?</div>
+      <div class="bar" style="left:96px;top:226px;width:880px"></div>
+      <div class="bar" style="left:96px;top:266px;width:820px"></div>
+      <div class="bar" style="left:96px;top:306px;width:900px"></div>
+      <div class="bar" style="left:96px;top:346px;width:560px"></div>
+      <div style="left:96px;top:420px;width:760px;height:240px;border:3px solid #cdbfa8;border-radius:10px;background:linear-gradient(#cdbfa8,#cdbfa8) 0 58px/100% 3px no-repeat,linear-gradient(#cdbfa8,#cdbfa8) 0 118px/100% 3px no-repeat,linear-gradient(#cdbfa8,#cdbfa8) 0 178px/100% 3px no-repeat,linear-gradient(#cdbfa8,#cdbfa8) 250px 0/3px 100% no-repeat,linear-gradient(#cdbfa8,#cdbfa8) 500px 0/3px 100% no-repeat"></div>
+      <div class="bar" style="left:96px;top:716px;width:760px"></div>
+    </div>
+    <svg id="wipe" width="170" height="896" style="left:0;top:104px"></svg>
+  </div>
+
+  <div id="popup">
+    <h1>Hi! What are we<br>working on today?</h1>
+    <div class="lbl" style="top:280px">Our little task</div>
+    <div class="box" id="task" style="top:325px;height:96px"></div>
+    <div id="caret" style="left:46px;top:338px"></div>
+    <div style="left:30px;top:424px;font-size:23px;color:var(--soft)">3–200 characters. One thing at a time.</div>
+    <div class="lbl" style="top:470px">How long shall we sit together?</div>
+    <div class="box" style="top:518px;height:62px">25 minutes</div>
+    <div id="btn">Let's do it together!</div>
+    <div id="dlink">Open our diary</div>
+  </div>
+
+  <div id="diary">
+    <img src="../assets/doodles/heart-calm.svg" width="110" height="110" style="left:30px;top:30px">
+    <h2>Our diary</h2>
+    <div style="left:152px;top:128px;font-size:30px">I kept these little bits of us.</div>
+    <div id="tape"></div>
+    <div class="meta" style="left:60px;top:256px">October 31, 2026 · Finished</div>
+    <h3 style="left:60px;top:296px">DBMS assignment</h3>
+    <div class="meta" style="left:60px;top:376px">Time together</div>
+    <div class="num" style="left:60px;top:410px">25:00</div>
+    <div class="meta" style="left:250px;top:376px">Times you wandered</div>
+    <div class="num" style="left:250px;top:410px">1</div>
+    <div style="left:60px;top:490px;width:720px;white-space:normal;font-size:31px;line-height:42px">I used my favourite colour for our time together. That part of the page is lovely.</div>
+    <h3 style="left:60px;top:650px;font-size:40px">Places you left me for</h3>
+    <div id="hl"></div>
+    <div style="left:60px;top:718px;font-size:34px">• tube.example</div>
+    <div style="left:60px;top:766px;font-size:34px">• wiki.example</div>
+    <img src="../assets/doodles/butu-wrong.svg" width="280" height="280" style="left:850px;top:300px">
+    <div style="left:800px;top:600px;width:380px;text-align:center;white-space:normal;font:400 34px/44px 'Gaegu',cursive">I tried to draw us smiling.</div>
+  </div>
+
+  <div id="lockup">
+    <img id="lockBear" src="../assets/doodles/butu-calm.svg" width="430" height="430" style="left:10px;top:140px">
+    <h1>Butu</h1>
+    <div id="tag">a friend who misses you when you wander.</div>
+    <div id="sub">Chrome + Firefox · AI runs in your browser</div>
+    <div id="credits">Voice &amp; SFX: elevenlabs.io · Fonts: Gaegu, Patrick Hand · Music box: “A Place Beside Me”</div>
+  </div>
+
+  <img id="butu" src="../src/popup/butu.svg" width="130" height="135" style="left:0;top:0">
+  <img id="butuCalm" src="../assets/doodles/butu-calm.svg" width="190" height="190" style="left:0;top:0">
+  <img id="butuWait" src="../assets/doodles/butu-waiting.svg" width="190" height="190" style="left:0;top:0">
+  <div id="hearts"></div>
+
+  <svg id="cursor" width="60" height="78" viewBox="0 0 30 39" style="left:0;top:0;transform-origin:0 0;overflow:visible">
+    <path d="M2 2 3 30l7-6.6 5.3 12.2 5.6-2.5-5.6-11.8 9.4-.6Z" fill="#fff8e9" stroke="#514438" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>
+</div></div><div id="vig"></div></div>
+<svg width="0" height="0" style="position:absolute"><filter id="tear" filterUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080" color-interpolation-filters="sRGB">
+  <feTurbulence id="tearN" type="fractalNoise" baseFrequency="0.00001 0.03" numOctaves="1" seed="1" result="n"/>
+  <feComponentTransfer in="n" result="bands"><feFuncR type="discrete" tableValues="0 .15 .35 .5 .5 .65 .85 1"/><feFuncG type="discrete" tableValues=".5"/></feComponentTransfer>
+  <feDisplacementMap id="tearD" in="SourceGraphic" in2="bands" scale="0" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <feOffset id="tearR" in="d" dx="0" result="r0"/><feColorMatrix in="r0" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r"/>
+  <feOffset id="tearC" in="d" dx="0" result="c0"/><feColorMatrix in="c0" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" result="c"/>
+  <feBlend in="r" in2="c" mode="screen"/>
+</filter></svg>
+<div id="ctl" hidden><button id="play">play</button><input id="scrub" type="range" min="0" max="1" step="0.001" value="0"><audio id="bed" src="out/bed.wav"></audio></div>
+
+<script>
+/* Beat sheet, in STORY time. warp() below stretches the haunting to fit the music,
+   so real video time differs from 14 s on. Real times for all audio are in mix.sh.
+   Story -> real: 14 -> 14, 25 -> 28, 27.3 -> 44, 45 -> 61.7.
+   Music: stage 1, then stage 3 at 14 s, then stage 4 from 28 to 42.6 s (the horror).
+   Stage 4 horror runs on real time: glitch bursts, swarm of bears, "together" overwriting
+   the page, the big bear growing. At 42.6 s everything stops dead: "The song stopped." 
+   t      picture                                        sound
+   0.4    close on Butu waving                           butu-01 "Hello, little star. Shall we begin?"
+   3.1    camera out to the popup; cursor to task box
+   4.2    typing "DBMS assignment"                       butu-02 at 4.3, typing SFX
+   6.3    click "Let's do it together!"; Butu to corner  click
+   7.6    cursor heads for the new-tab button            whoosh, butu-05 at 8.0
+   9.6    opens tube.example: the distraction            click
+   10.2   stage 1: crayon doodles draw on the video page crayon, music box 1
+   13.8   clicks a Minecraft video: SAME tab navigates,  click
+          so off-task time and the haunting carry over (per-tab timing, docs/OFF-TASK-TIMING.md)
+   14.2   stage 2: Minecraft heading rewritten                     butu-06 at 15.2, box 2 at 14
+   19     stage 3: corrupted doodles, push to bear       butu-08 at 20.2, box 3 at 19
+   25     stage 4: drained page, song bar                box 4 winds down by 26.5, silence, butu-12 at 27.3
+   29.9   click DBMS tab: crayon wipe reveals DBMS page  click, chime
+   31     camera into Butu, back in his corner; hearts   whoosh, box 1 at 31, butu-14 at 31.7
+   35.6   pull out: browser, diary, lockup                        whoosh
+   38.2   dive to diary
+   40.8   lockup
+   45     end                                            music fades out */
+const VIDEO = window.VIDEO = { w: 1920, h: 1080, duration: 61.7 };
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = x => (x = clamp(x), x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const lerp = (a, b, k) => a + (b - a) * k;
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const kf = keys => t => { if (t <= keys[0][0]) return keys[0][1]; for (let i = 1; i < keys.length; i++) { const [a, va] = keys[i - 1], [b, vb, e = ease] = keys[i]; if (t <= b) return lerp(va, vb, e((t - a) / (b - a))); } return keys[keys.length - 1][1]; };
+const linear = x => x;
+function spring(t, w = 14, z = 0.82) {
+  if (t <= 0) return 0;
+  if (z >= 1) return 1 - Math.exp(-w * t) * (1 + w * t);
+  const wd = w * Math.sqrt(1 - z * z);
+  return 1 - Math.exp(-z * w * t) * (Math.cos(wd * t) + (z * w / wd) * Math.sin(wd * t));
+}
+const rng = s => () => (s = (s + 0x6D2B79F5) | 0, s = Math.imul(s ^ (s >>> 15), 1 | s), s ^= s + Math.imul(s ^ (s >>> 7), 61 | s), ((s ^ (s >>> 14)) >>> 0) / 4294967296);
+// Hand-drawn "boil": a small offset that changes 8 times a second, seeded per element.
+let realT = 0; // boil keeps its speed while story time is stretched
+const boil = (id, t, amp = 1) => { const r = rng(id * 7919 + Math.floor(realT * 8)); return [(r() - .5) * 2 * amp, (r() - .5) * 2 * amp, (r() - .5) * 1.4 * amp]; };
+
+// Real video time -> story time. Stages last exactly as long as their music box phrases.
+const warp = kf([[0,0],[14,14,x=>x],[28,25,x=>x],[44,27.3,x=>x],[61.7,45,x=>x]]);
+const HORROR = 28, STOP = 42.6;
+// Glitch bursts [start, seconds, strength]. Each has a matching cue in cues.json. Tears and colour split only, no full-frame flashes.
+const BURSTS = [[30.1,.35,.4],[32.4,.3,.45],[34,.4,.55],[35.6,.35,.55],[37,.5,.7],[38.2,.4,.7],[39.2,.5,.85],[40,.5,.85],[40.8,.6,1],[41.5,.6,1],[42.1,.5,1]];
+const T = { click: 6.3, driftA: 7.6, driftB: 9.6, nav: 13.8, s2: 14, s3: 19, s4: 25, back: 29.9, flyA: 31, flyB: 32.5, out: 35.6, outEnd: 37.2, dia: 38.2, lock: 40.8 };
+const WIPE = 1.0; // seconds for the crayon restore
+
+// Camera
+const camX = kf([[0,1570],[3.1,1570],[4,1570],[6.5,1570],[7.4,1100],[T.driftA,1100],[8.8,800],[T.driftB,800],[10.2,1100],[14.2,1100],[15,1000],[18.8,1000],[20,1320],[24.6,1660],[26,1100],[T.flyA,1100],[T.flyB,1745],[T.out,1745],[T.outEnd,2100],[T.dia,2100],[T.dia+1,900],[T.lock,900],[T.lock+1,3100]]);
+const camY = kf([[0,445],[3.1,445],[4,725],[6.5,725],[7.4,800],[T.driftA,800],[8.8,560],[T.driftB,560],[10.2,785],[14.2,785],[15,495],[18.8,495],[20,940],[24.6,1145],[26,785],[T.flyA,785],[T.flyB,1140],[T.out,1140],[T.outEnd,1400],[T.dia,1400],[T.dia+1,2020],[T.lock,2020],[T.lock+1,1420]]);
+const camZ = kf([[0,3.4],[3.1,3],[4,1.25],[6.5,1.3],[7.4,1],[T.driftA,1],[8.8,1.6],[T.driftB,1.6],[10.2,1.05],[14.2,1.1],[15,1.35],[18.8,1.42],[20,1.2],[24.6,2.5],[26,1.05],[T.back,1.08],[T.flyA,1.08],[T.flyB,1.9],[T.out,2.1],[T.outEnd,.46],[T.dia,.45],[T.dia+1,1.05],[T.lock,1.08],[T.lock+1,1.05],[45,1.09,linear]]);
+const tiltX = kf([[T.out,0],[T.outEnd,14],[T.dia,14],[T.dia+.8,0]]);
+
+const curX = kf([[0,1860],[3.1,1860],[3.8,1740],[5.7,1740],[6.2,1570],[6.5,1570],[7.4,1100],[T.driftA,1100],[T.driftB-.1,588],[T.driftB+.3,588],[11.2,800],[13,1300],[13.5,1560],[T.nav+.2,1560],[T.s3,1200],[24,1400],[28.1,1400],[29.7,440],[T.flyA,440],[T.flyB+.3,1630],[T.out,1630],[T.outEnd,1950],[T.dia,1500],[T.dia+.9,640],[T.lock,640],[T.lock+1,2720]]);
+const curY = kf([[0,1200],[3.1,1200],[3.8,760],[5.7,760],[6.2,990],[6.5,990],[7.4,800],[T.driftA,800],[T.driftB-.1,334],[T.driftB+.3,334],[11.2,760],[13,1000],[13.5,860],[T.nav+.2,860],[T.s3,800],[24,960],[28.1,960],[29.7,334],[T.flyA,334],[T.flyB+.3,1085],[T.out,1085],[T.outEnd,1700],[T.dia,2200],[T.dia+.9,2340],[T.lock,2340],[T.lock+1,1470]]);
+const cursorAt = t => [curX(t), curY(t)];
+
+// Block art for the off-task page
+{ const pal = ['#7fb04f', '#6a9c3f', '#8a5f3c', '#7a5233', '#9a7048', '#6b6b6b'], r = rng(11);
+  for (let y = 0; y < 6; y++) for (let x = 0; x < 6; x++) { const d = document.createElement('div');
+    d.style.background = y < 2 ? pal[Math.floor(r() * 2)] : y < 5 ? pal[2 + Math.floor(r() * 3)] : pal[5]; $('blocks').append(d); } }
+
+// Corruption layer on the Minecraft page. Each doodle has calm and corrupted art at the same spot.
+const over = $('over'), mk = (tag, props, style) => { const e = Object.assign(document.createElement(tag), props); Object.assign(e.style, style); over.append(e); return e; };
+const doodles = [
+  ['stars', 90, 165, 130, 10.2], ['heart', 40, 620, 150, 10.9], ['smiley', 1390, 40, 160, 11.6], ['flower', 1390, 340, 170, 12.3],
+].map(([n, x, y, s, at], i) => ({ i, at, x, y, s,
+  calm: mk('img', { src: `../assets/doodles/${n}-calm.svg`, width: s, height: s }, { left: x + 'px', top: y + 'px' }),
+  bad: mk('img', { src: `../assets/doodles/${n}-corrupted.svg`, width: s, height: s }, { left: x + 'px', top: y + 'px' }) }));
+const scribbles = [];
+{ const r = rng(23);
+  for (let i = 0; i < 12; i++) { const n = 1 + (i % 3), e = mk('img', { src: `../assets/doodles/scribble-${n}.svg`, width: 1700 }, { left: (-40 - r() * 60) + 'px', top: (-70 + i * 76 + r() * 16) + 'px', opacity: .75 });
+    scribbles.push({ e, at: i % 4 === 0 ? T.s3 + 1.2 + i * .25 : T.s4 + .1 + (i % 5) * .32 }); } }
+// Off-task tab: the video page, then the same tab navigates to Minecraft
+const taunt = mk('div', { id: 'taunt', textContent: "You said we'd finish DBMS assignment together…" }, {});
+const sideTaunt = mk('div', { id: 'side-taunt', textContent: "You said we'd do DBMS assignment together. I already said yes." }, {});
+const song = mk('div', { id: 'song', textContent: "The song stopped. I'm still here with DBMS assignment." }, {});
+const bears = ['waiting', 'lonely', 'abandoned'].map(n => mk('img', { src: `../assets/doodles/butu-${n}.svg`, width: 210, height: 210 }, { left: '1370px', top: '670px' }));
+// Stage 4 horror: more and more of him, and the one word he keeps writing
+const swarm = [], words = [];
+{ const r = rng(77);
+  for (let i = 0; i < 30; i++) { const w = 60 + r() * 90; swarm.push({ at: HORROR + 2 + i * .42, rot: (r() - .5) * 40,
+    e: mk('img', { src: `../assets/doodles/butu-${i % 3 ? 'wrong' : 'abandoned'}.svg`, width: w, height: w }, { left: (r() * 1500) + 'px', top: (r() * 800) + 'px' }) }); }
+  for (let i = 0; i < 22; i++) words.push({ at: HORROR + 3 + i * .5,
+    e: mk('div', { textContent: 'together' }, { left: (r() * 1300) + 'px', top: (r() * 820) + 'px', fontFamily: "'Patrick Hand', cursive", fontSize: (34 + r() * 60) + 'px', color: '#4a2f55', transform: `rotate(${(r() - .5) * 24}deg)` }) });
+over.big = mk('img', { src: '../assets/doodles/butu-wrong.svg', width: 1100, height: 1100 }, { left: '250px', top: '-100px' });
+over.append(song); }
+const hearts = [0, 1, 2, 3].map(i => { const e = document.createElement('img'); e.src = '../assets/doodles/heart-calm.svg'; e.width = e.height = 56; e.style.cssText = 'position:absolute;left:0;top:0'; $('hearts').append(e); return e; });
+// The zigzag that wipes the page clean
+{ let d = 'M30 -10'; for (let y = 0; y < 900; y += 34) d += ` L${y % 68 ? 150 : 22} ${y + 34}`;
+  $('wipe').innerHTML = `<path d="${d}" fill="none" stroke="#f3e3a4" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>`; }
+
+const TASK = 'DBMS assignment';
+const measure = document.createElement('canvas').getContext('2d'); measure.font = "28px 'Patrick Hand'";
+const show = (e, o) => { e.style.opacity = o; e.style.visibility = o <= 0.001 ? 'hidden' : 'visible'; };
+const place = (e, cx, cy, s, b = [0, 0, 0], rot = 0) => { e.style.transform = `translate(${cx - e.width / 2 + b[0]}px,${cy - e.height / 2 + b[1]}px) rotate(${rot + b[2]}deg) scale(${s})`; };
+
+window.seek = t => {
+  realT = clamp(t, 0, VIDEO.duration); t = warp(realT);
+  const dread = realT < STOP ? seg(realT, HORROR, STOP) : 0;
+  const burst = BURSTS.find(([a, d]) => realT >= a && realT < a + d), amt = burst ? burst[2] : 0;
+  const shk = rng(Math.floor(realT * 24) + 900), sx = (shk() - .5) * 36 * amt, sy = (shk() - .5) * 20 * amt;
+  const z = camZ(t) * (1 + .3 * ease(seg(realT, 37, STOP)) * (realT < STOP ? 1 : 0)), cx = camX(t), cy = camY(t);
+  $('world').style.transform = `translate(${960 - cx * z + sx}px,${540 - cy * z + sy}px) scale(${z})`;
+  $('tilt').style.filter = burst ? 'url(#tear)' : '';
+  if (burst) { $('tearN').setAttribute('seed', 1 + Math.floor(realT * 24)); $('tearD').setAttribute('scale', 320 * amt); $('tearR').setAttribute('dx', 22 * amt); $('tearC').setAttribute('dx', -22 * amt); }
+  $('vig').style.opacity = realT >= HORROR ? (realT < STOP ? .25 + .75 * dread : .6) * (1 - seg(t, T.back, T.back + WIPE)) : 0;
+  $('tilt').style.transform = `rotateX(${tiltX(t)}deg)`;
+
+  // Cursor keeps a near-constant size on screen
+  const [mx0, my0] = cursorAt(t), cj = rng(Math.floor(realT * 12) + 40), mx = mx0 + (cj() - .5) * 26 * dread, my = my0 + (cj() - .5) * 26 * dread;
+  const press = t > T.nav - .02 && t < T.nav + .1 || t > T.click - .02 && t < T.click + .1 || t > T.driftB - .02 && t < T.driftB + .1 || t > T.back - .02 && t < T.back + .1;
+  $('cursor').style.transform = `translate(${mx}px,${my}px) scale(${Math.max(.75, 1 / z * 1.05) * (press ? .85 : 1)})`;
+  // Popup: typing, button, fold away
+  const typed = Math.floor(TASK.length * seg(t, 4.2, 5.6));
+  $('task').textContent = TASK.slice(0, typed);
+  $('caret').style.transform = `translateX(${measure.measureText($('task').textContent).width + 2}px)`;
+  show($('caret'), t > 3.8 && t < T.click && (t > 4.2 && t < 5.6 || Math.floor(t * 2.5) % 2 === 0) ? 1 : 0);
+  $('btn').style.transform = `scale(${t > T.click - .02 && t < T.click + .12 ? .96 : 1})`;
+  $('btn').style.background = t > 5.9 ? '#bdd3b4' : '';
+  const fold = ease(seg(t, T.click + .15, T.click + .75));
+  $('popup').style.transform = `scale(${1 - .85 * fold}) rotate(${fold * 4}deg)`;
+  show($('popup'), 1 - seg(t, T.click + .45, T.click + .75));
+
+  // Butu at the DBMS window: waves in the popup, hops to the corner, waits, then is happy.
+  const go = spring(t - (T.click + .15), 7, .75);
+  const bx = lerp(1570, 1740, go), by = lerp(432, 1150, go) - 110 * Math.sin(Math.PI * seg(t, T.click + .15, T.click + 1.05));
+  const b1 = boil(1, t, 1.1);
+  show($('butu'), t < T.click + .6 ? 1 : 0);
+  place($('butu'), bx, by, 1 + .35 * go, b1, Math.sin(t * 5.2) * 4 * (1 - go));
+  const home = t >= T.back + .1 + WIPE * .8;
+  show($('butuCalm'), t >= T.click + .6 && t < T.driftA + .3 || home ? 1 : 0);
+  show($('butuWait'), t >= T.driftA + .3 && t < T.driftB ? 1 : 0);
+  const joy = home ? Math.abs(Math.sin((t - T.back) * 5)) * 26 * Math.exp(-Math.max(0, t - T.flyB) * .6) : 0;
+  place($('butuCalm'), 1740, 1150 - joy, 1, b1); place($('butuWait'), 1740, 1150, 1, b1, -2);
+  hearts.forEach((h, i) => { const a = T.flyB + .5 + i * .42, p = seg(t, a, a + 1.5);
+    show(h, p > 0 && p < 1 ? Math.min(1, 4 * (1 - p)) : 0);
+    place(h, 1740 + [-110, 105, -60, 70][i] + Math.sin(p * 5 + i) * 10, 1060 - p * 210, .5 + .5 * spring(t - a, 12, .6), boil(10 + i, t, .8)); });
+
+  // Minecraft page corruption. r = how far the crayon wipe has restored it.
+  const r = ease(seg(t, T.back + .1, T.back + .1 + WIPE));
+  const s3 = seg(t, T.s3, T.s3 + 1), s4 = seg(t, T.s4, T.s4 + 1.2);
+  const offTask = t >= T.driftB, onV = t < T.nav;
+  $('pageD').style.clipPath = offTask ? `inset(0 ${(1 - r) * 100}% 0 0)` : '';
+  show($('pageD'), !offTask || r > 0 ? 1 : 0);
+  show($('bpage'), offTask && r < 1 ? 1 : 0);
+  show($('pageV'), onV ? 1 : 0); show($('pageM'), onV ? 0 : 1);
+  show($('tabO'), offTask ? 1 : 0);
+  $('tabO').textContent = onV ? 'Cats knocking things…' : realT > 33 && t < T.back ? 'together' : 'Minecraft';
+  const onD = !offTask || t >= T.back;
+  $('tabD').classList.toggle('on', onD); $('tabO').classList.toggle('on', !onD);
+  $('url').textContent = onD ? 'docs.example/dbms-notes' : onV ? 'tube.example/watch' : realT > 33 ? 'wiki.example/together/together/together' : 'wiki.example/minecraft';
+  $('plus').style.left = (offTask ? 508 : 266) + 'px';
+  $('plus').style.background = t > T.driftB - .4 && t < T.driftB + .15 ? 'var(--butter)' : '';
+  const cupX = ease(seg(t, 10.4, 12.2)) * 165, cupF = seg(t, 12.2, 12.75);
+  $('cup').setAttribute('transform', `translate(${cupX + cupF * 34} ${cupF * cupF * 140}) rotate(${cupF * 80} 662 228)`);
+  $('seekFill').style.transform = `scaleX(${.12 + (t - T.driftB) * .05})`;
+  $('thumbM').style.outline = t > 13.3 && t < T.nav + .1 ? '4px solid #f3e3a4' : 'none';
+  $('thumbM').style.transform = `scale(${t > T.nav - .02 && t < T.nav + .1 ? .97 : 1})`;
+  $('wipe').style.transform = `translateX(${r * 1600 - 85}px)`;
+  show($('wipe'), r > 0 && r < 1 ? 1 : 0);
+  const k = 1 - r;
+  $('A').style.transform = `rotate(${-.9 * s3 * k}deg)`;
+  $('bpage').style.filter = t > T.s3 && r < 1 ? `saturate(${1 - s3 * .35 * k - s4 * .55 * k}) brightness(${1 - s4 * .32 * k})` : '';
+  doodles.forEach(d => { const p = seg(t, d.at, d.at + .7), q = Math.floor(p * 7) / 7;
+    d.calm.style.clipPath = `inset(0 ${(1 - q) * 100}% 0 0)`; const b = boil(20 + d.i, t, 1.2), sw = seg(t, T.s3 + d.i * .5, T.s3 + d.i * .5 + .6);
+    const tf = `translate(${b[0]}px,${b[1]}px) rotate(${b[2]}deg)`; d.calm.style.transform = tf; d.bad.style.transform = tf;
+    show(d.calm, p > 0 ? 1 - sw : 0); show(d.bad, sw); });
+  scribbles.forEach(s => { const p = seg(t, s.at, s.at + .9), q = Math.floor(p * 8) / 8; show(s.e, q > 0 ? .4 + .35 * s4 : 0); s.e.style.clipPath = `inset(0 ${(1 - q) * 100}% 0 0)`; });
+  const bIn = spring(t - 12.9, 8, .7), bb = boil(30, t, 1.2);
+  bears.forEach((b, i) => { const on = i === 0 ? t < T.s3 + .4 : i === 1 ? t >= T.s3 + .4 && t < T.s4 + .4 : t >= T.s4 + .4;
+    show(b, on && t > 12.9 ? 1 : 0); b.style.transform = `translate(${(1 - bIn) * 240 + bb[0]}px,${(1 - bIn) * 80 + bb[1]}px) rotate(${bb[2]}deg)`; });
+  const h = seg(t, 14.4, 16.2), hq = Math.floor(h * 24) / 24;
+  taunt.style.clipPath = `inset(-20px ${(1 - hq) * 100}% -20px 0)`; show(taunt, h > 0 ? 1 : 0);
+  $('btitle').style.opacity = 1 - seg(t, 14.3, 14.6);
+  const sq = Math.floor(seg(t, 16.4, 17.6) * 16) / 16;
+  sideTaunt.style.clipPath = `inset(-10px 0 ${(1 - sq) * 100}% 0)`; show(sideTaunt, sq > 0 ? 1 : 0);
+  show(song, realT >= STOP + .2 ? 1 : 0);
+  swarm.forEach(b => { const on = realT >= b.at; show(b.e, on ? 1 : 0); if (on) { const j = realT < STOP ? boil(50 + b.rot, realT, 2.4) : [0, 0, 0]; b.e.style.transform = `translate(${j[0]}px,${j[1]}px) rotate(${b.rot + j[2]}deg)`; } });
+  words.forEach(w => { const p = Math.floor(seg(realT, w.at, w.at + .5) * 6) / 6; show(w.e, p > 0 ? 1 : 0); w.e.style.clipPath = `inset(-20px ${(1 - p) * 100}% -20px 0)`; });
+  const bg = seg(realT, 36, STOP), bgj = boil(60, realT, 5);
+  show(over.big, realT >= 36 && realT < STOP ? Math.floor(seg(realT, 36, 38) * 5) / 5 : 0);
+  over.big.style.transform = `translate(${bgj[0]}px,${bgj[1]}px) rotate(${bgj[2]}deg) scale(${.3 + .95 * ease(bg)})`;
+  $('tabD').style.background = t > 28.1 && t < T.back + .4 ? 'var(--butter)' : '';
+
+  // Diary highlight and lockup bear
+  $('hl').style.transform = `scaleX(${ease(seg(t, T.dia + .9, T.dia + 1.5))})`;
+  const lb = boil(40, t, 1.4); $('lockBear').style.transform = `translate(${lb[0]}px,${lb[1] - Math.abs(Math.sin((t - T.lock) * 2.2)) * 9 * (t > T.lock + 1 ? 1 : 0)}px) rotate(${lb[2]}deg)`;
+};
+
+// Preview only; the render never touches this. Audio comes from video/out/bed.wav when it exists.
+if (!location.search.includes('render')) {
+  const fit = () => $('stage').style.transform = `scale(${Math.min(innerWidth / 1920, innerHeight / 1080)})`;
+  fit(); addEventListener('resize', fit); $('ctl').hidden = false;
+  const a = $('bed'); let held = 0;
+  $('play').onclick = () => a.paused ? a.play() : a.pause();
+  $('scrub').oninput = e => { held = e.target.value * VIDEO.duration; a.currentTime = held; };
+  (function loop() { const t = a.paused ? held : a.currentTime; if (!a.paused) { held = t; $('scrub').value = t / VIDEO.duration; } seek(t); requestAnimationFrame(loop); })();
+} else seek(0);
+</script>
+</body>
+</html>
