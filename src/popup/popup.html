@@ -14,6 +14,17 @@
         <img class="butu" src="./butu.svg" width="100" height="104" alt="Butu, a smiling teddy bear waving hello">
         <h1>Hi! What are we<br>working on today?</h1>
       </header>
+      <section id="session-summary" aria-labelledby="summary-heading" hidden>
+        <h2 id="summary-heading">Our time together</h2>
+        <p id="summary-task"></p>
+        <dl>
+          <div><dt>Time spent</dt><dd id="summary-time"></dd></div>
+          <div><dt>Times you wandered</dt><dd id="summary-wanders"></dd></div>
+          <div><dt>Minutes Butu waited alone</dt><dd id="summary-waited"></dd></div>
+        </dl>
+        <p id="summary-line"></p>
+        <button id="again" type="button">Start another session</button>
+      </section>
       <form id="session-form" hidden>
         <label for="task">Our little task</label>
         <textarea id="task" name="task" rows="2" required placeholder="Finish the DBMS assignment" aria-describedby="task-hint"></textarea>
@@ -33,6 +44,7 @@
         <button id="stop" type="button">Stop our session</button>
       </section>
       <p id="status" role="status">Just a moment…</p>
+      <footer><a id="diary-link" href="../diary/diary.html" target="_blank" rel="noopener">Open our diary</a></footer>
     </main>
   </body>
 </html>

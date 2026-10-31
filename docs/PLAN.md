@@ -181,7 +181,11 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       caption; atomic archive/cleanup on stop or expiry. Retention, wake/race,
       rollback and timing checks pass. Contract and exact both-browser manual
       steps: docs/SESSION-STATS.md.
-- [ ] 4.2 Popup session summary + "Open our diary" link (opens diary.html in a tab).
+- [x] 4.2 Popup session summary + "Open our diary" link (opens diary.html in a tab).
+      Latest summary persists across reopening; elapsed time, wanders, waited
+      minutes and authored copy shown. Start-again form and bundled diary link;
+      Chrome/Firefox each pass 11 installed-extension checks. Contract, evidence
+      and exact manual steps: docs/SESSION-STATS.md, docs/session-summary-checks.json.
 - [ ] 4.3 Diary: session pages with date, task, time, times wandered, caption,
       Butu drawing chosen by session quality (happy → uneasy → wrong).
 - [ ] 4.4 Diary: "Places you left me for" (domains in handwriting).

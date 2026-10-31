@@ -37,21 +37,23 @@ function clearAlarm() {
     });
 }
 
-async function endSession(save = true) {
+async function endSession(save = true, flush = true) {
     const { session, offTaskTiming, sessionHistory } = await storage('get',
         ['session', 'offTaskTiming', 'sessionHistory']);
     // Archive and clear together so retries/wakes cannot duplicate or lose an entry.
-    const history = save ? saveSession(sessionHistory, session, offTaskTiming) : sessionHistory;
+    // Cold recovery cannot know whether the browser was open since the checkpoint.
+    const timing = flush ? offTaskTiming : { ...offTaskTiming, activeTabId: null };
+    const history = save ? saveSession(sessionHistory, session, timing) : sessionHistory;
     await storage('set', { session: null, verdictCache: null, offTaskTiming: null,
         ...(history !== undefined ? { sessionHistory: history } : {}) });
     await clearAlarm();
     return null;
 }
 
-async function reconcile() {
+async function reconcile(flush = true) {
     const { session } = await storage('get', 'session');
     if (!remainingSeconds(session)) {
-        if (session != null) return endSession();
+        if (session != null) return endSession(true, flush);
         await clearAlarm();
         return null;
     }
@@ -116,21 +118,21 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 });
 chrome.runtime.onStartup.addListener(() => {
     void enqueue(() => recordTiming({ type: 'restart' }, Date.now())).catch(() => {});
-    recover();
+    recover(false);
 });
 chrome.runtime.onInstalled.addListener(() => {
     void enqueue(() => recordTiming({ type: 'restart' }, Date.now())).catch(() => {});
-    recover();
+    recover(false);
 });
 
-function recover() {
-    return enqueue(reconcile).catch(() => {
+function recover(flush = true) {
+    return enqueue(() => reconcile(flush)).catch(() => {
         console.error('Butu could not restore the session timer.');
     });
 }
 
 // Also runs whenever a suspended service worker/event page wakes.
-recover();
+recover(false);
 
 const evaluating = new Map();
 

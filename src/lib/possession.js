@@ -1,4 +1,4 @@
-import { TAUNTS, STAGE4_LINES, DIARY_CAPTIONS } from '../templates.js';
+import { TAUNTS, STAGE4_LINES, DIARY_CAPTIONS, POPUP_SUMMARY_LINES } from '../templates.js';
 import { formatTemplate } from './templates.js';
 
 // Stable choices across restores, reloads and revisits, without retaining URLs.
@@ -21,4 +21,8 @@ export function possessionTemplates(session, url) {
 
 export function diaryCaption(session) {
     return formatTemplate(choose(DIARY_CAPTIONS, sessionSeed(session)), { task: session?.task });
+}
+
+export function popupSummaryLine(session) {
+    return choose(POPUP_SUMMARY_LINES, sessionSeed(session));
 }

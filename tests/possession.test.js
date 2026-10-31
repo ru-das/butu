@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { possessionTemplates, diaryCaption } from '../src/lib/possession.js';
+import { possessionTemplates, diaryCaption, popupSummaryLine } from '../src/lib/possession.js';
 import { formatTemplate } from '../src/lib/templates.js';
-import { TAUNTS, STAGE4_LINES, DIARY_CAPTIONS } from '../src/templates.js';
+import { TAUNTS, STAGE4_LINES, DIARY_CAPTIONS, POPUP_SUMMARY_LINES } from '../src/templates.js';
 
 test('page choices are stable across revisits, independent of visiting order', () => {
     const session = { task: 'Study databases', startedAt: 1000, endsAt: 601000 };
@@ -24,6 +24,8 @@ test('possession and diary use bounded literal values and safe missing-value def
     assert.ok(formatTemplate(choice.stage4, session).includes(session.task));
     assert.ok(DIARY_CAPTIONS.some(line => formatTemplate(line, session) === diaryCaption(session)));
     assert.equal(diaryCaption({ ...session }), diaryCaption(session));
+    assert.ok(POPUP_SUMMARY_LINES.includes(popupSummaryLine(session)));
+    assert.equal(popupSummaryLine({ ...session }), popupSummaryLine(session));
     assert.ok(!diaryCaption(null).includes('undefined'));
     assert.ok(formatTemplate(possessionTemplates(null, '').stage4).includes('our little task'));
     for (const line of [choice.taunt, choice.stage4, ...DIARY_CAPTIONS]) {

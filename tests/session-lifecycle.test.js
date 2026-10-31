@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { sessionKey } from '../src/lib/verdict.js';
 
 // Exercise the real entry point with callback-style APIs, as exposed in Firefox.
 test('background owns sessions across popup closure, wake, alarms and concurrent commands', async (t) => {
@@ -104,9 +105,14 @@ test('background owns sessions across popup closure, wake, alarms and concurrent
     assert.ok(stored.session, 'stale alarm does not end the new session early');
 
     // A browser restart after the deadline cleans up missed expiry.
+    stored.offTaskTiming = { sessionKey: sessionKey(stored.session),
+        tabs: { 1: { url: 'https://play.test/', onTask: false, seconds: 5 } },
+        activeTabId: 1, updatedAt: now + 5000, onTaskSeconds: 0, wandering: true,
+        stats: { offTaskSeconds: 5, timesWandered: 1, domains: ['play.test'] } };
     now += 120000;
     await boot();
     assert.equal(stored.session, null);
+    assert.equal(stored.sessionHistory.at(-1).offTaskSeconds, 5, 'cold expiry never charges browser downtime');
     assert.equal(alarm, undefined);
     failWrite = true;
     const historyBeforeFailure = structuredClone(stored.sessionHistory);

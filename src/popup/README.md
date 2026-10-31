@@ -13,7 +13,9 @@ The background schedules the named `butu-session-end` alarm and reconciles the
 stored deadline on background load, browser startup, installation/update, alarm
 delivery and session reads/starts. It restores missing alarms and clears expired
 or invalid state. Commands and alarms are serialized to avoid start/stop races.
-Stopping clears the active state and alarm; no history or summary is stored yet.
+Stopping archives the session and clears active state and its alarm. History,
+summary fields and current manual checks are documented in
+[SESSION-STATS.md](../../docs/SESSION-STATS.md).
 No models, network calls or audio are started by this task.
 
 Browser alarms can be delayed by sleep or browser scheduling. The stored deadline
@@ -77,4 +79,5 @@ In both browsers, also try an empty/whitespace task and fractional/zero custom
 minutes: they must not start. Task markup such as `<b>Study DBMS</b>` must appear
 literally. Popup resources should all use extension-local URLs.
 
-Summary/history, detection, sound and model-host cleanup remain later tasks.
+Summary/history are implemented by tasks 4.1–4.2; diary history rendering and
+model-host cleanup verification remain later tasks.

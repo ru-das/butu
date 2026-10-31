@@ -65,3 +65,13 @@ button:disabled { opacity: 0.65; cursor: wait; }
 }
 
 #status { margin: 1rem 0 0; font-size: 1rem; }
+
+#session-summary h2 { text-align: center; }
+#summary-task { margin-top: 0.75rem; white-space: pre-wrap; }
+#session-summary dl { margin: 1rem 0; font-size: 1rem; }
+#session-summary dl div { display: flex; justify-content: space-between; gap: 1rem; }
+#session-summary dd { margin: 0; font-variant-numeric: tabular-nums; }
+#summary-line { margin-bottom: 0; }
+footer { margin-top: 1.25rem; text-align: center; }
+#diary-link { display: inline-block; padding: 0.5rem; min-height: 44px; }
+#diary-link:hover { color: var(--butu-ink); }

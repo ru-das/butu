@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "browser": "Chrome-153.0.8010.12",
+      "checks": [
+        "fresh profile shows form",
+        "diary link opens bundled diary in tab",
+        "manual stop archives once and shows all stats",
+        "task markup stays literal",
+        "reopened popup restores the same summary",
+        "repeat stop does not duplicate history",
+        "start another session restores form",
+        "new session hides previous summary",
+        "missed expiry is archived and summary refreshed",
+        "real storage retains newest 50",
+        "summary fits popup width"
+      ],
+      "latest": {
+        "caption": "We made a little more of <b>Study DBMS</b> today. I gave that bit a gold star.",
+        "completed": false,
+        "domains": [
+          "127.0.0.1"
+        ],
+        "elapsedSeconds": 0.112,
+        "endedAt": 1793420414032,
+        "endsAt": 1793421913920,
+        "offTaskSeconds": 0.08199999999999999,
+        "startedAt": 1793420413920,
+        "task": "<b>Study DBMS</b>",
+        "timesWandered": 1
+      }
+    },
+    {
+      "browser": "Firefox-154.0.1",
+      "checks": [
+        "fresh profile shows form",
+        "diary link opens bundled diary in tab",
+        "manual stop archives once and shows all stats",
+        "task markup stays literal",
+        "reopened popup restores the same summary",
+        "repeat stop does not duplicate history",
+        "start another session restores form",
+        "new session hides previous summary",
+        "missed expiry is archived and summary refreshed",
+        "real storage retains newest 50",
+        "summary fits popup width"
+      ],
+      "latest": {
+        "task": "<b>Study DBMS</b>",
+        "startedAt": 1793420524258,
+        "endsAt": 1793422024258,
+        "endedAt": 1793420524370,
+        "elapsedSeconds": 0.112,
+        "completed": false,
+        "offTaskSeconds": 0.09200000000000001,
+        "timesWandered": 1,
+        "domains": [
+          "127.0.0.1"
+        ],
+        "caption": "I used my favourite colour for our time together. That part of the page is lovely."
+      }
+    }
+  ],
+  "note": "Isolated installed extensions. Local HTTP fixture with explicit lists and muted audio. Missed expiry seeded via local storage, real background reconciliation. Browser startup extension reload and natural expiry remain in manual checklist."
+}

@@ -1,5 +1,6 @@
 import { TASK_MIN_CHARS, TASK_MAX_CHARS, SESSION_DURATION_PRESETS_MINUTES } from '../config.js';
 import { createSession, remainingSeconds, formatCountdown } from '../lib/session.js';
+import { popupSummaryLine } from '../lib/possession.js';
 
 const form = document.querySelector('#session-form');
 const task = document.querySelector('#task');
@@ -11,7 +12,11 @@ const stop = document.querySelector('#stop');
 const active = document.querySelector('#active-session');
 const countdown = document.querySelector('#countdown');
 const status = document.querySelector('#status');
+const summary = document.querySelector('#session-summary');
+const again = document.querySelector('#again');
 let session = null;
+let latest = null;
+let showForm = false;
 let timer;
 let endMessage = "Our time is up. Thank you for sitting with me!";
 
@@ -32,15 +37,32 @@ duration.addEventListener('change', () => {
 function render() {
     clearInterval(timer);
     const seconds = remainingSeconds(session);
-    form.hidden = seconds > 0;
+    if (session && !seconds) {
+        countdown.textContent = '00:00';
+        status.textContent = 'Saving our time together…';
+        readSession();
+        return;
+    }
+    const showSummary = !seconds && latest && !showForm;
+    form.hidden = seconds > 0 || showSummary;
     active.hidden = seconds === 0;
+    summary.hidden = !showSummary;
+    document.querySelector('header h1').hidden = !!showSummary;
+    if (showSummary) {
+        document.querySelector('#summary-task').textContent = latest.task;
+        document.querySelector('#summary-time').textContent = formatCountdown(Math.round(latest.elapsedSeconds));
+        document.querySelector('#summary-wanders').textContent = String(latest.timesWandered);
+        document.querySelector('#summary-waited').textContent = (latest.offTaskSeconds / 60).toLocaleString(undefined,
+            { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+        document.querySelector('#summary-line').textContent = popupSummaryLine(latest);
+    }
     if (seconds > 0) {
         document.querySelector('#session-task').textContent = session.task;
         countdown.textContent = formatCountdown(seconds);
         status.textContent = '';
         timer = setInterval(render, 1000);
     } else {
-        status.textContent = endMessage;
+        status.textContent = showSummary ? '' : endMessage;
     }
 }
 
@@ -65,18 +87,23 @@ form.addEventListener('submit', (event) => {
             return;
         }
         session = response.session;
+        showForm = false;
         render();
     });
 });
 
 chrome.storage.onChanged.addListener((changes, area) => {
-    if (area !== 'local' || !changes.session) return;
-    if (session && !changes.session.newValue) {
+    if (area !== 'local' || !changes.session && !changes.sessionHistory) return;
+    if (session && changes.session && !changes.session.newValue) {
         endMessage = remainingSeconds(session) > 0
             ? 'Thank you for sitting with me!'
             : 'Our time is up. Thank you for sitting with me!';
     }
-    session = changes.session.newValue ?? null;
+    if (changes.session) session = changes.session.newValue ?? null;
+    if (changes.sessionHistory) {
+        latest = changes.sessionHistory.newValue?.at(-1) ?? null;
+        showForm = false;
+    }
     render();
 });
 
@@ -94,12 +121,30 @@ stop.addEventListener('click', () => {
     });
 });
 
-chrome.runtime.sendMessage({ type: 'session:get' }, (response) => {
-    if (chrome.runtime.lastError || response?.error || !response) {
-        status.textContent = "I couldn't read our session. Close and reopen Butu to try again.";
-        return;
-    }
-    session = response.session;
-    if (!session) endMessage = '';
+again.addEventListener('click', () => {
+    showForm = true;
+    endMessage = '';
     render();
+    task.focus();
 });
+
+function readSession() {
+    chrome.runtime.sendMessage({ type: 'session:get' }, (response) => {
+        if (chrome.runtime.lastError || response?.error || !response) {
+            status.textContent = "I couldn't read our session. Close and reopen Butu to try again.";
+            return;
+        }
+        chrome.storage.local.get(['session', 'sessionHistory'], (data) => {
+            if (chrome.runtime.lastError) {
+                status.textContent = "I couldn't read our session. Close and reopen Butu to try again.";
+                return;
+            }
+            session = data.session ?? null;
+            latest = data.sessionHistory?.at(-1) ?? null;
+            if (!session) endMessage = '';
+            render();
+        });
+    });
+}
+
+readSession();
