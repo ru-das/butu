@@ -22,6 +22,10 @@ test('background routes overrides, caches per session URL across wakes, and reje
     let answer;
     let delayed = false;
     const boot = async revision => {
+        const messageListeners = new Set();
+        listener = (message, sender, respond) => {
+            for (const fn of messageListeners) fn(message, sender, respond);
+        };
         globalThis.chrome = {
             runtime: {
                 id: 'bear', getURL: path => `chrome-extension://bear/${path}`,
@@ -32,10 +36,11 @@ test('background routes overrides, caches per session URL across wakes, and reje
                     if (delayed) return new Promise(resolve => { answer = resolve; });
                     return { scores: [0.6] };
                 },
-                onMessage: { addListener: fn => { listener = fn; } },
+                onMessage: { addListener: fn => messageListeners.add(fn), removeListener: fn => messageListeners.delete(fn) },
                 onStartup: { addListener() {} }, onInstalled: { addListener() {} },
             },
-            offscreen: { createDocument: async () => { creates++; documents = [{}]; } },
+            offscreen: { createDocument: async () => { creates++; documents = [{}]; },
+                closeDocument: async () => { documents = []; } },
             storage: { local: {
                 get: (keys, cb) => queueMicrotask(() => cb(structuredClone(stored))),
                 set: (value, cb) => { stored = { ...stored, ...structuredClone(value) }; queueMicrotask(cb); },

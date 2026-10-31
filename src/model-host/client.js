@@ -15,19 +15,33 @@ async function ensureOffscreen() {
     return creating;
 }
 
-export async function comparePage(task, page) {
+export async function comparePage(task, page, onProgress = () => {}) {
     const current = generation;
     if (!chrome.offscreen) {
         host ??= import('./embedding-host.js').then(({ EmbeddingHost }) => new EmbeddingHost());
         const embedding = await host;
         if (current !== generation) throw new Error('Embedding session ended');
-        return embedding.compare(task, [page]);
+        return embedding.compare(task, [page], onProgress);
     }
     await ensureOffscreen();
     if (current !== generation) throw new Error('Embedding session ended');
-    const result = await chrome.runtime.sendMessage({ target: 'model-host', type: 'embedding:compare', task, page });
-    if (!result || result.error) throw new Error('Local detection unavailable');
-    return result;
+    const requestId = crypto.randomUUID();
+    const progress = (message, sender) => {
+        if (current === generation && message?.type === 'embedding:progress' &&
+            message.requestId === requestId && sender.id === chrome.runtime.id && !sender.tab &&
+            sender.url === chrome.runtime.getURL('src/model-host/offscreen.html')) onProgress(message.progress);
+    };
+    chrome.runtime.onMessage.addListener(progress);
+    try {
+        const result = await chrome.runtime.sendMessage({ target: 'model-host', type: 'embedding:compare', task, page, requestId });
+        if (!result || result.error) throw new Error('Local detection unavailable');
+        return result;
+    } catch (error) {
+        if (current === generation) onProgress({ state: 'error', percent: null });
+        throw error;
+    } finally {
+        chrome.runtime.onMessage.removeListener(progress);
+    }
 }
 
 let voiceHost;

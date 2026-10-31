@@ -61,3 +61,30 @@ test('Chrome stop closes an existing offscreen host and cancels dispatch awaitin
     assert.equal(closed, 1);
     assert.equal(messages.length, 0, 'a late creation cannot start inference after stop');
 });
+
+test('Chrome progress accepts only its host/request and removes listeners on completion', async t => {
+    const oldChrome = globalThis.chrome;
+    t.after(() => { globalThis.chrome = oldChrome; });
+    const listeners = new Set(), events = [];
+    const url = 'chrome-extension://test/src/model-host/offscreen.html';
+    globalThis.chrome = {
+        offscreen: {},
+        runtime: { id: 'test', getURL: p => `chrome-extension://test/${p}`, getContexts: async () => [{}],
+            onMessage: { addListener: fn => listeners.add(fn), removeListener: fn => listeners.delete(fn) },
+            sendMessage: async message => {
+                const event = { type: 'embedding:progress', requestId: message.requestId, progress: { state: 'ready', percent: null } };
+                for (const fn of listeners) {
+                    fn(event, { id: 'other', url });
+                    fn(event, { id: 'test', url, tab: {} });
+                    fn({ ...event, requestId: -1 }, { id: 'test', url });
+                    fn(event, { id: 'test', url });
+                }
+                return { scores: [.5] };
+            },
+        },
+    };
+    const { comparePage } = await import('../src/model-host/client.js?progress');
+    await comparePage('Study DBMS', 'SQL', event => events.push(event));
+    assert.deepEqual(events, [{ state: 'ready', percent: null }]);
+    assert.equal(listeners.size, 0);
+});

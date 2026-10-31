@@ -207,7 +207,12 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       Stop/expiry explicitly release the host; pending extraction/host creation cannot
       restart an ended session. Real-model RSS falls in both browsers; measurements,
       test harness and exact manual checks: docs/MODEL-LIFECYCLE.md.
-- [ ] 4.7 First-run download progress UI ("Butu is waking up…").
+- [x] 4.7 First-run download progress UI ("Butu is waking up…").
+      Worker progress flows to session-scoped local state and a reopenable popup;
+      per-file percentage, unknown-size preparation, readiness and recovery copy.
+      Both browsers pass real model download, popup-state and memory checks;
+      51 unit tests pass. Evidence: docs/model-lifecycle-checks.json; exact
+      Chrome/Firefox steps: docs/MODEL-LIFECYCLE.md.
 - [ ] 4.8 README: what Butu is, install for both browsers, bundled audio (no key needed),
       privacy boundary, limitations, credits and licences (fonts, models, assets).
 - [ ] 4.9 Network audit in both browsers: only Hugging Face model downloads;

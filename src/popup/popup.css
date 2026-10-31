@@ -75,3 +75,18 @@ button:disabled { opacity: 0.65; cursor: wait; }
 footer { margin-top: 1.25rem; text-align: center; }
 #diary-link { display: inline-block; padding: 0.5rem; min-height: 44px; }
 #diary-link:hover { color: var(--butu-ink); }
+
+#model-download { margin-top: 1rem; }
+#download-heading { margin-bottom: 0.4rem; }
+#download-progress { width: 100%; height: 0.8rem; accent-color: var(--butu-sage); }
+#model-download .hint { margin: 0.4rem 0; }
+#download-progress {
+  appearance: none;
+  border: 1px solid var(--butu-ink-soft);
+  border-radius: 8px 5px 7px 4px;
+  overflow: hidden;
+  background: var(--butu-paper);
+}
+#download-progress::-webkit-progress-bar { background: var(--butu-paper); }
+#download-progress::-webkit-progress-value { background: var(--butu-sage); }
+#download-progress::-moz-progress-bar { background: var(--butu-sage); }

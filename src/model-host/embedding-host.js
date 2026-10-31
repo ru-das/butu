@@ -1,3 +1,4 @@
+import { downloadProgress } from '../lib/download-progress.js';
 import { EMBEDDING_LIMITS } from '../config.js';
 import { validateEmbeddingRequest, validateEmbeddingScores } from '../lib/embedding-protocol.js';
 
@@ -15,7 +16,7 @@ export class EmbeddingHost {
         this.requestTimer = null;
     }
 
-    compare(task, pages) {
+    compare(task, pages, onProgress = () => {}) {
         let input;
         try {
             input = validateEmbeddingRequest(task, pages, this.limits);
@@ -29,7 +30,7 @@ export class EmbeddingHost {
             return Promise.reject(new Error('Embedding queue is full'));
         }
         return new Promise((resolve, reject) => {
-            this.queue.push({ ...input, key, id: ++this.nextId, resolve, reject });
+            this.queue.push({ ...input, key, id: ++this.nextId, resolve, reject, onProgress });
             this.pump();
         });
     }
@@ -55,6 +56,7 @@ export class EmbeddingHost {
             this.active = job;
             try {
                 if (!this.worker) {
+                    job.onProgress({ state: 'loading', percent: null });
                     const worker = this.workerFactory();
                     this.worker = worker;
                     worker.onmessage = ({ data }) => this.receive(worker, data);
@@ -77,6 +79,15 @@ export class EmbeddingHost {
 
     receive(worker, data) {
         if (worker !== this.worker || !this.active || data?.id !== this.active.id) return;
+        if (data.progress) {
+            const progress = downloadProgress(data.progress);
+            const key = JSON.stringify(progress);
+            if (progress && key !== this.active.progressKey) {
+                this.active.progressKey = key;
+                this.active.onProgress(progress);
+            }
+            return;
+        }
         try {
             if (data.error) throw new Error(String(data.error).slice(0, 1000));
             const scores = validateEmbeddingScores(data.scores, this.active.pages.length);
@@ -107,7 +118,10 @@ export class EmbeddingHost {
         const jobs = this.active ? [this.active, ...this.queue] : this.queue;
         this.active = null;
         this.queue = [];
-        for (const job of jobs) job.reject(error);
+        for (const job of jobs) {
+            job.onProgress({ state: 'error', percent: null });
+            job.reject(error);
+        }
     }
 
     // Session end: cancel pending work, discard model memory, and clear scores.

@@ -45,7 +45,7 @@ async function endSession(save = true, flush = true) {
     // Cold recovery cannot know whether the browser was open since the checkpoint.
     const timing = flush ? offTaskTiming : { ...offTaskTiming, activeTabId: null };
     const history = save ? saveSession(sessionHistory, session, timing) : sessionHistory;
-    await storage('set', { session: null, verdictCache: null, offTaskTiming: null,
+    await storage('set', { session: null, verdictCache: null, offTaskTiming: null, modelDownload: null,
         ...(history !== undefined ? { sessionHistory: history } : {}) });
     detectionGeneration++;
     await releaseSessionHost().catch(() => {});
@@ -110,7 +110,7 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
         if (message.type === 'session:get' || current) return current;
         const session = createSession(message.task, message.minutes);
         // Persist before scheduling; recovery can restore the alarm if interrupted.
-        await storage('set', { session, verdictCache: null, offTaskTiming: null });
+        await storage('set', { session, verdictCache: null, offTaskTiming: null, modelDownload: null });
         try {
             await chrome.alarms.create(SESSION_ALARM, { when: session.endsAt });
         } catch (error) {
@@ -207,7 +207,13 @@ async function evaluateTab(tabId) {
                     const text = pageEmbeddingText(page);
                     if (!text) throw new Error('Empty page text');
                     if (generation !== detectionGeneration || !remainingSeconds(session)) return;
-                    const result = await comparePage(session.task, text);
+                    const result = await comparePage(session.task, text, progress => {
+                        void enqueue(async () => {
+                            const { session: current } = await storage('get', 'session');
+                            if (generation !== detectionGeneration || !remainingSeconds(current) || sessionKey(current) !== key) return;
+                            await storage('set', { modelDownload: { sessionKey: key, ...progress } });
+                        }).catch(() => {});
+                    });
                     if (!Array.isArray(result.scores) || result.scores.length !== 1) throw new Error('Invalid scores');
                     verdict = scoreVerdict(result.scores[0]);
                 }

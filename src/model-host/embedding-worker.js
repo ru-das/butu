@@ -17,6 +17,7 @@ self.onmessage = async ({ data }) => {
                 revision: EMBEDDING_MODEL_REVISION,
                 dtype: EMBEDDING_MODEL_DTYPE,
                 device: 'wasm',
+                progress_callback: progress => self.postMessage({ id: data.id, progress }),
             });
             // v3.8.1 ignores max_length in feature-extraction call options.
             // Its tokenizer reads this value when applying truncation: true.

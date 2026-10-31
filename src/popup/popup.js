@@ -1,4 +1,5 @@
 import { TASK_MIN_CHARS, TASK_MAX_CHARS, SESSION_DURATION_PRESETS_MINUTES } from '../config.js';
+import { sessionKey } from '../lib/verdict.js';
 import { createSession, remainingSeconds, formatCountdown } from '../lib/session.js';
 import { popupSummaryLine } from '../lib/possession.js';
 
@@ -16,6 +17,7 @@ const summary = document.querySelector('#session-summary');
 const again = document.querySelector('#again');
 let session = null;
 let latest = null;
+let modelDownload = null;
 let showForm = false;
 let timer;
 let endMessage = "Our time is up. Thank you for sitting with me!";
@@ -47,7 +49,7 @@ function render() {
     form.hidden = seconds > 0 || showSummary;
     active.hidden = seconds === 0;
     summary.hidden = !showSummary;
-    document.querySelector('header h1').hidden = !!showSummary;
+    document.querySelector('header h1').hidden = !!showSummary || seconds > 0;
     if (showSummary) {
         document.querySelector('#summary-task').textContent = latest.task;
         document.querySelector('#summary-time').textContent = formatCountdown(Math.round(latest.elapsedSeconds));
@@ -55,6 +57,21 @@ function render() {
         document.querySelector('#summary-waited').textContent = (latest.offTaskSeconds / 60).toLocaleString(undefined,
             { minimumFractionDigits: 1, maximumFractionDigits: 1 });
         document.querySelector('#summary-line').textContent = popupSummaryLine(latest);
+    }
+    const downloading = document.querySelector('#model-download');
+    downloading.hidden = !(seconds > 0 && modelDownload?.sessionKey === sessionKey(session) && modelDownload.state !== 'ready');
+    if (!downloading.hidden) {
+        const failed = modelDownload.state === 'error';
+        document.querySelector('#download-heading').textContent = failed ? "Butu couldn't wake up." : 'Butu is waking up…';
+        const progress = document.querySelector('#download-progress');
+        progress.hidden = failed;
+        if (modelDownload.percent === null) progress.removeAttribute('value');
+        else progress.value = modelDownload.percent;
+        document.querySelector('#download-detail').textContent = failed
+            ? 'Check your connection, then stop and start our session to try again. Page checking is paused.'
+            : modelDownload.state === 'downloading'
+                ? `Downloading${modelDownload.percent === null ? '…' : `… ${modelDownload.percent}% of this file`}`
+                : 'Getting the local page checker ready…';
     }
     if (seconds > 0) {
         document.querySelector('#session-task').textContent = session.task;
@@ -93,12 +110,13 @@ form.addEventListener('submit', (event) => {
 });
 
 chrome.storage.onChanged.addListener((changes, area) => {
-    if (area !== 'local' || !changes.session && !changes.sessionHistory) return;
+    if (area !== 'local' || !changes.session && !changes.sessionHistory && !changes.modelDownload) return;
     if (session && changes.session && !changes.session.newValue) {
         endMessage = remainingSeconds(session) > 0
             ? 'Thank you for sitting with me!'
             : 'Our time is up. Thank you for sitting with me!';
     }
+    if (changes.modelDownload) modelDownload = changes.modelDownload.newValue ?? null;
     if (changes.session) session = changes.session.newValue ?? null;
     if (changes.sessionHistory) {
         latest = changes.sessionHistory.newValue?.at(-1) ?? null;
@@ -134,11 +152,12 @@ function readSession() {
             status.textContent = "I couldn't read our session. Close and reopen Butu to try again.";
             return;
         }
-        chrome.storage.local.get(['session', 'sessionHistory'], (data) => {
+        chrome.storage.local.get(['session', 'sessionHistory', 'modelDownload'], (data) => {
             if (chrome.runtime.lastError) {
                 status.textContent = "I couldn't read our session. Close and reopen Butu to try again.";
                 return;
             }
+            modelDownload = data.modelDownload ?? null;
             session = data.session ?? null;
             latest = data.sessionHistory?.at(-1) ?? null;
             if (!session) endMessage = '';

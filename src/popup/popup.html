@@ -41,6 +41,12 @@
         <h2 id="session-heading">I'm right here with you.</h2>
         <p id="session-task"></p>
         <p class="countdown"><span id="countdown" role="timer" aria-label="Time remaining" aria-live="off">00:00</span><span class="hint">left together</span></p>
+        <div id="model-download" hidden>
+          <p id="download-heading" role="status">Butu is waking up…</p>
+          <progress id="download-progress" max="100" aria-labelledby="download-heading" aria-describedby="download-detail"></progress>
+          <p id="download-detail" class="hint"></p>
+          <p class="hint">The first download comes from Hugging Face and stays on this device. Your task and pages stay here, too.</p>
+        </div>
         <button id="stop" type="button">Stop our session</button>
       </section>
       <p id="status" role="status">Just a moment…</p>

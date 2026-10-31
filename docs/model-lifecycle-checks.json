@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-31",
+  "unitTestsPassed": 51,
+  "browsers": [
+    {
+      "name": "Chrome-153.0.8010.12",
+      "before": {
+        "pids": [
+          43874
+        ],
+        "rssKiB": 154988
+      },
+      "loaded": {
+        "pids": [
+          43874
+        ],
+        "rssKiB": 344488
+      },
+      "ended": {
+        "pids": [
+          43874
+        ],
+        "rssKiB": 209952
+      },
+      "snapshot": {
+        "worker": false,
+        "cache": 0
+      },
+      "uiChecks": [
+        "ready hidden",
+        "determinate progress",
+        "reopen",
+        "unknown total",
+        "error recovery",
+        "stop cleanup"
+      ],
+      "progressEvents": 28,
+      "dropMiB": 131.4,
+      "rawEvidence": ".local-reports/lifecycle/run-1793422612366/Chrome-153.0.8010.12.json"
+    },
+    {
+      "name": "Firefox-154.0.1",
+      "before": {
+        "pids": [
+          44245
+        ],
+        "rssKiB": 165848
+      },
+      "loaded": {
+        "pids": [
+          44245
+        ],
+        "rssKiB": 371900
+      },
+      "ended": {
+        "pids": [
+          44245
+        ],
+        "rssKiB": 184460
+      },
+      "snapshot": {
+        "worker": false,
+        "cache": 0
+      },
+      "uiChecks": [
+        "ready hidden",
+        "determinate progress",
+        "reopen",
+        "unknown total",
+        "error recovery",
+        "stop cleanup"
+      ],
+      "progressEvents": 12,
+      "dropMiB": 183.0,
+      "rawEvidence": ".local-reports/lifecycle/run-1793422853808/Firefox-154.0.1.json"
+    }
+  ]
+}

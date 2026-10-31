@@ -119,3 +119,24 @@ test('protocol rejects oversized inputs and malformed model data', async () => {
     assert.equal(workers.length, 0, 'invalid input never starts a model');
     host.release();
 });
+
+test('progress is bounded, deduplicated and cannot resolve inference or survive release', async () => {
+    const { host, workers } = await setup();
+    const events = [];
+    const pending = host.compare('DBMS homework', ['SQL'], event => events.push(event));
+    const worker = workers[0], id = worker.messages[0].id;
+    const progress = data => worker.onmessage({ data: { id, progress: data } });
+    progress({ status: 'progress', progress: 30.6 });
+    progress({ status: 'progress', progress: 30.9 });
+    progress({ status: 'unknown' });
+    progress({ status: 'ready' });
+    assert.deepEqual(events, [{ state: 'loading', percent: null },
+        { state: 'downloading', percent: 30 }, { state: 'ready', percent: null }]);
+    assert.ok(host.active, 'model readiness is not an inference result');
+    const rejected = assert.rejects(pending, /session ended/);
+    host.release();
+    await rejected;
+    const count = events.length;
+    progress({ status: 'progress', progress: 99 });
+    assert.equal(events.length, count, 'terminated worker progress ignored');
+});
