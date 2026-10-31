@@ -1,0 +1,693 @@
+{
+  "date": "2026-10-31",
+  "hardware": {
+    "MemTotalKiB": 3898420
+  },
+  "unitTests": {
+    "passed": 51,
+    "failed": 0
+  },
+  "build": {
+    "chromeSourceMatches": true,
+    "firefoxSourceMatches": true,
+    "sharedJavaScriptFiles": 34
+  },
+  "scope": "Real installed extensions in isolated headless profiles; popup document in an extension tab; normal model, thresholds, clock and audio. Network audit is separate.",
+  "browsers": [
+    {
+      "browser": "Chrome-153.0.8010.12",
+      "startedAt": "2026-10-31T05:36:52.362Z",
+      "checks": [
+        {
+          "label": "session starts through popup with visible countdown",
+          "pass": true
+        },
+        {
+          "label": "real embedding model classifies work as on task",
+          "pass": true,
+          "detail": {
+            "entries": [
+              {
+                "score": 0.62386939447882,
+                "url": "http://127.0.0.1:8793/work"
+              }
+            ],
+            "sessionKey": "[1793425013991,1793426513991,\"DBMS assignment on normalization\"]"
+          }
+        },
+        {
+          "label": "popup reload preserves session end time and countdown",
+          "pass": true
+        },
+        {
+          "label": "on-task page stays untouched beyond grace",
+          "pass": true
+        },
+        {
+          "label": "live relevant YouTube is classified on task and never haunted",
+          "pass": true,
+          "detail": {
+            "score": 0.3688680085827515,
+            "url": "https://www.youtube.com/watch?v=GFQaEYEc8_8"
+          }
+        },
+        {
+          "label": "grace period leaves page and audio silent",
+          "pass": true
+        },
+        {
+          "label": "stage 1 arrives on the unchanged 15 second schedule",
+          "pass": true,
+          "detail": {
+            "stage": 1,
+            "threshold": 15,
+            "seconds": 15.004999999999999,
+            "wallSeconds": 14.974
+          }
+        },
+        {
+          "label": "stage 1 bundled sound actually plays",
+          "pass": true
+        },
+        {
+          "label": "stage 2 arrives on the unchanged 45 second schedule",
+          "pass": true,
+          "detail": {
+            "stage": 2,
+            "threshold": 45,
+            "seconds": 45.01200000000001,
+            "wallSeconds": 44.91
+          }
+        },
+        {
+          "label": "stage 2 bundled sound actually plays",
+          "pass": true
+        },
+        {
+          "label": "stage 3 arrives on the unchanged 90 second schedule",
+          "pass": true,
+          "detail": {
+            "stage": 3,
+            "threshold": 90,
+            "seconds": 90.00600000000003,
+            "wallSeconds": 90.473
+          }
+        },
+        {
+          "label": "stage 3 bundled sound actually plays",
+          "pass": true
+        },
+        {
+          "label": "stage 4 arrives on the unchanged 180 second schedule",
+          "pass": true,
+          "detail": {
+            "stage": 4,
+            "threshold": 180,
+            "seconds": 180.01100000000005,
+            "wallSeconds": 180.254
+          }
+        },
+        {
+          "label": "stage 4 bundled sound actually plays",
+          "pass": true
+        },
+        {
+          "label": "all three whispers are custom Butu clips, each once",
+          "pass": true
+        },
+        {
+          "label": "return fully restores exact HTML and original node identity",
+          "pass": true
+        },
+        {
+          "label": "return chime plays and audio fades to silence",
+          "pass": true
+        },
+        {
+          "label": "popup stop cleans session and archives summary",
+          "pass": true
+        },
+        {
+          "label": "diary opens from popup with actual past sessions and domains",
+          "pass": true
+        },
+        {
+          "label": "settings show local controls, attribution and no API key",
+          "pass": true
+        },
+        {
+          "label": "real alarm expires with popup unloaded, once, with cleanup",
+          "pass": true,
+          "detail": {
+            "caption": "We made a little more of Read database notes today. I gave that bit a gold star.",
+            "completed": true,
+            "domains": [],
+            "elapsedSeconds": 60,
+            "endedAt": 1793425476182,
+            "endsAt": 1793425476182,
+            "offTaskSeconds": 0,
+            "startedAt": 1793425416182,
+            "task": "Read database notes",
+            "timesWandered": 0
+          }
+        },
+        {
+          "label": "session end closes offscreen document",
+          "pass": true
+        },
+        {
+          "label": "sampled extension renderer RSS peak is under 500 MB",
+          "pass": true,
+          "detail": {
+            "peakRssKiB": 441024,
+            "peakMB": 451.608576
+          }
+        }
+      ],
+      "stages": [
+        {
+          "stage": 1,
+          "threshold": 15,
+          "seconds": 15.004999999999999,
+          "wallSeconds": 14.974
+        },
+        {
+          "stage": 2,
+          "threshold": 45,
+          "seconds": 45.01200000000001,
+          "wallSeconds": 44.91
+        },
+        {
+          "stage": 3,
+          "threshold": 90,
+          "seconds": 90.00600000000003,
+          "wallSeconds": 90.473
+        },
+        {
+          "stage": 4,
+          "threshold": 180,
+          "seconds": 180.01100000000005,
+          "wallSeconds": 180.254
+        }
+      ],
+      "youtube": {
+        "score": 0.3688680085827515,
+        "url": "https://www.youtube.com/watch?v=GFQaEYEc8_8"
+      },
+      "audio": {
+        "clips": [
+          {
+            "path": "music-box/stage-1-in-tune",
+            "events": [
+              "playing",
+              "playing"
+            ]
+          },
+          {
+            "path": "music-box/stage-2-slower",
+            "events": [
+              "playing",
+              "playing"
+            ]
+          },
+          {
+            "path": "voice/butu-06",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "music-box/stage-3-detuned",
+            "events": [
+              "playing",
+              "playing",
+              "playing",
+              "playing"
+            ]
+          },
+          {
+            "path": "sfx/crayon-scribbling",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "voice/butu-08",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "music-box/stage-4-winding-down",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "voice/butu-12",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          }
+        ],
+        "players": 0,
+        "context": "running"
+      },
+      "peakRssKiB": 441024,
+      "finishedAt": "2026-10-31T05:44:36.423Z",
+      "memory": {
+        "scope": "Butu extension renderer(s) in isolated profile; unrelated Chrome component extensions disabled",
+        "sampleCount": 2217,
+        "baseline": {
+          "label": "baseline",
+          "pids": [
+            59826
+          ],
+          "rssKiB": 144492
+        },
+        "sampledPeak": {
+          "label": "session observation",
+          "pids": [
+            59826
+          ],
+          "rssKiB": 441024
+        },
+        "peakDecimalMB": 451.608576,
+        "afterStop": {
+          "label": "after stop",
+          "pids": [
+            59826
+          ],
+          "rssKiB": 159832
+        },
+        "afterExpiry": {
+          "label": "after expiry",
+          "pids": [
+            59826
+          ],
+          "rssKiB": 180528
+        }
+      },
+      "rawEvidence": ".local-reports/audit/run-1793424998176/Chrome-153.0.8010.12-definition.json",
+      "regressions": [
+        {
+          "suite": "summary",
+          "checks": [
+            "fresh profile shows form",
+            "diary link opens bundled diary in tab",
+            "manual stop archives once and shows all stats",
+            "task markup stays literal",
+            "reopened popup restores the same summary",
+            "repeat stop does not duplicate history",
+            "start another session restores form",
+            "new session hides previous summary",
+            "missed expiry is archived and summary refreshed",
+            "real storage retains newest 50",
+            "summary fits popup width"
+          ],
+          "rawEvidence": ".local-reports/summary/run-1793423916991/Chrome-153.0.8010.12.json"
+        },
+        {
+          "suite": "diary",
+          "checks": [
+            "fresh diary shows helpful empty state",
+            "three saved sessions update live",
+            "newest saved entry appears first and markup stays literal",
+            "date time wanders and saved caption appear",
+            "places show unique domains, never paths, and a gentle empty state",
+            "all three drawing qualities are bundled and described",
+            "pages persist after reload",
+            "bundled fonts and drawings decode",
+            "page fits current viewport",
+            "50 valid pages and long text fit",
+            "cleared history returns to empty state",
+            "settings link opens bundled page with quiet defaults",
+            "settings save canonical domain lists, volume and mute locally",
+            "voice test respects saved mute",
+            "invalid URLs block saving without losing stored settings",
+            "saved settings persist across reload",
+            "unmuted voice test reaches the model host without a session",
+            "settings fit viewport and credit ElevenLabs"
+          ],
+          "rawEvidence": ".local-reports/diary/run-1793423911894/Chrome-153.0.8010.12.json"
+        }
+      ]
+    },
+    {
+      "browser": "Firefox-154.0.1",
+      "startedAt": "2026-10-31T05:40:46.615Z",
+      "checks": [
+        {
+          "label": "session starts through popup with visible countdown",
+          "pass": true
+        },
+        {
+          "label": "real embedding model classifies work as on task",
+          "pass": true,
+          "detail": {
+            "sessionKey": "[1793425248845,1793426748845,\"DBMS assignment on normalization\"]",
+            "entries": [
+              {
+                "url": "http://127.0.0.1:8789/work",
+                "score": 0.62386939447882
+              }
+            ]
+          }
+        },
+        {
+          "label": "popup reload preserves session end time and countdown",
+          "pass": true
+        },
+        {
+          "label": "on-task page stays untouched beyond grace",
+          "pass": true
+        },
+        {
+          "label": "live relevant YouTube is classified on task and never haunted",
+          "pass": true,
+          "detail": {
+            "url": "https://www.youtube.com/watch?v=GFQaEYEc8_8",
+            "score": 0.34139723820087464
+          }
+        },
+        {
+          "label": "grace period leaves page and audio silent",
+          "pass": true
+        },
+        {
+          "label": "stage 1 arrives on the unchanged 15 second schedule",
+          "pass": true,
+          "detail": {
+            "stage": 1,
+            "threshold": 15,
+            "seconds": 15.144,
+            "wallSeconds": 15.556
+          }
+        },
+        {
+          "label": "stage 1 bundled sound actually plays",
+          "pass": true
+        },
+        {
+          "label": "stage 2 arrives on the unchanged 45 second schedule",
+          "pass": true,
+          "detail": {
+            "stage": 2,
+            "threshold": 45,
+            "seconds": 45.57499999999999,
+            "wallSeconds": 45.478
+          }
+        },
+        {
+          "label": "stage 2 bundled sound actually plays",
+          "pass": true
+        },
+        {
+          "label": "stage 3 arrives on the unchanged 90 second schedule",
+          "pass": true,
+          "detail": {
+            "stage": 3,
+            "threshold": 90,
+            "seconds": 90.81700000000006,
+            "wallSeconds": 90.845
+          }
+        },
+        {
+          "label": "stage 3 bundled sound actually plays",
+          "pass": true
+        },
+        {
+          "label": "stage 4 arrives on the unchanged 180 second schedule",
+          "pass": true,
+          "detail": {
+            "stage": 4,
+            "threshold": 180,
+            "seconds": 180.18500000000003,
+            "wallSeconds": 180.181
+          }
+        },
+        {
+          "label": "stage 4 bundled sound actually plays",
+          "pass": true
+        },
+        {
+          "label": "all three whispers are custom Butu clips, each once",
+          "pass": true
+        },
+        {
+          "label": "return fully restores exact HTML and original node identity",
+          "pass": true
+        },
+        {
+          "label": "return chime plays and audio fades to silence",
+          "pass": true
+        },
+        {
+          "label": "popup stop cleans session and archives summary",
+          "pass": true
+        },
+        {
+          "label": "diary opens from popup with actual past sessions and domains",
+          "pass": true
+        },
+        {
+          "label": "settings show local controls, attribution and no API key",
+          "pass": true
+        },
+        {
+          "label": "real alarm expires with popup unloaded, once, with cleanup",
+          "pass": true,
+          "detail": {
+            "task": "Read database notes",
+            "startedAt": 1793425546857,
+            "endsAt": 1793425606857,
+            "endedAt": 1793425606857,
+            "elapsedSeconds": 60,
+            "completed": true,
+            "offTaskSeconds": 0,
+            "timesWandered": 0,
+            "domains": [],
+            "caption": "I used my favourite colour for our time together. That part of the page is lovely."
+          }
+        },
+        {
+          "label": "sampled extension renderer RSS peak is under 500 MB",
+          "pass": true,
+          "detail": {
+            "peakRssKiB": 386780,
+            "peakMB": 396.06272
+          }
+        }
+      ],
+      "stages": [
+        {
+          "stage": 1,
+          "threshold": 15,
+          "seconds": 15.144,
+          "wallSeconds": 15.556
+        },
+        {
+          "stage": 2,
+          "threshold": 45,
+          "seconds": 45.57499999999999,
+          "wallSeconds": 45.478
+        },
+        {
+          "stage": 3,
+          "threshold": 90,
+          "seconds": 90.81700000000006,
+          "wallSeconds": 90.845
+        },
+        {
+          "stage": 4,
+          "threshold": 180,
+          "seconds": 180.18500000000003,
+          "wallSeconds": 180.181
+        }
+      ],
+      "youtube": {
+        "url": "https://www.youtube.com/watch?v=GFQaEYEc8_8",
+        "score": 0.34139723820087464
+      },
+      "audio": {
+        "clips": [
+          {
+            "path": "music-box/stage-1-in-tune",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "music-box/stage-2-slower",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "voice/butu-06",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "music-box/stage-3-detuned",
+            "events": [
+              "playing"
+            ]
+          },
+          {
+            "path": "sfx/crayon-scribbling",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "voice/butu-08",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "music-box/stage-4-winding-down",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          },
+          {
+            "path": "voice/butu-12",
+            "events": [
+              "playing",
+              "ended"
+            ]
+          }
+        ],
+        "players": 0,
+        "context": "running"
+      },
+      "peakRssKiB": 386780,
+      "finishedAt": "2026-10-31T05:46:47.831Z",
+      "memory": {
+        "scope": "Butu extension renderer(s) in isolated profile; unrelated Chrome component extensions disabled",
+        "sampleCount": 1680,
+        "baseline": {
+          "label": "baseline",
+          "pids": [
+            61532
+          ],
+          "rssKiB": 185072
+        },
+        "sampledPeak": {
+          "label": "session observation",
+          "pids": [
+            61532
+          ],
+          "rssKiB": 386780
+        },
+        "peakDecimalMB": 396.06272,
+        "afterStop": {
+          "label": "after stop",
+          "pids": [
+            61532
+          ],
+          "rssKiB": 199764
+        },
+        "afterExpiry": {
+          "label": "after expiry",
+          "pids": [
+            61532
+          ],
+          "rssKiB": 210256
+        }
+      },
+      "rawEvidence": ".local-reports/audit/run-1793425225837/Firefox-154.0.1-definition.json",
+      "regressions": [
+        {
+          "suite": "summary",
+          "checks": [
+            "fresh profile shows form",
+            "diary link opens bundled diary in tab",
+            "manual stop archives once and shows all stats",
+            "task markup stays literal",
+            "reopened popup restores the same summary",
+            "repeat stop does not duplicate history",
+            "start another session restores form",
+            "new session hides previous summary",
+            "missed expiry is archived and summary refreshed",
+            "real storage retains newest 50",
+            "summary fits popup width"
+          ],
+          "rawEvidence": ".local-reports/summary/run-1793424762101/Firefox-154.0.1.json"
+        },
+        {
+          "suite": "diary",
+          "checks": [
+            "fresh diary shows helpful empty state",
+            "three saved sessions update live",
+            "newest saved entry appears first and markup stays literal",
+            "date time wanders and saved caption appear",
+            "places show unique domains, never paths, and a gentle empty state",
+            "all three drawing qualities are bundled and described",
+            "pages persist after reload",
+            "bundled fonts and drawings decode",
+            "page fits current viewport",
+            "50 valid pages and long text fit",
+            "cleared history returns to empty state",
+            "settings link opens bundled page with quiet defaults",
+            "settings save canonical domain lists, volume and mute locally",
+            "voice test respects saved mute",
+            "invalid URLs block saving without losing stored settings",
+            "saved settings persist across reload",
+            "unmuted voice test reaches the model host without a session",
+            "settings fit viewport and credit ElevenLabs"
+          ],
+          "rawEvidence": ".local-reports/diary/run-1793424146054/Firefox-154.0.1.json"
+        }
+      ]
+    }
+  ],
+  "runtimeSourceHashes": {
+    "src/background.js": "0aee8223c2d39a6758cb070b1866bddaf4f06da494521308f0a6e5f87c47b113",
+    "src/config.js": "3a2c84beaa9daf10bb12807a0106212a3c7fe4e4c63da9d5bf7da1da1567f7c3",
+    "src/content/content.js": "e37fd22819fe2bbc33782a58e358ccfc5e0ab8de7ad311b5ab642db4e50dc1b5",
+    "src/content/extract.js": "acd5b575d57111b9136dbeeb4d719872d6bbc88cecbc4f7f9aef72eddf1aa30b",
+    "src/diary/diary.js": "9ed2f51b963519f37731159d1c5db6456d78b0fc30d3df215b846890f6c9c03f",
+    "src/diary/settings.js": "22f62d81b18b924aa975d67387e71e4b4cc647d08e16b9b3e4e028566f9fa914",
+    "src/lib/diary.js": "b2b01f6af82a1fae5e713b9f283d5bf548644e7dc56eb11d52cdbf021744a472",
+    "src/lib/download-progress.js": "0314f7dd96022456e5073ee83ad66f9bfeeed7155efe3e3952fbd68d99857da5",
+    "src/lib/embedding-protocol.js": "ef50635d51923330307b43ce5e260f0a77b8b9b8247263638987c496a98bd061",
+    "src/lib/music-box.js": "6619e6a9c3fca603e37ca085e4718f47afacae67ddb0ebbd2b03842ca7609f47",
+    "src/lib/off-task-timer.js": "e099e3417a11a6c371e47f4b617ce635fdebaa9461934bf5300ac11bf561f7b8",
+    "src/lib/page-text.js": "f4d3200b384bf97f3b47f5b233589db25a82d4958b8eaf717d05c66c19e93586",
+    "src/lib/possession.js": "f3c409c343963159eee877e5b768eaa3e56668d21ab2f248f5e7d93fd7ee9b9e",
+    "src/lib/session-stats.js": "827edef21b460e8ee2691a051be103754e2afbcd39cf335ded68db8c6a4d6fb5",
+    "src/lib/session.js": "aa4808dca9e50a937cb584c87a3d78bdc66605f3795982faa70bc983e5a619a0",
+    "src/lib/settings.js": "b5decfa15bbe06aa49f73f6189d517b8f142ff4cbc8954e60b1a529624370376",
+    "src/lib/sfx.js": "a85d1349de7b95e12b69f7d895df1edeb82ec9ac4ae650143526f09ab59422bb",
+    "src/lib/similarity.js": "36174a562ced748c01adfda9b3d6a020ded7ab88bbc2b2921216643ebf87d9a1",
+    "src/lib/stages.js": "0448c1882ec391aea857bf4980c74b7f3f3143c604a4f5469e0a39fc893c7d95",
+    "src/lib/templates.js": "48f3a24795d7923eba6002d82ac236370721ff31d24761f7487653496d9c4a13",
+    "src/lib/verdict.js": "3e14adacd629d0c5722debc32e9bf094425aad5017add292d7decb4fcc298aae",
+    "src/lib/voice-budget.js": "416b70184cef84a2e8fa961bfd5a73b5c6156c0a49012e09d0c4e8c0237b17e9",
+    "src/lib/voice-state.js": "2d4982aaad5df54c2862ed719c73f28eff5cbabc971dde561a31ae9b8e3fae0e",
+    "src/model-host/audio-probe.js": "3b5ea0ddd68d7449197d2624c7631c37f680de9b2df1e9ed6d301ab063c3e475",
+    "src/model-host/client.js": "a211f490d6ffb8f5fdf50637f48515e484b13901fe49fb26fa7aa2fe97f8cb31",
+    "src/model-host/embedding-host.js": "d7b6fbaeb4009669d9e3d776651ee971f662c0043a6e4b9d464c57eaf04097e0",
+    "src/model-host/embedding-worker.js": "4ef674e8db10f9dd40e9a20d7beb54a2861aaaaff547e860d471ca08805d82bd",
+    "src/model-host/firefox-session-lifetime.js": "96decc00c5b4a24bf0575ecf0f0f07e1efa3aba30f88b947b5d6f8d531e3ce5e",
+    "src/model-host/offscreen.js": "89fe0a7311d583f9fad3542064bb97fbc58fc860f937a9429e6b1de84d34251e",
+    "src/model-host/transformers.js": "4b5e8200bad2d918b066f71066a7adc0946b53ea2c8170f7658420b90b26e0e8",
+    "src/model-host/voice-host.js": "fa140643d9dcb5decdbcd40d797f278de8df85d27a6e59620267d2fd2b07a57f",
+    "src/popup/popup.js": "5cd7861520d24babea14665ffa5a75d4e225b511894502faf56b47c72768ba0a",
+    "src/templates.js": "a22c64ab87d2b1f5b1e1556cba7ec7442dc3bea2fdf1263b3298004349a8c7ba",
+    "src/voice.js": "6b726abd14989aa90291028ea9151160cd51172090f3121b19b46198f540ec1d"
+  }
+}

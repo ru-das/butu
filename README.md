@@ -233,8 +233,8 @@ Never commit a key; `.env` is ignored.
    (Alt reveals the menu bar), reopen popup/diary and test the voice. Confirm
    local fonts, drawings and sound. Turn Work Offline off and remove test overrides.
 
-These are repeatable manual steps, not a claim that the pending final audit has
-passed. Detailed evidence and further checks: [diary](docs/DIARY.md),
+Installed-browser release checks, results and measurement scope: [network audit](docs/NETWORK-AUDIT.md)
+and [Definition of done](docs/FINAL-CHECKS.md). Detailed component evidence: [diary](docs/DIARY.md),
 [voice playback](docs/VOICE-PLAYBACK.md), [model lifecycle](docs/MODEL-LIFECYCLE.md).
 Product requirements and settled choices: [spec](docs/SPEC.md),
 [decisions](docs/DECISIONS.md), [task list](docs/PLAN.md).

@@ -217,7 +217,7 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       privacy boundary, limitations, credits and licences (fonts, models, assets).
       Root README includes component licence/provenance links, separate CC0 and
       ElevenLabs noncommercial terms, source-licence gap and exact Chrome/Firefox
-      install and manual smoke checks. Network/final audits remain 4.9/4.10.
+      install and manual smoke checks. Network/final audit evidence is recorded below.
 - [x] 4.9 Network audit in both browsers: only Hugging Face model downloads;
       no runtime ElevenLabs calls. No fonts or images from the network.
       Native Chrome/Firefox capture, CSP/HTTPS-block negative controls, cold model
@@ -225,7 +225,13 @@ V6 and V7 are deferred by user approval (decision 23), not completed tasks:
       and exact restoration pass. Removed stale ElevenLabs CSP allowance.
       Step-by-step audit and exact manual steps: docs/NETWORK-AUDIT.md;
       tracked evidence: docs/network-audit-checks.json.
-- [ ] 4.10 Full run-through against the Definition of done in docs/SPEC.md.
+- [x] 4.10 Full run-through against the Definition of done in docs/SPEC.md.
+      Chrome 153 / Firefox 154: all eight release requirements pass, real
+      15/45/90/180-second stages, live relevant YouTube, exact DOM restoration,
+      bundled playback and actual one-minute expiry with popup unloaded.
+      Scoped sampled renderer peaks: 451.6 / 396.1 MB; 51 unit tests and both
+      summary/diary regression suites pass. Checklist, measurement scope and exact
+      manual steps: docs/FINAL-CHECKS.md; evidence: docs/definition-of-done-checks.json.
 
 ## Demo and write-up support
 - [ ] D1 Record the demo: a real work session with sound on, showing the calm

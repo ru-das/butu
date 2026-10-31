@@ -12,6 +12,10 @@ No persistent model-file cache is deleted; the next session can load it offline.
 
 ## Measured memory
 
+These historical Chrome sums count every extension renderer in the test profile.
+The final [release checks](FINAL-CHECKS.md) isolate Butu from Chrome component
+extensions; use that report for the current 500 MB release-budget check.
+
 2026-10-31, Linux, isolated profiles, real configured MiniLM-L3 q8 model.
 `node tests/browser-lifecycle.cjs chrome` / `firefox` use temporary diagnostic
 extension copies; shipped source has no diagnostic endpoint. The original 4.6 probe compared

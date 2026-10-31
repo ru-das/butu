@@ -4,6 +4,8 @@ const assert = require('node:assert/strict');
 const root = require('node:path').resolve(__dirname, '..');
 const out = process.env.BUTU_AUDIT_RESULTS ?? root + '/.local-reports/audit/run-' + Date.now();
 fs.mkdirSync(out, { recursive: true });
+const full = process.argv.includes('--full');
+const fixturePort=Number(process.env.BUTU_AUDIT_PORT??8789);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function connect(url) {
  const ws = new WebSocket(url); await new Promise((r,j) => { ws.onopen=r; ws.onerror=j; });
@@ -134,7 +136,7 @@ async function scenario(name) {
 
 async function chromeRun() {
  const profile=out+'/chrome-profile',log=fs.openSync(out+'/chrome.log','w');
- const child=spawn(process.env.BUTU_CHROME??process.env.HOME+'/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',['--headless','--no-sandbox','--disable-gpu','--disable-background-networking','--no-first-run','--enable-unsafe-extension-debugging','--user-data-dir='+profile,'--remote-debugging-port=0','about:blank'],{stdio:['ignore',log,log]});
+ const child=spawn(process.env.BUTU_CHROME??process.env.HOME+'/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',['--headless','--no-sandbox','--disable-gpu','--disable-background-networking',...(full?['--disable-component-extensions-with-background-pages']:[]),'--no-first-run','--enable-unsafe-extension-debugging','--user-data-dir='+profile,'--remote-debugging-port=0','about:blank'],{stdio:['ignore',log,log]});
  let browser,view;const pages=new Map(),sessions=new Set();let offline=false,port;
  nativeRequests=[];phase='startup';
  try {
@@ -155,18 +157,18 @@ async function chromeRun() {
     
    }catch(e){if(!/closed|session|target|domain/i.test(e.message))console.error('observer:',e.message);}
   };
-  await browser.call('Target.setAutoAttach',{autoAttach:true,waitForDebuggerOnStart:true,flatten:true,filter});
+  if(!full)await browser.call('Target.setAutoAttach',{autoAttach:true,waitForDebuggerOnStart:true,flatten:true,filter});
   const {id}=await browser.call('Extensions.loadUnpacked',{path:fixture('chrome')});
   const {targetId}=await browser.call('Target.createTarget',{url:'chrome-extension://'+id+'/src/popup/popup.html'});
   async function page(id){if(!pages.has(id)){const targets=await(await fetch('http://127.0.0.1:'+port+'/json/list')).json();const t=targets.find(t=>t.id===id);if(!t)throw Error('Missing target '+id);pages.set(id,await connect(t.webSocketDebuggerUrl));}return pages.get(id);}
   view=await page(targetId);
   const evaluate=async(v,code)=>{const r=await v.call('Runtime.evaluate',{expression:'(async()=>{'+code+'})()',awaitPromise:true,returnByValue:true,userGesture:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
   E=code=>evaluate(view,code);
-  pageEval=async(id,code)=>{const url=pageUrls.get(id)??await E('return (await chrome.tabs.get('+id+')).url;');const targets=await(await fetch('http://127.0.0.1:'+port+'/json/list')).json();const target=targets.find(t=>t.type==='page'&&t.url===url);return target?evaluate(await page(target.id),code):undefined;};
+  pageEval=async(id,code)=>{const url=(pageUrls.get(id)??await E('return (await chrome.tabs.get('+id+')).url;'))?.replaceAll(':8789',':'+fixturePort);const targets=await(await fetch('http://127.0.0.1:'+port+'/json/list')).json();const target=targets.find(t=>t.type==='page'&&t.url===url);return target?evaluate(await page(target.id),code):undefined;};
   setOffline=async value=>{offline=value;for(const s of sessions)await browser.call('Network.setBlockedURLs',{urls:value?['https://*']:[]},s).catch(()=>{});};
   memory=async()=>{const {processInfo}=await browser.call('SystemInfo.getProcessInfo');return rss(processInfo.filter(p=>p.type==='renderer'&&fs.readFileSync('/proc/'+p.id+'/cmdline','utf8').includes('--extension-process')).map(p=>p.id));};
   shot=async(label)=>{const s=await view.call('Page.captureScreenshot',{format:'png'});fs.writeFileSync(out+'/'+label+'.png',Buffer.from(s.data,'base64'));};
-  await scenario(version.Browser.replace('/','-'));
+  await runScenario(version.Browser.replace('/','-'));
  }finally{for(const p of pages.values())p.close();if(browser){await browser.call('Browser.close').catch(()=>{});browser.close();}child.kill();fs.closeSync(log);}
 }
 function rss(pids){let rssKiB=0;for(const pid of pids){try{rssKiB+=Number(fs.readFileSync('/proc/'+pid+'/status','utf8').match(/VmRSS:\s+(\d+)/)[1]);}catch{}}return {pids,rssKiB};}
@@ -186,7 +188,7 @@ async function firefoxRun() {
   const response=await m.call('WebDriver:GetWindowHandle');const popup=response.value??response;
   const handlesByUrl=new Map();
   pageEval=async(id,code)=>{
-   const url=pageUrls.get(id)??await E('return (await chrome.tabs.get('+id+')).url;');
+   const url=(pageUrls.get(id)??await E('return (await chrome.tabs.get('+id+')).url;'))?.replaceAll(':8789',':'+fixturePort);
    const active=await E("return (await chrome.tabs.query({active:true,currentWindow:true}))[0]?.id;");
    let handle=handlesByUrl.get(url);
    try{
@@ -203,12 +205,17 @@ async function firefoxRun() {
   // Drain native events between scenario commands so phase labels remain meaningful.
   const evaluate=E;E=async code=>{await memory();return evaluate(code);};
   shot=async label=>{const s=await m.call('WebDriver:TakeScreenshot',{full:true});fs.writeFileSync(out+'/'+label+'.png',Buffer.from(s.value,'base64'));};
-  await scenario('Firefox-'+session.capabilities.browserVersion);
+  await runScenario('Firefox-'+session.capabilities.browserVersion);
  }finally{m?.close();child.kill();fs.closeSync(log);}
 }
+async function runScenario(name) {
+ if(full)await require('./definition-scenario.cjs')({name,E:code=>E(code.replaceAll(':8789',':'+fixturePort)),pageEval,pageUrls,memory,shot,out,waitFor,sleep});
+ else await scenario(name);
+}
+
 (async()=>{
  console.log('Evidence: '+out);
  const server=require('node:http').createServer((req,res)=>{res.writeHead(200,{'content-type':'text/html'});res.end('<!doctype html><html><head><title>Database normalization</title></head><body><h1>Database normalization</h1><p>Database normal forms, SQL tables and functional dependencies.</p><input value="keep this"></body></html>');});
- await new Promise(r=>server.listen(8789,'0.0.0.0',r));
+ await new Promise(r=>server.listen(fixturePort,'0.0.0.0',r));
  try{if(process.argv[2]!=='firefox')await chromeRun();if(process.argv[2]!=='chrome')await firefoxRun();}finally{server.close();}
 })().catch(e=>{console.error(e.stack);process.exitCode=1;});
