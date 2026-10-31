@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Butu thumbnail</title>
+<style>
+@font-face { font-family: 'Gaegu'; src: url('../assets/fonts/gaegu/Gaegu-Regular.ttf'); }
+@font-face { font-family: 'Patrick Hand'; src: url('../assets/fonts/patrick-hand/PatrickHand-Regular.ttf'); }
+html, body { margin: 0; }
+#thumb { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #fff8e9; }
+#thumb > *, #dark > *, #glitched > * { position: absolute; }
+.bear { left: 240px; top: -20px; width: 800px; height: 800px; }
+#wrong { filter: brightness(.62) contrast(1.5) saturate(1.2); }
+#dark { inset: 0; background: radial-gradient(ellipse at 45% 50%, #4a3550 0, #1c1420 60%, #0c080f 100%);
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%, 49% 88%, 52.5% 76%, 49% 64%, 52% 52%, 48.5% 40%, 52.5% 28%, 49% 14%); }
+#glitched { inset: 0; filter: url(#tear); }
+.scrib { left: 560px; width: 860px; opacity: .55; filter: invert(1) brightness(.8); }
+.tiny { width: 92px; height: 92px; }
+.word { font-family: 'Patrick Hand', cursive; line-height: 1; white-space: nowrap; }
+#hi { left: 44px; top: 70px; font: 400 150px/1 'Gaegu', cursive; color: #514438; transform: rotate(-5deg); }
+#left { left: 985px; top: 390px; font-size: 136px; line-height: .92; color: #fff8e9; transform: rotate(-3deg); text-shadow: 5px 0 #d1192b, -5px 0 #18c9c9; }
+</style>
+</head>
+<body>
+<div id="thumb">
+  <img id="calm" class="bear" src="../assets/doodles/butu-calm.svg" alt="">
+  <div id="hi">hi!</div>
+  <img src="../assets/doodles/heart-calm.svg" width="110" height="110" style="left:90px;top:505px;transform:rotate(-10deg)" alt="">
+  <img src="../assets/doodles/stars-calm.svg" width="130" height="130" style="left:180px;top:300px" alt="">
+  <div id="dark">
+    <div id="glitched">
+      <img class="scrib" src="../assets/doodles/scribble-1.svg" style="top:30px" alt="">
+      <img class="scrib" src="../assets/doodles/scribble-3.svg" style="top:270px" alt="">
+      <img class="scrib" src="../assets/doodles/scribble-2.svg" style="top:500px" alt="">
+      <img id="wrong" class="bear" src="../assets/doodles/butu-wrong.svg" alt="">
+      <img class="tiny" src="../assets/doodles/butu-wrong.svg" style="left:1080px;top:30px;transform:rotate(14deg)" alt="">
+      <img class="tiny" src="../assets/doodles/butu-abandoned.svg" style="left:1180px;top:170px;transform:rotate(-12deg)" alt="">
+      <img class="tiny" src="../assets/doodles/butu-wrong.svg" style="left:1010px;top:215px;transform:rotate(-20deg)" alt="">
+    </div>
+    <div id="left" class="word">you<br>left.</div>
+  </div>
+</div>
+<svg width="0" height="0" style="position:absolute"><filter id="tear" filterUnits="userSpaceOnUse" x="0" y="0" width="1280" height="720" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency="0.00001 0.03" numOctaves="1" seed="9" result="n"/>
+  <feComponentTransfer in="n" result="bands"><feFuncR type="discrete" tableValues="0 .2 .4 .5 .5 .6 .8 1"/><feFuncG type="discrete" tableValues=".5"/></feComponentTransfer>
+  <feDisplacementMap in="SourceGraphic" in2="bands" scale="60" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <feOffset in="d" dx="7" result="r0"/><feColorMatrix in="r0" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r"/>
+  <feOffset in="d" dx="-7" result="c0"/><feColorMatrix in="c0" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" result="c"/>
+  <feBlend in="r" in2="c" mode="screen"/>
+</filter></svg>
+</body>
+</html>

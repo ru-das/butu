@@ -30,6 +30,24 @@
         ],
         "createdAt": "2026-10-31T04:47:28.309Z",
         "reason": "Project spec docs/SPEC.md requires cream scrapbook paper; settings extends the existing diary palette."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "video/thumbnail.html"
+        ],
+        "createdAt": "2026-10-31T14:36:56.605Z",
+        "reason": "Claude triage: full-bleed 1280x720 thumbnail; rendered text sits about 75px from the frame edge, no cramped container"
+      },
+      {
+        "rule": "organic-clip-path",
+        "value": "*",
+        "files": [
+          "video/thumbnail.html"
+        ],
+        "createdAt": "2026-10-31T14:36:56.648Z",
+        "reason": "Claude triage: deliberate jagged split between calm and dark halves of a flat graphic; no photographic material to matte"
       }
     ]
   }
