@@ -120,9 +120,8 @@ handles session deadlines. Chrome also uses `offscreen` for model hosting and
 audio. Extension pages, browser internal pages and new tabs are never haunted;
 editable elements and pages with a focused form field are protected.
 
-The manifests still contain a legacy `api.elevenlabs.io` CSP allowance; it is not
-an active runtime feature. The full two-browser network audit (task 4.9) and final
-acceptance run (4.10) are pending. See [the plan](docs/PLAN.md).
+The two-browser [network audit](docs/NETWORK-AUDIT.md) and final
+[acceptance run](docs/FINAL-CHECKS.md) are complete. See [the plan](docs/PLAN.md).
 
 ## Limitations
 
